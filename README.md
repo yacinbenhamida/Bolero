@@ -1,5 +1,5 @@
 <h1> BOLERO RESTAURANT Solution </h1>
-
+<center><img src="logo.png"/></center>
 <h2> Equipe 3 Iset charguia 2016/2017 DSI 302 </h2>
 
 <b>Fichiers de conception </b>: https://drive.google.com/drive/folders/0B58kzZBg74OyN2JRd3hVU0hSUTA?usp=sharing
