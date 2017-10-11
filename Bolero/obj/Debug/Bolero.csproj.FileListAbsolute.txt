@@ -1,1 +1,2 @@
 C:\Users\USER\Desktop\Bolero\Bolero\Bolero\bin\Debug\Bolero.exe.config
+C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\bin\Debug\Bolero.exe.config
