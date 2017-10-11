@@ -27,7 +27,7 @@ namespace Bolero
 
         private void Window_Loaded_1(object sender, RoutedEventArgs e)
         {
-            lblDate.Content = DateTime.Now.ToShortDateString();
+            txtDate.Text = DateTime.Now.ToShortDateString();
             System.Windows.Threading.DispatcherTimer timer = new System.Windows.Threading.DispatcherTimer();
             timer.Interval = new TimeSpan(0, 0, 1);
             timer.Tick += timer_Tick;
@@ -36,7 +36,7 @@ namespace Bolero
 
         void timer_Tick(object sender, EventArgs e)
         {
-            lblHeure.Content = DateTime.Now.ToLongTimeString();
+            txtDate.Text = DateTime.Now.ToLongTimeString();
         }
 
         private void btnAdmin_Click(object sender, RoutedEventArgs e)

@@ -1,4 +1,3 @@
-C:\Users\USER\Desktop\Bolero\Bolero\Bolero\bin\Debug\Bolero.exe.config
 C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\bin\Debug\Bolero.exe.config
 C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\bin\Debug\Bolero.exe
 C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\bin\Debug\Bolero.pdb
@@ -18,3 +17,22 @@ C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\obj\Debug\Auth
 C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\obj\Debug\AccesSession.g.cs
 C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\obj\Debug\QuestionSecrete.g.cs
 C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\obj\Debug\NewPassword.g.cs
+C:\Users\USER\Desktop\Bolero\Bolero\Bolero\bin\Debug\Bolero.exe.config
+C:\Users\USER\Desktop\Bolero\Bolero\Bolero\bin\Debug\Bolero.exe
+C:\Users\USER\Desktop\Bolero\Bolero\Bolero\bin\Debug\Bolero.pdb
+C:\Users\USER\Desktop\Bolero\Bolero\Bolero\obj\Debug\Bolero.csprojResolveAssemblyReference.cache
+C:\Users\USER\Desktop\Bolero\Bolero\Bolero\obj\Debug\Authentification.baml
+C:\Users\USER\Desktop\Bolero\Bolero\Bolero\obj\Debug\AccesSession.baml
+C:\Users\USER\Desktop\Bolero\Bolero\Bolero\obj\Debug\QuestionSecrete.baml
+C:\Users\USER\Desktop\Bolero\Bolero\Bolero\obj\Debug\NewPassword.baml
+C:\Users\USER\Desktop\Bolero\Bolero\Bolero\obj\Debug\Authentification.g.cs
+C:\Users\USER\Desktop\Bolero\Bolero\Bolero\obj\Debug\AccesSession.g.cs
+C:\Users\USER\Desktop\Bolero\Bolero\Bolero\obj\Debug\QuestionSecrete.g.cs
+C:\Users\USER\Desktop\Bolero\Bolero\Bolero\obj\Debug\NewPassword.g.cs
+C:\Users\USER\Desktop\Bolero\Bolero\Bolero\obj\Debug\App.g.cs
+C:\Users\USER\Desktop\Bolero\Bolero\Bolero\obj\Debug\Bolero_MarkupCompile.cache
+C:\Users\USER\Desktop\Bolero\Bolero\Bolero\obj\Debug\Bolero.g.resources
+C:\Users\USER\Desktop\Bolero\Bolero\Bolero\obj\Debug\Bolero.Properties.Resources.resources
+C:\Users\USER\Desktop\Bolero\Bolero\Bolero\obj\Debug\Bolero.csproj.GenerateResource.Cache
+C:\Users\USER\Desktop\Bolero\Bolero\Bolero\obj\Debug\Bolero.exe
+C:\Users\USER\Desktop\Bolero\Bolero\Bolero\obj\Debug\Bolero.pdb

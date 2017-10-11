@@ -65,6 +65,7 @@
     <Compile Include="AccesSession.xaml.cs">
       <DependentUpon>AccesSession.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DAO.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -76,6 +77,7 @@
     <Compile Include="NewPassword.xaml.cs">
       <DependentUpon>NewPassword.xaml</DependentUpon>
     </Compile>
+    <Compile Include="User.cs" />
     <Page Include="Authentification.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
