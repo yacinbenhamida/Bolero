@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\USER\Desktop\Bolero\Bolero\Bolero\obj\Debug\
+C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\obj\Debug\
 Bolero
 none
 false
 DEBUG;TRACE
-C:\Users\USER\Desktop\Bolero\Bolero\Bolero\App.xaml
-11151548125
+C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\App.xaml
+4-506636724
 
-936226607
-12-354110402
-MainWindow.xaml;
+1226041220
+20-1501392540
+Authentification.xaml;AccesSession.xaml;QuestionSecrete.xaml;NewPassword.xaml;
 
 False
 
