@@ -43,18 +43,21 @@ namespace Bolero
         {
             AccesSession admin = new AccesSession();
             admin.Show();
+            this.Close();
         }
 
         private void btnCaissier1_Click(object sender, RoutedEventArgs e)
         {
             AccesSessionCaissier caissier1 = new AccesSessionCaissier();
             caissier1.Show();
+            this.Close();
         }
 
         private void btnCaissier2_Click(object sender, RoutedEventArgs e)
         {
             AccesSessionCaissier2 caissier2 = new AccesSessionCaissier2();
             caissier2.Show();
+            this.Close();
         }
     }
 }

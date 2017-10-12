@@ -46,7 +46,13 @@ namespace Bolero
         private void Hyperlink_Click(object sender, RoutedEventArgs e)
         {
             QuestionSecrete question = new QuestionSecrete();
-            question.Show();
+            question.ShowDialog();
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            Authentification auth = new Authentification();
+            auth.Show();
         }
     }
 }

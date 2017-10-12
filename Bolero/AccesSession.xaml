@@ -1,7 +1,7 @@
 ﻿<Window x:Class="Bolero.AccesSession"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Bolero" Height="383.806" Loaded="Window_Loaded">
+        Title="Bolero" Height="383.806" Loaded="Window_Loaded" Closing="Window_Closing">
     <StackPanel VerticalAlignment="Center">
         <GroupBox>
             <Grid>
@@ -15,17 +15,17 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
-                <Image Source="C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\Resources\Admin.png" Height="80"/>
-                  
-                <Label x:Name="User" Content="Admin" Margin="186,20,199,19" Grid.Row="1" HorizontalContentAlignment="Center" FontSize="14"/>
-                <TextBox x:Name="txtPW" Height="23" Margin="186,21,199,19" Grid.Row="2" Width="120"/>
+                <Image Source="Resources\admin.png" Height="80"/>
+                   
+                <Label FontFamily="Century Gothic" FontWeight="Bold"  x:Name="User" Content="Admin" Margin="186,20,199,19" Grid.Row="1" HorizontalContentAlignment="Center" FontSize="14"/>
+                <TextBox x:Name="txtPW" Height="43" Margin="186,21,199,19" Grid.Row="2" Width="190"/>
                 <TextBlock x:Name="txtOubli" Grid.Row="3" Text="" HorizontalAlignment="Center">
                 <Run Text="Mot de passe oublier ?"/>
                 <Hyperlink Click="Hyperlink_Click">
                  <Run Text="Cliquer ici !"/>
                 </Hyperlink>
                 </TextBlock>
-                <Button x:Name="btnLogin" Content="Login" Margin="209,18,221,10" Grid.Row="4" Width="75" Click="btnLogin_Click" Background="#FF54B8F1" Foreground="White" FontWeight="Bold" FontSize="14"/>
+                <Button  Height="50" x:Name="btnLogin" Content="Login" Margin="209,18,221,10" Grid.Row="4" Width="175" Click="btnLogin_Click" Background="#FF54B8F1" Foreground="White" FontWeight="Bold" FontSize="14"/>
 
             </Grid>
         </GroupBox>
