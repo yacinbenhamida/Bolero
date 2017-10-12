@@ -1,4 +1,4 @@
-﻿<Window x:Class="Bolero.AccesSession"
+﻿<Window x:Class="Bolero.AccesSessionCaissier"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Bolero" Height="383.806" Loaded="Window_Loaded">
@@ -15,9 +15,9 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
-                <Image Source="C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\Resources\Admin.png" Height="80"/>
-                  
-                <Label x:Name="User" Content="Admin" Margin="186,20,199,19" Grid.Row="1" HorizontalContentAlignment="Center" FontSize="14"/>
+                <Image Source="C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\Resources\User.png" Height="80"/>
+
+                <Label x:Name="User" Content="Caissier 1" Margin="186,20,199,19" Grid.Row="1" HorizontalContentAlignment="Center" FontSize="14"/>
                 <TextBox x:Name="txtPW" Height="23" Margin="186,21,199,19" Grid.Row="2" Width="120"/>
                 <TextBlock x:Name="txtOubli" Grid.Row="3" Text="" HorizontalAlignment="Center">
                 <Run Text="Mot de passe oublier ?"/>

@@ -10,22 +10,21 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Bolero
 {
     /// <summary>
-    /// Logique d'interaction pour MainWindow.xaml
+    /// Logique d'interaction pour AccesSessionCaissier.xaml
     /// </summary>
-    public partial class Authentification : Window
+    public partial class AccesSessionCaissier : Window
     {
-        public Authentification()
+        public AccesSessionCaissier()
         {
             InitializeComponent();
         }
 
-        private void Window_Loaded_1(object sender, RoutedEventArgs e)
+        private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             lblDate.Content = DateTime.Now.ToShortDateString();
             System.Windows.Threading.DispatcherTimer timer = new System.Windows.Threading.DispatcherTimer();
@@ -39,22 +38,15 @@ namespace Bolero
             lblHeure.Content = DateTime.Now.ToLongTimeString();
         }
 
-        private void btnAdmin_Click(object sender, RoutedEventArgs e)
+        private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
-            AccesSession admin = new AccesSession();
-            admin.Show();
+
         }
 
-        private void btnCaissier1_Click(object sender, RoutedEventArgs e)
+        private void Hyperlink_Click(object sender, RoutedEventArgs e)
         {
-            AccesSessionCaissier caissier1 = new AccesSessionCaissier();
-            caissier1.Show();
-        }
-
-        private void btnCaissier2_Click(object sender, RoutedEventArgs e)
-        {
-            AccesSessionCaissier2 caissier2 = new AccesSessionCaissier2();
-            caissier2.Show();
+            QuestionSecrete question = new QuestionSecrete();
+            question.Show();
         }
     }
 }
