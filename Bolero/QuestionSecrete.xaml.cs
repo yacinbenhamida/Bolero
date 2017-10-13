@@ -40,12 +40,12 @@ namespace Bolero
 
         private void btnAnnuler_Click(object sender, RoutedEventArgs e)
         {
-
+            this.Close();
         }
 
         private void btnValider_Click(object sender, RoutedEventArgs e)
         {
-
+          
         }
 
         

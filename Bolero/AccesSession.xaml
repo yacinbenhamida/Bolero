@@ -1,9 +1,8 @@
 ﻿<Window x:Class="Bolero.AccesSession"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Bolero" Height="383.806" Loaded="Window_Loaded" Closing="Window_Closing">
-    <StackPanel VerticalAlignment="Center">
-        <GroupBox>
+        Title="Bolero" Height="452.806" Loaded="Window_Loaded" Closing="Window_Closing">
+ 
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition/>
@@ -11,29 +10,30 @@
                     <RowDefinition/>
                     <RowDefinition/>
                     <RowDefinition/>
-                </Grid.RowDefinitions>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
-                <Image Source="Resources\admin.png" Height="80"/>
+                <Image Source="Resources\admin.png" Grid.RowSpan="2" Width="90" VerticalAlignment="Top"/>
                    
-                <Label FontFamily="Century Gothic" FontWeight="Bold"  x:Name="User" Content="Admin" Margin="186,20,199,19" Grid.Row="1" HorizontalContentAlignment="Center" FontSize="14"/>
-                <TextBox x:Name="txtPW" Height="43" Margin="186,21,199,19" Grid.Row="2" Width="190"/>
-                <TextBlock x:Name="txtOubli" Grid.Row="3" Text="" HorizontalAlignment="Center">
+                <Label FontFamily="Century Gothic" FontWeight="Bold"  x:Name="User" Content="Admin" VerticalAlignment="Center" Grid.Row="1" HorizontalContentAlignment="Center" FontSize="14"/>
+                <TextBox x:Name="txtPW" Height="43" VerticalAlignment="Center" Grid.Row="2" Width="190"/>
+                <TextBlock x:Name="txtOubli" Grid.Row="3" Text="" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <Run Text="Mot de passe oublier ?"/>
                 <Hyperlink Click="Hyperlink_Click">
                  <Run Text="Cliquer ici !"/>
                 </Hyperlink>
                 </TextBlock>
-                <Button  Height="50" x:Name="btnLogin" Content="Login" Margin="209,18,221,10" Grid.Row="4" Width="175" Click="btnLogin_Click" Background="#FF54B8F1" Foreground="White" FontWeight="Bold" FontSize="14"/>
+                <Button  Height="50" x:Name="btnLogin" Content="Login" VerticalAlignment="Center" Grid.Row="4" Width="175" Click="btnLogin_Click" Background="#FF54B8F1" Foreground="White" FontWeight="Bold" FontSize="14"/>
 
-            </Grid>
-        </GroupBox>
-        <DockPanel HorizontalAlignment="Center" >
-            <Label Content="Date : " VerticalContentAlignment="Center" FontSize="14"/>
-            <Label x:Name="lblDate" VerticalContentAlignment="Center" />
-            <Label Content="Heure  :" VerticalContentAlignment="Center" FontSize="14"/>
+            
+      
+        <DockPanel VerticalAlignment="Bottom" Grid.Row="5" HorizontalAlignment="Center">
+            <Label FontFamily="Century Gothic" Content="Date : " VerticalContentAlignment="Center"  FontSize="14"/>
+            <Label x:Name="lblDate" VerticalContentAlignment="Center"/>
+            <Label  FontFamily="Century Gothic"  Content="Heure  :" VerticalContentAlignment="Center" FontSize="14"/>
             <Label x:Name="lblHeure" VerticalContentAlignment="Center"/>
         </DockPanel>
-    </StackPanel>
+    </Grid>
 </Window>

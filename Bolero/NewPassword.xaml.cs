@@ -40,12 +40,28 @@ namespace Bolero
 
         private void btnAnnuler_Click(object sender, RoutedEventArgs e)
         {
-
+            this.Close();
         }
 
         private void btnValider_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+              if(txtNPW.ToString() == "" || txtConfi.ToString() == "")
+                
+                  if (txtNPW.ToString() == txtConfi.ToString())
+                     {
+                         this.Close();
+                      }
+                else
+                    MessageBox.Show("Le mot de passe n'est pas identique !");
 
+              MessageBox.Show("Veuillez entre un nouveau mot de passe !");
+            }
+            catch (Exception n)
+            {
+                MessageBox.Show(n.Message);
+            }
         }
     }
 }

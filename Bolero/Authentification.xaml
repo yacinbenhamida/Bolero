@@ -27,7 +27,7 @@
                     <ColumnDefinition Width="1*"/>
                     <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
-                <Button x:Name="btnAdmin" Click="btnAdmin_Click" BorderBrush="White" Style="{StaticResource MonStyle}" Width="100" >
+                <Button x:Name="btnAdmin" Click="btnAdmin_Click" BorderBrush="White" Style="{StaticResource MonStyle}" Width="100" Height="100">
                     <Button.Background>
                         <ImageBrush ImageSource="Resources\Admin.png"/>
                     </Button.Background>
