@@ -8,6 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/user.svg")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("bolerodb.mdf")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("bolerodb_log.ldf")]
 
 
