@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,9 +20,11 @@ namespace Bolero
     /// </summary>
     public partial class NewPassword : Window
     {
-        public NewPassword()
+        int idOfFetchedUser = 0;
+        public NewPassword(int iduser)
         {
             InitializeComponent();
+            idOfFetchedUser = iduser;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -47,16 +50,46 @@ namespace Bolero
         {
             try
             {
-              if(txtNPW.ToString() == "" || txtConfi.ToString() == "")
+                if (txtNPW.Password.ToString() == "" || txtConfi.Password.ToString() == "") 
+                {
+                    MessageBox.Show("les deux champs sont requis !");
+                    return;
+                }
+                if (txtNPW.Password.ToString().Contains(" ") || txtConfi.Password.ToString().Contains(" ")) 
+                {
+                    MessageBox.Show("Pas d'espaces dans votre mot de passe !");
+                    return;
+                }
+                if (txtNPW.Password.Length < 4 || txtConfi.Password.Length < 4) 
+                {
+                    MessageBox.Show("Le mdp doit etre au moins de 5 caractéres");
+                    return;
+                }   
                 
                   if (txtNPW.ToString() == txtConfi.ToString())
                      {
-                         this.Close();
-                      }
-                else
-                    MessageBox.Show("Le mot de passe n'est pas identique !");
-
-              MessageBox.Show("Veuillez entre un nouveau mot de passe !");
+                      try
+                            {
+                        SqlConnection cnx = connexion.GetConnection();
+                        SqlCommand cmd = new SqlCommand("UPDATE Utilisateur SET password=@pw WHERE Id=@id",cnx);
+                        cmd.Parameters.AddWithValue("id",idOfFetchedUser);
+                        cmd.Parameters.AddWithValue("pw", txtNPW.Password.ToString());
+                          int ret = (int)cmd.ExecuteNonQuery();
+                          MessageBox.Show("Mot de passe changé avec succés");
+                          if (ret > 0) { this.Close(); 
+                          } 
+                             }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                      finally { connexion.closeConnection(); }
+                     }   
+                         
+                     
+                else{
+                       MessageBox.Show("Les deux mot de passe ne sont pas identique !");
+                       MessageBox.Show("Veuillez entre un nouveau mot de passe !");}
             }
             catch (Exception n)
             {

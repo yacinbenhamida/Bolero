@@ -1,7 +1,8 @@
-﻿CREATE TABLE [dbo].[Table]
-(
-	[Id] INT NOT NULL PRIMARY KEY, 
-    [Nom] VARCHAR(50) NOT NULL, 
-    [password] VARCHAR(50) NOT NULL, 
-    [questionsecrete] VARCHAR(50) NOT NULL
-)
+﻿CREATE TABLE [dbo].[Utilisateur] (
+    [Id]              INT          NOT NULL,
+    [Nom]             VARCHAR (50) NOT NULL,
+    [password]        VARCHAR (50) NOT NULL,
+    [questionsecrete] VARCHAR (50) NOT NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC)
+);
+

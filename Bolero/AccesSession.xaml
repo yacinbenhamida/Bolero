@@ -18,7 +18,7 @@
                 <Image Source="Resources\admin.png" Grid.RowSpan="2" Width="90" VerticalAlignment="Top"/>
                    
                 <Label FontFamily="Century Gothic" FontWeight="Bold"  x:Name="User" Content="Admin" VerticalAlignment="Center" Grid.Row="1" HorizontalContentAlignment="Center" FontSize="14"/>
-                <TextBox x:Name="txtPW" Height="43" VerticalAlignment="Center" Grid.Row="2" Width="190"/>
+                <PasswordBox x:Name="txtPW" Height="43" VerticalAlignment="Center" Grid.Row="2" Width="190"/>
                 <TextBlock x:Name="txtOubli" Grid.Row="3" Text="" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <Run Text="Mot de passe oublier ?"/>
                 <Hyperlink Click="Hyperlink_Click">
@@ -26,9 +26,9 @@
                 </Hyperlink>
                 </TextBlock>
                 <Button  Height="50" x:Name="btnLogin" Content="Login" VerticalAlignment="Center" Grid.Row="4" Width="175" Click="btnLogin_Click" Background="#FF54B8F1" Foreground="White" FontWeight="Bold" FontSize="14"/>
+        <TextBlock x:Name="txtNotice"  Grid.Row="5" HorizontalAlignment="Center"/>
 
-            
-      
+
         <DockPanel VerticalAlignment="Bottom" Grid.Row="5" HorizontalAlignment="Center">
             <Label FontFamily="Century Gothic" Content="Date : " VerticalContentAlignment="Center"  FontSize="14"/>
             <Label x:Name="lblDate" VerticalContentAlignment="Center"/>

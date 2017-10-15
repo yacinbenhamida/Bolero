@@ -8,11 +8,12 @@ namespace Bolero
 {
     class connexion
     {
-         private static SqlConnection cnx = new SqlConnection("Data Source=(LocalDB)\v11.0;AttachDbFilename=C:\\Bolero\\Bolero\\BoleroDB.mdf;Integrated Security=True");
+        private static SqlConnection cnx = null;
         public static SqlConnection GetConnection()
         {
             try
             {
+               cnx =  new SqlConnection(Properties.Settings.Default.chConn);
                 cnx.Open();
                 
             }
@@ -23,9 +24,11 @@ namespace Bolero
             return cnx;
         }
 
-        internal static void CloseConnection()
+        public static void closeConnection()
         {
-            cnx.Close();        }
+            if (cnx != null) cnx.Close(); 
+                   
+        }
     }
     
 }

@@ -47,23 +47,35 @@ namespace Bolero
 
         private void btnValider_Click(object sender, RoutedEventArgs e)
         {
-            SqlConnection cnx = connexion.GetConnection();
-            String question = cmbQues.SelectedValue.ToString();
-            string query = "select * from questionssecrete where question ='" + question.ToString() + "'and reponse ='" + txtRep.Text.Trim() + "'";
-            SqlDataAdapter sda = new SqlDataAdapter(query, cnx);
-            DataTable dtbl = new DataTable();
-            sda.Fill(dtbl);
-            if (dtbl.Rows.Count == 1)
+            try
             {
-                //    frmMain objFrmMain = new frmMain();
-                this.Hide();
-                // objFrmMain.Show();
-            }
-            else
-            {
-                MessageBox.Show("vérifier la reponse svp !  !!");
+
+                SqlConnection cnx = connexion.GetConnection();
+                string question = cmbQues.Text.ToString();
+                string query = "select * from Utilisateur where choixqs ='" + question+ "'and questionsecrete ='" + txtRep.Text + "'";
+                SqlDataAdapter sda = new SqlDataAdapter(query, cnx);
+                DataTable dtbl = new DataTable();
+                sda.Fill(dtbl);
+                if (dtbl.Rows.Count == 1)
+                {
+                    int iduser = 0;
+                    foreach (DataRow row in dtbl.Rows)
+                    {
+                        iduser = (int)row["Id"];
+
+                    }
+                    NewPassword NP = new NewPassword(iduser);
+                    this.Close();
+                    NP.Show();
+                }
+                else
+                {
+                    MessageBox.Show("vérifier la reponse svp !  !!");
+                }
+
 
             }
+            catch (Exception p) { MessageBox.Show(p.Message); }
 
 
         }

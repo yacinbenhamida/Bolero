@@ -13,24 +13,10 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Data.SqlClient;
 using System.Data.Sql;
-
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Net;
 using System.Data;
 using System.Net.Mail;
-
+using System.Timers;
 namespace Bolero
 {
     /// <summary>
@@ -39,8 +25,8 @@ namespace Bolero
     public partial class AccesSessionCaissier2 : Window
     {
         private static char[] randomChars = new char[] { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', '9', '0' };
-        private static readonly Random rand = new Random(); 
-       
+        private static readonly Random rand = new Random();
+       private static int j = 0; //nb of tries
 
         public AccesSessionCaissier2()
         {
@@ -60,6 +46,9 @@ namespace Bolero
         {
             lblHeure.Content = DateTime.Now.ToLongTimeString();
         }
+
+
+
         private static string getRandomPassword()
         {
 
@@ -74,65 +63,120 @@ namespace Bolero
         }
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
-            String sender1 = "test1@gmail.com ";
-            String receiver = "test2@yahoo.fr";
-            String email = getRandomPassword();
-            String subject = "modification de mot de passe ";
-            DateTime now = DateTime.Now;
-            double minust = 15;
-            int j = 0;
-            SqlConnection cnx = connexion.GetConnection();
-            string query = "select * from caissier where password ='" + txtPW.Text.Trim() + "'";
-            SqlDataAdapter sda = new SqlDataAdapter(query, cnx);
-            DataTable dtbl = new DataTable();
-            sda.Fill(dtbl);
-            if (dtbl.Rows.Count == 1)
+
+            SqlConnection cnx;
+
+            if (j == 5)
             {
-                //    frmMain objFrmMain = new frmMain();
-                this.Hide();
-                // objFrmMain.Show();
-            }
-            else
-            {
-                MessageBox.Show("Check your  password !!");
-                j++;
-                if (j == 5)
+                DateTime now = DateTime.Now;
+
+
+                try
                 {
+                    string newp = null;
+                    cnx = connexion.GetConnection();
+                    string query = "select * from Utilisateur where password ='" + txtPW.Password.Trim() + "'";
+                    SqlDataAdapter sda = new SqlDataAdapter(query, cnx);
+                    DataTable dtbl = new DataTable();
+                    sda.Fill(dtbl);
                     txtPW.IsEnabled = false;
-                    if ((txtPW.IsEnabled == false) && (now == now.AddMinutes(minust)))
+                    btnLogin.IsEnabled = false;
+                    txtNotice.Text = "CONNEXION BLOQUEE";
+                    txtNotice.Foreground = Brushes.Red;
+                    if ((txtPW.IsEnabled == false) && (now == DateTime.Now.AddMinutes(15)))
                     {
                         txtPW.IsEnabled = true;
+                        btnLogin.IsEnabled = true;
                     }
 
                     try
                     {
-
+                         //updating pw
                         SqlCommand cmd = new SqlCommand();
                         cmd.Connection = cnx;
-                        cmd.CommandText = "update caissier set  password = @newpass where Nom=@nom";
-                        cmd.Parameters.Add("newpass", getRandomPassword().ToString());
-                        cmd.Parameters.Add("nom","nom1");
+                        cmd.CommandText = "update Utilisateur set  password = @newpass where Nom=@nom";
+                        newp = getRandomPassword().ToString();
+                        cmd.Parameters.AddWithValue("newpass",newp);
+                        cmd.Parameters.AddWithValue("nom", "Caissier2");
                         int i = cmd.ExecuteNonQuery();
+                        if (i > 0) MessageBox.Show("updating done");
                     }
-                    catch (SqlException ex)
+                    catch (SqlException)
                     {
-                        throw ex;
+                        MessageBox.Show("ERR UPDATING");
                     }
 
-                    SmtpClient cv = new SmtpClient("smpt.live.com", 25);
-                    cv.EnableSsl = true;
-                    cv.Credentials = new NetworkCredential("test1@gmail.com ", "1234");
-                    try
+                    var fromAddress = new MailAddress("yacin550@gmail.com", "Yassine ben hamida");
+                    var toAddress = new MailAddress("yacinbenhamida@hotmail.fr", "Yassine ben hamida");
+                    const string fromPassword = "15111994";
+                     string sujet = "Changement du mot de passe du compte de votre caissier ";
+                     string body = "Nous avons remarqué des problemes de connectivité, voici  le nouveau mot de passe "+newp;
+
+                    var smtp = new SmtpClient
                     {
-                        cv.Send(sender1, receiver, subject, email);
-                        MessageBox.Show("un Email est envoyé a l'administrateur ! ");
-                    }
-                    catch (Exception ex)
+                        Host = "smtp.gmail.com",
+                        Port = 587,
+                        EnableSsl = true,
+                        DeliveryMethod = SmtpDeliveryMethod.Network,
+                        UseDefaultCredentials = false,
+                        Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
+                    };
+                    using (var message = new MailMessage(fromAddress, toAddress)
                     {
-                        MessageBox.Show("email non envoyé !! ! ");
+                        Subject = sujet,
+                        Body = body
+                    })
+                    {
+                        smtp.Send(message);
+                        MessageBox.Show("Le mot de passe a été changé veuillez contacter l'administrateur pour qu'il consulte son e-mail","Tentatives epuisées",MessageBoxButton.OK,MessageBoxImage.Stop);
                     }
+
                 }
+                catch (Exception)
+                {
+                    MessageBox.Show("ERR");
+                }
+                finally { connexion.closeConnection(); }
+                return;
             }
+
+            if (txtPW.Password.ToString().Equals(""))
+            {
+                MessageBox.Show("mot de passe requis");
+                return;
+            }
+            if (!(txtPW.Password.ToString().Equals("")))
+            {
+                
+                try
+                {
+                    cnx = connexion.GetConnection();
+                    SqlCommand cmd = new SqlCommand("SELECT Count(*) from Utilisateur where password='" + txtPW.Password.ToString() + "' AND Nom='Caissier2'", cnx);
+                    int verif = (int)cmd.ExecuteScalar();
+                    if (verif == 0)
+                    {
+                        MessageBox.Show(" Mot de passe incorrecte");
+                        j++;
+                        txtNotice.Text = "il vous reste " + j + " /5 tentatives !";
+                        return;
+                    }
+                    else if (verif > 0)
+                    {
+                        MainDashboard mdb = new MainDashboard(3);
+                        mdb.Show();
+                        this.Visibility = Visibility.Hidden;
+                    }
+                   
+                }
+                catch (SqlException except)
+                    {
+                    MessageBox.Show("BD ERROR" + except.Message);
+                    }
+                finally { connexion.closeConnection(); }
+                
+            }
+
+            
         }
 
         private void Hyperlink_Click(object sender, RoutedEventArgs e)
@@ -144,7 +188,9 @@ namespace Bolero
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             Authentification auth = new Authentification();
-            auth.Show();
+            if(sender.Equals(this))
+                auth.Show();
         }
+
     }
 }
