@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Data.SqlClient;
+using System.Data;
 
 namespace Bolero
 {
@@ -45,9 +47,25 @@ namespace Bolero
 
         private void btnValider_Click(object sender, RoutedEventArgs e)
         {
-          
-        }
+            SqlConnection cnx = connexion.GetConnection();
+            String question = cmbQues.SelectedValue.ToString();
+            string query = "select * from questionssecrete where question ='" + question.ToString() + "'and reponse ='" + txtRep.Text.Trim() + "'";
+            SqlDataAdapter sda = new SqlDataAdapter(query, cnx);
+            DataTable dtbl = new DataTable();
+            sda.Fill(dtbl);
+            if (dtbl.Rows.Count == 1)
+            {
+                //    frmMain objFrmMain = new frmMain();
+                this.Hide();
+                // objFrmMain.Show();
+            }
+            else
+            {
+                MessageBox.Show("vérifier la reponse svp !  !!");
 
-        
+            }
+
+
+        }
     }
 }
