@@ -99,10 +99,10 @@ namespace Bolero
                     {
                         MessageBox.Show("ERR UPDATING");
                     }
-
-                    var fromAddress = new MailAddress("yacin550@gmail.com", "Yassine ben hamida");
-                    var toAddress = new MailAddress("yacinbenhamida@hotmail.fr", "Yassine ben hamida");
-                    const string fromPassword = "15111994";
+                    // ur email here
+                    var fromAddress = new MailAddress("@gmail.com", "username");
+                    var toAddress = new MailAddress("@hotmail.fr", "Admin");
+                    const string fromPassword = "";
                     string sujet = "Changement du mot de passe du compte de votre caissier 1 ";
                     string body = "Nous avons remarqué des problemes de connectivité, voici  le nouveau mot de passe " + newp;
 
