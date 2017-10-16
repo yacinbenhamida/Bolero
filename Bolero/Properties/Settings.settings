@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="chConn" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">Data Source=(LocalDB)\v11.0;AttachDbFilename=C:\Users\USER\Desktop\Bolero\Bolero\Bolero\Resources\BoleroDB.mdf;Integrated Security=True;Connect Timeout=30</Value>
+      <Value Profile="(Default)">Data Source=(LocalDB)\v11.0;AttachDbFilename=C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\Resources\BoleroDB.mdf;Integrated Security=True;Connect Timeout=30</Value>
     </Setting>
   </Settings>
 </SettingsFile>

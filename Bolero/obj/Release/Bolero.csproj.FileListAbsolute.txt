@@ -77,3 +77,7 @@ C:\Users\USER\Desktop\Bolero\Bolero\Bolero\bin\Release\Bolero.pdb
 C:\Users\USER\Desktop\Bolero\Bolero\Bolero\obj\Release\Bolero.exe
 C:\Users\USER\Desktop\Bolero\Bolero\Bolero\obj\Release\Bolero.pdb
 C:\Users\USER\Desktop\Bolero\Bolero\Bolero\obj\Release\Bolero.csprojResolveAssemblyReference.cache
+C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\bin\Release\Resources\BoleroDB_log.ldf
+C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\obj\Release\MainDashboard.baml
+C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\obj\Release\MainDashboard.g.cs
+C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\obj\Release\Bolero_Content.g.cs

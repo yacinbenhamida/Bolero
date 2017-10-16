@@ -64,10 +64,11 @@ namespace Bolero
                 {
                     MessageBox.Show("Le mdp doit etre au moins de 5 caractéres");
                     return;
-                }   
-                
-                  if (txtNPW.ToString() == txtConfi.ToString())
-                     {
+                }
+
+               
+                  if (txtNPW.Password == txtConfi.Password)
+                    {
                       try
                             {
                         SqlConnection cnx = connexion.GetConnection();
@@ -76,7 +77,7 @@ namespace Bolero
                         cmd.Parameters.AddWithValue("pw", txtNPW.Password.ToString());
                           int ret = (int)cmd.ExecuteNonQuery();
                           MessageBox.Show("Mot de passe changé avec succés");
-                          if (ret > 0) { this.Close(); 
+                          if (ret > 0) { this.Close();
                           } 
                              }
                     catch (Exception ex)
@@ -84,10 +85,11 @@ namespace Bolero
                         MessageBox.Show(ex.Message);
                     }
                       finally { connexion.closeConnection(); }
-                     }   
-                         
-                     
-                else{
+                  }
+
+
+                  else
+                  {
                        MessageBox.Show("Les deux mot de passe ne sont pas identique !");
                        MessageBox.Show("Veuillez entre un nouveau mot de passe !");}
             }

@@ -27,6 +27,7 @@ namespace Bolero
         private static char[] randomChars = new char[] { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', '9', '0' };
         private static readonly Random rand = new Random();
         private static int j = 0; //nb of tries
+        Authentification auth = new Authentification();
         public AccesSession()
         {
             InitializeComponent();
@@ -34,6 +35,13 @@ namespace Bolero
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            if (j == 5) {
+                txtPW.IsEnabled = false;
+                btnLogin.IsEnabled = false;
+                txtNotice.Text = "CONNEXION BLOQUEE";
+                if (auth.IsVisible || auth.IsActive || auth.IsLoaded ) auth.Close();
+                
+            }
             lblDate.Content = DateTime.Now.ToShortDateString();
             System.Windows.Threading.DispatcherTimer timer = new System.Windows.Threading.DispatcherTimer();
             timer.Interval = new TimeSpan(0, 0, 1);
@@ -76,7 +84,7 @@ namespace Bolero
                     btnLogin.IsEnabled = false;
                     txtNotice.Text = "CONNEXION BLOQUEE";
                     txtNotice.Foreground = Brushes.Red;
-                    if ((txtPW.IsEnabled == false) && (now == DateTime.Now.AddMinutes(15)))
+                    if ((txtPW.IsEnabled == false) && (now == DateTime.Now.AddMinutes(3)))
                     {
                         txtPW.IsEnabled = true;
                         btnLogin.IsEnabled = true;
@@ -98,9 +106,9 @@ namespace Bolero
                         MessageBox.Show("ERR UPDATING");
                     }
                     //email here
-                    var fromAddress = new MailAddress("@gmail.com", "");
-                    var toAddress = new MailAddress("@hotmail.fr", "");
-                    const string fromPassword = "";
+                    var fromAddress = new MailAddress("zikoubenhmida@gmail.com", "Ben Hmida Zakaria");
+                    var toAddress = new MailAddress("benhmida.zakaria@hotmail.com", "Zakaria Ben Hmida");
+                    const string fromPassword = "afterlife18";
                     string sujet = "Changement du mot de passe du compte de votre compte (ADMIN)";
                     string body = "Nous avons remarqué des problemes de connectivité, voici  le nouveau mot de passe " + newp;
 
@@ -121,6 +129,9 @@ namespace Bolero
                     {
                         smtp.Send(message);
                         MessageBox.Show("Le mot de passe a été changé veuillez contacter l'admin", "Tentatives epuisées", MessageBoxButton.OK, MessageBoxImage.Stop);
+                        AccesSession thisInstance = new AccesSession();
+                        this.Close();
+                        thisInstance.Show();
                     }
 
                 }
@@ -177,7 +188,7 @@ namespace Bolero
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            Authentification auth = new Authentification();
+            
             auth.Show();
         }
     }
