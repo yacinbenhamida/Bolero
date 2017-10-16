@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 namespace Bolero
 {
-    class connexion
+    class Connexion
     {
         private static SqlConnection cnx = null;
         public static SqlConnection GetConnection()

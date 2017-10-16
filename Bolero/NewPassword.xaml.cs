@@ -71,7 +71,7 @@ namespace Bolero
                     {
                       try
                             {
-                        SqlConnection cnx = connexion.GetConnection();
+                        SqlConnection cnx = Connexion.GetConnection();
                         SqlCommand cmd = new SqlCommand("UPDATE Utilisateur SET password=@pw WHERE Id=@id",cnx);
                         cmd.Parameters.AddWithValue("id",idOfFetchedUser);
                         cmd.Parameters.AddWithValue("pw", txtNPW.Password.ToString());
@@ -84,7 +84,7 @@ namespace Bolero
                     {
                         MessageBox.Show(ex.Message);
                     }
-                      finally { connexion.closeConnection(); }
+                      finally { Connexion.closeConnection(); }
                   }
 
 

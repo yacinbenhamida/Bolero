@@ -50,7 +50,7 @@ namespace Bolero
             try
             {
 
-                SqlConnection cnx = connexion.GetConnection();
+                SqlConnection cnx = Connexion.GetConnection();
                 string question = cmbQues.Text.ToString();
                 string query = "select * from Utilisateur where choixqs ='" + question+ "'and questionsecrete ='" + txtRep.Text + "'";
                 SqlDataAdapter sda = new SqlDataAdapter(query, cnx);

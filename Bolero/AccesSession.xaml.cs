@@ -74,7 +74,7 @@ namespace Bolero
                 try
                 {
                     string newp = null;
-                    cnx = connexion.GetConnection();
+                    cnx = Connexion.GetConnection();
                     string query = "select * from Utilisateur where password ='" + txtPW.Password.Trim() + "'";
                     SqlDataAdapter sda = new SqlDataAdapter(query, cnx);
                     DataTable dtbl = new DataTable();
@@ -139,7 +139,7 @@ namespace Bolero
                 {
                     MessageBox.Show("ERR");
                 }
-                finally { connexion.closeConnection(); }
+                finally { Connexion.closeConnection(); }
                 return;
             }
 
@@ -153,7 +153,7 @@ namespace Bolero
 
                 try
                 {
-                    cnx = connexion.GetConnection();
+                    cnx = Connexion.GetConnection();
                     SqlCommand cmd = new SqlCommand("SELECT Count(*) from Utilisateur where password='" + txtPW.Password.ToString() + "' AND Nom='Admin'", cnx);
                     int verif = (int)cmd.ExecuteScalar();
                     if (verif == 0)
@@ -175,7 +175,7 @@ namespace Bolero
                 {
                     MessageBox.Show("BD ERROR" + except.Message);
                 }
-                finally { connexion.closeConnection(); }
+                finally { Connexion.closeConnection(); }
 
             }
         }

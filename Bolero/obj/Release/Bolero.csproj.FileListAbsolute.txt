@@ -49,35 +49,8 @@ C:\Bolero\Bolero\bin\Release\BoleroDB.mdf
 C:\Bolero\Bolero\bin\Release\BoleroDB_log.ldf
 C:\Bolero\Bolero\bin\Release\Bolero.exe
 C:\Bolero\Bolero\bin\Release\Bolero.pdb
-C:\Users\USER\Desktop\Bolero\Bolero\Bolero\obj\Release\AccesSession.baml
-C:\Users\USER\Desktop\Bolero\Bolero\Bolero\obj\Release\Authentification.baml
-C:\Users\USER\Desktop\Bolero\Bolero\Bolero\obj\Release\AccesSessionCaissier.baml
-C:\Users\USER\Desktop\Bolero\Bolero\Bolero\obj\Release\AccesSessionCaissier2.baml
-C:\Users\USER\Desktop\Bolero\Bolero\Bolero\obj\Release\MainDashboard.baml
-C:\Users\USER\Desktop\Bolero\Bolero\Bolero\obj\Release\QuestionSecrete.baml
-C:\Users\USER\Desktop\Bolero\Bolero\Bolero\obj\Release\NewPassword.baml
-C:\Users\USER\Desktop\Bolero\Bolero\Bolero\obj\Release\App.baml
-C:\Users\USER\Desktop\Bolero\Bolero\Bolero\obj\Release\AccesSession.g.cs
-C:\Users\USER\Desktop\Bolero\Bolero\Bolero\obj\Release\Authentification.g.cs
-C:\Users\USER\Desktop\Bolero\Bolero\Bolero\obj\Release\AccesSessionCaissier.g.cs
-C:\Users\USER\Desktop\Bolero\Bolero\Bolero\obj\Release\AccesSessionCaissier2.g.cs
-C:\Users\USER\Desktop\Bolero\Bolero\Bolero\obj\Release\MainDashboard.g.cs
-C:\Users\USER\Desktop\Bolero\Bolero\Bolero\obj\Release\QuestionSecrete.g.cs
-C:\Users\USER\Desktop\Bolero\Bolero\Bolero\obj\Release\NewPassword.g.cs
-C:\Users\USER\Desktop\Bolero\Bolero\Bolero\obj\Release\App.g.cs
-C:\Users\USER\Desktop\Bolero\Bolero\Bolero\obj\Release\Bolero_Content.g.cs
-C:\Users\USER\Desktop\Bolero\Bolero\Bolero\obj\Release\Bolero_MarkupCompile.cache
-C:\Users\USER\Desktop\Bolero\Bolero\Bolero\obj\Release\Bolero.g.resources
-C:\Users\USER\Desktop\Bolero\Bolero\Bolero\obj\Release\Bolero.Properties.Resources.resources
-C:\Users\USER\Desktop\Bolero\Bolero\Bolero\obj\Release\Bolero.csproj.GenerateResource.Cache
-C:\Users\USER\Desktop\Bolero\Bolero\Bolero\bin\Release\Resources\BoleroDB_log.ldf
-C:\Users\USER\Desktop\Bolero\Bolero\Bolero\bin\Release\Bolero.exe.config
-C:\Users\USER\Desktop\Bolero\Bolero\Bolero\bin\Release\Bolero.exe
-C:\Users\USER\Desktop\Bolero\Bolero\Bolero\bin\Release\Bolero.pdb
-C:\Users\USER\Desktop\Bolero\Bolero\Bolero\obj\Release\Bolero.exe
-C:\Users\USER\Desktop\Bolero\Bolero\Bolero\obj\Release\Bolero.pdb
-C:\Users\USER\Desktop\Bolero\Bolero\Bolero\obj\Release\Bolero.csprojResolveAssemblyReference.cache
 C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\bin\Release\Resources\BoleroDB_log.ldf
 C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\obj\Release\MainDashboard.baml
 C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\obj\Release\MainDashboard.g.cs
 C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\obj\Release\Bolero_Content.g.cs
+C:\Users\USER\Desktop\Bolero\Bolero\Bolero\bin\Release\Bolero.exe.config

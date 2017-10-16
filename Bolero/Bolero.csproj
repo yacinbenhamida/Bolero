@@ -92,8 +92,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="connexion.cs" />
-    <Compile Include="DAL\Class1.cs" />
+    <Compile Include="DAL\Connexion.cs" />
+    <Compile Include="DAL\UserDAO.cs" />
     <Compile Include="MainDashboard.xaml.cs">
       <DependentUpon>MainDashboard.xaml</DependentUpon>
     </Compile>
@@ -109,6 +109,7 @@
       <DependentUpon>NewPassword.xaml</DependentUpon>
     </Compile>
     <Compile Include="BL\User.cs" />
+    <Compile Include="SL\LoginSecurity.cs" />
     <Page Include="AccesSession.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -195,12 +196,6 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\BoleroDAL\BoleroDAL.csproj">
-      <Project>{dc3deee9-cc19-41ec-9aaf-811820566b3b}</Project>
-      <Name>BoleroDAL</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
