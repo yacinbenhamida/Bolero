@@ -77,6 +77,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="BL\Article.cs" />
+    <Compile Include="BL\User.cs" />
     <Compile Include="DAL\ArticleDAO.cs" />
     <Compile Include="DAL\Connexion.cs" />
     <Compile Include="Layouts\MainWindow.xaml.cs">
