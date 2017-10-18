@@ -8,18 +8,18 @@ namespace Bolero.BL
 {
     class Article
     {
-        public int idArticle { get; set; }
-        public String libelle { get; set; }
-        public Double prix { get; set; }
-        public String type { get; set; }
+        public int IdArticle { get; set; }
+        public string Libelle { get; set; }
+        public Double Prix { get; set; }
+        public string Type { get; set; }
 
 
         public Article(int idArticle, String libelle, Double prix, String type)
         {
-            this.idArticle = idArticle;
-            this.libelle = libelle;
-            this.prix = prix;
-            this.type = type;
+            this.IdArticle = idArticle;
+            this.Libelle = libelle;
+            this.Prix = prix;
+            this.Type = type;
         }
     }
 }
