@@ -14,7 +14,7 @@ namespace Bolero.SL
 {
     class LoginSecurity
     {
-        // this method sends an automated e-mail to the administrator after noticing an unusual login activity
+        //  #1 this method sends an automated e-mail to the administrator after noticing an unusual login activity
         public int notifyAdminByEmail(int idUser,string adminMail,string adminName) 
         {
             int done = 0;

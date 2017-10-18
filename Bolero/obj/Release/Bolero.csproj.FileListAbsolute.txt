@@ -45,8 +45,6 @@ C:\Bolero\Bolero\obj\Release\Bolero_MarkupCompile.cache
 C:\Bolero\Bolero\obj\Release\Bolero.g.resources
 C:\Bolero\Bolero\obj\Release\Bolero.Properties.Resources.resources
 C:\Bolero\Bolero\obj\Release\Bolero.csproj.GenerateResource.Cache
-C:\Bolero\Bolero\bin\Release\BoleroDB.mdf
-C:\Bolero\Bolero\bin\Release\BoleroDB_log.ldf
 C:\Bolero\Bolero\bin\Release\Bolero.exe
 C:\Bolero\Bolero\bin\Release\Bolero.pdb
 C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\bin\Release\Resources\BoleroDB_log.ldf
@@ -54,3 +52,6 @@ C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\obj\Release\Ma
 C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\obj\Release\MainDashboard.g.cs
 C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\obj\Release\Bolero_Content.g.cs
 C:\Users\USER\Desktop\Bolero\Bolero\Bolero\bin\Release\Bolero.exe.config
+C:\Bolero\Bolero\bin\Release\Resources\BoleroDB_log.ldf
+C:\Bolero\Bolero\obj\Release\MainDashboard.baml
+C:\Bolero\Bolero\obj\Release\MainDashboard.g.cs
