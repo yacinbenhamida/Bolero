@@ -1,0 +1,70 @@
+﻿<Window x:Class="Bolero.ModifierMenu"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Modifier Menu" Height="400" Width="800" Loaded="Window_Loaded">
+
+    <StackPanel>
+        <GroupBox  Header="Plats"  FontSize="20" Height="324" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                <TabControl>
+
+                <TabItem Header="Entrée" Background="#FFACA5A5" Foreground="White">
+                    <ScrollViewer HorizontalScrollBarVisibility="Auto">
+
+                    </ScrollViewer>
+                </TabItem>
+                <TabItem Header="Suite" Background="#FFACA5A5" Foreground="White">
+                    <ScrollViewer HorizontalScrollBarVisibility="Auto">
+
+                    </ScrollViewer>
+                </TabItem>
+                <TabItem Header="Hors d'oeuvre" Background="#FFACA5A5" Foreground="White">
+                    <ScrollViewer HorizontalScrollBarVisibility="Auto">
+
+                    </ScrollViewer>
+                </TabItem>
+                <TabItem Header="Desserts" Background="#FFACA5A5" Foreground="White">
+                    <ScrollViewer HorizontalScrollBarVisibility="Auto">
+
+                    </ScrollViewer>
+                </TabItem>
+                <TabItem Header="Boissons" Background="#FFACA5A5" Foreground="White">
+                    <ScrollViewer HorizontalScrollBarVisibility="Auto">
+
+                    </ScrollViewer>
+                </TabItem>
+                <TabItem Header="Plat du jour" Background="#FFACA5A5" Foreground="White">
+                    <ScrollViewer HorizontalScrollBarVisibility="Auto">
+
+                    </ScrollViewer>
+                </TabItem>
+            </TabControl>
+            </GroupBox>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="btnSupprimer" Content="Supprimer" HorizontalAlignment="Center" VerticalAlignment="Center" Width="150" Click="btnSupprimer_Click" FontSize="16" Background="#FFDA0000" Foreground="White"/>
+            <Button x:Name="btnAnnuler" Content="Annuler" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="150" Click="btnAnnuler_Click" FontSize="16" Foreground="White" Background="#FFE29494"/>
+            <Button x:Name="btnModifier" Content="Modifier" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="150" Click="btnModifier_Click" Background="#FFE4E446" Foreground="#FFFFFEFE" FontSize="16"/>
+            <Button x:Name="btnSauvegarder" Content="Sauvegarder" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" Width="150" Click="btnSauvegarder_Click" Foreground="White" Background="#FF6CA802" FontSize="16"/>
+            <Button x:Name="btnAjouter" Content="Ajouter" Grid.Column="4" HorizontalAlignment="Center" VerticalAlignment="Center" Width="150" Click="btnAjouter_Click" Background="#FF8EAFEA" FontSize="16" Foreground="White"/>
+        
+        <DockPanel VerticalAlignment="Bottom" Grid.Row="2" HorizontalAlignment="Center" Grid.ColumnSpan="5">
+            <Label FontFamily="Century Gothic" Content="Date : " VerticalContentAlignment="Center"  FontSize="14"/>
+            <Label x:Name="lblDate" VerticalContentAlignment="Center"/>
+            <Label  FontFamily="Century Gothic"  Content="Heure  :" VerticalContentAlignment="Center" FontSize="14"/>
+            <Label x:Name="lblHeure" VerticalContentAlignment="Center"/>
+        </DockPanel>
+        </Grid>
+    </StackPanel>
+
+</Window>

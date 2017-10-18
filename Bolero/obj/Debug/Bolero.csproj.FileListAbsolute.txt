@@ -1,2 +1,23 @@
 C:\Users\USER\Desktop\Bolero\Bolero\Bolero\bin\Debug\Bolero.exe.config
 C:\Users\USER\Desktop\Bolero\BoleroGArticles\Bolero\Bolero\bin\Debug\Bolero.exe.config
+C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\bin\Debug\Resources\BoleroDB_log.ldf
+C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\bin\Debug\Bolero.exe.config
+C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\bin\Debug\Bolero.exe
+C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\bin\Debug\Bolero.pdb
+C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\obj\Debug\Bolero.csprojResolveAssemblyReference.cache
+C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\obj\Debug\Layouts\MainWindow.baml
+C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\obj\Debug\ModifierMenu.baml
+C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\obj\Debug\Layouts\MainWindow.g.cs
+C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\obj\Debug\ModifierMenu.g.cs
+C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\obj\Debug\App.g.cs
+C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\obj\Debug\Bolero_Content.g.cs
+C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\obj\Debug\Bolero_MarkupCompile.cache
+C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\obj\Debug\Bolero.g.resources
+C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\obj\Debug\Bolero.Properties.Resources.resources
+C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\obj\Debug\Bolero.csproj.GenerateResource.Cache
+C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\obj\Debug\Bolero.exe
+C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\obj\Debug\Bolero.pdb
+C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\obj\Debug\AjoutPlat.baml
+C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\obj\Debug\AjoutPlat.g.cs
+C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\obj\Debug\ModifierPlat.baml
+C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\obj\Debug\ModifierPlat.g.cs
