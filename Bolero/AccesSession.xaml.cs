@@ -106,9 +106,9 @@ namespace Bolero
                         MessageBox.Show("ERR UPDATING");
                     }
                     //email here
-                    var fromAddress = new MailAddress("zikoubenhmida@gmail.com", "Ben Hmida Zakaria");
-                    var toAddress = new MailAddress("benhmida.zakaria@hotmail.com", "Zakaria Ben Hmida");
-                    const string fromPassword = "afterlife18";
+                    var fromAddress = new MailAddress("@gmail.com", "");
+                    var toAddress = new MailAddress("@hotmail.com", "");
+                    const string fromPassword = "";
                     string sujet = "Changement du mot de passe du compte de votre compte (ADMIN)";
                     string body = "Nous avons remarqué des problemes de connectivité, voici  le nouveau mot de passe " + newp;
 
@@ -128,7 +128,7 @@ namespace Bolero
                     })
                     {
                         smtp.Send(message);
-                        MessageBox.Show("Le mot de passe a été changé veuillez contacter l'admin", "Tentatives epuisées", MessageBoxButton.OK, MessageBoxImage.Stop);
+                        MessageBox.Show("Le mot de passe a été changé,vérifiez votre e-mail", "Tentatives epuisées", MessageBoxButton.OK, MessageBoxImage.Stop);
                         AccesSession thisInstance = new AccesSession();
                         this.Close();
                         thisInstance.Show();
