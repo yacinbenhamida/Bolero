@@ -69,15 +69,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="AjoutPlat.xaml">
+    <Page Include="Layouts\AjoutPlat.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Layouts\MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Compile Include="AjoutPlat.xaml.cs">
+    <Compile Include="Layouts\AjoutPlat.xaml.cs">
       <DependentUpon>AjoutPlat.xaml</DependentUpon>
     </Compile>
     <Compile Include="App.xaml.cs">
@@ -88,24 +84,20 @@
     <Compile Include="BL\User.cs" />
     <Compile Include="DAL\ArticleDAO.cs" />
     <Compile Include="DAL\Connexion.cs" />
-    <Compile Include="Layouts\MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Page Include="ModifierMenu.xaml">
+    <Page Include="Layouts\ModifierMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ModifierPlat.xaml">
+    <Page Include="Layouts\ModifierPlat.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ModifierMenu.xaml.cs">
+    <Compile Include="Layouts\ModifierMenu.xaml.cs">
       <DependentUpon>ModifierMenu.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ModifierPlat.xaml.cs">
+    <Compile Include="Layouts\ModifierPlat.xaml.cs">
       <DependentUpon>ModifierPlat.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">

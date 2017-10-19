@@ -10,11 +10,11 @@ namespace Bolero.BL
     {
         public int IdArticle { get; set; }
         public string Libelle { get; set; }
-        public Double Prix { get; set; }
+        public double Prix { get; set; }
         public string Type { get; set; }
 
 
-        public Article(int idArticle, String libelle, Double prix, String type)
+        public Article(int idArticle, string libelle, double prix, string type)
         {
             this.IdArticle = idArticle;
             this.Libelle = libelle;
