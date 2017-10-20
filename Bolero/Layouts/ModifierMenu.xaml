@@ -12,27 +12,27 @@
 
                     </ScrollViewer>
                 </TabItem>
-                <TabItem Header="Suite" Background="#FFACA5A5" Foreground="White">
+                <TabItem Header="Suite" Background="#FFACA5A5" Foreground="Black">
                     <ScrollViewer HorizontalScrollBarVisibility="Auto">
 
                     </ScrollViewer>
                 </TabItem>
-                <TabItem Header="Hors d'oeuvre" Background="#FFACA5A5" Foreground="White">
+                <TabItem Header="Hors d'oeuvre" Background="#FFACA5A5" Foreground="Black">
                     <ScrollViewer HorizontalScrollBarVisibility="Auto">
 
                     </ScrollViewer>
                 </TabItem>
-                <TabItem Header="Desserts" Background="#FFACA5A5" Foreground="White">
+                <TabItem Header="Desserts" Background="#FFACA5A5" Foreground="Black">
                     <ScrollViewer HorizontalScrollBarVisibility="Auto">
 
                     </ScrollViewer>
                 </TabItem>
-                <TabItem Header="Boissons" Background="#FFACA5A5" Foreground="White">
+                <TabItem Header="Boissons" Background="#FFACA5A5" Foreground="Black">
                     <ScrollViewer HorizontalScrollBarVisibility="Auto">
 
                     </ScrollViewer>
                 </TabItem>
-                <TabItem Header="Plat du jour" Background="#FFACA5A5" Foreground="White">
+                <TabItem Header="Plat du jour" Background="#FFACA5A5" Foreground="Black">
                     <ScrollViewer HorizontalScrollBarVisibility="Auto">
 
                     </ScrollViewer>

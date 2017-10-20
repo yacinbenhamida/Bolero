@@ -4,11 +4,6 @@ C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\bin\Debug\Bole
 C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\bin\Debug\Bolero.exe
 C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\bin\Debug\Bolero.pdb
 C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\obj\Debug\Bolero.csprojResolveAssemblyReference.cache
-C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\obj\Debug\Layouts\MainWindow.baml
-C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\obj\Debug\ModifierMenu.baml
-C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\obj\Debug\Layouts\MainWindow.g.cs
-C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\obj\Debug\ModifierMenu.g.cs
-C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\obj\Debug\App.g.cs
 C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\obj\Debug\Bolero_Content.g.cs
 C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\obj\Debug\Bolero_MarkupCompile.cache
 C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\obj\Debug\Bolero.g.resources
@@ -16,10 +11,6 @@ C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\obj\Debug\Bole
 C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\obj\Debug\Bolero.csproj.GenerateResource.Cache
 C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\obj\Debug\Bolero.exe
 C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\obj\Debug\Bolero.pdb
-C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\obj\Debug\AjoutPlat.baml
-C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\obj\Debug\AjoutPlat.g.cs
-C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\obj\Debug\ModifierPlat.baml
-C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\obj\Debug\ModifierPlat.g.cs
 C:\Users\ADMIN\Documents\GitHub\Bolero\bin\Debug\Bolero.exe.config
 C:\Users\ADMIN\Documents\GitHub\Bolero\obj\Debug\Bolero.exe
 C:\Users\ADMIN\Documents\GitHub\Bolero\obj\Debug\Bolero.pdb
@@ -61,3 +52,10 @@ C:\Users\USER\Desktop\Bolero\BoleroGArticles\Bolero\Bolero\obj\Debug\Bolero.Prop
 C:\Users\USER\Desktop\Bolero\BoleroGArticles\Bolero\Bolero\obj\Debug\Bolero.csproj.GenerateResource.Cache
 C:\Users\USER\Desktop\Bolero\BoleroGArticles\Bolero\Bolero\obj\Debug\Bolero.exe
 C:\Users\USER\Desktop\Bolero\BoleroGArticles\Bolero\Bolero\obj\Debug\Bolero.pdb
+C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\obj\Debug\Layouts\AjoutPlat.baml
+C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\obj\Debug\Layouts\ModifierMenu.baml
+C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\obj\Debug\Layouts\ModifierPlat.baml
+C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\obj\Debug\Layouts\AjoutPlat.g.cs
+C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\obj\Debug\Layouts\ModifierMenu.g.cs
+C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\obj\Debug\Layouts\ModifierPlat.g.cs
+C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\obj\Debug\Layouts\App.g.cs
