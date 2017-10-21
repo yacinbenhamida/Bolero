@@ -2,21 +2,51 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Gestion Commande" Height="500" Width="980" Loaded="Window_Loaded">
+    <Window.Resources>
+        <Style x:Key="NoChromeButton" TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid x:Name="Chrome" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Foreground" Value="#ADADAD"/>
+                                <Setter Property="Opacity" TargetName="Chrome" Value="0.5"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition />
-            <RowDefinition />
-            <RowDefinition Height="30"/>
+             <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition />
-            <ColumnDefinition />
-            <ColumnDefinition />
-        </Grid.ColumnDefinitions>
-        <TabControl VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.RowSpan="3">
-
-            <TabItem Foreground="Black" Header="Resto" Background="#FFACA5A5" FontWeight="Bold" FontSize="14">
-                <TabControl VerticalAlignment="Stretch" HorizontalAlignment="Stretch" TabStripPlacement="Left">
+        
+        <TabControl VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+           
+                <TabItem Foreground="Black" Header="Resto" Background="#FFACA5A5" FontWeight="Bold" FontSize="14">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                    
+                    <TabControl VerticalAlignment="Stretch" HorizontalAlignment="Stretch" TabStripPlacement="Left">
                     <TabControl.Resources>
                         <Style TargetType="{x:Type TabItem}">
                             <Setter Property="Padding" Value="4" />
@@ -75,10 +105,104 @@
 
                             </StackPanel>
                         </ScrollViewer>
-                    </TabItem>
-                </TabControl>
-            </TabItem>
+             
+                        </TabItem>
 
+                    </TabControl>
+            
+                            <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="1">
+                                <Grid.RowDefinitions>
+                                <RowDefinition Height="220"/>
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                            <GroupBox Header="Plats" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.Column="1">
+                                <ScrollViewer HorizontalScrollBarVisibility="Auto">
+                                    <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+
+                                    </StackPanel>
+                                </ScrollViewer>
+                            </GroupBox>
+                            <ComboBox x:Name="cmbServ" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Top" SelectedIndex="0" Width="250" Height="30">
+                                    <ComboBoxItem Name="cmbServ0">Serveur</ComboBoxItem>
+                                    <ComboBoxItem Name="cmbServ1">Serveur 1</ComboBoxItem>
+                                    <ComboBoxItem Name="cmbServ2">Serveur 2</ComboBoxItem>
+                                </ComboBox>
+                            <ComboBox x:Name="cmbTable" Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" SelectedIndex="0" Width="250" Height="30">
+                                    <ComboBoxItem Name="cmbTable0">Table</ComboBoxItem>
+                                    <ComboBoxItem Name="cmbTable1">Table 1</ComboBoxItem>
+                                    <ComboBoxItem Name="cmbTable2">Table 2</ComboBoxItem>
+                                </ComboBox>
+                                <Button x:Name="btnValider" Content="Valider" Grid.Row="3" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="150" Height="50" FontWeight="Bold" FontSize="16" Foreground="White" Background="#FF079B00" Click="btnValider_Click"/>
+                                <Button x:Name="btnAnnuler" Content="Annuler" Grid.Row="4" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="100" Height="50" FontSize="16" FontWeight="Bold" Foreground="White" Background="#FFF31111" Click="btnAnnuler_Click"/>
+                            </Grid>
+
+
+                    <Grid Grid.Column="3">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition />
+                            <RowDefinition Height="30"/>
+                        </Grid.RowDefinitions>
+                        <Grid Margin="2" Background="White" VerticalAlignment="Center">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="40"/>
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="40"/>
+                            </Grid.RowDefinitions>
+                            <Button  Style="{DynamicResource NoChromeButton}" HorizontalAlignment="Left" VerticalAlignment="center" Width="30" Height="30" Click="Search_Click" >
+                                <Image Source="C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\Resources\search.png" Height="16" Opacity="0.6"></Image>
+                            </Button>
+                            <TextBox Name="SearchTextBox" Grid.Column="1" BorderThickness="0" Height="40" HorizontalAlignment="Stretch" KeyDown="SearchTextBox_KeyDown" VerticalContentAlignment="Center" TextWrapping="Wrap" Text="{Binding SearchText}" VerticalAlignment="Stretch"  GotFocus="SearchBox_GotFocus" GotMouseCapture="SearchTextBox_GotMouseCapture" >
+                                <TextBox.Style>
+                                    <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+                                        <Style.Resources>
+                                            <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
+                                                <VisualBrush.Visual>
+                                                    <Label Content="Search" Foreground="LightGray" FontStyle="Italic" FontWeight="Bold" FontSize="16" />
+                                                </VisualBrush.Visual>
+                                            </VisualBrush>
+                                        </Style.Resources>
+                                        <Style.Triggers>
+                                            <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                                                <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                                            </Trigger>
+                                            <Trigger Property="Text" Value="{x:Null}">
+                                                <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                                            </Trigger>
+                                            <Trigger Property="IsKeyboardFocused" Value="True">
+                                                <Setter Property="Background" Value="White" />
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBox.Style>
+                            </TextBox>
+                            
+                        </Grid>
+                        <DataGrid Name="dataGrid" Grid.Row="1">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Commande" ></DataGridTextColumn>
+                                <DataGridTextColumn Header="Modifier" ></DataGridTextColumn>
+                                <DataGridTextColumn Header="Supprimer" ></DataGridTextColumn>
+                                <DataGridTextColumn Header="Facturation" ></DataGridTextColumn>
+                                <DataGridTextColumn Header="Paiement" ></DataGridTextColumn>
+                            </DataGrid.Columns>
+                            <ScrollViewer HorizontalScrollBarVisibility="Auto">
+
+                            </ScrollViewer>
+                        </DataGrid>
+                        <Label x:Name="lblTotal" Content="Total :"  Grid.Row="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" FontWeight="Bold" FontSize="16"/>
+                    </Grid>
+                </Grid>
+            </TabItem>
+ 
             <TabItem Foreground="Black" Header="Maintenace" Background="#FFACA5A5" FontWeight="Bold" FontSize="14">
 
             </TabItem>
@@ -95,51 +219,7 @@
 
             </TabItem>
         </TabControl>
-        <GroupBox Header="Plats" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.Column="1">
-            <ScrollViewer HorizontalScrollBarVisibility="Auto">
-                <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-
-                </StackPanel>
-            </ScrollViewer>
-        </GroupBox>
-        <StackPanel Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-            <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                <Grid.RowDefinitions>
-                    <RowDefinition />
-                    <RowDefinition />
-                    <RowDefinition />
-                    <RowDefinition />
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
-                </Grid.ColumnDefinitions>
-                <ComboBox x:Name="cmbServ" HorizontalAlignment="Stretch" VerticalAlignment="Top" SelectedIndex="0" Width="250" Height="30">
-                    <ComboBoxItem Name="cmbServ0">Serveur</ComboBoxItem>
-                    <ComboBoxItem Name="cmbServ1">Serveur 1</ComboBoxItem>
-                    <ComboBoxItem Name="cmbServ2">Serveur 2</ComboBoxItem>
-                </ComboBox>
-                <ComboBox x:Name="cmbTable" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" SelectedIndex="0" Width="250" Height="30">
-                    <ComboBoxItem Name="cmbTable0">Table</ComboBoxItem>
-                    <ComboBoxItem Name="cmbTable1">Table 1</ComboBoxItem>
-                    <ComboBoxItem Name="cmbTable2">Table 2</ComboBoxItem>
-                </ComboBox>
-                <Button x:Name="btnValider" Content="Valider" Grid.Row="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="150" Height="50" FontWeight="Bold" FontSize="16" Foreground="White" Background="#FF079B00" Click="btnValider_Click"/>
-                <Button x:Name="btnAnnuler" Content="Annuler" Grid.Row="3" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="100" Height="50" FontSize="16" FontWeight="Bold" Foreground="White" Background="#FFF31111" Click="btnAnnuler_Click"/>
-            </Grid>
-        </StackPanel>
-          <DataGrid Name="dataGrid" Grid.RowSpan="2" Grid.Column="2">
-            <DataGrid.Columns>
-                    <DataGridTextColumn Header="Commande" ></DataGridTextColumn>
-                    <DataGridTextColumn Header="Modifier" ></DataGridTextColumn>
-                    <DataGridTextColumn Header="Supprimer" ></DataGridTextColumn>
-                    <DataGridTextColumn Header="Facturation" ></DataGridTextColumn>
-                    <DataGridTextColumn Header="Paiement" ></DataGridTextColumn>
-            </DataGrid.Columns>
-            <ScrollViewer HorizontalScrollBarVisibility="Auto">
-                
-            </ScrollViewer>
-        </DataGrid>
-        <Label x:Name="lblTotal" Content="Total :" Grid.Column="2" Grid.Row="3" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" FontWeight="Bold" FontSize="16"/>
+    
         <DockPanel VerticalAlignment="Bottom" Grid.Row="2" HorizontalAlignment="Center" Grid.ColumnSpan="3">
             <Label FontFamily="Century Gothic" Content="Date : " VerticalContentAlignment="Center"  FontSize="14"/>
             <Label x:Name="lblDate" VerticalContentAlignment="Center"/>
