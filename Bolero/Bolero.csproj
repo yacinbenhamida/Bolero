@@ -73,6 +73,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Compile Include="DAL\DAO.cs" />
     <Compile Include="Layouts\AjoutPlat.xaml.cs">
       <DependentUpon>AjoutPlat.xaml</DependentUpon>
     </Compile>
@@ -128,6 +129,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Resource Include="Info.txt" />
     <Resource Include="Resources\BoleroDB.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>

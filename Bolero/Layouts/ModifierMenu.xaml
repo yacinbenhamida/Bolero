@@ -38,12 +38,12 @@
                     </Style>
                     
                 </TabControl.Resources>
-                <TabItem Foreground="Black" Header="Entrée" Background="#FFACA5A5"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                <TabItem Foreground="Black" Header="Entrée" Background="Green"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                     <ScrollViewer HorizontalScrollBarVisibility="Auto">
 
                     </ScrollViewer>
                 </TabItem>
-                <TabItem Header="Suite" Background="#FFACA5A5" Foreground="Black">
+                <TabItem Header="Suite" Background="Crimson" Foreground="Black">
                     <ScrollViewer HorizontalScrollBarVisibility="Auto">
 
                     </ScrollViewer>
@@ -53,17 +53,17 @@
 
                     </ScrollViewer>
                 </TabItem>
-                <TabItem Header="Desserts" Background="#FFACA5A5" Foreground="Black">
+                <TabItem Header="Desserts" Background="Purple" Foreground="Black" Margin="0,-5,-2,1">
                     <ScrollViewer HorizontalScrollBarVisibility="Auto">
 
                     </ScrollViewer>
                 </TabItem>
-                <TabItem Header="Boissons" Background="#FFACA5A5" Foreground="Black">
+                <TabItem Header="Boissons" Background="DarkBlue" Foreground="Black">
                     <ScrollViewer HorizontalScrollBarVisibility="Auto">
 
                     </ScrollViewer>
                 </TabItem>
-                <TabItem Header="Plat du jour" Background="#FFACA5A5" Foreground="Black">
+                <TabItem Header="Plat du jour" Background="Gold" Foreground="Black">
                     <ScrollViewer HorizontalScrollBarVisibility="Auto">
 
                     </ScrollViewer>
