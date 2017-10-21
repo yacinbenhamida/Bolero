@@ -6,7 +6,38 @@
    
     <StackPanel>
         <GroupBox  Header="Plats"  FontSize="20" Height="500" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-                <TabControl>
+            <TabControl VerticalAlignment="Stretch" HorizontalAlignment="Stretch" TabStripPlacement="Left">
+                <TabControl.Resources>
+                    
+                    <Style TargetType="{x:Type TabItem}">
+                        
+                        <Setter Property="Padding" Value="4" />
+                        
+                        <Setter Property="HeaderTemplate">
+                            
+                            <Setter.Value>
+                                
+                                <DataTemplate>
+                                    
+                                    <ContentPresenter Content="{TemplateBinding Content}">
+                                        
+                                        <ContentPresenter.LayoutTransform>
+                                            
+                                            <RotateTransform Angle="0" />
+                                            
+                                        </ContentPresenter.LayoutTransform>
+                                        
+                                    </ContentPresenter>
+                                    
+                                </DataTemplate>
+                                
+                            </Setter.Value>
+                            
+                        </Setter>
+                        
+                    </Style>
+                    
+                </TabControl.Resources>
                 <TabItem Foreground="Black" Header="Entrée" Background="#FFACA5A5"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                     <ScrollViewer HorizontalScrollBarVisibility="Auto">
 
