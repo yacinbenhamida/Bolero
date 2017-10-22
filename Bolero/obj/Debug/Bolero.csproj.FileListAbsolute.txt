@@ -62,3 +62,4 @@ C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\obj\Debug\Layo
 C:\Users\PC-LENOVO\Desktop\bolero1\Bolero\Bolero\bin\Debug\Bolero.exe.config
 C:\Users\PC-LENOVO\Desktop\bolero1\Bolero\Bolero\obj\Debug\Bolero.exe
 C:\Users\PC-LENOVO\Desktop\bolero1\Bolero\Bolero\obj\Debug\Bolero.pdb
+C:\Users\ghari\Documents\GitHub\Bolero\Bolero\obj\Debug\Layouts\App.g.cs
