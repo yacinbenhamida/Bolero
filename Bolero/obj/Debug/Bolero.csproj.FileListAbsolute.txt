@@ -59,3 +59,6 @@ C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\obj\Debug\Layo
 C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\obj\Debug\Layouts\ModifierMenu.g.cs
 C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\obj\Debug\Layouts\ModifierPlat.g.cs
 C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\obj\Debug\Layouts\App.g.cs
+C:\Users\PC-LENOVO\Desktop\bolero1\Bolero\Bolero\bin\Debug\Bolero.exe.config
+C:\Users\PC-LENOVO\Desktop\bolero1\Bolero\Bolero\obj\Debug\Bolero.exe
+C:\Users\PC-LENOVO\Desktop\bolero1\Bolero\Bolero\obj\Debug\Bolero.pdb
