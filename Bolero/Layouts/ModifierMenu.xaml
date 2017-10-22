@@ -2,70 +2,124 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Modifier Menu" Height="670" Width="Auto" Loaded="Window_Loaded">
+    <Window.Resources>
+        <!-- style pour les boutons a afficher -->
+        <Style TargetType="Button" x:Key="plats">
+            <Setter Property="MinWidth" Value="100"/>
+            <Setter Property="MinHeight" Value="70"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="true">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <!-- style pour la liste des boutons-->
+        <Style TargetType="ListBoxItem">
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="true">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="ListBoxItem">
+                                <ContentPresenter/>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
 
-   
-    <StackPanel>
+        <StackPanel>
         <GroupBox  Header="Plats"  FontSize="20" Height="500" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
             <TabControl VerticalAlignment="Stretch" HorizontalAlignment="Stretch" TabStripPlacement="Left">
                 <TabControl.Resources>
-                    
-                    <Style TargetType="{x:Type TabItem}">
-                        
+                    <Style TargetType="{x:Type TabItem}">    
                         <Setter Property="Padding" Value="4" />
-                        
-                        <Setter Property="HeaderTemplate">
-                            
-                            <Setter.Value>
-                                
+                        <Setter Property="HeaderTemplate">                            
+                            <Setter.Value>                                
                                 <DataTemplate>
-                                    
                                     <ContentPresenter Content="{TemplateBinding Content}">
-                                        
-                                        <ContentPresenter.LayoutTransform>
-                                            
-                                            <RotateTransform Angle="0" />
-                                            
-                                        </ContentPresenter.LayoutTransform>
-                                        
-                                    </ContentPresenter>
-                                    
-                                </DataTemplate>
-                                
-                            </Setter.Value>
-                            
-                        </Setter>
-                        
-                    </Style>
-                    
+                                        <ContentPresenter.LayoutTransform>                                           
+                                            <RotateTransform Angle="0" />                                            
+                                        </ContentPresenter.LayoutTransform>                                       
+                                    </ContentPresenter>                                   
+                                </DataTemplate>                               
+                            </Setter.Value>                           
+                        </Setter>                        
+                    </Style>                   
                 </TabControl.Resources>
                 <TabItem Foreground="Black" Header="Entrée" Background="Green"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                     <ScrollViewer HorizontalScrollBarVisibility="Auto">
-
+                        <ListBox Name="entree" >
+                            <ListBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <UniformGrid x:Name="gridu"/>
+                                </ItemsPanelTemplate>
+                            </ListBox.ItemsPanel>
+                        </ListBox>
                     </ScrollViewer>
                 </TabItem>
                 <TabItem Header="Suite" Background="Crimson" Foreground="Black">
                     <ScrollViewer HorizontalScrollBarVisibility="Auto">
-
+                        <ListBox Name="Suite" >
+                            <ListBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <UniformGrid x:Name="gridu"/>
+                                </ItemsPanelTemplate>
+                            </ListBox.ItemsPanel>
+                        </ListBox>
                     </ScrollViewer>
                 </TabItem>
                 <TabItem Header="Hors d'oeuvre" Background="#FFACA5A5" Foreground="Black">
                     <ScrollViewer HorizontalScrollBarVisibility="Auto">
-
+                        <ListBox Name="hrov" >
+                            <ListBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <UniformGrid x:Name="gridu"/>
+                                </ItemsPanelTemplate>
+                            </ListBox.ItemsPanel>
+                        </ListBox>
                     </ScrollViewer>
                 </TabItem>
                 <TabItem Header="Desserts" Background="Purple" Foreground="Black" Margin="0,-5,-2,1">
                     <ScrollViewer HorizontalScrollBarVisibility="Auto">
-
+                        <ListBox Name="dessert" >
+                            <ListBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <UniformGrid x:Name="gridu"/>
+                                </ItemsPanelTemplate>
+                            </ListBox.ItemsPanel>
+                        </ListBox>
                     </ScrollViewer>
                 </TabItem>
                 <TabItem Header="Boissons" Background="DarkBlue" Foreground="Black">
                     <ScrollViewer HorizontalScrollBarVisibility="Auto">
-
+                        <ListBox Name="boisson" >
+                            <ListBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <UniformGrid x:Name="gridu"/>
+                                </ItemsPanelTemplate>
+                            </ListBox.ItemsPanel>
+                        </ListBox>
                     </ScrollViewer>
                 </TabItem>
                 <TabItem Header="Plat du jour" Background="Gold" Foreground="Black">
                     <ScrollViewer HorizontalScrollBarVisibility="Auto">
-
+                        <ListBox Name="PJ" >
+                            <ListBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <UniformGrid x:Name="gridu"/>
+                                </ItemsPanelTemplate>
+                            </ListBox.ItemsPanel>
+                        </ListBox>
                     </ScrollViewer>
                 </TabItem>
             </TabControl>

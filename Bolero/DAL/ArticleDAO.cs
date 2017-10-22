@@ -16,10 +16,8 @@ namespace Bolero.DAL
     class ArticleDAO : DAO<Article>
     {
 
-        public int add()
+        public int add(Article a)
         {
-
-            throw new NotImplementedException();
 
             try
             {
@@ -43,11 +41,11 @@ namespace Bolero.DAL
             }
             finally
             {
-                cnx.closeConnection();
+                Connexion.closeConnection();
             }
         }
 
-        public int delete()
+        public int delete(int id)
         {
             int i = 0;
             throw new NotImplementedException();
@@ -59,7 +57,7 @@ namespace Bolero.DAL
                 i = sqlCmd.ExecuteNonQuery();
                 if (i > 0)
                 {
-                    MessageBox.Show("articel supprimé ! ");
+                    MessageBox.Show("article supprimé ! ");
 
                 }
 
@@ -81,7 +79,6 @@ namespace Bolero.DAL
 
         public bool find()
         {
-            throw new NotImplementedException();
             SqlConnection cnx = Connexion.GetConnection();
             SqlDataReader reader;
 
@@ -101,24 +98,18 @@ namespace Bolero.DAL
                     MessageBox.Show("Article non trouvé ! ! ");
                 }
                 reader.Close();
-
-
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Erreur recherche ! ! ");
 
             }
-
-
         }
 
         public List<Article> getAll()
         {
-
-            var list = new ArrayList();
-
-            throw new NotImplementedException();
+          //  var list = new ArrayList();
+            List<Article> list = new List<Article>();
             SqlConnection cnx = Connexion.GetConnection();
             SqlDataReader reader;
 
@@ -130,14 +121,7 @@ namespace Bolero.DAL
                 {
                     while (reader.Read())
                     {
-                        int id = reader.GetInt32(1);
-                        string lib = reader.GetString(2);
-                        double prix = reader.GetDouble(3);
-                        string type = reader.GetString(4);
-                        list.Add(id);
-                        list.Add(lib);
-                        list.Add(prix);
-                        list.Add(type);
+                        list.Add(new Article(reader.GetInt32(0),reader.GetString(1),reader.GetInt32(2),reader.GetString(3)));
                     }
                     return list;
                 }
@@ -155,7 +139,7 @@ namespace Bolero.DAL
                 MessageBox.Show(ex.Message, "affichage impossible! ! ");
             }
 
-
+            return list;
         }
 
         public Article getById(int id)

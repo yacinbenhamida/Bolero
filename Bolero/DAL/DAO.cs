@@ -8,9 +8,9 @@ namespace Bolero.DAL
 {
     interface DAO<T>
     {
-        public int add();
-        public int delete();
-        public bool find();
+        public int add(T e);
+        public int delete(int id);
+        public bool find(T e);
         public List<T> getAll();
         public T getById(int id);
 
