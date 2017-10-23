@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Bolero.BL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,7 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
+using Bolero.DAL;
 namespace Bolero
 {
     /// <summary>
@@ -19,9 +20,11 @@ namespace Bolero
     /// </summary>
     public partial class ModifierMenu : Window
     {
+        private List<Article> lstA = new List<Article>();
         public ModifierMenu()
         {
             InitializeComponent();
+            this.DataContext = lstA;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -31,6 +34,31 @@ namespace Bolero
             timer.Interval = new TimeSpan(0, 0, 1);
             timer.Tick += timer_Tick;
             timer.Start();
+            try
+            {
+                ArticleDAO dao = new ArticleDAO();
+                lstA = dao.getAll();
+                for (int j = 0; j < lstA.Count; j++)
+                {
+                    Button btn = new Button();
+                    btn.Name = "btn" + lstA[j].IdArticle;
+                    btn.Content = lstA[j].Libelle;
+                    btn.Click += new RoutedEventHandler(this.btn_Click);
+                    btn.Background = Brushes.Blue;
+                    btn.Foreground = Brushes.White;
+                    entree.Items.Add(btn);
+                }
+                MessageBox.Show(lstA.Count + "");
+            }
+            catch (Exception exc) 
+            {
+                MessageBox.Show(exc.Message);
+            }
+        }
+        private void btn_Click(object sender, RoutedEventArgs e)
+        {
+            Button b = (Button)sender;
+            MessageBox.Show(b.Name + "");
         }
 
         void timer_Tick(object sender, EventArgs e)

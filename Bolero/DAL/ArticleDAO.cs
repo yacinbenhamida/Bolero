@@ -16,7 +16,7 @@ namespace Bolero.DAL
     class ArticleDAO : DAO<Article>
     {
 
-        public int add(Article a)
+        public  int add(Article a)
         {
             int res = 0;
 
@@ -24,9 +24,9 @@ namespace Bolero.DAL
             {
                 SqlConnection cnx = Connexion.GetConnection();
                 SqlCommand sqlCmd = new SqlCommand("insert into Article (Libelle, Prix, Type) values (@lib,@prix,@type)", cnx);
-                sqlCmd.Parameters.Add("@lib", a.Libelle);
-                sqlCmd.Parameters.Add("@prix", a.Prix);
-                sqlCmd.Parameters.Add("@type", a.Type);
+                sqlCmd.Parameters.AddWithValue("lib", a.Libelle);
+                sqlCmd.Parameters.AddWithValue("prix", a.Prix);
+                sqlCmd.Parameters.AddWithValue("type", a.Type);
                 sqlCmd.ExecuteNonQuery();
                 res = 1;
             }
@@ -42,14 +42,14 @@ namespace Bolero.DAL
             return res;
         }
 
-        public int delete(int id)
+        public  int delete(int id)
         {
             int res = 0;
             SqlConnection cnx = Connexion.GetConnection();
             try
             {
                 SqlCommand sqlCmd = new SqlCommand("delete from Article where  Id=@id", cnx);
-                sqlCmd.Parameters.Add("@id", id);
+                sqlCmd.Parameters.AddWithValue("id", id);
                 res = sqlCmd.ExecuteNonQuery();
                 if (res > 0)
                 {
@@ -70,7 +70,7 @@ namespace Bolero.DAL
             return res;
         }
 
-        public bool find(Article a)
+        public  bool find(Article a)
         {
             SqlConnection cnx = Connexion.GetConnection();
             SqlDataReader reader;
@@ -79,8 +79,7 @@ namespace Bolero.DAL
             try
             {
                 SqlCommand sqlCmd = new SqlCommand("select * from Article where IdArticle=@id", cnx);
-                sqlCmd.Parameters.Add("@id", a.IdArticle);
-
+                sqlCmd.Parameters.AddWithValue("id", a.IdArticle);
                 reader = sqlCmd.ExecuteReader();
                 if (reader.HasRows)
                 {
@@ -98,13 +97,12 @@ namespace Bolero.DAL
             return res;
         }
 
-        public List<Article> getAll()
+        public  List<Article> getAll()
         {
 
             List<Article> list = new List<Article>();
             SqlConnection cnx = Connexion.GetConnection();
             SqlDataReader reader;
-
             try
             {
                 SqlCommand sqlCmd = new SqlCommand("select * from Article", cnx);
@@ -113,9 +111,9 @@ namespace Bolero.DAL
                 {
                     while (reader.Read())
                     {
-                        list.Add(new Article(reader.GetInt32(0), reader.GetString(1), reader.GetInt32(2), reader.GetString(3)));
+                        list.Add(new Article(reader.GetInt32(0), reader.GetString(1), reader.GetDouble(2), reader.GetString(3)));
                     }
-                    return list;
+
                 }
 
                 reader.Close();
@@ -126,34 +124,41 @@ namespace Bolero.DAL
             {
                 throw ex;
             }
+            finally { Connexion.closeConnection(); }
+
 
             return list;
         }
 
-        public Article getById(int id)
+        public  Article getById(int id)
         {   Article a=null;
             Article a2=new Article(id,"",1,"");
             SqlConnection cnx = Connexion.GetConnection();
             SqlDataReader reader;
 
             try
-            {  if(find(a2))
             {
-            SqlCommand sqlCmd = new SqlCommand("select * from Article where IdArticle=@id", cnx);
-                 sqlCmd.Parameters.Add("@id",a2.IdArticle);
+                if (find(a2))
+                {
+                    SqlCommand sqlCmd = new SqlCommand("select * from Article where IdArticle=@id", cnx);
+                    sqlCmd.Parameters.AddWithValue("id", a2.IdArticle);
+                    reader = sqlCmd.ExecuteReader();
+                    while (reader.Read()) 
+                    {
+                        a = new Article(reader.GetInt32(0), reader.GetString(1), reader.GetInt32(2), reader.GetString(3));
+                    }
+                   
+                    reader.Close();
+                    cnx.Close();
+                }
 
-                reader = sqlCmd.ExecuteReader();
-                a=new Article(reader.GetInt32(0),reader.GetString(1),reader.GetInt32(2),reader.GetString(3));
 
-                reader.Close();
-                cnx.Close();
             }
-                
-                
-             }catch (Exception ex)
+            catch (Exception ex)
             {
                 throw ex;
             }
+            finally { Connexion.closeConnection(); }
             return a; 
     }
     }
