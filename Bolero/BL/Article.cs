@@ -8,6 +8,7 @@ namespace Bolero.BL
 {
     class Article
     {
+        
         public int IdArticle { get; set; }
         public string Libelle { get; set; }
         public double Prix { get; set; }

@@ -18,97 +18,89 @@ namespace Bolero.DAL
 
         public int add(Article a)
         {
+            int res = 0;
 
             try
             {
                 SqlConnection cnx = Connexion.GetConnection();
-                if (cmbImg0.SelectedIndex>0)
-                {
-                    SqlCommand sqlCmd = new SqlCommand("insert into Article (Libelle, Prix, Type) values (@lib,@prix,@type"),cnx);
-                   sqlCmd.Parameters.Add("@lib",cmbImg0.selectedItem().toString());
-                   sqlCmd.Parameters.Add("@prix",cmbImg1.selectedItem().toString());
-                   sqlCmd.Parameters.Add("@type",cmbImg2.selectedItem().toString());
-                    sqlCmd.ExecuteNonQuery();
-                    MessageBox.Show("insertion términé avec succès");
-
-                }
-                else  MessageBox.Show("aucun article choisi a supprimer! ! ");
-
-            
-            } catch (Exception ex)
+                SqlCommand sqlCmd = new SqlCommand("insert into Article (Libelle, Prix, Type) values (@lib,@prix,@type)", cnx);
+                sqlCmd.Parameters.Add("@lib", a.Libelle);
+                sqlCmd.Parameters.Add("@prix", a.Prix);
+                sqlCmd.Parameters.Add("@type", a.Type);
+                sqlCmd.ExecuteNonQuery();
+                res = 1;
+            }
+            catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "insertion impossible! ! ");
+                throw ex;
+
             }
             finally
             {
                 Connexion.closeConnection();
             }
+            return res;
         }
 
         public int delete(int id)
         {
-            int i = 0;
-            throw new NotImplementedException();
+            int res = 0;
             SqlConnection cnx = Connexion.GetConnection();
             try
             {
-                SqlCommand sqlCmd = new SqlCommand("delete from Article where Libelle=@lib", cnx);
-                sqlCmd.Parameters.Add("@lib", cmbImg0.selectedItem.toString());
-                i = sqlCmd.ExecuteNonQuery();
-                if (i > 0)
+                SqlCommand sqlCmd = new SqlCommand("delete from Article where  Id=@id", cnx);
+                sqlCmd.Parameters.Add("@id", id);
+                res = sqlCmd.ExecuteNonQuery();
+                if (res > 0)
                 {
-                    MessageBox.Show("article supprimé ! ");
 
+                    res = 1;
                 }
 
-                else
-                {
-                    MessageBox.Show("article non supprimé ! ");
-                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Erreur suppression ! ! ");
-
+                throw ex;
             }
             finally
             {
                 cnx.Close();
+
             }
+            return res;
         }
 
-        public bool find()
+        public bool find(Article a)
         {
             SqlConnection cnx = Connexion.GetConnection();
             SqlDataReader reader;
+            bool res = false;
 
             try
             {
-                SqlCommand sqlCmd = new SqlCommand("select * from Article where Libelle=@lib", cnx);
-                sqlCmd.Parameters.Add("@lib", cmbImg0.selectedItem.toString());
+                SqlCommand sqlCmd = new SqlCommand("select * from Article where IdArticle=@id", cnx);
+                sqlCmd.Parameters.Add("@id", a.IdArticle);
 
                 reader = sqlCmd.ExecuteReader();
                 if (reader.HasRows)
                 {
 
-                    /* do whatever you want */
+                    res = true;
                 }
-                else
-                {
-                    MessageBox.Show("Article non trouvé ! ! ");
-                }
+
                 reader.Close();
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Erreur recherche ! ! ");
+                throw ex;
 
             }
+            return res;
         }
 
         public List<Article> getAll()
         {
-          //  var list = new ArrayList();
+
             List<Article> list = new List<Article>();
             SqlConnection cnx = Connexion.GetConnection();
             SqlDataReader reader;
@@ -121,31 +113,48 @@ namespace Bolero.DAL
                 {
                     while (reader.Read())
                     {
-                        list.Add(new Article(reader.GetInt32(0),reader.GetString(1),reader.GetInt32(2),reader.GetString(3)));
+                        list.Add(new Article(reader.GetInt32(0), reader.GetString(1), reader.GetInt32(2), reader.GetString(3)));
                     }
                     return list;
-                }
-                else
-                {
-                    MessageBox.Show("rien a afficher! ! ");
                 }
 
                 reader.Close();
                 cnx.Close();
-                return list;
+
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "affichage impossible! ! ");
+                throw ex;
             }
 
             return list;
         }
 
         public Article getById(int id)
-        {
-            throw new NotImplementedException();
+        {   Article a=null;
+            Article a2=new Article(id,"",1,"");
+            SqlConnection cnx = Connexion.GetConnection();
+            SqlDataReader reader;
 
-        }
+            try
+            {  if(find(a2))
+            {
+            SqlCommand sqlCmd = new SqlCommand("select * from Article where IdArticle=@id", cnx);
+                 sqlCmd.Parameters.Add("@id",a2.IdArticle);
+
+                reader = sqlCmd.ExecuteReader();
+                a=new Article(reader.GetInt32(0),reader.GetString(1),reader.GetInt32(2),reader.GetString(3));
+
+                reader.Close();
+                cnx.Close();
+            }
+                
+                
+             }catch (Exception ex)
+            {
+                throw ex;
+            }
+            return a; 
+    }
     }
 }
