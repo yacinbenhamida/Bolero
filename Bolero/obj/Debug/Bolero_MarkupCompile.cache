@@ -4,15 +4,19 @@
 winexe
 C#
 .cs
-C:\Users\USER\Desktop\Bolero\BoleroGArticles\Bolero\Bolero\obj\Debug\
+C:\Users\ghari\Documents\GitHub\Bolero\Bolero\obj\Debug\
 Bolero
 none
 false
 DEBUG;TRACE
-C:\Users\USER\Desktop\Bolero\BoleroGArticles\Bolero\Bolero\Layouts\App.xaml
+C:\Users\ghari\Documents\GitHub\Bolero\Bolero\Layouts\App.xaml
 3-1865710543
 1-2023467811
+<<<<<<< HEAD
 12-1530838873
+=======
+13-1657936681
+>>>>>>> origin/Gestion-ARTICLES
 12-1401562060
 Layouts\AjoutPlat.xaml;Layouts\ModifierMenu.xaml;Layouts\ModifierPlat.xaml;
 
