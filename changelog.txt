@@ -1,0 +1,25 @@
+Login branch v 1.2 changed overall disposition of the project as requested.
+
+Tunneling : FIXED !
+DB Refreshing after PW changing : FIXED !
+Secret question improved !
+code : improved !
+co-fixed by Med Arbi ben Mahdi & Ben Hamida Yassine
+
+Disposition 
+ 	>BOLERO 
+		>Properties
+		>References
+		>BL (BUSINESS LAYER)
+		   > User.cs
+		>DAL (DATA ACC LAYER)
+		   >UserDAO.cs
+	           >Connexion.cs
+		>Layout (.xaml)
+		   >*.xaml files relative to the view 
+		>Resources 
+		   >DB(.mdf)
+		   >Icons
+		>SL (Security Layer)
+		   >LoginSecurity.cs 
+			

@@ -75,26 +75,26 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <ApplicationDefinition Include="App.xaml">
+    <ApplicationDefinition Include="Layout\App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AccesSession.xaml.cs">
+    <Compile Include="Layout\AccesSession.xaml.cs">
       <DependentUpon>AccesSession.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AccesSessionCaissier.xaml.cs">
+    <Compile Include="Layout\AccesSessionCaissier.xaml.cs">
       <DependentUpon>AccesSessionCaissier.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AccesSessionCaissier2.xaml.cs">
+    <Compile Include="Layout\AccesSessionCaissier2.xaml.cs">
       <DependentUpon>AccesSessionCaissier2.xaml</DependentUpon>
     </Compile>
-    <Compile Include="App.xaml.cs">
+    <Compile Include="Layout\App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="DAL\Connexion.cs" />
     <Compile Include="DAL\UserDAO.cs" />
-    <Compile Include="MainDashboard.xaml.cs">
+    <Compile Include="Layout\MainDashboard.xaml.cs">
       <DependentUpon>MainDashboard.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
@@ -102,45 +102,45 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="QuestionSecrete.xaml.cs">
+    <Compile Include="Layout\QuestionSecrete.xaml.cs">
       <DependentUpon>QuestionSecrete.xaml</DependentUpon>
     </Compile>
-    <Compile Include="NewPassword.xaml.cs">
+    <Compile Include="Layout\NewPassword.xaml.cs">
       <DependentUpon>NewPassword.xaml</DependentUpon>
     </Compile>
     <Compile Include="BL\User.cs" />
     <Compile Include="SL\LoginSecurity.cs" />
-    <Page Include="AccesSession.xaml">
+    <Page Include="Layout\AccesSession.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Authentification.xaml">
+    <Page Include="Layout\Authentification.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="AccesSessionCaissier.xaml">
+    <Page Include="Layout\AccesSessionCaissier.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="AccesSessionCaissier2.xaml">
+    <Page Include="Layout\AccesSessionCaissier2.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainDashboard.xaml">
+    <Page Include="Layout\MainDashboard.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="QuestionSecrete.xaml">
+    <Page Include="Layout\QuestionSecrete.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="NewPassword.xaml">
+    <Page Include="Layout\NewPassword.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Authentification.xaml.cs">
+    <Compile Include="Layout\Authentification.xaml.cs">
       <DependentUpon>Authentification.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -163,7 +163,7 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="Layout\App.config" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\admin.png" />
