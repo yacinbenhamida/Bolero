@@ -30,117 +30,117 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition />
-             <RowDefinition Height="30"/>
+            <RowDefinition Height="40"/>
         </Grid.RowDefinitions>
-        
+
         <TabControl VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-           
-                <TabItem Foreground="Black" Header="Resto" Background="#FFACA5A5" FontWeight="Bold" FontSize="14">
-                    <Grid>
+
+            <TabItem Foreground="Black" Header="Resto" Background="#FFACA5A5" FontWeight="Bold" FontSize="14">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+
+                    <TabControl VerticalAlignment="Stretch" HorizontalAlignment="Stretch" TabStripPlacement="Left">
+                        <TabControl.Resources>
+                            <Style TargetType="{x:Type TabItem}">
+                                <Setter Property="Padding" Value="4" />
+                                <Setter Property="HeaderTemplate">
+                                    <Setter.Value>
+                                        <DataTemplate>
+                                            <ContentPresenter Content="{TemplateBinding Content}">
+                                                <ContentPresenter.LayoutTransform>
+                                                    <RotateTransform Angle="0" />
+                                                </ContentPresenter.LayoutTransform>
+                                            </ContentPresenter>
+                                        </DataTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </TabControl.Resources>
+                        <TabItem Foreground="Black" Header="Entrée" Background="#FFACA5A5" FontWeight="Bold" FontSize="14" >
+                            <ScrollViewer HorizontalScrollBarVisibility="Auto">
+                                <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+
+                                </StackPanel>
+                            </ScrollViewer>
+                        </TabItem>
+
+                        <TabItem Foreground="Black" Header="Suite" Background="#FFACA5A5" FontWeight="Bold" FontSize="14">
+                            <ScrollViewer HorizontalScrollBarVisibility="Auto">
+                                <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+
+                                </StackPanel>
+                            </ScrollViewer>
+                        </TabItem>
+                        <TabItem Foreground="Black" Header="Hors d'oeuvres" Background="#FFACA5A5" FontWeight="Bold" FontSize="14">
+                            <ScrollViewer HorizontalScrollBarVisibility="Auto">
+                                <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+
+                                </StackPanel>
+                            </ScrollViewer>
+                        </TabItem>
+                        <TabItem Foreground="Black" Header="Desserts" Background="#FFACA5A5" FontWeight="Bold" FontSize="14">
+                            <ScrollViewer HorizontalScrollBarVisibility="Auto">
+                                <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+
+                                </StackPanel>
+                            </ScrollViewer>
+                        </TabItem>
+                        <TabItem Foreground="Black" Header="Boissons" Background="#FFACA5A5" FontWeight="Bold" FontSize="14">
+                            <ScrollViewer HorizontalScrollBarVisibility="Auto">
+                                <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+
+                                </StackPanel>
+                            </ScrollViewer>
+                        </TabItem>
+                        <TabItem Foreground="Black" Header="Plat du jour" Background="#FFACA5A5" FontWeight="Bold" FontSize="14">
+                            <ScrollViewer HorizontalScrollBarVisibility="Auto">
+                                <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+
+                                </StackPanel>
+                            </ScrollViewer>
+
+                        </TabItem>
+
+                    </TabControl>
+
+                    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="1">
                         <Grid.RowDefinitions>
+                            <RowDefinition Height="220"/>
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
                             <RowDefinition />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition />
-                            <ColumnDefinition />
-                            <ColumnDefinition />
                         </Grid.ColumnDefinitions>
-                    
-                    <TabControl VerticalAlignment="Stretch" HorizontalAlignment="Stretch" TabStripPlacement="Left">
-                    <TabControl.Resources>
-                        <Style TargetType="{x:Type TabItem}">
-                            <Setter Property="Padding" Value="4" />
-                            <Setter Property="HeaderTemplate">
-                                <Setter.Value>
-                                    <DataTemplate>
-                                        <ContentPresenter Content="{TemplateBinding Content}">
-                                            <ContentPresenter.LayoutTransform>
-                                                <RotateTransform Angle="0" />
-                                            </ContentPresenter.LayoutTransform>
-                                        </ContentPresenter>
-                                    </DataTemplate>
-                                </Setter.Value>
-                            </Setter>
-                        </Style>
-                    </TabControl.Resources>
-                    <TabItem Foreground="Black" Header="Entrée" Background="#FFACA5A5" FontWeight="Bold" FontSize="14" >
-                        <ScrollViewer HorizontalScrollBarVisibility="Auto">
-                            <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                        <GroupBox Header="Plats" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.Column="1">
+                            <ScrollViewer HorizontalScrollBarVisibility="Auto">
+                                <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
 
-                            </StackPanel>
-                        </ScrollViewer>
-                    </TabItem>
-
-                    <TabItem Foreground="Black" Header="Suite" Background="#FFACA5A5" FontWeight="Bold" FontSize="14">
-                        <ScrollViewer HorizontalScrollBarVisibility="Auto">
-                            <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-
-                            </StackPanel>
-                        </ScrollViewer>
-                    </TabItem>
-                    <TabItem Foreground="Black" Header="Hors d'oeuvres" Background="#FFACA5A5" FontWeight="Bold" FontSize="14">
-                        <ScrollViewer HorizontalScrollBarVisibility="Auto">
-                            <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-
-                            </StackPanel>
-                        </ScrollViewer>
-                    </TabItem>
-                    <TabItem Foreground="Black" Header="Desserts" Background="#FFACA5A5" FontWeight="Bold" FontSize="14">
-                        <ScrollViewer HorizontalScrollBarVisibility="Auto">
-                            <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-
-                            </StackPanel>
-                        </ScrollViewer>
-                    </TabItem>
-                    <TabItem Foreground="Black" Header="Boissons" Background="#FFACA5A5" FontWeight="Bold" FontSize="14">
-                        <ScrollViewer HorizontalScrollBarVisibility="Auto">
-                            <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-
-                            </StackPanel>
-                        </ScrollViewer>
-                    </TabItem>
-                    <TabItem Foreground="Black" Header="Plat du jour" Background="#FFACA5A5" FontWeight="Bold" FontSize="14">
-                        <ScrollViewer HorizontalScrollBarVisibility="Auto">
-                            <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-
-                            </StackPanel>
-                        </ScrollViewer>
-             
-                        </TabItem>
-
-                    </TabControl>
-            
-                            <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="1">
-                                <Grid.RowDefinitions>
-                                <RowDefinition Height="220"/>
-                                    <RowDefinition />
-                                    <RowDefinition />
-                                    <RowDefinition />
-                                    <RowDefinition />
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition />
-                                </Grid.ColumnDefinitions>
-                            <GroupBox Header="Plats" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.Column="1">
-                                <ScrollViewer HorizontalScrollBarVisibility="Auto">
-                                    <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-
-                                    </StackPanel>
-                                </ScrollViewer>
-                            </GroupBox>
-                            <ComboBox x:Name="cmbServ" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Top" SelectedIndex="0" Width="250" Height="30">
-                                    <ComboBoxItem Name="cmbServ0">Serveur</ComboBoxItem>
-                                    <ComboBoxItem Name="cmbServ1">Serveur 1</ComboBoxItem>
-                                    <ComboBoxItem Name="cmbServ2">Serveur 2</ComboBoxItem>
-                                </ComboBox>
-                            <ComboBox x:Name="cmbTable" Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" SelectedIndex="0" Width="250" Height="30">
-                                    <ComboBoxItem Name="cmbTable0">Table</ComboBoxItem>
-                                    <ComboBoxItem Name="cmbTable1">Table 1</ComboBoxItem>
-                                    <ComboBoxItem Name="cmbTable2">Table 2</ComboBoxItem>
-                                </ComboBox>
-                                <Button x:Name="btnValider" Content="Valider" Grid.Row="3" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="150" Height="50" FontWeight="Bold" FontSize="16" Foreground="White" Background="#FF079B00" Click="btnValider_Click"/>
-                                <Button x:Name="btnAnnuler" Content="Annuler" Grid.Row="4" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="100" Height="50" FontSize="16" FontWeight="Bold" Foreground="White" Background="#FFF31111" Click="btnAnnuler_Click"/>
-                            </Grid>
+                                </StackPanel>
+                            </ScrollViewer>
+                        </GroupBox>
+                        <ComboBox x:Name="cmbServ" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Top" SelectedIndex="0" Width="250" Height="30">
+                            <ComboBoxItem Name="cmbServ0">Serveur</ComboBoxItem>
+                            <ComboBoxItem Name="cmbServ1">Serveur 1</ComboBoxItem>
+                            <ComboBoxItem Name="cmbServ2">Serveur 2</ComboBoxItem>
+                        </ComboBox>
+                        <ComboBox x:Name="cmbTable" Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" SelectedIndex="0" Width="250" Height="30">
+                            <ComboBoxItem Name="cmbTable0">Table</ComboBoxItem>
+                            <ComboBoxItem Name="cmbTable1">Table 1</ComboBoxItem>
+                            <ComboBoxItem Name="cmbTable2">Table 2</ComboBoxItem>
+                        </ComboBox>
+                        <Button x:Name="btnValider" Content="Valider" Grid.Row="3" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="150" Height="50" FontWeight="Bold" FontSize="16" Foreground="White" Background="#FF079B00" Click="btnValider_Click"/>
+                        <Button x:Name="btnAnnuler" Content="Annuler" Grid.Row="4" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="100" Height="50" FontSize="16" FontWeight="Bold" Foreground="White" Background="#FFF31111" Click="btnAnnuler_Click"/>
+                    </Grid>
 
 
                     <Grid Grid.Column="3">
@@ -158,7 +158,7 @@
                                 <RowDefinition Height="40"/>
                             </Grid.RowDefinitions>
                             <Button  Style="{DynamicResource NoChromeButton}" HorizontalAlignment="Left" VerticalAlignment="center" Width="30" Height="30" Click="Search_Click" >
-                                <Image Source="C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\Resources\search.png" Height="16" Opacity="0.6"></Image>
+                                <Image Source="C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\Resources\search.png" Height="16" Opacity="1"></Image>
                             </Button>
                             <TextBox Name="SearchTextBox" Grid.Column="1" BorderThickness="0" Height="40" HorizontalAlignment="Stretch" KeyDown="SearchTextBox_KeyDown" VerticalContentAlignment="Center" TextWrapping="Wrap" Text="{Binding SearchText}" VerticalAlignment="Stretch"  GotFocus="SearchBox_GotFocus" GotMouseCapture="SearchTextBox_GotMouseCapture" >
                                 <TextBox.Style>
@@ -184,7 +184,7 @@
                                     </Style>
                                 </TextBox.Style>
                             </TextBox>
-                            
+
                         </Grid>
                         <DataGrid Name="dataGrid" Grid.Row="1">
                             <DataGrid.Columns>
@@ -202,9 +202,16 @@
                     </Grid>
                 </Grid>
             </TabItem>
- 
-            <TabItem Foreground="Black" Header="Maintenace" Background="#FFACA5A5" FontWeight="Bold" FontSize="14">
 
+            <TabItem Foreground="Black" Header="Maintenace" Background="#FFACA5A5" FontWeight="Bold" FontSize="14">
+                    <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <Grid.RowDefinitions>
+                        <RowDefinition Height="70"/>
+                        <RowDefinition Height="70"/>
+                    </Grid.RowDefinitions>
+                    <Button x:Name="btnModiMenu" Content="Modifier Menu" HorizontalAlignment="Center" VerticalAlignment="Center" Width="650" Height="50" Foreground="White" Background="#FF5E88E2" FontSize="18" FontWeight="Bold" Click="btnModiMenu_Click"/>
+                    <Button x:Name="btnGereUltil" Grid.Row="1" Content="Gérer Utilisateur" HorizontalAlignment="Center" VerticalAlignment="Center" Width="650" Height="50" Foreground="White" Background="#FF0C0B0B" FontSize="18" FontWeight="Bold" Click="btnGereUltil_Click"/>
+                    </Grid>
             </TabItem>
 
             <TabItem Foreground="Black" Header="Recette" Background="#FFACA5A5" FontWeight="Bold" FontSize="14">
@@ -219,7 +226,10 @@
 
             </TabItem>
         </TabControl>
-    
+
+        <Button x:Name="btnLogout" Style="{DynamicResource NoChromeButton}" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Stretch" Click="btnLogout_Click">
+            <Image Source="C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\Resources\logout.png" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Height="50" Opacity="1"></Image>
+        </Button>
         <DockPanel VerticalAlignment="Bottom" Grid.Row="2" HorizontalAlignment="Center" Grid.ColumnSpan="3">
             <Label FontFamily="Century Gothic" Content="Date : " VerticalContentAlignment="Center"  FontSize="14"/>
             <Label x:Name="lblDate" VerticalContentAlignment="Center"/>

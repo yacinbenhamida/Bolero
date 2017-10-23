@@ -21,3 +21,5 @@ C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\obj\Debug\Layo
 C:\Users\ADMIN\Documents\GitHub\Bolero\bin\Debug\Bolero.exe.config
 C:\Users\ADMIN\Documents\GitHub\Bolero\obj\Debug\Bolero.exe
 C:\Users\ADMIN\Documents\GitHub\Bolero\obj\Debug\Bolero.pdb
+C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\obj\Debug\Layouts\InfoCommande.baml
+C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\obj\Debug\Layouts\InfoCommande.g.cs

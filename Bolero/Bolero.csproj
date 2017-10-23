@@ -85,12 +85,19 @@
       <DependentUpon>GestionCommande.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Layouts\InfoCommande.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Layouts\ModifierCommande.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Layouts\InfoCommande.xaml.cs">
+      <DependentUpon>InfoCommande.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Layouts\ModifierCommande.xaml.cs">
       <DependentUpon>ModifierCommande.xaml</DependentUpon>
     </Compile>
@@ -121,12 +128,16 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\setting.png" />
+    <None Include="Resources\User.png" />
+    <None Include="Resources\Admin.png" />
     <Content Include="Resources\BoleroDB.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\BoleroDB_log.ldf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\logout.png" />
     <None Include="Resources\search.png" />
   </ItemGroup>
   <ItemGroup>

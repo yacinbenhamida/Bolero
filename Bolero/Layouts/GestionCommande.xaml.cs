@@ -122,10 +122,23 @@ namespace Bolero
             SearchText = SearchTextBox.Text;
             var newEventArgs = new RoutedEventArgs(GestionCommande.SearchEvent);
             RaiseEvent(newEventArgs);
-        }
+        }  
 
         // Search ********************************************************************
 
+        private void btnLogout_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
 
+        private void btnGereUltil_Click(object sender, RoutedEventArgs e)
+        {
+          
+        }
+
+        private void btnModiMenu_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
