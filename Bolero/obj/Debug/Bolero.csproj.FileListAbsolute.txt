@@ -18,3 +18,6 @@ C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\obj\Debug\Bole
 C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\obj\Debug\Bolero.csprojResolveAssemblyReference.cache
 C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\obj\Debug\Layouts\ModifierCommande.baml
 C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\obj\Debug\Layouts\ModifierCommande.g.cs
+C:\Users\ADMIN\Documents\GitHub\Bolero\bin\Debug\Bolero.exe.config
+C:\Users\ADMIN\Documents\GitHub\Bolero\obj\Debug\Bolero.exe
+C:\Users\ADMIN\Documents\GitHub\Bolero\obj\Debug\Bolero.pdb
