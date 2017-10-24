@@ -19,7 +19,8 @@ namespace Bolero
     /// Logique d'interaction pour ModifierMenu.xaml
     /// </summary>
     public partial class ModifierMenu : Window
-    {
+    {   private int id;
+        ArticleDAO dao;
         private List<Article> lstentree = new List<Article>();
         private List<Article> lstsuite = new List<Article>();
         private List<Article> lsthors = new List<Article>();
@@ -29,14 +30,9 @@ namespace Bolero
         public ModifierMenu()
         {
             InitializeComponent();
-            entree.DataContext = lstentree;
-            Suite.DataContext = lstsuite;
-            boisson.DataContext = lstboissons;
-            hrov.DataContext = lsthors;
-            PJ.DataContext = lstplatdj;
-            dessert.DataContext = lstdessert;
+            
         }
-
+        
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             lblDate.Content = DateTime.Now.ToShortDateString();
@@ -47,13 +43,20 @@ namespace Bolero
             try
             {
                 //affichage des entrées 
-                ArticleDAO dao = new ArticleDAO();
+                dao = new ArticleDAO();
                 lstentree = dao.getArticlesByType("entree");
                 lstsuite= dao.getArticlesByType("suite");
                 lstdessert = dao.getArticlesByType("dessert");
                 lstboissons= dao.getArticlesByType("boisson");
                 lsthors = dao.getArticlesByType("hors d'oeuvre");
                 lstplatdj= dao.getArticlesByType("plat de jour");
+
+                entree.DataContext = lstentree;
+                Suite.DataContext = lstsuite;
+                boisson.DataContext = lstboissons;
+                hrov.DataContext = lsthors;
+                PJ.DataContext = lstplatdj;
+                dessert.DataContext = lstdessert;
                 for (int j = 0; j < lstentree.Count; j++)
                 {
                     Button btn = new Button();
@@ -126,9 +129,12 @@ namespace Bolero
             }
         }
         private void btn_Click(object sender, RoutedEventArgs e)
-        {
+        {   
             Button b = (Button)sender;
-            MessageBox.Show(b.Name + "");
+            String nombtn=b.Name.Substring(3);
+           id = Int32.Parse(nombtn);
+        
+
         }
 
         void timer_Tick(object sender, EventArgs e)
@@ -138,7 +144,16 @@ namespace Bolero
 
         private void btnSupprimer_Click(object sender, RoutedEventArgs e)
         {
-
+            dao = new ArticleDAO();
+            dao.delete(id);
+            MessageBox.Show("article supprimé");
+            lstentree = dao.getArticlesByType("entree");
+            entree.DataContext = lstentree;
+            entree.Items.Refresh();
+  
+            
+           
+           // InitializeComponent();
         }
 
         private void btnAnnuler_Click(object sender, RoutedEventArgs e)
@@ -158,7 +173,7 @@ namespace Bolero
         }
 
         private void btnAjouter_Click(object sender, RoutedEventArgs e)
-        {
+        {   
             AjoutPlat ajout = new AjoutPlat();
             ajout.ShowDialog();
         }

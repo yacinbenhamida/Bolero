@@ -48,7 +48,7 @@ namespace Bolero.DAL
             SqlConnection cnx = Connexion.GetConnection();
             try
             {
-                SqlCommand sqlCmd = new SqlCommand("delete from Article where  Id=@id", cnx);
+                SqlCommand sqlCmd = new SqlCommand("delete from Article where  IdArticle=@id", cnx);
                 sqlCmd.Parameters.AddWithValue("id", id);
                 res = sqlCmd.ExecuteNonQuery();
                 if (res > 0)
