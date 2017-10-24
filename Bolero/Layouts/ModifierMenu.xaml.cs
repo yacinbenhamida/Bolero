@@ -36,8 +36,9 @@ namespace Bolero
             timer.Start();
             try
             {
+                //affichage des entrées 
                 ArticleDAO dao = new ArticleDAO();
-                lstA = dao.getAll();
+                lstA = dao.getArticlesByType("entree");
                 for (int j = 0; j < lstA.Count; j++)
                 {
                     Button btn = new Button();
@@ -48,7 +49,10 @@ namespace Bolero
                     btn.Foreground = Brushes.White;
                     entree.Items.Add(btn);
                 }
+                //debugging
                 MessageBox.Show(lstA.Count + "");
+                // a completer pour les autres articles....
+
             }
             catch (Exception exc) 
             {

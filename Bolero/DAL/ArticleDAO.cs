@@ -161,5 +161,29 @@ namespace Bolero.DAL
             finally { Connexion.closeConnection(); }
             return a; 
     }
+        //this method fetches an articles according to it's type (entrée,salade,suite)
+        //useful when displaying buttons for each tab
+        public List<Article> getArticlesByType(string type)
+        {
+            List<Article> lstRes = new List<Article>();
+            try
+            {
+                SqlConnection cnx = Connexion.GetConnection();
+                SqlCommand cmd = new SqlCommand("Select * from Article where Type=@type", cnx);
+                cmd.Parameters.AddWithValue("type", type);
+                SqlDataReader rd = cmd.ExecuteReader();
+                if (rd.HasRows) 
+                {
+                    while (rd.Read()) 
+                    {
+                        lstRes.Add(new Article(rd.GetInt32(0),rd.GetString(1),rd.GetDouble(2),rd.GetString(3)));
+                    }
+                }
+            }
+            catch (SqlException ex) { throw ex; }
+            finally { Connexion.closeConnection(); }
+            return lstRes;
+        }
     }
+            
 }
