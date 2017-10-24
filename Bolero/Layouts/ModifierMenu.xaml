@@ -64,7 +64,7 @@
                 </TabControl.Resources>
                 <TabItem Foreground="Black" Header="Entrée" Background="Green"  HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Height="60" Margin="-2,-2,-0.2,-1.6">
                     <ScrollViewer HorizontalScrollBarVisibility="Auto">
-                        <ListBox Name="entree" >
+                        <ListBox x:Name="entree"  >
                             <ListBox.ItemsPanel>
                                 <ItemsPanelTemplate>
                                     <UniformGrid />
@@ -76,7 +76,7 @@
                 </TabItem>
                 <TabItem Header="Suite" Background="Crimson" Foreground="Black" Height="60">
                     <ScrollViewer HorizontalScrollBarVisibility="Auto">
-                        <ListBox Name="Suite" >
+                        <ListBox x:Name="Suite" >
                             <ListBox.ItemsPanel>
                                 <ItemsPanelTemplate>
                                     <UniformGrid/>
@@ -87,7 +87,7 @@
                 </TabItem>
                 <TabItem Header="Hors d'oeuvre" Background="#FFACA5A5" Foreground="Black" Height="60">
                     <ScrollViewer HorizontalScrollBarVisibility="Auto">
-                        <ListBox Name="hrov" >
+                        <ListBox x:Name="hrov" >
                             <ListBox.ItemsPanel>
                                 <ItemsPanelTemplate>
                                     <UniformGrid />
@@ -98,7 +98,7 @@
                 </TabItem>
                 <TabItem Header="Desserts" Background="Purple" Foreground="Black" Margin="0,-5,-2,1" Height="60">
                     <ScrollViewer HorizontalScrollBarVisibility="Auto">
-                        <ListBox Name="dessert" >
+                        <ListBox x:Name="dessert" >
                             <ListBox.ItemsPanel>
                                 <ItemsPanelTemplate>
                                     <UniformGrid />
@@ -109,7 +109,7 @@
                 </TabItem>
                 <TabItem Header="Boissons" Background="DarkBlue" Foreground="Black" Height="60">
                     <ScrollViewer HorizontalScrollBarVisibility="Auto">
-                        <ListBox Name="boisson" >
+                        <ListBox x:Name="boisson" >
                             <ListBox.ItemsPanel>
                                 <ItemsPanelTemplate>
                                     <UniformGrid />
@@ -120,7 +120,7 @@
                 </TabItem>
                 <TabItem Header="Plat du jour" Background="Gold" Foreground="Black" Height="60">
                     <ScrollViewer HorizontalScrollBarVisibility="Auto">
-                        <ListBox Name="PJ" >
+                        <ListBox x:Name="PJ" >
                             <ListBox.ItemsPanel>
                                 <ItemsPanelTemplate>
                                     <UniformGrid />
