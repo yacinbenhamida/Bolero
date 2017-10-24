@@ -23,3 +23,6 @@ C:\Users\ADMIN\Documents\GitHub\Bolero\obj\Debug\Bolero.exe
 C:\Users\ADMIN\Documents\GitHub\Bolero\obj\Debug\Bolero.pdb
 C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\obj\Debug\Layouts\InfoCommande.baml
 C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\obj\Debug\Layouts\InfoCommande.g.cs
+C:\Users\ghari\Documents\GitHub\Bolero\Bolero\bin\Debug\Bolero.exe.config
+C:\Users\ghari\Documents\GitHub\Bolero\Bolero\obj\Debug\Bolero.exe
+C:\Users\ghari\Documents\GitHub\Bolero\Bolero\obj\Debug\Bolero.pdb
