@@ -13,6 +13,6 @@ namespace Bolero.DAL
          bool find(T e);
          List<T> getAll();
          T getById(int id);
-
+         int update(T obj);
     }
 }

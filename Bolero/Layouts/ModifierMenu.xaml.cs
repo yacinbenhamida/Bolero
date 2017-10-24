@@ -19,8 +19,10 @@ namespace Bolero
     /// Logique d'interaction pour ModifierMenu.xaml
     /// </summary>
     public partial class ModifierMenu : Window
-    {   private int id;
+    {
+        private int Id { get; set; }
         ArticleDAO dao = new ArticleDAO();
+       
         private List<Article> lstentree = new List<Article>();
         private List<Article> lstsuite = new List<Article>();
         private List<Article> lsthors = new List<Article>();
@@ -30,6 +32,8 @@ namespace Bolero
         public ModifierMenu()
         {
             InitializeComponent();
+            btnModifier.IsEnabled = false;
+            btnSupprimer.IsEnabled = false;
             
         }
 
@@ -40,7 +44,7 @@ namespace Bolero
             lstdessert = dao.getArticlesByType("dessert");
             lstboissons = dao.getArticlesByType("boisson");
             lsthors = dao.getArticlesByType("hors d'oeuvre");
-            lstplatdj = dao.getArticlesByType("plat de jour");
+            lstplatdj = dao.getArticlesByType("plat du jour");
 
             entree.DataContext = lstentree;
             Suite.DataContext = lstsuite;
@@ -48,66 +52,83 @@ namespace Bolero
             hrov.DataContext = lsthors;
             PJ.DataContext = lstplatdj;
             dessert.DataContext = lstdessert;
-            for (int j = 0; j < lstentree.Count; j++)
+            if (entree.Items.Count == 0)
             {
-                Button btn = new Button();
-                btn.Name = "btn" + lstentree[j].IdArticle;
-                btn.Content = lstentree[j].Libelle;
-                btn.Click += new RoutedEventHandler(this.btn_Click);
-                btn.Background = Brushes.Green;
-                btn.Foreground = Brushes.White;
-                entree.Items.Add(btn);
+                for (int j = 0; j < lstentree.Count; j++)
+                {
+                    Button btn = new Button();
+                    btn.Name = "btn" + lstentree[j].IdArticle;
+                    btn.Content = lstentree[j].Libelle;
+                    btn.Click += new RoutedEventHandler(this.btn_Click);
+                    btn.Background = Brushes.Green;
+                    btn.Foreground = Brushes.White;
+                    entree.Items.Add(btn);
+                }
             }
-            for (int j = 0; j < lstsuite.Count; j++)
+            if (Suite.Items.Count == 0)
             {
-                Button btn = new Button();
-                btn.Name = "btn" + lstsuite[j].IdArticle;
-                btn.Content = lstsuite[j].Libelle;
-                btn.Click += new RoutedEventHandler(this.btn_Click);
-                btn.Background = Brushes.Red;
-                btn.Foreground = Brushes.White;
-                Suite.Items.Add(btn);
+                for (int j = 0; j < lstsuite.Count; j++)
+                {
+                    Button btn = new Button();
+                    btn.Name = "btn" + lstsuite[j].IdArticle;
+                    btn.Content = lstsuite[j].Libelle;
+                    btn.Click += new RoutedEventHandler(this.btn_Click);
+                    btn.Background = Brushes.Red;
+                    btn.Foreground = Brushes.White;
+                    Suite.Items.Add(btn);
+                }
             }
-
-            for (int j = 0; j < lsthors.Count; j++)
+            if (hrov.Items.Count==0)
             {
-                Button btn = new Button();
-                btn.Name = "btn" + lsthors[j].IdArticle;
-                btn.Content = lsthors[j].Libelle;
-                btn.Click += new RoutedEventHandler(this.btn_Click);
-                btn.Background = Brushes.Gray;
-                btn.Foreground = Brushes.White;
-                hrov.Items.Add(btn);
+                for (int j = 0; j < lsthors.Count; j++)
+                {
+                    Button btn = new Button();
+                    btn.Name = "btn" + lsthors[j].IdArticle;
+                    btn.Content = lsthors[j].Libelle;
+                    btn.Click += new RoutedEventHandler(this.btn_Click);
+                    btn.Background = Brushes.Gray;
+                    btn.Foreground = Brushes.White;
+                    hrov.Items.Add(btn);
+                }
             }
-            for (int j = 0; j < lstboissons.Count; j++)
+            if (boisson.Items.Count == 0)
             {
-                Button btn = new Button();
-                btn.Name = "btn" + lstboissons[j].IdArticle;
-                btn.Content = lstboissons[j].Libelle;
-                btn.Click += new RoutedEventHandler(this.btn_Click);
-                btn.Background = Brushes.Blue;
-                btn.Foreground = Brushes.White;
-                boisson.Items.Add(btn);
+                for (int j = 0; j < lstboissons.Count; j++)
+                {
+                    Button btn = new Button();
+                    btn.Name = "btn" + lstboissons[j].IdArticle;
+                    btn.Content = lstboissons[j].Libelle;
+                    btn.Click += new RoutedEventHandler(this.btn_Click);
+                    btn.Background = Brushes.Blue;
+                    btn.Foreground = Brushes.White;
+                    boisson.Items.Add(btn);
+                }
             }
-            for (int j = 0; j < lstdessert.Count; j++)
+            if (dessert.Items.Count == 0)
             {
-                Button btn = new Button();
-                btn.Name = "btn" + lstdessert[j].IdArticle;
-                btn.Content = lstdessert[j].Libelle;
-                btn.Click += new RoutedEventHandler(this.btn_Click);
-                btn.Background = Brushes.Purple;
-                btn.Foreground = Brushes.White;
-                dessert.Items.Add(btn);
+                for (int j = 0; j < lstdessert.Count; j++)
+                {
+                    Button btn = new Button();
+                    btn.Name = "btn" + lstdessert[j].IdArticle;
+                    btn.Content = lstdessert[j].Libelle;
+                    btn.Click += new RoutedEventHandler(this.btn_Click);
+                    btn.Background = Brushes.Purple;
+                    btn.Foreground = Brushes.White;
+                    dessert.Items.Add(btn);
+                }
             }
-            for (int j = 0; j < lstplatdj.Count; j++)
+            if (PJ.Items.Count == 0)
             {
-                Button btn = new Button();
-                btn.Name = "btn" + lstplatdj[j].IdArticle;
-                btn.Content = lstplatdj[j].Libelle;
-                btn.Click += new RoutedEventHandler(this.btn_Click);
-                btn.Background = Brushes.Yellow;
-                btn.Foreground = Brushes.Black;
-                PJ.Items.Add(btn);
+                for (int j = 0; j < lstplatdj.Count; j++)
+                {
+                    Button btn = new Button();
+                    btn.Name = "btn" + lstplatdj[j].IdArticle;
+                    btn.Content = lstplatdj[j].Libelle;
+                    btn.Click += new RoutedEventHandler(this.btn_Click);
+                    btn.Background = Brushes.Yellow;
+                    btn.Foreground = Brushes.Black;
+                    PJ.Items.Add(btn);
+                }
             }
         }
         private void clearUI(string tab) 
@@ -124,6 +145,9 @@ namespace Bolero
                     hrov.Items.Clear(); break;
                 case ("plat du jour"):
                     PJ.Items.Clear(); break;
+                case ("dessert"):
+                    dessert.Items.Clear(); break;
+
             }
         }
 
@@ -145,12 +169,12 @@ namespace Bolero
             }
         }
         private void btn_Click(object sender, RoutedEventArgs e)
-        {   
+        {
+            btnModifier.IsEnabled = true;
+            btnSupprimer.IsEnabled = true;
             Button b = (Button)sender;
             String nombtn=b.Name.Substring(3);
-           id = Int32.Parse(nombtn);
-            
-
+           Id = Int32.Parse(nombtn);
         }
 
         void timer_Tick(object sender, EventArgs e)
@@ -161,34 +185,89 @@ namespace Bolero
         private void btnSupprimer_Click(object sender, RoutedEventArgs e)
         {
             
-            dao.delete(id);
+            dao.delete(Id);
             MessageBox.Show("article supprimé");
-            lstentree = dao.getArticlesByType("entree");          
+            lstentree = dao.getArticlesByType("entree");
+            if (tbEnt.IsSelected) 
+            {
                 clearUI("entree");
+            }
+            else if (tbDes.IsSelected)
+            {
+                clearUI("dessert");
+            }
+            else if (tbHO.IsSelected) 
+            {
+                clearUI("hors d'oeuvre");
+            }
+            else if (tbPJ.IsSelected)
+            {
+                clearUI("plat du jour");
+            }
+            else if (tbSuite.IsSelected) 
+            {
+                clearUI("suite");
+            }
+            else if (tbBoiss.IsSelected) 
+            {
+                clearUI("boisson");
+            }
             initUI();
           
         }
 
         private void btnAnnuler_Click(object sender, RoutedEventArgs e)
         {
-
+            this.Close();
         }
 
         private void btnModifier_Click(object sender, RoutedEventArgs e)
         {
-            ModifierPlat modif = new ModifierPlat();
+            ModifierPlat modif = new ModifierPlat(Id);
+            modif.Closing += new System.ComponentModel.CancelEventHandler(this.Window2_Closing);
                 modif.ShowDialog();
+                
         }
 
+      
         private void btnSauvegarder_Click(object sender, RoutedEventArgs e)
         {
-
+            MessageBox.Show("sauvegardé !");
         }
 
         private void btnAjouter_Click(object sender, RoutedEventArgs e)
         {   
             AjoutPlat ajout = new AjoutPlat();
             ajout.ShowDialog();
+        }
+
+        private void Window2_Closing(object sender, EventArgs e)
+        {
+            if (tbEnt.IsSelected)
+            {
+                clearUI("entree");
+            }
+            else if (tbDes.IsSelected)
+            {
+                clearUI("dessert");
+            }
+            else if (tbHO.IsSelected)
+            {
+                clearUI("hors d'oeuvre");
+            }
+            else if (tbPJ.IsSelected)
+            {
+                clearUI("plat du jour");
+            }
+            else if (tbSuite.IsSelected)
+            {
+                clearUI("suite");
+            }
+            else if (tbBoiss.IsSelected)
+            {
+                clearUI("boisson");
+            }
+            initUI();
         }
        
     }

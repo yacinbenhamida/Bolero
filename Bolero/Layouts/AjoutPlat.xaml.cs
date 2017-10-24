@@ -36,7 +36,7 @@ namespace Bolero
 
         private void btnValider_Click(object sender, RoutedEventArgs e)
         {
-
+            
         }
 
       
