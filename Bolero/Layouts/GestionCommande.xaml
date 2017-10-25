@@ -1,7 +1,7 @@
 ﻿<Window x:Class="Bolero.GestionCommande"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Gestion Commande" Height="500" Width="980" Loaded="Window_Loaded">
+        Title="Gestion Commande" Height="539" Width="1006" Loaded="Window_Loaded">
     <Window.Resources>
         <Style x:Key="NoChromeButton" TargetType="{x:Type Button}">
             <Setter Property="Background" Value="Transparent"/>
@@ -158,8 +158,9 @@
                                 <RowDefinition Height="40"/>
                             </Grid.RowDefinitions>
                             <Button  Style="{DynamicResource NoChromeButton}" HorizontalAlignment="Left" VerticalAlignment="center" Width="30" Height="30" Click="Search_Click" >
-                                <Image Source="C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\Resources\search.png" Height="16" Opacity="1"></Image>
+                                <Image Source="..\Resources\search.png" Height="16" Opacity="1"></Image>
                             </Button>
+                            
                             <TextBox Name="SearchTextBox" Grid.Column="1" BorderThickness="0" Height="40" HorizontalAlignment="Stretch" KeyDown="SearchTextBox_KeyDown" VerticalContentAlignment="Center" TextWrapping="Wrap" Text="{Binding SearchText}" VerticalAlignment="Stretch"  GotFocus="SearchBox_GotFocus" GotMouseCapture="SearchTextBox_GotMouseCapture" >
                                 <TextBox.Style>
                                     <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
@@ -228,7 +229,7 @@
         </TabControl>
 
         <Button x:Name="btnLogout" Style="{DynamicResource NoChromeButton}" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Stretch" Click="btnLogout_Click">
-            <Image Source="C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\Resources\logout.png" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Height="50" Opacity="1"></Image>
+            <Image Source="..\Resources\logout.png" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Height="50" Opacity="1"></Image>
         </Button>
         <DockPanel VerticalAlignment="Bottom" Grid.Row="2" HorizontalAlignment="Center" Grid.ColumnSpan="3">
             <Label FontFamily="Century Gothic" Content="Date : " VerticalContentAlignment="Center"  FontSize="14"/>
