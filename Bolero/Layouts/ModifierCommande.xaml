@@ -17,6 +17,7 @@
         </Grid.ColumnDefinitions>
         <Label x:Name="lblComName" Content="Commande N°1" Grid.ColumnSpan="2" VerticalAlignment="Stretch" HorizontalAlignment="Center" FontWeight="Bold" FontSize="18"/>
         <StackPanel Orientation="Horizontal" Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Height="30">
+            
             <Label Content="Table N°: " VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
             <TextBox x:Name="txtNum" x:FieldModifier="private" Margin="5,5,0,5" Width="50" Text="0" TextChanged="txtNum_TextChanged" />
             <Button x:Name="cmdUp" x:FieldModifier="private" Margin="5,5,0,5" Content="˄" Width="20" Click="cmdUp_Click" />
@@ -54,7 +55,7 @@
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <Button x:Name="btnSave" Content="Sauvegarder" VerticalAlignment="Stretch" HorizontalAlignment="Center" Width="100" Height="80" FontSize="16" Foreground="White" Background="#FF079B00" Click="btnSave_Click"/>
-                <Button x:Name="btnAjout" Content="Ajoter" Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Center" Width="100" Height="80" FontSize="16" Foreground="White" Click="btnSave_Click" Background="#FF4D81DC"/>
+                <Button x:Name="btnAjout" Content="Ajouter" Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Center" Width="100" Height="80" FontSize="16" Foreground="White" Click="btnSave_Click" Background="#FF4D81DC"/>
                 <Button x:Name="btnRetour" Content="Retour" Grid.Column="2" VerticalAlignment="Stretch" HorizontalAlignment="Center" Width="100" Height="80" FontSize="16" Foreground="White" Click="btnSave_Click" Background="#FF063381"/>
             </Grid>
         </StackPanel>

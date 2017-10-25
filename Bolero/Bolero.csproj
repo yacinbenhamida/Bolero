@@ -74,7 +74,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="BL\Article.cs" />
     <Compile Include="BL\Table.cs" />
+    <Compile Include="DAL\ArticleDAO.cs" />
+    <Compile Include="DAL\Connexion.cs" />
+    <Compile Include="DAL\DAO.cs" />
     <Compile Include="Layouts\App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
