@@ -23,7 +23,8 @@ namespace Bolero.DAL
             try
             {
                 SqlConnection cnx = Connexion.GetConnection();
-                SqlCommand sqlCmd = new SqlCommand("insert into Article (Libelle, Prix, Type) values (@lib,@prix,@type)", cnx);
+                SqlCommand sqlCmd = new SqlCommand("insert into Article (IdArticle,Libelle, Prix, Type) values (@id,@lib,@prix,@type)", cnx);
+                sqlCmd.Parameters.AddWithValue("id", a.IdArticle);
                 sqlCmd.Parameters.AddWithValue("lib", a.Libelle);
                 sqlCmd.Parameters.AddWithValue("prix", a.Prix);
                 sqlCmd.Parameters.AddWithValue("type", a.Type);
@@ -194,6 +195,20 @@ namespace Bolero.DAL
 
                 throw;
             }
+            finally { Connexion.closeConnection(); }
+            return res;
+        }
+        public int getNumberOfElements()
+        {
+            int res = 0;
+            try
+            {
+                SqlConnection cnx = Connexion.GetConnection();
+                SqlCommand cmd = new SqlCommand("SELECT MAX(IdArticle) from Article", cnx);
+                int done = (int)cmd.ExecuteScalar();
+                if (done > 0) res = done;
+            }
+            catch (SqlException) { throw; }
             finally { Connexion.closeConnection(); }
             return res;
         }

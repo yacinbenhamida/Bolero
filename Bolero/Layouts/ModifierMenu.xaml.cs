@@ -188,30 +188,7 @@ namespace Bolero
             dao.delete(Id);
             MessageBox.Show("article supprimé");
             lstentree = dao.getArticlesByType("entree");
-            if (tbEnt.IsSelected) 
-            {
-                clearUI("entree");
-            }
-            else if (tbDes.IsSelected)
-            {
-                clearUI("dessert");
-            }
-            else if (tbHO.IsSelected) 
-            {
-                clearUI("hors d'oeuvre");
-            }
-            else if (tbPJ.IsSelected)
-            {
-                clearUI("plat du jour");
-            }
-            else if (tbSuite.IsSelected) 
-            {
-                clearUI("suite");
-            }
-            else if (tbBoiss.IsSelected) 
-            {
-                clearUI("boisson");
-            }
+            refreshTabs();
             initUI();
           
         }
@@ -238,10 +215,11 @@ namespace Bolero
         private void btnAjouter_Click(object sender, RoutedEventArgs e)
         {   
             AjoutPlat ajout = new AjoutPlat();
+            ajout.Closing += new System.ComponentModel.CancelEventHandler(this.Window3_Closing);
             ajout.ShowDialog();
         }
 
-        private void Window2_Closing(object sender, EventArgs e)
+        private void refreshTabs() 
         {
             if (tbEnt.IsSelected)
             {
@@ -267,8 +245,20 @@ namespace Bolero
             {
                 clearUI("boisson");
             }
+        }
+
+        private void Window3_Closing(object sender, EventArgs e)
+        {
+            refreshTabs();
             initUI();
         }
+
+        private void Window2_Closing(object sender, EventArgs e)
+        {
+            refreshTabs();
+            initUI();
+        }
+        
        
     }
 }

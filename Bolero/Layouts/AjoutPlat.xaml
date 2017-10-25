@@ -14,13 +14,13 @@
         </Grid.ColumnDefinitions>
 
        
-        <ComboBox FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" SelectedIndex="0" Grid.Column="0" Width="150" Height="46">
-            <ComboBoxItem >Type</ComboBoxItem>
+        <ComboBox FontSize="20" VerticalAlignment="Center" x:Name="cmbType" HorizontalAlignment="Center" Grid.Column="0" Width="150" Height="46">
+            <ComboBoxItem >entree</ComboBoxItem>
+            <ComboBoxItem >suite</ComboBoxItem>
+            <ComboBoxItem >hors d'oeuvre</ComboBoxItem>
+            <ComboBoxItem >plat du jour</ComboBoxItem>
             <ComboBoxItem >dessert</ComboBoxItem>
-            <ComboBoxItem >Suite</ComboBoxItem>
-            <ComboBoxItem>entree</ComboBoxItem>
-            <ComboBoxItem>plat du jour</ComboBoxItem>
-            <ComboBoxItem>Boisson</ComboBoxItem>
+            <ComboBoxItem >boisson</ComboBoxItem>
         </ComboBox>
         <StackPanel Grid.Column="1" VerticalAlignment="Center" >
             <TextBlock Text="Nom plat" FontSize="20"></TextBlock>

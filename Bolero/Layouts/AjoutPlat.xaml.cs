@@ -11,7 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
+using Bolero.DAL;
+using Bolero.BL;
 namespace Bolero
 {
     /// <summary>
@@ -19,9 +20,13 @@ namespace Bolero
     /// </summary>
     public partial class AjoutPlat : Window
     {
+        ArticleDAO dao;
+        Article a;
         public AjoutPlat()
         {
             InitializeComponent();
+            dao = new ArticleDAO();
+            a = new Article();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -36,7 +41,30 @@ namespace Bolero
 
         private void btnValider_Click(object sender, RoutedEventArgs e)
         {
-            
+            if ((!String.IsNullOrEmpty(txtNomPlat.Text)) && (!String.IsNullOrEmpty(txtprix.Text)) && (cmbType.SelectedIndex != -1) && cmbType.SelectedValue != null && cmbType.SelectedItem != null)
+            {
+                int lastFetchedId = dao.getNumberOfElements();
+                a.Libelle = txtNomPlat.Text;
+                a.Prix = Decimal.Parse(txtprix.Text);
+                a.Type = cmbType.Text;   
+                a.IdArticle = lastFetchedId + 1;
+                try
+                {
+                    if (!dao.find(a))
+                    {
+                        if (dao.add(a) == 1)
+                        {
+                            MessageBox.Show("ajouté avec succes");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("article déja ajouté");
+                    }
+                }
+                catch (Exception ex) { MessageBox.Show(ex.Message); }
+                
+            }  
         }
 
       

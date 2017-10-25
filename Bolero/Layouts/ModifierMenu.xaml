@@ -1,7 +1,7 @@
 ﻿<Window x:Class="Bolero.ModifierMenu"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Modifier Menu" Height="670" Width="Auto" Loaded="Window_Loaded"
+        Title="Modifier Menu" Height="688" Width="Auto" Loaded="Window_Loaded"
 >
     <Window.Resources>
         <!-- style pour les boutons a afficher -->
@@ -19,7 +19,12 @@
                         </Setter.Value>
                     </Setter>
                 </Trigger>
+                <Trigger Property="IsFocused" Value="true">
+                    <Setter Property="BorderBrush" Value="Black" />
+                    <Setter Property="BorderThickness" Value="5"/>
+                </Trigger>
             </Style.Triggers>
+ 
         </Style>
         <!-- style pour la liste des boutons-->
         <Style TargetType="ListBoxItem">
