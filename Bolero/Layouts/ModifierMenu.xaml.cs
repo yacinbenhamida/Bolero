@@ -184,12 +184,17 @@ namespace Bolero
 
         private void btnSupprimer_Click(object sender, RoutedEventArgs e)
         {
-            
-            dao.delete(Id);
-            MessageBox.Show("article supprimé");
-            lstentree = dao.getArticlesByType("entree");
-            refreshTabs();
-            initUI();
+            Button b = (Button)sender;
+            String nombtn=b.Name.Substring(3);
+            if (nombtn != null)
+            {
+                dao.delete(Id);
+                MessageBox.Show("article supprimé");
+                lstentree = dao.getArticlesByType("entree");
+                refreshTabs();
+                initUI();
+            }
+            else MessageBox.Show("vous devez selectionner un article !");
           
         }
 

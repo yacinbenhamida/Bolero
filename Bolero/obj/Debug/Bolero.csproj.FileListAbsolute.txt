@@ -80,3 +80,4 @@ C:\Users\USER\Desktop\Bolero\BoleroGArticles\Bolero\Bolero\obj\Debug\Bolero.Prop
 C:\Users\USER\Desktop\Bolero\BoleroGArticles\Bolero\Bolero\obj\Debug\Bolero.csproj.GenerateResource.Cache
 C:\Users\USER\Desktop\Bolero\BoleroGArticles\Bolero\Bolero\obj\Debug\Bolero.exe
 C:\Users\USER\Desktop\Bolero\BoleroGArticles\Bolero\Bolero\obj\Debug\Bolero.pdb
+C:\Users\USER\Desktop\Bolero\BoleroGArticles\Bolero\Bolero\obj\Debug\Bolero.csprojResolveAssemblyReference.cache
