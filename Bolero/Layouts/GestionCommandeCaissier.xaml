@@ -1,9 +1,8 @@
-﻿<Window x:Class="Bolero.GestionCommande"
+﻿<Window x:Class="Bolero.Layouts.GestionCommandeCaissier"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Gestion Commande" Height="539" Width="1180" Loaded="Window_Loaded">
+        Title="GestionCommandeCaissier" Height="539" Width="1180" Loaded="Window_Loaded">
     <Window.Resources>
-
         <Style x:Key="NoChromeButton" TargetType="{x:Type Button}">
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="BorderThickness" Value="1"/>
@@ -27,7 +26,6 @@
                 </Setter.Value>
             </Setter>
         </Style>
-
         <!-- style pour les boutons a afficher -->
         <Style TargetType="Button">
             <Setter Property="Margin" Value="10"/>
@@ -210,53 +208,13 @@
                         <Button x:Name="btnValider" Content="Valider" Grid.Row="3" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="150" Height="50" FontWeight="Bold" FontSize="16" Foreground="White" Background="#FF079B00" Click="btnValider_Click"/>
                         <Button x:Name="btnAnnuler" Content="Annuler" Grid.Row="4" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="100" Height="50" FontSize="16" FontWeight="Bold" Foreground="White" Background="#FFF31111" Click="btnAnnuler_Click"/>
                     </Grid>
-
-
+                    
                     <Grid Grid.Column="3">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="30"/>
+                        <Grid.RowDefinitions>  
                             <RowDefinition />
                             <RowDefinition Height="30"/>
                         </Grid.RowDefinitions>
-                        <Grid Margin="2" Background="White" VerticalAlignment="Center">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="40"/>
-                                <ColumnDefinition />
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="40"/>
-                            </Grid.RowDefinitions>
-                            <Button  Style="{DynamicResource NoChromeButton}" HorizontalAlignment="Left" VerticalAlignment="center" Width="30" Height="30" Click="Search_Click" >
-                                <Image Source="..\Resources\search.png" Height="16" Opacity="1"></Image>
-                            </Button>
-                            
-                            <TextBox Name="SearchTextBox" Grid.Column="1" BorderThickness="0" Height="40" HorizontalAlignment="Stretch" KeyDown="SearchTextBox_KeyDown" VerticalContentAlignment="Center" TextWrapping="Wrap" Text="{Binding SearchText}" VerticalAlignment="Stretch"  GotFocus="SearchBox_GotFocus" GotMouseCapture="SearchTextBox_GotMouseCapture" >
-                                <TextBox.Style>
-                                    <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
-                                        <Style.Resources>
-                                            <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
-                                                <VisualBrush.Visual>
-                                                    <Label Content="Search" Foreground="LightGray" FontStyle="Italic" FontWeight="Bold" FontSize="16" />
-                                                </VisualBrush.Visual>
-                                            </VisualBrush>
-                                        </Style.Resources>
-                                        <Style.Triggers>
-                                            <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
-                                                <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
-                                            </Trigger>
-                                            <Trigger Property="Text" Value="{x:Null}">
-                                                <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
-                                            </Trigger>
-                                            <Trigger Property="IsKeyboardFocused" Value="True">
-                                                <Setter Property="Background" Value="White" />
-                                            </Trigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </TextBox.Style>
-                            </TextBox>
-
-                        </Grid>
-                        <DataGrid Name="dataGrid" Grid.Row="1" AutoGenerateColumns="False">
+                        <DataGrid Name="dataGrid" AutoGenerateColumns="False">
                             <DataGrid.Columns>
                                 <DataGridTextColumn x:Name="dataCmd" Header="Commande" Binding="{Binding commande}"></DataGridTextColumn>
                                 <DataGridTemplateColumn Header="Modifer">
@@ -267,12 +225,12 @@
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
                                 <DataGridTemplateColumn Header="Supprimer">
-                                         <DataGridTemplateColumn.CellTemplate>
-                                             <DataTemplate>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
                                             <Button x:Name="supp" Content="X" HorizontalAlignment="Center" VerticalAlignment="Center" Width="40" Height="40" Click="supp_Click" FontWeight="Bold" FontSize="16" Background="#FFA84500" Foreground="White"/>
-                                             </DataTemplate>
-                                         </DataGridTemplateColumn.CellTemplate>
-                                     </DataGridTemplateColumn>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
                                 <DataGridTemplateColumn Header="Facturation">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
@@ -299,26 +257,11 @@
                 </Grid>
             </TabItem>
 
-            <TabItem Foreground="Black" Header="Maintenace" Background="#FFACA5A5" FontWeight="Bold" FontSize="14">
-                    <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
-                        <Grid.RowDefinitions>
-                        <RowDefinition Height="70"/>
-                        <RowDefinition Height="70"/>
-                    </Grid.RowDefinitions>
-                    <Button x:Name="btnModiMenu" Content="Modifier Menu" HorizontalAlignment="Center" VerticalAlignment="Center" Width="650" Height="50" Foreground="White" Background="#FF5E88E2" FontSize="18" FontWeight="Bold" Click="btnModiMenu_Click"/>
-                    <Button x:Name="btnGereUltil" Grid.Row="1" Content="Gérer Utilisateur" HorizontalAlignment="Center" VerticalAlignment="Center" Width="650" Height="50" Foreground="White" Background="#FF0C0B0B" FontSize="18" FontWeight="Bold" Click="btnGereUltil_Click"/>
-                    </Grid>
-            </TabItem>
-
             <TabItem Foreground="Black" Header="Recette" Background="#FFACA5A5" FontWeight="Bold" FontSize="14">
 
             </TabItem>
 
             <TabItem Foreground="Black" Header="Etat.Resto" Background="#FFACA5A5" FontWeight="Bold" FontSize="14">
-
-            </TabItem>
-
-            <TabItem Foreground="Black" Header="Historique" Background="#FFACA5A5" FontWeight="Bold" FontSize="14">
 
             </TabItem>
         </TabControl>

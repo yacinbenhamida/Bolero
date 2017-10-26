@@ -140,5 +140,25 @@ namespace Bolero
         {
 
         }
+
+        private void Paiement_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Fact_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void supp_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void modif_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

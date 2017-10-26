@@ -70,6 +70,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Layouts\AffecterPlat.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Layouts\GestionCommande.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -79,6 +83,9 @@
     <Compile Include="DAL\ArticleDAO.cs" />
     <Compile Include="DAL\Connexion.cs" />
     <Compile Include="DAL\DAO.cs" />
+    <Compile Include="Layouts\AffecterPlat.xaml.cs">
+      <DependentUpon>AffecterPlat.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Layouts\App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -89,6 +96,10 @@
       <DependentUpon>GestionCommande.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Layouts\GestionCommandeCaissier.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Layouts\InfoCommande.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -99,6 +110,9 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Layouts\GestionCommandeCaissier.xaml.cs">
+      <DependentUpon>GestionCommandeCaissier.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Layouts\InfoCommande.xaml.cs">
       <DependentUpon>InfoCommande.xaml</DependentUpon>
     </Compile>
