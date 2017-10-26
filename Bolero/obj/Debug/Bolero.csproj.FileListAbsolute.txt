@@ -50,3 +50,7 @@ C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\obj\Debug\Layo
 C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\obj\Debug\Layouts\GestionCommandeCaissier.baml
 C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\obj\Debug\Layouts\AffecterPlat.g.cs
 C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\obj\Debug\Layouts\GestionCommandeCaissier.g.cs
+C:\Users\USER\Desktop\Bolero\BoleroGCommandess\Bolero\Bolero\obj\Debug\Layouts\AffecterPlat.baml
+C:\Users\USER\Desktop\Bolero\BoleroGCommandess\Bolero\Bolero\obj\Debug\Layouts\GestionCommandeCaissier.baml
+C:\Users\USER\Desktop\Bolero\BoleroGCommandess\Bolero\Bolero\obj\Debug\Layouts\AffecterPlat.g.cs
+C:\Users\USER\Desktop\Bolero\BoleroGCommandess\Bolero\Bolero\obj\Debug\Layouts\GestionCommandeCaissier.g.cs

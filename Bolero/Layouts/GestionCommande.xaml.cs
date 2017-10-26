@@ -13,7 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using Bolero.DAL;
+using Bolero.BL;
 namespace Bolero
 {
     /// <summary>
@@ -21,6 +22,14 @@ namespace Bolero
     /// </summary>
     public partial class GestionCommande : Window, INotifyPropertyChanged
     {
+        ArticleDAO dao = new ArticleDAO();
+
+        private List<Article> lstentree = new List<Article>();
+        private List<Article> lstsuite = new List<Article>();
+        private List<Article> lsthors = new List<Article>();
+        private List<Article> lstdessert = new List<Article>();
+        private List<Article> lstboissons = new List<Article>();
+        private List<Article> lstplatdj = new List<Article>();
         public GestionCommande()
         {
             InitializeComponent();
@@ -34,8 +43,150 @@ namespace Bolero
             timer.Interval = new TimeSpan(0, 0, 1);
             timer.Tick += timer_Tick;
             timer.Start();
+            btnAnnuler.IsEnabled = false;
+
+        /***************************/
+
+            lstentree = dao.getArticlesByType("entree");
+            lstsuite = dao.getArticlesByType("suite");
+            lstdessert = dao.getArticlesByType("dessert");
+            lstboissons = dao.getArticlesByType("boisson");
+            lsthors = dao.getArticlesByType("hors d'oeuvre");
+            lstplatdj = dao.getArticlesByType("plat du jour");
+
+            entree.DataContext = lstentree;
+            Suite.DataContext = lstsuite;
+            boisson.DataContext = lstboissons;
+            hrov.DataContext = lsthors;
+            PJ.DataContext = lstplatdj;
+            dessert.DataContext = lstdessert;
+            if (entree.Items.Count == 0)
+            {
+                for (int j = 0; j < lstentree.Count; j++)
+                {
+                    Button btn = new Button();
+                    btn.Name = "btn" + lstentree[j].IdArticle;
+                    btn.Content = lstentree[j].Libelle;
+                    btn.Click += new RoutedEventHandler(this.btn_Click);
+                    btn.Background = Brushes.Green;
+                    btn.Foreground = Brushes.White;
+                    entree.Items.Add(btn);
+                }
+            }
+            if (Suite.Items.Count == 0)
+            {
+                for (int j = 0; j < lstsuite.Count; j++)
+                {
+                    Button btn = new Button();
+                    btn.Name = "btn" + lstsuite[j].IdArticle;
+                    btn.Content = lstsuite[j].Libelle;
+                    btn.Click += new RoutedEventHandler(this.btn_Click);
+                    btn.Background = Brushes.Red;
+                    btn.Foreground = Brushes.White;
+                    Suite.Items.Add(btn);
+                }
+            }
+            if (hrov.Items.Count == 0)
+            {
+                for (int j = 0; j < lsthors.Count; j++)
+                {
+                    Button btn = new Button();
+                    btn.Name = "btn" + lsthors[j].IdArticle;
+                    btn.Content = lsthors[j].Libelle;
+                    btn.Click += new RoutedEventHandler(this.btn_Click);
+                    btn.Background = Brushes.Gray;
+                    btn.Foreground = Brushes.White;
+                    hrov.Items.Add(btn);
+                }
+            }
+            if (boisson.Items.Count == 0)
+            {
+                for (int j = 0; j < lstboissons.Count; j++)
+                {
+                    Button btn = new Button();
+                    btn.Name = "btn" + lstboissons[j].IdArticle;
+                    btn.Content = lstboissons[j].Libelle;
+                    btn.Click += new RoutedEventHandler(this.btn_Click);
+                    btn.Background = Brushes.Blue;
+                    btn.Foreground = Brushes.White;
+                    boisson.Items.Add(btn);
+                }
+            }
+            if (dessert.Items.Count == 0)
+            {
+                for (int j = 0; j < lstdessert.Count; j++)
+                {
+                    Button btn = new Button();
+                    btn.Name = "btn" + lstdessert[j].IdArticle;
+                    btn.Content = lstdessert[j].Libelle;
+                    btn.Click += new RoutedEventHandler(this.btn_Click);
+                    btn.Background = Brushes.Purple;
+                    btn.Foreground = Brushes.White;
+                    dessert.Items.Add(btn);
+                }
+            }
+            if (PJ.Items.Count == 0)
+            {
+                for (int j = 0; j < lstplatdj.Count; j++)
+                {
+                    Button btn = new Button();
+                    btn.Name = "btn" + lstplatdj[j].IdArticle;
+                    btn.Content = lstplatdj[j].Libelle;
+                    btn.Click += new RoutedEventHandler(this.btn_Click);
+                    btn.Background = Brushes.Yellow;
+                    btn.Foreground = Brushes.Black;
+                    PJ.Items.Add(btn);
+                }
+            }
+        }
+        Article a;
+        
+        private void btn_Click(object sender, RoutedEventArgs e)
+        {
+            btnAnnuler.IsEnabled = true;
+            Button b = (Button)sender;
+            Button b2 = new Button();
+            b2.Name = b.Name;
+            b2.Content = b.Content;
+            b2.Background = b.Background;
+            b2.Click += new RoutedEventHandler(this.callBack_AutoGenerated_Buttons);
+            ArticleDAO daoart = new ArticleDAO();
+             a = daoart.getById(Int32.Parse(b2.Name.Substring(3)));
+            lstArticlesCmd.Add(a);
+            platCmd.Items.Add(b2);
+
+
+        }
+        string idbtn = "";
+        
+        List<Article> lstArticlesCmd = new List<Article>();
+        private void callBack_AutoGenerated_Buttons(object sender, RoutedEventArgs e) 
+        { 
+            Button b = (Button)sender;
+            idbtn = b.Name;
+            MessageBox.Show(idbtn + "");
+
         }
 
+        
+       
+         private void btnDelArticle_Click(object sender, RoutedEventArgs e)
+        {
+            platCmd.Items.Remove(idbtn);
+            lstArticlesCmd.Remove(a);
+            platCmd.Items.Clear();
+            for (int j = 0; j < lstArticlesCmd.Count; j++)
+            {
+                Button btn = new Button();
+                btn.Name = "btn" + lstArticlesCmd[j].IdArticle;
+                btn.Content = lstArticlesCmd[j].Libelle;
+                btn.Click += new RoutedEventHandler(this.callBack_AutoGenerated_Buttons);
+                btn.Background = Brushes.Yellow;
+                btn.Foreground = Brushes.Black;
+                platCmd.Items.Add(btn);
+            }
+
+        }
         void timer_Tick(object sender, EventArgs e)
         {
             lblHeure.Content = DateTime.Now.ToLongTimeString();
@@ -43,88 +194,29 @@ namespace Bolero
 
         private void btnValider_Click(object sender, RoutedEventArgs e)
         {
-            Layouts.ModifierCommande modi = new Layouts.ModifierCommande();
-            modi.ShowDialog();
+            if (platCmd.Items.Count == 0 || lstArticlesCmd.Count == 0 || cmbServ.SelectedIndex == -1 || cmbTable.SelectedIndex == -1 || cmbServ.Text == "Serveur" || cmbTable.Text == "Table") 
+            {
+                MessageBox.Show("vous devez renseigner tous les champs! ", "Erreur", MessageBoxButton.OK, MessageBoxImage.Stop);
+                return;
+            }
         }
-
+        
         private void btnAnnuler_Click(object sender, RoutedEventArgs e)
         {
-
+            platCmd.Items.Clear();
+            lstArticlesCmd.Clear();
+            btnAnnuler.IsEnabled = false;
         }
 
-        // Search ********************************************************************
-         private static DependencyProperty SearchTextProperty =
-                                                    DependencyProperty.Register("SearchText", typeof(string), typeof(GestionCommande),
-                                                    new FrameworkPropertyMetadata(string.Empty, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault |
-                                                                                         FrameworkPropertyMetadataOptions.Inherits));
-
-        public string SearchText
-        {
-            get { return (string)GetValue(SearchTextProperty); }
-            set 
-            {
-                SetValue(SearchTextProperty, value);
-            }
-        }
+       
+       
 
 
-        private void OnPropertyChanged(string p)
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(p));
-            }
-        }
+      
 
-        public event PropertyChangedEventHandler PropertyChanged;
+      
 
-        private void SearchBox_GotFocus(object sender, RoutedEventArgs e)
-        {
-            var t = (TextBox)sender;
-            t.SelectAll();
-        }
-
-        private void SearchTextBox_GotMouseCapture(object sender, MouseEventArgs e)
-        {
-            var t = (TextBox)sender;
-            t.SelectAll();
-        }
-
-        private void Search_Click(object sender, RoutedEventArgs e)
-        {
-            OnSearchEvent();
-        }
-
-        public static readonly RoutedEvent SearchEvent = EventManager.RegisterRoutedEvent(
-             "Search", // Event name
-              RoutingStrategy.Bubble, // Bubble means the event will bubble up through the tree
-              typeof(RoutedEventHandler), // The event type
-                 typeof(GestionCommande)
-                 ); // Belongs to ChildControlBase
-
-        // Allows add and remove of event handlers to handle the custom event
-        public event RoutedEventHandler Search
-        {
-            add { AddHandler(SearchEvent, value); }
-            remove { RemoveHandler(SearchEvent, value); }
-        }
-
-        private void SearchTextBox_KeyDown(object sender, KeyEventArgs e)
-        {
-            if(e.Key.Equals(Key.Enter))
-            {
-                OnSearchEvent();
-            } 
-        }
-
-        private void OnSearchEvent()
-        {
-            SearchText = SearchTextBox.Text;
-            var newEventArgs = new RoutedEventArgs(GestionCommande.SearchEvent);
-            RaiseEvent(newEventArgs);
-        }  
-
-        // Search ********************************************************************
+       
 
         private void btnLogout_Click(object sender, RoutedEventArgs e)
         {
@@ -158,7 +250,15 @@ namespace Bolero
 
         private void modif_Click(object sender, RoutedEventArgs e)
         {
+            Layouts.ModifierCommande modi = new Layouts.ModifierCommande();
+            modi.ShowDialog();
+        }
+
+        private void Paiement_Click_1(object sender, RoutedEventArgs e)
+        {
 
         }
+
+       
     }
 }

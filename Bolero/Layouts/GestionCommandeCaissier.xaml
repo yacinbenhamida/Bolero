@@ -1,7 +1,8 @@
 ﻿<Window x:Class="Bolero.Layouts.GestionCommandeCaissier"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="GestionCommandeCaissier" Height="539" Width="1180" Loaded="Window_Loaded">
+        Title="GestionCommandeCaissier" Height="805.641" Width="1180" Loaded="Window_Loaded"
+        WindowState="Maximized">
     <Window.Resources>
         <Style x:Key="NoChromeButton" TargetType="{x:Type Button}">
             <Setter Property="Background" Value="Transparent"/>
@@ -78,7 +79,7 @@
 
         <TabControl VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
 
-            <TabItem Foreground="Black" Header="Resto" Background="#FFACA5A5" FontWeight="Bold" FontSize="14">
+            <TabItem Height="40" Foreground="Black" Header="Resto" Background="#FFACA5A5" FontWeight="Bold" FontSize="14">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition />
@@ -106,7 +107,7 @@
                                 </Setter>
                             </Style>
                         </TabControl.Resources>
-                        <TabItem x:Name="tbEnt" Foreground="Black" Header="Entrée" Background="Green" FontWeight="Bold" FontSize="14" >
+                        <TabItem Height="50" x:Name="tbEnt" Foreground="Black" Header="Entrée" Background="Green" FontWeight="Bold" FontSize="14" >
                             <ScrollViewer HorizontalScrollBarVisibility="Auto">
                                 <ListBox x:Name="entree"  >
                                     <ListBox.ItemsPanel>
@@ -118,7 +119,7 @@
                             </ScrollViewer>
                         </TabItem>
 
-                        <TabItem x:Name="tbSuite" Foreground="Black" Header="Suite" Background="Crimson" FontWeight="Bold" FontSize="14">
+                        <TabItem Height="50" x:Name="tbSuite" Foreground="Black" Header="Suite" Background="Crimson" FontWeight="Bold" FontSize="14">
                             <ScrollViewer HorizontalScrollBarVisibility="Auto">
                                 <ListBox x:Name="Suite" >
                                     <ListBox.ItemsPanel>
@@ -129,7 +130,7 @@
                                 </ListBox>
                             </ScrollViewer>
                         </TabItem>
-                        <TabItem x:Name="tbHO" Foreground="Black" Header="Hors d'oeuvres" Background="#FFACA5A5" FontWeight="Bold" FontSize="14">
+                        <TabItem Height="50" x:Name="tbHO" Foreground="Black" Header="Hors d'oeuvres" Background="#FFACA5A5" FontWeight="Bold" FontSize="14">
                             <ScrollViewer HorizontalScrollBarVisibility="Auto">
                                 <ListBox x:Name="hrov" >
                                     <ListBox.ItemsPanel>
@@ -140,7 +141,7 @@
                                 </ListBox>
                             </ScrollViewer>
                         </TabItem>
-                        <TabItem x:Name="tbDes" Foreground="Black" Header="Desserts" Background="Purple" FontWeight="Bold" FontSize="14">
+                        <TabItem Height="50" x:Name="tbDes" Foreground="Black" Header="Desserts" Background="Purple" FontWeight="Bold" FontSize="14">
                             <ScrollViewer HorizontalScrollBarVisibility="Auto">
                                 <ListBox x:Name="dessert" >
                                     <ListBox.ItemsPanel>
@@ -151,7 +152,7 @@
                                 </ListBox>
                             </ScrollViewer>
                         </TabItem>
-                        <TabItem x:Name="tbBoiss" Foreground="Black" Header="Boissons" Background="DarkBlue" FontWeight="Bold" FontSize="14">
+                        <TabItem Height="50"  x:Name="tbBoiss" Foreground="Black" Header="Boissons" Background="DarkBlue" FontWeight="Bold" FontSize="14">
                             <ScrollViewer HorizontalScrollBarVisibility="Auto">
                                 <ListBox x:Name="boisson" >
                                     <ListBox.ItemsPanel>
@@ -162,7 +163,7 @@
                                 </ListBox>
                             </ScrollViewer>
                         </TabItem>
-                        <TabItem x:Name="tbPJ" Foreground="Black" Header="Plat du jour" Background="Gold" FontWeight="Bold" FontSize="14">
+                        <TabItem Height="50" x:Name="tbPJ" Foreground="Black" Header="Plat du jour" Background="Gold" FontWeight="Bold" FontSize="14">
                             <ScrollViewer HorizontalScrollBarVisibility="Auto">
                                 <ListBox x:Name="PJ" >
                                     <ListBox.ItemsPanel>
@@ -179,34 +180,38 @@
 
                     <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="1">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="220"/>
+                            <RowDefinition/>
+                            <RowDefinition Height="7*"/>
                             <RowDefinition />
                             <RowDefinition />
-                            <RowDefinition Height="70"/>
-                            <RowDefinition Height="70"/>
+                            <RowDefinition />
+                            <RowDefinition/>
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition />
                         </Grid.ColumnDefinitions>
-                        <GroupBox Header="Plats" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.Column="1">
-                            <ScrollViewer HorizontalScrollBarVisibility="Auto">
-                                <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-
-                                </StackPanel>
-                            </ScrollViewer>
+                        <Button x:Name="btnDelArticle" Click="Button_Click" FontWeight="ExtraBold" Background="LightCoral" Content="X" HorizontalAlignment="Right" VerticalAlignment="Center" Width="50" Height="40"/>
+                        <GroupBox Header="Plats" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.Column="1" Grid.Row="1">
+                            <ListBox x:Name="platCmd"  >
+                                <ListBox.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <UniformGrid />
+                                    </ItemsPanelTemplate>
+                                </ListBox.ItemsPanel>
+                            </ListBox>
                         </GroupBox>
-                        <ComboBox x:Name="cmbServ" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Top" SelectedIndex="0" Width="250" Height="30">
+                        <ComboBox x:Name="cmbServ" Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" SelectedIndex="0" Width="250" Height="30">
                             <ComboBoxItem Name="cmbServ0">Serveur</ComboBoxItem>
                             <ComboBoxItem Name="cmbServ1">Serveur 1</ComboBoxItem>
                             <ComboBoxItem Name="cmbServ2">Serveur 2</ComboBoxItem>
                         </ComboBox>
-                        <ComboBox x:Name="cmbTable" Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" SelectedIndex="0" Width="250" Height="30">
+                        <ComboBox x:Name="cmbTable" Grid.Row="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" SelectedIndex="0" Width="250" Height="30">
                             <ComboBoxItem Name="cmbTable0">Table</ComboBoxItem>
                             <ComboBoxItem Name="cmbTable1">Table 1</ComboBoxItem>
                             <ComboBoxItem Name="cmbTable2">Table 2</ComboBoxItem>
                         </ComboBox>
-                        <Button x:Name="btnValider" Content="Valider" Grid.Row="3" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="150" Height="50" FontWeight="Bold" FontSize="16" Foreground="White" Background="#FF079B00" Click="btnValider_Click"/>
-                        <Button x:Name="btnAnnuler" Content="Annuler" Grid.Row="4" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="100" Height="50" FontSize="16" FontWeight="Bold" Foreground="White" Background="#FFF31111" Click="btnAnnuler_Click"/>
+                        <Button x:Name="btnValider" Content="Valider" Grid.Row="4" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="350" Height="40" FontWeight="Bold" FontSize="16" Foreground="White" Background="#FF079B00" Click="btnValider_Click"/>
+                        <Button x:Name="btnAnnuler" Content="Annuler" Grid.Row="5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="350" Height="40" FontSize="16" FontWeight="Bold" Foreground="White" Background="#FFF31111" Click="btnAnnuler_Click"/>
                     </Grid>
                     
                     <Grid Grid.Column="3">

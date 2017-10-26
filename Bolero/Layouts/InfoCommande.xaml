@@ -21,7 +21,9 @@
             <Label x:Name="lblServeur" Content="Foulen ben foulen" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
         </StackPanel>
         <DataGrid Name="dataGrid" Grid.Row="2" Grid.ColumnSpan="2">
+            
             <DataGrid.Columns>
+                
                 <DataGridTextColumn Header="PLAT" ></DataGridTextColumn>
                 <DataGridTextColumn Header="TYPE" ></DataGridTextColumn>
                 <DataGridTextColumn Header="QTE" ></DataGridTextColumn>
