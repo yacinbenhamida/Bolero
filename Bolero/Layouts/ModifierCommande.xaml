@@ -33,11 +33,19 @@
         </StackPanel>
         <DataGrid Name="dataGrid" Grid.Row="2" Grid.ColumnSpan="2">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="PLAT" ></DataGridTextColumn>
+                
+                    
+                    <DataGridTextColumn Header="PLAT" ></DataGridTextColumn>
                 <DataGridTextColumn Header="TYPE" ></DataGridTextColumn>
                 <DataGridTextColumn Header="QTE" ></DataGridTextColumn>
                 <DataGridTextColumn Header="PU" ></DataGridTextColumn>
-                <DataGridTextColumn Header="SUPPRIMER" ></DataGridTextColumn>
+                <DataGridTemplateColumn Header="Supprimer">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="modif" Content="X" HorizontalAlignment="Center" VerticalAlignment="Center" Width="40" Height="40"  FontWeight="Bold" FontSize="16" Background="Red" Foreground="White"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
             </DataGrid.Columns>
             <ScrollViewer HorizontalScrollBarVisibility="Auto">
 

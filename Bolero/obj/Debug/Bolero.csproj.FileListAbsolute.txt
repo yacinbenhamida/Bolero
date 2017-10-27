@@ -33,7 +33,6 @@ C:\Users\USER\Desktop\Bolero\BoleroGCommandess\Bolero\Bolero\bin\Debug\Resources
 C:\Users\USER\Desktop\Bolero\BoleroGCommandess\Bolero\Bolero\bin\Debug\Resources\BoleroDB_log.ldf
 C:\Users\USER\Desktop\Bolero\BoleroGCommandess\Bolero\Bolero\bin\Debug\Bolero.exe
 C:\Users\USER\Desktop\Bolero\BoleroGCommandess\Bolero\Bolero\bin\Debug\Bolero.pdb
-C:\Users\USER\Desktop\Bolero\BoleroGCommandess\Bolero\Bolero\obj\Debug\Bolero.csprojResolveAssemblyReference.cache
 C:\Users\USER\Desktop\Bolero\BoleroGCommandess\Bolero\Bolero\obj\Debug\Layouts\GestionCommande.baml
 C:\Users\USER\Desktop\Bolero\BoleroGCommandess\Bolero\Bolero\obj\Debug\Layouts\InfoCommande.baml
 C:\Users\USER\Desktop\Bolero\BoleroGCommandess\Bolero\Bolero\obj\Debug\Layouts\ModifierCommande.baml
@@ -54,3 +53,4 @@ C:\Users\USER\Desktop\Bolero\BoleroGCommandess\Bolero\Bolero\obj\Debug\Layouts\A
 C:\Users\USER\Desktop\Bolero\BoleroGCommandess\Bolero\Bolero\obj\Debug\Layouts\GestionCommandeCaissier.baml
 C:\Users\USER\Desktop\Bolero\BoleroGCommandess\Bolero\Bolero\obj\Debug\Layouts\AffecterPlat.g.cs
 C:\Users\USER\Desktop\Bolero\BoleroGCommandess\Bolero\Bolero\obj\Debug\Layouts\GestionCommandeCaissier.g.cs
+C:\Users\USER\Desktop\Bolero\BoleroGCommandess\Bolero\Bolero\obj\Debug\Bolero.csprojResolveAssemblyReference.cache

@@ -233,13 +233,7 @@
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="40"/>
                             </Grid.RowDefinitions>
-                            <Button  Style="{DynamicResource NoChromeButton}" HorizontalAlignment="Left" VerticalAlignment="center" Width="30" Height="30" Click="Search_Click" >
-                                <Image Source="..\Resources\search.png" Height="16" Opacity="1"></Image>
-                            </Button>
-
-                           
-                                
-                                        
+                             
                         </Grid>
                         <DataGrid Name="dataGrid" Grid.Row="1" AutoGenerateColumns="False">
                             <DataGrid.Columns>

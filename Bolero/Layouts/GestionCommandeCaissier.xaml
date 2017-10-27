@@ -190,7 +190,7 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition />
                         </Grid.ColumnDefinitions>
-                        <Button x:Name="btnDelArticle" Click="Button_Click" FontWeight="ExtraBold" Background="LightCoral" Content="X" HorizontalAlignment="Right" VerticalAlignment="Center" Width="50" Height="40"/>
+                        <Button x:Name="btnDelArticle" Click="btn_Click" FontWeight="ExtraBold" Background="LightCoral" Content="X" HorizontalAlignment="Right" VerticalAlignment="Center" Width="50" Height="40"/>
                         <GroupBox Header="Plats" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.Column="1" Grid.Row="1">
                             <ListBox x:Name="platCmd"  >
                                 <ListBox.ItemsPanel>
