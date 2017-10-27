@@ -8,12 +8,12 @@ namespace Bolero.BL
 {
     class Commande
     {
-        private int IdCommande { get; set; }
-        private int NumTable { get; set; }
-        private DateTime DateCommande { get; set; }
-        private int IdArticle { get; set; }
-        private string NomServeur { get; set; }
-        private int Id { get; set; }
+        public int IdCommande { get; set; }
+        public int NumTable { get; set; }
+        public DateTime DateCommande { get; set; }
+        public int IdArticle { get; set; }
+        public string NomServeur { get; set; }
+        public int Id { get; set; }
 
         public Commande(int idcommande, int numtable, DateTime datecommande, int idarticle, string nomserveur, int id)
         {
