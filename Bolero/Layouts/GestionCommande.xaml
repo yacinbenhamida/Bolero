@@ -235,9 +235,9 @@
                             </Grid.RowDefinitions>
                              
                         </Grid>
-                        <DataGrid Name="dataGrid" Grid.Row="1" AutoGenerateColumns="False">
+                        <DataGrid ItemsSource="{Binding}" x:Name="dataGrid" Grid.Row="1" AutoGenerateColumns="False">
                             <DataGrid.Columns>
-                                <DataGridTextColumn x:Name="dataCmd" Header="Commande" Binding="{Binding commande}"></DataGridTextColumn>
+                                <DataGridTextColumn x:Name="dataCmd" Header="Commande" Binding="{Binding IdCommande}"></DataGridTextColumn>
                                 <DataGridTemplateColumn Header="Modifer">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>

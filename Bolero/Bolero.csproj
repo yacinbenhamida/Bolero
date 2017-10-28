@@ -83,6 +83,7 @@
     <Compile Include="DAL\ArticleDAO.cs" />
     <Compile Include="DAL\Connexion.cs" />
     <Compile Include="DAL\DAO.cs" />
+    <Compile Include="DAL\TableDAO.cs" />
     <Compile Include="Layouts\AffecterPlat.xaml.cs">
       <DependentUpon>AffecterPlat.xaml</DependentUpon>
     </Compile>
