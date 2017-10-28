@@ -211,6 +211,7 @@ namespace Bolero.DAL
         }
 
         public int update(Commande obj)
+<<<<<<< HEAD
         {          
            int res = 0;
             try
@@ -238,6 +239,22 @@ namespace Bolero.DAL
                     if (done > 0 && done1>0)  res = 1;
                 }
                 
+=======
+        {
+            int res = 0;
+
+            try
+            {
+                SqlConnection cnx = Connexion.GetConnection();
+                SqlCommand cmd = new SqlCommand("UPDATE Commande SET NumTable=@num,DateCommande=@date,IdArticle=@ida,NomServeur=@nomserv,Id=@id where IdCommande=@idcmd", cnx);
+                cmd.Parameters.AddWithValue("num",obj.NumTable );
+                cmd.Parameters.AddWithValue("date", obj.DateCommande);
+                cmd.Parameters.AddWithValue("ida", obj.IdArticle);
+                cmd.Parameters.AddWithValue("nomserv", obj.NomServeur);
+                cmd.Parameters.AddWithValue("id", obj.Id);
+                int done = (int)cmd.ExecuteNonQuery();
+                if (done > 0) res = 1;
+>>>>>>> origin/Gestion-COMMANDES
             }
             catch (SqlException)
             {
