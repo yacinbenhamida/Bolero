@@ -22,13 +22,7 @@ namespace Bolero.DAL
                  int b = 0;
                  int j = 0;
                  int d = 0;
-                for (int i = 0; i < lst.Count; i++)
-                {
-                    sqlCmd = new SqlCommand("insert into Commande (IdCommande,NumTable,DateCommande,NomServeur,Id) values (@idCom,@numt,@Dc,@noms,@id)", cnx);
-                    insertJointure= new SqlCommand("insert into lignecmd(numlignecmd,numcmd,numarticle) VALUES (@nl,@numcd,@numar)",cnx);
-                    insertJointure.Parameters.AddWithValue("nl", i);
-                    insertJointure.Parameters.AddWithValue("numcd", e.IdCommande);
-                    insertJointure.Parameters.AddWithValue("numar", lst[i].IdArticle);
+                  sqlCmd = new SqlCommand("insert into Commande (IdCommande,NumTable,DateCommande,NomServeur,Id) values (@idCom,@numt,@Dc,@noms,@id)", cnx);
                     UpdateTable = new SqlCommand("UPDATE Tables SET Etat='true' where NumTable=@num", cnx);
                     sqlCmd.Parameters.AddWithValue("idCom", e.IdCommande);
                     sqlCmd.Parameters.AddWithValue("numt", e.NumTable);
@@ -36,12 +30,15 @@ namespace Bolero.DAL
                     sqlCmd.Parameters.AddWithValue("noms", e.NomServeur);
                     sqlCmd.Parameters.AddWithValue("id", e.Id);                   
                     UpdateTable.Parameters.AddWithValue("num", e.NumTable);
-                   b = (int)UpdateTable.ExecuteNonQuery();
-                   j = (int)sqlCmd.ExecuteNonQuery();
-                   d = (int)insertJointure.ExecuteNonQuery();
-                }
-               
-                
+                    b = (int)UpdateTable.ExecuteNonQuery();
+                    j = (int)sqlCmd.ExecuteNonQuery();
+                    for (int i = 0; i < lst.Count; i++)
+                    {   
+                        insertJointure= new SqlCommand("insert into lignecmd(numcmd,numarticle) VALUES (@numcd,@numar)",cnx);
+                        insertJointure.Parameters.AddWithValue("numcd", e.IdCommande);
+                        insertJointure.Parameters.AddWithValue("numar", lst[i].IdArticle);
+                    d = (int)insertJointure.ExecuteNonQuery();
+                    }
                 if (b > 0 && j > 0 && d>0)
                 {
                     res = 1;
@@ -67,6 +64,7 @@ namespace Bolero.DAL
             try{
              SqlConnection cnx = Connexion.GetConnection();
              SqlCommand sqlCmd = new SqlCommand("insert into Commande (IdCommande,NumTable,DateCommande,NomServeur,Id) values (@idCom,@numt,@Dc,@noms,@id)", cnx);
+             
               SqlCommand UpdateTable = new SqlCommand("UPDATE Tables SET Etat='true' where NumTable=@num",cnx);
              sqlCmd.Parameters.AddWithValue("idCom",e.IdCommande );
              sqlCmd.Parameters.AddWithValue("numt", e.NumTable);
@@ -167,7 +165,7 @@ namespace Bolero.DAL
                 {
                     while (reader.Read())
                     {
-                        list.Add(new Commande(reader.GetInt32(1), reader.GetDateTime(2), reader.GetString(4), reader.GetInt32(5)));
+                        list.Add(new Commande(reader.GetInt32(1),reader.GetDateTime(2),reader.GetString(3),reader.GetInt32(4)));
                     }
 
                 }

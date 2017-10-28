@@ -38,6 +38,7 @@ namespace Bolero
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            dataGrid.DataContext = daoc.getAll();  
             lblDate.Content = DateTime.Now.ToShortDateString();
             System.Windows.Threading.DispatcherTimer timer = new System.Windows.Threading.DispatcherTimer();
             timer.Interval = new TimeSpan(0, 0, 1);
@@ -214,18 +215,18 @@ namespace Bolero
             else 
             {
                 int NumTb = int.Parse(cmbTable.Text.Substring(6));
-                string nomserv = cmbServ.Text;
-               
-                for (int j = 0; j < lstArticlesCmd.Count; j++)
-                {
-                    tobeAdded = new Commande(NumTb, DateTime.Now, nomserv, 1);
-                    
-                }
-                if (daoc.addMultipleArticlesInOneC(lstArticlesCmd,tobeAdded) == 1)
+                string nomserv = cmbServ.Text;              
+                tobeAdded = new Commande(NumTb, DateTime.Now, nomserv, 1);
+                if (daoc.addMultipleArticlesInOneC(lstArticlesCmd, tobeAdded) == 1)
                 {
                     MessageBox.Show("inséré");
                 }
-                dataGrid.DataContext = daoc.getAll();        
+                else {
+                    MessageBox.Show("la table est occupée !");
+                    return;
+                }
+                dataGrid.DataContext = daoc.getAll();
+                dataGrid.Items.Refresh();
             }
         }
         

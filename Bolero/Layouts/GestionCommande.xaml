@@ -177,10 +177,8 @@
                             </ScrollViewer>
 
                         </TabItem>
-
                     </TabControl>
-
-                    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="1">
+                    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="1" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto">
                         <Grid.RowDefinitions>
                             <RowDefinition/>
                             <RowDefinition Height="6*"/>
@@ -213,67 +211,64 @@
                             <ComboBoxItem Name="cmbTable0">Table</ComboBoxItem>
                             <ComboBoxItem Name="cmbTable1">Table 1</ComboBoxItem>
                             <ComboBoxItem Name="cmbTable2">Table 2</ComboBoxItem>
+                            <ComboBoxItem Name="cmbTable3">Table 3</ComboBoxItem>
+                            <ComboBoxItem Name="cmbTable4">Table 4</ComboBoxItem>
+                            <ComboBoxItem Name="cmbTable5">Table 5</ComboBoxItem>
+                            <ComboBoxItem Name="cmbTable6">Table 6</ComboBoxItem>
+                            <ComboBoxItem Name="cmbTable7">Table 7</ComboBoxItem>
+                            <ComboBoxItem Name="cmbTable8">Table 8</ComboBoxItem>
                         </ComboBox>
                         <Button x:Name="btnValider" Content="Valider" Grid.Row="4" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="350" Height="50" FontWeight="Bold" FontSize="16" Foreground="White" Background="#FF079B00" Click="btnValider_Click"/>
                         <Button x:Name="btnAnnuler" Content="Annuler" Grid.Row="5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="350" Height="50" FontSize="16" FontWeight="Bold" Foreground="White" Background="#FFF31111" Click="btnAnnuler_Click"/>
                     </Grid>
-
-
                     <Grid Grid.Column="3">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="8*" />
                             <RowDefinition />
-                            <RowDefinition Height="30"/>
                         </Grid.RowDefinitions>
-                        <Grid Margin="2" Background="White" VerticalAlignment="Center">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="40"/>
-                                <ColumnDefinition />
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="40"/>
-                            </Grid.RowDefinitions>
-                             
-                        </Grid>
-                        <DataGrid ItemsSource="{Binding}" x:Name="dataGrid" Grid.Row="1" AutoGenerateColumns="False">
+                        <DataGrid  x:Name="dataGrid" ItemsSource="{Binding}" AutoGenerateColumns="False"  >
                             <DataGrid.Columns>
-                                <DataGridTextColumn x:Name="dataCmd" Header="Commande" Binding="{Binding IdCommande}"></DataGridTextColumn>
-                                <DataGridTemplateColumn Header="Modifer">
+                                <DataGridTextColumn Width="1*" Header="Commande" Binding="{Binding IdCommande}">        
+                                </DataGridTextColumn>
+                                <DataGridTemplateColumn Header="Supprimer" Width="*">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
-                                            <Button x:Name="modif" Content="M" HorizontalAlignment="Center" VerticalAlignment="Center" Width="40" Height="40" Click="modif_Click" FontWeight="Bold" FontSize="16" Background="#FFF09B06" Foreground="White"/>
+                                            <StackPanel>
+                                                <Button Content="X" Background="Red"/>
+                                            </StackPanel>
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
-                                <DataGridTemplateColumn Header="Supprimer">
+                                <DataGridTemplateColumn Width="*" Header="Modifier" >
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
-                                            <Button x:Name="supp" Content="X" HorizontalAlignment="Center" VerticalAlignment="Center" Width="40" Height="40" Click="supp_Click" FontWeight="Bold" FontSize="16" Background="#FFA84500" Foreground="White"/>
+                                            <StackPanel>
+                                                <Button Content="M" Background="Yellow"/>
+                                            </StackPanel>
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
-                                <DataGridTemplateColumn Header="Facturation">
+                                <DataGridTemplateColumn Header="Payer" Width="*">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
-                                            <Button x:Name="Fact" Content="F" HorizontalAlignment="Center" VerticalAlignment="Center" Width="40" Height="40" Click="Fact_Click" FontWeight="Bold" FontSize="16" Background="#FF9C71DA" Foreground="White"/>
+                                            <StackPanel>
+                                                <Button Content="$" Background="Green"/>
+                                            </StackPanel>
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
-                                <DataGridTemplateColumn Header="Paiement">
+                                <DataGridTemplateColumn Header="Facturer" Width="*"> 
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
-                                            <Button x:Name="Paiement" Content="$" HorizontalAlignment="Center" VerticalAlignment="Center" Width="40" Height="40" Click="Paiement_Click" FontWeight="Bold" FontSize="16" Background="#FF46B413" Foreground="White"/>
+                                            <StackPanel>
+                                                <Button Content="F" Background="CadetBlue"/>
+                                            </StackPanel>
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
-
-
                             </DataGrid.Columns>
-                            <ScrollViewer HorizontalScrollBarVisibility="Auto">
-
-                            </ScrollViewer>
                         </DataGrid>
-                        <Label x:Name="lblTotal" Content="Total :"  Grid.Row="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" FontWeight="Bold" FontSize="16"/>
+                        <Label x:Name="lblTotal" Content="Total :"  Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" FontWeight="Bold" FontSize="20"/>
                     </Grid>
                 </Grid>
             </TabItem>

@@ -13,7 +13,6 @@ namespace Bolero.BL
         public int IdCommande { get; set; }
         public int NumTable { get; set; }
         public DateTime DateCommande { get; set; }
-       // public int IdArticle { get; set; }
         public string NomServeur { get; set; }
         public int Id { get; set; } // iduser
 
@@ -23,7 +22,6 @@ namespace Bolero.BL
             this.IdCommande = System.Threading.Interlocked.Increment(ref _IdC);
             this.NumTable = numtable;
             this.DateCommande = datecommande;
-            //this.IdArticle = IdArticle;
             this.NomServeur = nomserveur;
             this.Id = id;  
         }
