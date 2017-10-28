@@ -4,19 +4,15 @@
 winexe
 C#
 .cs
-C:\Users\ADMIN\Documents\GitHub\Bolero\obj\Debug\
+C:\Users\USER\Desktop\Bolero\BoleroGCommandess\Bolero\Bolero\obj\Debug\
 Bolero
 none
 false
 DEBUG;TRACE
-C:\Users\ADMIN\Documents\GitHub\Bolero\Layouts\App.xaml
+C:\Users\USER\Desktop\Bolero\BoleroGCommandess\Bolero\Bolero\Layouts\App.xaml
 5557310047
 2-1653433911
-<<<<<<< HEAD
 21-1984213299
-=======
-20-184221846
->>>>>>> origin/Gestion-COMMANDES
 131478842535
 Layouts\AffecterPlat.xaml;Layouts\GestionCommande.xaml;Layouts\GestionCommandeCaissier.xaml;Layouts\InfoCommande.xaml;Layouts\ModifierCommande.xaml;
 
