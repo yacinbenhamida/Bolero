@@ -8,6 +8,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+<<<<<<< HEAD
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("bolerodb.mdf")]
+=======
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/bolerodb_log.ldf")]
+>>>>>>> gestion-ARTICLES
 
 

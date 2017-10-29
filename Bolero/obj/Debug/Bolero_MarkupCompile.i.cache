@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿Bolero
 
 
@@ -18,3 +19,25 @@ MainWindow.xaml;
 
 False
 
+=======
+﻿Bolero
+
+
+winexe
+C#
+.cs
+C:\Users\USER\Desktop\Bolero\BoleroGArticlesDONE\Bolero\Bolero\obj\Debug\
+Bolero
+none
+false
+DEBUG;TRACE
+C:\Users\USER\Desktop\Bolero\BoleroGArticlesDONE\Bolero\Bolero\Layouts\App.xaml
+3-1865710543
+1-2023467811
+161205674250
+12-1401562060
+Layouts\AjoutPlat.xaml;Layouts\ModifierMenu.xaml;Layouts\ModifierPlat.xaml;
+
+False
+
+>>>>>>> gestion-ARTICLES

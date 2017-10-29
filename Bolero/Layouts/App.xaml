@@ -1,0 +1,19 @@
+<<<<<<< HEAD:Bolero/App.xaml
+﻿<Application x:Class="Bolero.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+         
+    </Application.Resources>
+</Application>
+=======
+﻿<Application x:Class="Bolero.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             StartupUri="Layouts\ModifierMenu.xaml">
+    <Application.Resources>
+      
+    </Application.Resources>
+</Application>
+>>>>>>> gestion-ARTICLES:Bolero/Layouts/App.xaml
