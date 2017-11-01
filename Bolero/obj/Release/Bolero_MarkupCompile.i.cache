@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\PC-LENOVO\Desktop\BBolero\Bolero\Bolero\obj\Release\
+C:\Users\USER\Desktop\Bolero\MasterMerged\Bolero\Bolero\obj\Release\
 Bolero
 none
 false
 TRACE
-C:\Users\PC-LENOVO\Desktop\BBolero\Bolero\Bolero\Layout\App.xaml
-7-1584917290
+C:\Users\USER\Desktop\Bolero\MasterMerged\Bolero\Bolero\Layout\App.xaml
+10-1569378518
 1-2023467811
-19816013167
-20-1501392540
-Layout\AccesSession.xaml;Layout\Authentification.xaml;Layout\AccesSessionCaissier.xaml;Layout\AccesSessionCaissier2.xaml;Layout\MainDashboard.xaml;Layout\QuestionSecrete.xaml;Layout\NewPassword.xaml;
+251970616271
+20-593968771
+Layout\AccesSession.xaml;Layout\AjoutPlat.xaml;Layout\Authentification.xaml;Layout\AccesSessionCaissier.xaml;Layout\AccesSessionCaissier2.xaml;Layout\MainDashboard.xaml;Layout\ModifierMenu.xaml;Layout\ModifierPlat.xaml;Layout\QuestionSecrete.xaml;Layout\NewPassword.xaml;
 
 False
 

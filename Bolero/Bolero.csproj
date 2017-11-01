@@ -79,6 +79,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="BL\Article.cs" />
+    <Compile Include="DAL\ArticleDAO.cs" />
+    <Compile Include="DAL\DAO.cs" />
     <Compile Include="Layout\AccesSession.xaml.cs">
       <DependentUpon>AccesSession.xaml</DependentUpon>
     </Compile>
@@ -88,6 +91,9 @@
     <Compile Include="Layout\AccesSessionCaissier2.xaml.cs">
       <DependentUpon>AccesSessionCaissier2.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Layout\AjoutPlat.xaml.cs">
+      <DependentUpon>AjoutPlat.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Layout\App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -96,6 +102,12 @@
     <Compile Include="DAL\UserDAO.cs" />
     <Compile Include="Layout\MainDashboard.xaml.cs">
       <DependentUpon>MainDashboard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Layout\ModifierMenu.xaml.cs">
+      <DependentUpon>ModifierMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Layout\ModifierPlat.xaml.cs">
+      <DependentUpon>ModifierPlat.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -114,6 +126,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Layout\AjoutPlat.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Layout\Authentification.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -129,6 +145,14 @@
     <Page Include="Layout\MainDashboard.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Layout\ModifierMenu.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Layout\ModifierPlat.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Layout\QuestionSecrete.xaml">
       <SubType>Designer</SubType>
