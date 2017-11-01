@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-namespace Bolero.DAL
+using System.Data.SqlClient;
+namespace Bolero
 {
     class Connexion
     {
@@ -30,5 +30,5 @@ namespace Bolero.DAL
                    
         }
     }
-    }
-
+    
+}

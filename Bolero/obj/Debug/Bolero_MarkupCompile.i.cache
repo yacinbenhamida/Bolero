@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ﻿Bolero
 
 
@@ -11,33 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\USER\Desktop\Bolero\Bolero\Bolero\App.xaml
-11151548125
-1-456704090
-10-2026312552
-12-1401562060
-MainWindow.xaml;
+61452974122
+
+14339405021
+201322068758
+AccesSession.xaml;Authentification.xaml;AccesSessionCaissier.xaml;AccesSessionCaissier2.xaml;QuestionSecrete.xaml;NewPassword.xaml;
 
 False
 
-=======
-﻿Bolero
-
-
-winexe
-C#
-.cs
-C:\Users\USER\Desktop\Bolero\BoleroGArticlesDONE\Bolero\Bolero\obj\Debug\
-Bolero
-none
-false
-DEBUG;TRACE
-C:\Users\USER\Desktop\Bolero\BoleroGArticlesDONE\Bolero\Bolero\Layouts\App.xaml
-3-1865710543
-1-2023467811
-161205674250
-12-1401562060
-Layouts\AjoutPlat.xaml;Layouts\ModifierMenu.xaml;Layouts\ModifierPlat.xaml;
-
-False
-
->>>>>>> gestion-ARTICLES

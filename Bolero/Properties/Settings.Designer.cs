@@ -25,9 +25,8 @@ namespace Bolero.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\v11.0;AttachDbFilename=C:\\Users\\USER\\Desktop\\Bolero\\BoleroG" +
-            "ArticlesDONE\\Bolero\\Bolero\\Resources\\BoleroDB.mdf;Integrated Security=True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\v11.0;AttachDbFilename=C:\\Users\\USER\\Desktop\\Bolero\\Bolero\\" +
+            "Bolero\\Resources\\BoleroDB.mdf;Integrated Security=True;Connect Timeout=30")]
         public string chConn {
             get {
                 return ((string)(this["chConn"]));

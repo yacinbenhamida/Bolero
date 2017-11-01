@@ -4,24 +4,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Bolero
+namespace Bolero.BL
 {
     class User
     {
-        public int Id { get; set; }
         public string Nom { get; set; }
         public string Password { get; set; }
-        public string Questionsecrete { get; set; }
-        public string choixQs { get; set; }
-
-        public User(int id, string nom, string pw, string qs, string chqs) 
+        public string SecretQuestion { get; set; }
+        public string Answer { get; set; }
+        public int Id { get; set; }
+        public User(int id, string nom, string password, string qs ,string reponse) 
         {
-            this.choixQs = chqs;
-            this.Questionsecrete = qs;
             this.Nom = nom;
             this.Id = id;
-            this.Password = pw;
+            this.SecretQuestion = qs;
+            this.Answer = reponse;
+            this.Password = password;
         }
-
     }
 }
