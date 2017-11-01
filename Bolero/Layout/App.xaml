@@ -6,3 +6,4 @@
         <BitmapImage x:Key="UserImg" UriSource="Resources\user.png" />
     </Application.Resources>
 </Application>
+﻿<Application x:Class="Bolero.App"
