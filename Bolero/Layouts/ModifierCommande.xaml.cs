@@ -1,5 +1,8 @@
-﻿using System;
+﻿using Bolero.BL;
+using Bolero.DAL;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,8 +20,11 @@ namespace Bolero.Layouts
     /// <summary>
     /// Logique d'interaction pour ModifierCommande.xaml
     /// </summary>
-    public partial class ModifierCommande : Window
+    public partial class ModifierCommande : Window 
     {
+        CommandeDAO cdao = new CommandeDAO();
+        
+
         public ModifierCommande()
         {
             InitializeComponent();
@@ -73,7 +79,47 @@ namespace Bolero.Layouts
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            
+            int res = 0;
+            int nbTable = int.Parse(txtNum.Text);
+            ComboBoxItem selecteditem = (ComboBoxItem)(cmbClient.SelectedValue);
+            String nServeur = (string)(selecteditem.Content);
+            int id = 1;
+
+
+            Commande c = new Commande(nbTable, DateTime.Now, nServeur, id);
+
+            int i = dataGrid.SelectedIndex;
+            string ea = i.ToString();
+            c.IdCommande = i;
+            MessageBox.Show("Update non effectue",ea);
+
+           /* try
+            {
+                res = cdao.update(c);
+                if (res != 0)
+                {
+                    MessageBox.Show("Update non effectue");
+                }
+                else
+                {
+                    MessageBox.Show("Update effectue");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }*/
+        }
+
+        private void btnAjout_Click(object sender, RoutedEventArgs e)
+        {
+            AffecterPlat affPlat = new AffecterPlat();
+            affPlat.ShowDialog();
+        }
+
+        private void btnRetour_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

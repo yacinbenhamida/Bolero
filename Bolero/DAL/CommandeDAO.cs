@@ -212,13 +212,13 @@ namespace Bolero.DAL
         {          
            int res = 0;
             try
-            {
+            { 
                 SqlConnection cnx = Connexion.GetConnection();         
                 TableDAO daot = new TableDAO();
                 if(daot.checkIfEmpty(obj.NumTable))
                 {
                     SqlCommand getOldTable = new SqlCommand("SELECT NumTable From Commande where idCommande=@idc",cnx);
-                    getOldTable.Parameters.AddWithValue("idc",obj.NumTable);
+                    getOldTable.Parameters.AddWithValue("idc",obj.IdCommande);
                     int numtableold =(int) getOldTable.ExecuteScalar();
                     SqlCommand updatOldTable = new SqlCommand("UPDATE Table SET Etat=false where NumTable=@ntb",cnx);
                     updatOldTable.Parameters.AddWithValue("ntb",numtableold);
