@@ -23,7 +23,7 @@ namespace Bolero.DAL
             try
             {
                 SqlConnection cnx = Connexion.GetConnection();
-                SqlCommand sqlCmd = new SqlCommand("insert into Article (IdArticle,Libelle, Prix, Type) values (@id,@lib,@prix,@type)", cnx);
+                SqlCommand sqlCmd = new SqlCommand("insert into Article (IdArticle,Libelle, Prix, TypeArt) values (@id,@lib,@prix,@type)", cnx);
                 sqlCmd.Parameters.AddWithValue("id", a.IdArticle);
                 sqlCmd.Parameters.AddWithValue("lib", a.Libelle);
                 sqlCmd.Parameters.AddWithValue("prix", a.Prix);
@@ -160,7 +160,7 @@ namespace Bolero.DAL
             try
             {
                 SqlConnection cnx = Connexion.GetConnection();
-                SqlCommand cmd = new SqlCommand("Select * from Article where Type=@type", cnx);
+                SqlCommand cmd = new SqlCommand("Select * from Article where TypeArt=@type", cnx);
                 cmd.Parameters.AddWithValue("type", type);
                 SqlDataReader rd = cmd.ExecuteReader();
                 if (rd.HasRows) 
@@ -182,7 +182,7 @@ namespace Bolero.DAL
             try
             {
                 SqlConnection cnx = Connexion.GetConnection();
-                SqlCommand cmd = new SqlCommand("UPDATE Article SET Libelle=@lib,Prix=@prix,Type=@type where IdArticle=@id", cnx);
+                SqlCommand cmd = new SqlCommand("UPDATE Article SET Libelle=@lib,Prix=@prix,TypeArt=@type where IdArticle=@id", cnx);
                 cmd.Parameters.AddWithValue("id", obj.IdArticle);
                 cmd.Parameters.AddWithValue("prix", obj.Prix);
                 cmd.Parameters.AddWithValue("lib", obj.Libelle);
