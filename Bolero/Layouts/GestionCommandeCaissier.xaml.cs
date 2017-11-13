@@ -242,7 +242,9 @@ namespace Bolero.Layouts
 
         private void modif_Click(object sender, RoutedEventArgs e)
         {
-            Layouts.ModifierCommande modi = new Layouts.ModifierCommande();
+            object cm = (Commande)dataGrid.SelectedValue;
+            int id = int.Parse(cm.ToString());
+            Layouts.ModifierCommande modi = new Layouts.ModifierCommande(id);
             modi.ShowDialog();
         }
 

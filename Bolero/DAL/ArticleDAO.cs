@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Bolero.BL;
 using System.Data.SqlClient;
+using System.Windows.Documents;
 namespace Bolero.DAL
 {
     class ArticleDAO : DAO<Article>
@@ -205,6 +206,126 @@ namespace Bolero.DAL
             catch (SqlException) { throw; }
             finally { Connexion.closeConnection(); }
             return res;
+        }
+
+        public List<Article> article(int id)
+        {
+            Dictionary<String,int> nb = new Dictionary<String,int>();
+            List<String> lstArticle = new List<string>();
+            List<Article> lstA = new List<Article>();
+            List<int> lstnbA = new List<int>();
+
+            try
+            {
+                for (int j = 0; j < lstnbA.Count; j++)
+                {
+                    int idArt = lstnbA[j];
+                    SqlConnection cnx = Connexion.GetConnection();
+                    SqlCommand cmd = new SqlCommand("SELECT DISTINCT(Libelle) FROM Article WHERE IdArticle=@nbArt", cnx);
+                    cmd.Parameters.AddWithValue("nbArt", idArt);
+                    SqlDataReader rd = cmd.ExecuteReader();
+                    if (rd.HasRows)
+                    {
+
+                        while (rd.Read())
+                        {
+                            lstArticle.Add(rd.GetString(0));
+                        }
+                    }
+                    rd.Close();
+                }
+            }
+               
+            catch (SqlException) { throw; }
+                
+            finally { Connexion.closeConnection(); }
+
+           
+             try
+            {
+                SqlConnection cnx = Connexion.GetConnection();
+                SqlCommand cmd2 = new SqlCommand("SELECT numArticle FROM lignecmd WHERE numcmd=@id", cnx);
+                cmd2.Parameters.AddWithValue("id", id);
+                
+                SqlDataReader rd2 = cmd2.ExecuteReader();
+                if (rd2.HasRows)
+                {
+
+                    while (rd2.Read())
+                    {
+                        lstnbA.Add((rd2.GetInt32(0)));
+                    }
+                }
+                rd2.Close();
+
+                for (int j = 0; j < lstnbA.Count; j++)
+                {
+                    int idArt = lstnbA[j];
+
+                    SqlCommand cmd = new SqlCommand("SELECT * FROM Article WHERE IdArticle=@nbArt", cnx);
+                    cmd.Parameters.AddWithValue("nbArt", idArt);
+
+                    SqlDataReader rd = cmd.ExecuteReader();
+                    if (rd.HasRows)
+                    {
+
+                        while (rd.Read())
+                        {
+                            lstA.Add(new Article(rd.GetInt32(0), rd.GetString(1), rd.GetDecimal(2), rd.GetString(3)));
+                        }
+                    }
+                    rd.Close();
+                        //nb.Add(lstArticle[i], nombreArticle(lstArticle[i]));
+                      
+                        try
+                        {
+                            SqlConnection cnx1 = Connexion.GetConnection();
+                            SqlCommand cmd3 = new SqlCommand("SELECT COUNT(Libelle) FROM Article WHERE IdArticle=@nbArt", cnx1);
+                            cmd3.Parameters.AddWithValue("nbArt", idArt);
+                            SqlDataReader rd3 = cmd.ExecuteReader();
+                            if (rd3.HasRows)
+                            {
+
+                                while (rd3.Read())
+                                {
+                                    lstA.Add(new Article(rd3.GetInt32(0)));
+                                }
+                            }
+                            rd3.Close();
+                        }
+                        catch (SqlException) { throw; }
+                        finally { Connexion.closeConnection(); }
+                }
+            }
+
+             catch (SqlException) { throw; }
+
+             finally { Connexion.closeConnection(); }
+
+            
+            
+            return lstA;
+        }
+
+        public int nombreArticle(string lib)
+        {
+            int res = 0;
+
+            try
+            {
+                SqlConnection cnx = Connexion.GetConnection();
+                SqlCommand cmd = new SqlCommand("SELECT COUNT(Libelle) FROM Article,lignecmd,Commande WHERE Article.IdArticle=lignecmd.numArticle AND Commande.IdCommande=lignecmd.numcmd AND Libelle=@lib", cnx);
+                cmd.Parameters.AddWithValue("lib", lib);
+                int done = (int)cmd.ExecuteScalar();
+                if (done > 0)
+                {
+                    res = done;
+                }
+            }
+            catch (SqlException) { throw; }
+            finally { Connexion.closeConnection(); }
+
+            return res; 
         }
     }
 }

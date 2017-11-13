@@ -275,13 +275,15 @@ namespace Bolero
 
         private void supp_Click(object sender, RoutedEventArgs e)
         {
-
+        
         }
 
         private void modif_Click(object sender, RoutedEventArgs e)
         {
-
-            Layouts.ModifierCommande modi = new Layouts.ModifierCommande();
+            Commande cm = new Commande();
+             cm = (Commande)dataGrid.SelectedValue;
+             int id = cm.IdCommande;
+            Layouts.ModifierCommande modi = new Layouts.ModifierCommande(id);
             modi.ShowDialog();
         }
 

@@ -23,15 +23,21 @@ namespace Bolero.Layouts
     public partial class ModifierCommande : Window 
     {
         CommandeDAO cdao = new CommandeDAO();
-        
+        ArticleDAO adao = new ArticleDAO();
 
-        public ModifierCommande()
+        int id;
+        public ModifierCommande(int id)
         {
+            this.id = id;
+            MessageBox.Show(id.ToString());
             InitializeComponent();
         }
 
+
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            dataGrid.DataContext = adao.article(id);
+            
             lblDate.Content = DateTime.Now.ToShortDateString();
             System.Windows.Threading.DispatcherTimer timer = new System.Windows.Threading.DispatcherTimer();
             timer.Interval = new TimeSpan(0, 0, 1);
@@ -88,15 +94,10 @@ namespace Bolero.Layouts
 
             Commande c = new Commande(nbTable, DateTime.Now, nServeur, id);
 
-            int i = dataGrid.SelectedIndex;
-            string ea = i.ToString();
-            c.IdCommande = i;
-            MessageBox.Show("Update non effectue",ea);
-
-           /* try
+           try
             {
                 res = cdao.update(c);
-                if (res != 0)
+                if (res > 0)
                 {
                     MessageBox.Show("Update non effectue");
                 }
@@ -108,7 +109,7 @@ namespace Bolero.Layouts
             catch (Exception ex)
             {
                 throw ex;
-            }*/
+            }
         }
 
         private void btnAjout_Click(object sender, RoutedEventArgs e)

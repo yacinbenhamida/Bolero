@@ -16,7 +16,7 @@ namespace Bolero.BL
         public string NomServeur { get; set; }
         public int Id { get; set; } // iduser
 
-
+        public Commande() { }
         public Commande(int numtable, DateTime datecommande, string nomserveur, int id)
         {
             this.IdCommande = System.Threading.Interlocked.Increment(ref _IdC);
