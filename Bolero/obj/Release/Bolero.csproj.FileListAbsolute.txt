@@ -90,3 +90,6 @@ C:\Users\PC-LENOVO\Desktop\BBolero\Bolero\Bolero\obj\Release\Bolero.pdb
 C:\Users\USER\Desktop\Bolero\MasterMerged\Bolero\Bolero\bin\Release\Bolero.exe.config
 C:\Users\USER\Desktop\Bolero\MasterMerged\Bolero\Bolero\obj\Release\Bolero.exe
 C:\Users\USER\Desktop\Bolero\MasterMerged\Bolero\Bolero\obj\Release\Bolero.pdb
+C:\Users\arbi\Documents\GitHub\Bolero\Bolero\bin\Release\Bolero.exe.config
+C:\Users\arbi\Documents\GitHub\Bolero\Bolero\obj\Release\Bolero.exe
+C:\Users\arbi\Documents\GitHub\Bolero\Bolero\obj\Release\Bolero.pdb
