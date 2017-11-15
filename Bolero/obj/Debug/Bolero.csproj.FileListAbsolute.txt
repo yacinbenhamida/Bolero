@@ -18,9 +18,6 @@ C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\obj\Debug\Bole
 C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\obj\Debug\Bolero.csprojResolveAssemblyReference.cache
 C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\obj\Debug\Layouts\ModifierCommande.baml
 C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\obj\Debug\Layouts\ModifierCommande.g.cs
-C:\Users\ADMIN\Documents\GitHub\Bolero\bin\Debug\Bolero.exe.config
-C:\Users\ADMIN\Documents\GitHub\Bolero\obj\Debug\Bolero.exe
-C:\Users\ADMIN\Documents\GitHub\Bolero\obj\Debug\Bolero.pdb
 C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\obj\Debug\Layouts\InfoCommande.baml
 C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\obj\Debug\Layouts\InfoCommande.g.cs
 C:\Users\ghari\Documents\GitHub\Bolero\Bolero\bin\Debug\Bolero.exe.config
@@ -54,3 +51,28 @@ C:\Users\USER\Desktop\Bolero\BoleroGCommandess\Bolero\Bolero\obj\Debug\Layouts\G
 C:\Users\USER\Desktop\Bolero\BoleroGCommandess\Bolero\Bolero\obj\Debug\Layouts\AffecterPlat.g.cs
 C:\Users\USER\Desktop\Bolero\BoleroGCommandess\Bolero\Bolero\obj\Debug\Layouts\GestionCommandeCaissier.g.cs
 C:\Users\USER\Desktop\Bolero\BoleroGCommandess\Bolero\Bolero\obj\Debug\Bolero.csprojResolveAssemblyReference.cache
+C:\Users\ADMIN\Documents\GitHub\Bolero\bin\Debug\Resources\BoleroDB.mdf
+C:\Users\ADMIN\Documents\GitHub\Bolero\bin\Debug\Resources\BoleroDB_log.ldf
+C:\Users\ADMIN\Documents\GitHub\Bolero\bin\Debug\Bolero.exe.config
+C:\Users\ADMIN\Documents\GitHub\Bolero\bin\Debug\Bolero.exe
+C:\Users\ADMIN\Documents\GitHub\Bolero\bin\Debug\Bolero.pdb
+C:\Users\ADMIN\Documents\GitHub\Bolero\obj\Debug\Layouts\AffecterPlat.baml
+C:\Users\ADMIN\Documents\GitHub\Bolero\obj\Debug\Layouts\GestionCommande.baml
+C:\Users\ADMIN\Documents\GitHub\Bolero\obj\Debug\Layouts\GestionCommandeCaissier.baml
+C:\Users\ADMIN\Documents\GitHub\Bolero\obj\Debug\Layouts\InfoCommande.baml
+C:\Users\ADMIN\Documents\GitHub\Bolero\obj\Debug\Layouts\ModifierCommande.baml
+C:\Users\ADMIN\Documents\GitHub\Bolero\obj\Debug\Layouts\PayementCommande.baml
+C:\Users\ADMIN\Documents\GitHub\Bolero\obj\Debug\Layouts\AffecterPlat.g.cs
+C:\Users\ADMIN\Documents\GitHub\Bolero\obj\Debug\Layouts\GestionCommande.g.cs
+C:\Users\ADMIN\Documents\GitHub\Bolero\obj\Debug\Layouts\GestionCommandeCaissier.g.cs
+C:\Users\ADMIN\Documents\GitHub\Bolero\obj\Debug\Layouts\InfoCommande.g.cs
+C:\Users\ADMIN\Documents\GitHub\Bolero\obj\Debug\Layouts\ModifierCommande.g.cs
+C:\Users\ADMIN\Documents\GitHub\Bolero\obj\Debug\Layouts\PayementCommande.g.cs
+C:\Users\ADMIN\Documents\GitHub\Bolero\obj\Debug\Layouts\App.g.cs
+C:\Users\ADMIN\Documents\GitHub\Bolero\obj\Debug\Bolero_Content.g.cs
+C:\Users\ADMIN\Documents\GitHub\Bolero\obj\Debug\Bolero_MarkupCompile.cache
+C:\Users\ADMIN\Documents\GitHub\Bolero\obj\Debug\Bolero.g.resources
+C:\Users\ADMIN\Documents\GitHub\Bolero\obj\Debug\Bolero.Properties.Resources.resources
+C:\Users\ADMIN\Documents\GitHub\Bolero\obj\Debug\Bolero.csproj.GenerateResource.Cache
+C:\Users\ADMIN\Documents\GitHub\Bolero\obj\Debug\Bolero.exe
+C:\Users\ADMIN\Documents\GitHub\Bolero\obj\Debug\Bolero.pdb

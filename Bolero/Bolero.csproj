@@ -109,6 +109,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Layouts\PayementCommande.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Layouts\GestionCommandeCaissier.xaml.cs">
@@ -119,6 +123,9 @@
     </Compile>
     <Compile Include="Layouts\ModifierCommande.xaml.cs">
       <DependentUpon>ModifierCommande.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Layouts\PayementCommande.xaml.cs">
+      <DependentUpon>PayementCommande.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -147,6 +154,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Resources\retour.jpg" />
+    <Resource Include="Resources\retourr.jpg" />
     <None Include="Resources\setting.png" />
     <None Include="Resources\User.png" />
     <None Include="Resources\Admin.png" />
