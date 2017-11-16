@@ -219,7 +219,7 @@
                             <RowDefinition />
                             <RowDefinition Height="30"/>
                         </Grid.RowDefinitions>
-                        <DataGrid Name="dataGrid" AutoGenerateColumns="False">
+                        <DataGrid Name="dataGrid" AutoGenerateColumns="False" Height="657" VerticalAlignment="Bottom">
                             <DataGrid.Columns>
                                 <DataGridTextColumn x:Name="dataCmd" Header="Commande" Binding="{Binding commande}"></DataGridTextColumn>
                                 <DataGridTemplateColumn Header="Modifer">
@@ -232,7 +232,7 @@
                                 <DataGridTemplateColumn Header="Supprimer">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
-                                            <Button x:Name="supp" Content="X" HorizontalAlignment="Center" VerticalAlignment="Center" Width="40" Height="40" Click="supp_Click" FontWeight="Bold" FontSize="16" Background="#FFA84500" Foreground="White"/>
+                                            <Button x:Name="supp"  Content="X" HorizontalAlignment="Center" VerticalAlignment="Center" Width="40" Height="40" Click="supp_Click" FontWeight="Bold" FontSize="16" Background="#FFA84500" Foreground="White"/>
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>

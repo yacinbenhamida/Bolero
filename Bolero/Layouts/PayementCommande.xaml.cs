@@ -55,6 +55,11 @@ namespace Bolero.Layouts
 
         }
 
+        private void btnCredit_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
       
     }
 }

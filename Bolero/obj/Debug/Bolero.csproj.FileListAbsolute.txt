@@ -76,3 +76,4 @@ C:\Users\ADMIN\Documents\GitHub\Bolero\obj\Debug\Bolero.Properties.Resources.res
 C:\Users\ADMIN\Documents\GitHub\Bolero\obj\Debug\Bolero.csproj.GenerateResource.Cache
 C:\Users\ADMIN\Documents\GitHub\Bolero\obj\Debug\Bolero.exe
 C:\Users\ADMIN\Documents\GitHub\Bolero\obj\Debug\Bolero.pdb
+C:\Users\ADMIN\Documents\GitHub\Bolero\obj\Debug\Bolero.csprojResolveAssemblyReference.cache

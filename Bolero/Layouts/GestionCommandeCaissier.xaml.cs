@@ -26,6 +26,7 @@ namespace Bolero.Layouts
         }
 
         ArticleDAO dao = new ArticleDAO();
+        CommandeDAO cdao = new CommandeDAO();
 
         private List<Article> lstentree = new List<Article>();
         private List<Article> lstsuite = new List<Article>();
@@ -42,6 +43,8 @@ namespace Bolero.Layouts
             timer.Tick += timer_Tick;
             timer.Start();
             btnAnnuler.IsEnabled = false;
+            dataGrid.DataContext = cdao.getAll();
+
 
             /***************************/
 
@@ -232,14 +235,29 @@ namespace Bolero.Layouts
 
         private void Fact_Click(object sender, RoutedEventArgs e)
         {
-
+    
         }
 
         private void supp_Click(object sender, RoutedEventArgs e)
         {
+            MessageBox.Show("ssvcx");
+            Commande cm1 = (Commande)dataGrid.SelectedValue;
+            int id = cm1.IdCommande;
+             cdao.delete(id);
+            /*
+            int i = dataGrid.SelectedIndex;
+             dataGrid.Items.RemoveAt(i);
+             dataGrid.DataContext = cdao.getAll();
+            */
+             var selectedItem = dataGrid.SelectedItem;
+             if (selectedItem != null)
+             {
+                 dataGrid.Items.Remove(selectedItem);
+             }
 
         }
 
+       
         private void modif_Click(object sender, RoutedEventArgs e)
         {
             object cm = (Commande)dataGrid.SelectedValue;

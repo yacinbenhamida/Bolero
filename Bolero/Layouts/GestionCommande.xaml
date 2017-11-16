@@ -226,7 +226,7 @@
                             <RowDefinition Height="8*" />
                             <RowDefinition />
                         </Grid.RowDefinitions>
-                        <DataGrid  x:Name="dataGrid" ItemsSource="{Binding}" AutoGenerateColumns="False">
+                        <DataGrid  x:Name="dataGrid" ItemsSource="{Binding}" AutoGenerateColumns="False" >
                             <DataGrid.Columns>
                                 <DataGridTextColumn Width="1*" Header="Commande" Binding="{Binding IdCommande}">        
                                 </DataGridTextColumn>
