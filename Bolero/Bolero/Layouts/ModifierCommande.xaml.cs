@@ -36,7 +36,9 @@ namespace Bolero.Layouts
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            dataGrid.DataContext = cdao.listArticle(id);
+            List<Article> lstFetchedArticles = new List<Article>();
+            lstFetchedArticles = cdao.listArticle(id);
+            dataGrid.DataContext = lstFetchedArticles;
             
             lblDate.Content = DateTime.Now.ToShortDateString();
             System.Windows.Threading.DispatcherTimer timer = new System.Windows.Threading.DispatcherTimer();

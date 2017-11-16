@@ -23,7 +23,7 @@ namespace Bolero.DAL
                  int j = 0;
                  int d = 0;
                   sqlCmd = new SqlCommand("insert into Commande (IdCommande,NumTable,DateCommande,NomServeur,Id) values (@idCom,@numt,@Dc,@noms,@id)", cnx);
-                    UpdateTable = new SqlCommand("UPDATE Tables SET Etat='true' where NumTable=@num", cnx);
+                    UpdateTable = new SqlCommand("UPDATE Tables SET Etat='True' where NumTable=@num AND Etat='False'", cnx);
                     sqlCmd.Parameters.AddWithValue("idCom", e.IdCommande);
                     sqlCmd.Parameters.AddWithValue("numt", e.NumTable);
                     sqlCmd.Parameters.AddWithValue("Dc", e.DateCommande);
@@ -34,7 +34,7 @@ namespace Bolero.DAL
                     j = (int)sqlCmd.ExecuteNonQuery();
                     for (int i = 0; i < lst.Count; i++)
                     {   
-                        insertJointure= new SqlCommand("insert into lignecmd(numcmd,numarticle) VALUES (@numcd,@numar)",cnx);
+                        insertJointure= new SqlCommand("insert into lignecmd(numcmd,numArticle) VALUES (@numcd,@numar)",cnx);
                         insertJointure.Parameters.AddWithValue("numcd", e.IdCommande);
                         insertJointure.Parameters.AddWithValue("numar", lst[i].IdArticle);
                     d = (int)insertJointure.ExecuteNonQuery();
@@ -255,7 +255,7 @@ namespace Bolero.DAL
             try
             {
                 SqlConnection cnx = Connexion.GetConnection();
-                SqlCommand cmd2 = new SqlCommand("SELECT numArticle FROM lignecmd WHERE numcmd=@id", cnx);
+                SqlCommand cmd2 = new SqlCommand("SELECT Article.* FROM Article,lignecmd WHERE lignecmd.numcmd=@id AND lignecmd.numArticle=Article.IdArticle", cnx);
                 cmd2.Parameters.AddWithValue("id", id);
 
                 SqlDataReader rd2 = cmd2.ExecuteReader();
@@ -264,7 +264,7 @@ namespace Bolero.DAL
 
                     while (rd2.Read())
                     {
-                        lstNumA.Add(rd2.GetInt32(0));
+                       lstArticle.Add(new Article(rd2.GetInt32(0),rd2.GetString(1),rd2.GetDecimal(2),rd2.GetString(3)));
 
                     }
                 }
@@ -273,35 +273,7 @@ namespace Bolero.DAL
             catch (SqlException) { throw; }
 
             finally { Connexion.closeConnection(); }
-
-
-            for (int j = 0; j < lstNumA.Count; j++)
-            {
-                int idArt = lstNumA[j];
-
-                try
-                {
-                    SqlConnection cnx = Connexion.GetConnection();
-                    SqlCommand cmd = new SqlCommand("SELECT * FROM article WHERE IdArticle=@nbArt", cnx);
-                    cmd.Parameters.AddWithValue("nbArt", idArt);
-
-                    SqlDataReader rd = cmd.ExecuteReader();
-                    if (rd.HasRows)
-                    {
-
-                        while (rd.Read())
-                        {
-
-                            lstArticle.Add(new Article(rd.GetInt32(0), rd.GetString(1), rd.GetDecimal(2), rd.GetString(3)));
-                        }
-                    }
-                    rd.Close();
-                }
-                catch (SqlException) { throw; }
-
-                finally { Connexion.closeConnection(); }
-
-            }
+            
 
             return lstArticle;
         }

@@ -72,12 +72,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Reporting\BoleroDBDataSet.Designer.cs" />
-    <Compile Include="Reporting\BoleroDBDataSet1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>BoleroDBDataSet.xsd</DependentUpon>
-    </Compile>
     <Page Include="Layouts\AffecterPlat.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -158,24 +152,11 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reporting\Facture.rdlc" />
-    <EmbeddedResource Include="Reporting\Ticket.rdlc" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
-    <None Include="Reporting\BoleroDBDataSet.xsc">
-      <DependentUpon>BoleroDBDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="Reporting\BoleroDBDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>BoleroDBDataSet1.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Reporting\BoleroDBDataSet.xss">
-      <DependentUpon>BoleroDBDataSet.xsd</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
