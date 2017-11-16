@@ -11,10 +11,10 @@ namespace Bolero.BL
         public int NumTable { get; set; }
         public bool Etat { get; set; }
 
-        public Table(int num, Boolean etar)
+        public Table(int num, Boolean etat)
         {
             this.NumTable = num;
-            this.Etat = Etat;
+            this.Etat = etat;
         }
     }
 }

@@ -18,7 +18,7 @@ namespace Bolero.DAL
             try
             {
                 SqlConnection cnx = Connexion.GetConnection();
-                SqlCommand cmd = new SqlCommand("UPDATE Table SET Etat=@etat where NumTable=@id", cnx);
+                SqlCommand cmd = new SqlCommand("UPDATE Tables SET Etat=@etat where NumTable=@id", cnx);
                 cmd.Parameters.AddWithValue("id", id);
                 cmd.Parameters.AddWithValue("etat", etat);
              
@@ -40,7 +40,7 @@ namespace Bolero.DAL
             SqlDataReader reader;
             try
             {
-                SqlCommand sqlCmd = new SqlCommand("select * from Table where Etat=false", cnx);
+                SqlCommand sqlCmd = new SqlCommand("select * from Tables where Etat=false", cnx);
                 reader = sqlCmd.ExecuteReader();
                 if (reader.HasRows)
                 {
@@ -66,13 +66,36 @@ namespace Bolero.DAL
         {
             Boolean etat = false;
             bool clean = false;
+            int numtable = 0;
             SqlConnection cnx = Connexion.GetConnection();
             SqlDataReader reader;
 
             try
             {
-                SqlCommand sqlCmd = new SqlCommand("select Etat from Table where NumTable=@numt", cnx);
-                sqlCmd.Parameters.AddWithValue("numt",id);
+                SqlCommand sqlCmd = new SqlCommand("select NumTable from Commande where IdCommande=@id", cnx);
+                sqlCmd.Parameters.AddWithValue("id", id);
+                reader = sqlCmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+
+                    while (reader.Read())
+                    {
+                        numtable = reader.GetInt32(0);
+                    }
+                }
+
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+
+            }
+
+            try
+            {
+                SqlCommand sqlCmd = new SqlCommand("select Etat from Tables where NumTable=@numt", cnx);
+                sqlCmd.Parameters.AddWithValue("numt", numtable);
                 reader = sqlCmd.ExecuteReader();
                 if (reader.HasRows)
                 {

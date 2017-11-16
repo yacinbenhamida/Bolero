@@ -220,11 +220,11 @@ namespace Bolero.DAL
                     SqlCommand getOldTable = new SqlCommand("SELECT NumTable From Commande where idCommande=@idc",cnx);
                     getOldTable.Parameters.AddWithValue("idc",obj.IdCommande);
                     int numtableold =(int) getOldTable.ExecuteScalar();
-                    SqlCommand updatOldTable = new SqlCommand("UPDATE Table SET Etat=false where NumTable=@ntb",cnx);
+                    SqlCommand updatOldTable = new SqlCommand("UPDATE Tables SET Etat=False where NumTable=@ntb",cnx);
                     updatOldTable.Parameters.AddWithValue("ntb",numtableold);
                     int executeQ =(int) updatOldTable.ExecuteScalar();
                     SqlCommand cmd = new SqlCommand("UPDATE Commande SET NumTable=@numtb,DateCommande=@dtc,NomServeur=@nomserv where IdCommande=@idc", cnx);
-                    SqlCommand UpdateTable = new SqlCommand("UPDATE Table SET Etat=true where NumTable=@idt",cnx);
+                    SqlCommand UpdateTable = new SqlCommand("UPDATE Tables SET Etat=True where NumTable=@idt",cnx);
                     UpdateTable.Parameters.AddWithValue("idt",obj.NumTable);
                     cmd.Parameters.AddWithValue("numtb", obj.IdCommande);
                     cmd.Parameters.AddWithValue("dtc", obj.DateCommande);
@@ -305,6 +305,59 @@ namespace Bolero.DAL
 
             return lstArticle;
         }
+
+        public int updateCommande(Commande obj, int id)
+        {
+            int res = 0;
+            SqlDataReader reader;
+            int numtableold = 0;
+            try
+            {
+                SqlConnection cnx = Connexion.GetConnection();
+                TableDAO daot = new TableDAO();
+                if (daot.checkIfEmpty(id))
+                {
+                    SqlCommand getOldTable = new SqlCommand("SELECT NumTable From Commande where IdCommande=@idc", cnx);
+                    getOldTable.Parameters.AddWithValue("idc", id);
+                    reader = getOldTable.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+
+                        while (reader.Read())
+                        {
+                            numtableold = reader.GetInt32(0);
+                        }
+                    }
+
+                    reader.Close();
+                    SqlCommand updatOldTable = new SqlCommand("UPDATE Tables SET Etat=@etat1 where NumTable=@ntb", cnx);
+                    updatOldTable.Parameters.AddWithValue("ntb", numtableold);
+                    updatOldTable.Parameters.AddWithValue("etat1", false);
+                    int executeQ = (int)updatOldTable.ExecuteScalar();
+                    SqlCommand cmd = new SqlCommand("UPDATE Commande SET NumTable=@numtb,DateCommande=@dtc,NomServeur=@nomserv where IdCommande=@idc", cnx);
+                    SqlCommand UpdateTable = new SqlCommand("UPDATE Tables SET Etat=@etat2 where NumTable=@idt", cnx);
+                    UpdateTable.Parameters.AddWithValue("idt", obj.NumTable);
+                    UpdateTable.Parameters.AddWithValue("etat2", true);
+                    cmd.Parameters.AddWithValue("numtb", obj.IdCommande);
+                    cmd.Parameters.AddWithValue("dtc", obj.DateCommande);
+                    //  cmd.Parameters.AddWithValue("idartc", obj.IdArticle);
+                    cmd.Parameters.AddWithValue("nomserv", obj.NomServeur);
+                    cmd.Parameters.AddWithValue("idc", id);
+                    int done1 = (int)UpdateTable.ExecuteNonQuery();
+                    int done = (int)cmd.ExecuteNonQuery();
+                    if (done > 0 && done1 > 0) res = 1;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally { Connexion.closeConnection(); }
+            return res;
+
+        }
+
         }
         }
 

@@ -212,9 +212,10 @@ namespace Bolero.DAL
         {
             int res = 0;
             SqlConnection cnx = Connexion.GetConnection();
+            
             try
             {
-                SqlCommand sqlCmd = new SqlCommand("DELETE FROM lignecmd WHERE numArticle=@idArt AND numcmd=@id", cnx);
+                SqlCommand sqlCmd = new SqlCommand("DELETE FROM [lignecmd] WHERE numArticle = @idArt AND numcmd = @id", cnx);
                 sqlCmd.Parameters.AddWithValue("idArt", idArt);
                 sqlCmd.Parameters.AddWithValue("id", id);
                 res = (int)sqlCmd.ExecuteNonQuery();

@@ -26,8 +26,7 @@ namespace Bolero.DAL
 
         public static void closeConnection()
         {
-            if (cnx != null) cnx.Close(); 
-                   
+            if (cnx != null) cnx.Close();         
         }
     }
     }

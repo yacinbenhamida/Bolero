@@ -93,11 +93,11 @@ namespace Bolero.Layouts
 
 
             Commande c = new Commande(nbTable, DateTime.Now, nServeur, id);
-
+            
            try
             {
-                res = cdao.update(c);
-                if (res > 0)
+                res = cdao.updateCommande(c,id);
+                if (res == 0)
                 {
                     MessageBox.Show("Update non effectue");
                 }
@@ -120,7 +120,7 @@ namespace Bolero.Layouts
 
         private void btnRetour_Click(object sender, RoutedEventArgs e)
         {
-
+            this.Close();
         }
 
         private void SuppArticle_Click(object sender, RoutedEventArgs e)
@@ -130,10 +130,17 @@ namespace Bolero.Layouts
             int idArt = art.IdArticle;
             MessageBox.Show(idArt.ToString());
             ArticleDAO artDAO = new ArticleDAO();
-            artDAO.deleteArticle(idArt, id);
-            dataGrid.DataContext = cdao.listArticle(id);
-            dataGrid.Items.Refresh();
-            
+
+            if (artDAO.deleteArticle(idArt, id) == 0)
+            {
+                MessageBox.Show("suppression non effectue");
+            }
+            else
+            {
+                MessageBox.Show("suppression effectue");
+                dataGrid.DataContext = cdao.listArticle(id);
+                dataGrid.Items.Refresh();
+            }
         }
     }
 }
