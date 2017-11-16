@@ -208,5 +208,32 @@ namespace Bolero.DAL
             return res;
         }
 
+        public int deleteArticle(int idArt, int id)
+        {
+            int res = 0;
+            SqlConnection cnx = Connexion.GetConnection();
+            try
+            {
+                SqlCommand sqlCmd = new SqlCommand("DELETE FROM lignecmd WHERE numArticle=@idArt AND numcmd=@id", cnx);
+                sqlCmd.Parameters.AddWithValue("idArt", idArt);
+                sqlCmd.Parameters.AddWithValue("id", id);
+                res = (int)sqlCmd.ExecuteNonQuery();
+                if (res > 0)
+                {
+                    res = 1;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                Connexion.closeConnection();
+
+            }
+            return res;
+        }
     }
 }

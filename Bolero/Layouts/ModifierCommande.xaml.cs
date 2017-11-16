@@ -122,5 +122,18 @@ namespace Bolero.Layouts
         {
 
         }
+
+        private void SuppArticle_Click(object sender, RoutedEventArgs e)
+        {
+            Article art = new Article();
+            art = (Article)dataGrid.SelectedValue;
+            int idArt = art.IdArticle;
+            MessageBox.Show(idArt.ToString());
+            ArticleDAO artDAO = new ArticleDAO();
+            artDAO.deleteArticle(idArt, id);
+            dataGrid.DataContext = cdao.listArticle(id);
+            dataGrid.Items.Refresh();
+            
+        }
     }
 }

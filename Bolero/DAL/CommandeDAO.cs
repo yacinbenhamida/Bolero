@@ -301,7 +301,6 @@ namespace Bolero.DAL
 
                 finally { Connexion.closeConnection(); }
 
-
             }
 
             return lstArticle;

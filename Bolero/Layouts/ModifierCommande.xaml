@@ -44,7 +44,7 @@
                 <DataGridTemplateColumn Header="Supprimer">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button x:Name="Supp" Content="X" HorizontalAlignment="Center" VerticalAlignment="Center" Width="40" Height="40"  FontWeight="Bold" FontSize="16" Background="Red" Foreground="White"/>
+                            <Button x:Name="SuppArticle" Click="SuppArticle_Click" Content="X" HorizontalAlignment="Center" VerticalAlignment="Center" Width="40" Height="40"  FontWeight="Bold" FontSize="16" Background="Red" Foreground="White"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
