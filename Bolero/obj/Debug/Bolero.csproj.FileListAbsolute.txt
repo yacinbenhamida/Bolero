@@ -76,4 +76,34 @@ C:\Users\ADMIN\Documents\GitHub\Bolero\obj\Debug\Bolero.Properties.Resources.res
 C:\Users\ADMIN\Documents\GitHub\Bolero\obj\Debug\Bolero.csproj.GenerateResource.Cache
 C:\Users\ADMIN\Documents\GitHub\Bolero\obj\Debug\Bolero.exe
 C:\Users\ADMIN\Documents\GitHub\Bolero\obj\Debug\Bolero.pdb
+<<<<<<< HEAD
 C:\Users\ADMIN\Documents\GitHub\Bolero\obj\Debug\Bolero.csprojResolveAssemblyReference.cache
+=======
+C:\Users\ghari\Documents\GitHub\Bolero\Bolero\bin\Debug\Resources\BoleroDB.mdf
+C:\Users\ghari\Documents\GitHub\Bolero\Bolero\bin\Debug\Resources\BoleroDB_log.ldf
+C:\Users\ghari\Documents\GitHub\Bolero\Bolero\bin\Debug\Bolero.exe
+C:\Users\ghari\Documents\GitHub\Bolero\Bolero\bin\Debug\Bolero.pdb
+C:\Users\ghari\Documents\GitHub\Bolero\Bolero\obj\Debug\Bolero.csprojResolveAssemblyReference.cache
+C:\Users\ghari\Documents\GitHub\Bolero\Bolero\obj\Debug\Layouts\AffecterPlat.baml
+C:\Users\ghari\Documents\GitHub\Bolero\Bolero\obj\Debug\Layouts\GestionCommande.baml
+C:\Users\ghari\Documents\GitHub\Bolero\Bolero\obj\Debug\Layouts\GestionCommandeCaissier.baml
+C:\Users\ghari\Documents\GitHub\Bolero\Bolero\obj\Debug\Layouts\InfoCommande.baml
+C:\Users\ghari\Documents\GitHub\Bolero\Bolero\obj\Debug\Layouts\ModifierCommande.baml
+C:\Users\ghari\Documents\GitHub\Bolero\Bolero\obj\Debug\Layouts\PayementCommande.baml
+C:\Users\ghari\Documents\GitHub\Bolero\Bolero\obj\Debug\Layouts\AffecterPlat.g.cs
+C:\Users\ghari\Documents\GitHub\Bolero\Bolero\obj\Debug\Layouts\GestionCommande.g.cs
+C:\Users\ghari\Documents\GitHub\Bolero\Bolero\obj\Debug\Layouts\GestionCommandeCaissier.g.cs
+C:\Users\ghari\Documents\GitHub\Bolero\Bolero\obj\Debug\Layouts\InfoCommande.g.cs
+C:\Users\ghari\Documents\GitHub\Bolero\Bolero\obj\Debug\Layouts\ModifierCommande.g.cs
+C:\Users\ghari\Documents\GitHub\Bolero\Bolero\obj\Debug\Layouts\PayementCommande.g.cs
+C:\Users\ghari\Documents\GitHub\Bolero\Bolero\obj\Debug\Layouts\App.g.cs
+C:\Users\ghari\Documents\GitHub\Bolero\Bolero\obj\Debug\Bolero_Content.g.cs
+C:\Users\ghari\Documents\GitHub\Bolero\Bolero\obj\Debug\Bolero_MarkupCompile.cache
+C:\Users\ghari\Documents\GitHub\Bolero\Bolero\obj\Debug\Bolero.g.resources
+C:\Users\ghari\Documents\GitHub\Bolero\Bolero\obj\Debug\Bolero.Properties.Resources.resources
+C:\Users\ghari\Documents\GitHub\Bolero\Bolero\obj\Debug\Bolero.csproj.GenerateResource.Cache
+C:\Users\ghari\Documents\GitHub\Bolero\Bolero\obj\Debug\Layouts\facturation.baml
+C:\Users\ghari\Documents\GitHub\Bolero\Bolero\obj\Debug\Layouts\facturation.g.cs
+C:\Users\ghari\Documents\GitHub\Bolero\Bolero\obj\Debug\RdlCompile.cache
+C:\Users\ghari\Documents\GitHub\Bolero\Bolero\obj\Debug\RdlCompile.compiled
+>>>>>>> d0e499584278bed487a6626739df67110bf30f36

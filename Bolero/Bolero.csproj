@@ -50,6 +50,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -80,6 +81,11 @@
     </Page>
     <Compile Include="BL\Article.cs" />
     <Compile Include="BL\Table.cs" />
+    <Compile Include="BoleroDBDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BoleroDBDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DAL\ArticleDAO.cs" />
     <Compile Include="DAL\Connexion.cs" />
     <Compile Include="DAL\DAO.cs" />
@@ -113,6 +119,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Layouts\facturation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Layouts\GestionCommandeCaissier.xaml.cs">
@@ -126,6 +136,9 @@
     </Compile>
     <Compile Include="Layouts\PayementCommande.xaml.cs">
       <DependentUpon>PayementCommande.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Layouts\facturation.xaml.cs">
+      <DependentUpon>facturation.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -144,6 +157,19 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Facture.rdlc" />
+    <EmbeddedResource Include="Ticket.rdlc" />
+    <None Include="BoleroDBDataSet.xsc">
+      <DependentUpon>BoleroDBDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="BoleroDBDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>BoleroDBDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="BoleroDBDataSet.xss">
+      <DependentUpon>BoleroDBDataSet.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
