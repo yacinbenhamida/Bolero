@@ -245,6 +245,67 @@ namespace Bolero.DAL
                     return res;
            
         }
+
+        public List<Article> listArticle(int id)
+        {
+
+            List<int> lstNumA = new List<int>();
+            List<int> lstQte = new List<int>();
+            List<Article> lstArticle = new List<Article>();
+            try
+            {
+                SqlConnection cnx = Connexion.GetConnection();
+                SqlCommand cmd2 = new SqlCommand("SELECT numArticle FROM lignecmd WHERE numcmd=@id", cnx);
+                cmd2.Parameters.AddWithValue("id", id);
+
+                SqlDataReader rd2 = cmd2.ExecuteReader();
+                if (rd2.HasRows)
+                {
+
+                    while (rd2.Read())
+                    {
+                        lstNumA.Add(rd2.GetInt32(0));
+
+                    }
+                }
+                rd2.Close();
+            }
+            catch (SqlException) { throw; }
+
+            finally { Connexion.closeConnection(); }
+
+
+            for (int j = 0; j < lstNumA.Count; j++)
+            {
+                int idArt = lstNumA[j];
+
+                try
+                {
+                    SqlConnection cnx = Connexion.GetConnection();
+                    SqlCommand cmd = new SqlCommand("SELECT * FROM article WHERE IdArticle=@nbArt", cnx);
+                    cmd.Parameters.AddWithValue("nbArt", idArt);
+
+                    SqlDataReader rd = cmd.ExecuteReader();
+                    if (rd.HasRows)
+                    {
+
+                        while (rd.Read())
+                        {
+
+                            lstArticle.Add(new Article(rd.GetInt32(0), rd.GetString(1), rd.GetDecimal(2), rd.GetString(3)));
+                        }
+                    }
+                    rd.Close();
+                }
+                catch (SqlException) { throw; }
+
+                finally { Connexion.closeConnection(); }
+
+
+            }
+
+            return lstArticle;
+        }
         }
         }
 

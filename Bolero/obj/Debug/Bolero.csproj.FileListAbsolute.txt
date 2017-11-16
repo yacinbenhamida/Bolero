@@ -107,3 +107,9 @@ C:\Users\ghari\Documents\GitHub\Bolero\Bolero\obj\Debug\Layouts\facturation.g.cs
 C:\Users\ghari\Documents\GitHub\Bolero\Bolero\obj\Debug\RdlCompile.cache
 C:\Users\ghari\Documents\GitHub\Bolero\Bolero\obj\Debug\RdlCompile.compiled
 >>>>>>> d0e499584278bed487a6626739df67110bf30f36
+C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\obj\Debug\Layouts\PayementCommande.baml
+C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\obj\Debug\Layouts\facturation.baml
+C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\obj\Debug\Layouts\PayementCommande.g.cs
+C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\obj\Debug\Layouts\facturation.g.cs
+C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\obj\Debug\RdlCompile.cache
+C:\Users\Zack\Documents\Visual Studio 2012\Projects\Bolero\Bolero\obj\Debug\RdlCompile.compiled

@@ -37,9 +37,7 @@
                 </DataGridTextColumn>
                 <DataGridTextColumn Header="Plat" Width="*" Binding="{Binding Libelle}">
                 </DataGridTextColumn>
-                <DataGridTextColumn Width="*" Header="QTE" Binding="{Binding qte}">
-        
-                </DataGridTextColumn>
+                
                 <DataGridTextColumn Header="PU" Width="*" Binding="{Binding Prix}">
 
                 </DataGridTextColumn>
