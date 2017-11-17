@@ -255,14 +255,14 @@ namespace Bolero.Layouts
             
         }
               
-            }
+            
         
 
         private void modif_Click(object sender, RoutedEventArgs e)
         {
             object cm = (Commande)dataGrid.SelectedValue;
             int id = int.Parse(cm.ToString());
-            Layouts.ModifierCommande modi = new Layouts.ModifierCommande(id);
+            ModifierCommande modi = new ModifierCommande(id);
             modi.ShowDialog();
         }
 
