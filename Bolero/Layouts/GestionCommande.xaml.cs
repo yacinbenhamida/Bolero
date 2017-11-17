@@ -271,6 +271,12 @@ namespace Bolero
 
         private void Fact_Click(object sender, RoutedEventArgs e)
         {
+            Commande cm1 = (Commande)dataGrid.SelectedValue;
+            int id = cm1.IdCommande;
+            //MessageBox.Show(""+id);
+            Bolero.Layouts.Ticket_et_Facture tk = new Bolero.Layouts.Ticket_et_Facture();
+            tk.setid(id);
+            tk.Show();
 
         }
 
