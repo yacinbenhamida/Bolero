@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C7631991-96E7-4822-9403-91C45642AA03}</ProjectGuid>
+    <ProjectGuid>{B5333C95-7D3E-445E-BB73-72B5D124A396}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Bolero</RootNamespace>
@@ -49,10 +49,12 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>Bolero.App</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -71,47 +73,61 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Page Include="Layouts\AffecterPlat.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Layouts\EnregCommeCredit.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Layouts\facturation.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Layouts\GestionCommande.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Layouts\GestionCommandeCaissier.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Layouts\InfoCommande.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Layouts\ModifierCommande.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Layouts\PayementCommande.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="Layouts\App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BL\Article.cs" />
-    <Compile Include="BL\ligneCommande.cs" />
+    <Compile Include="BL\Commande.cs" />
     <Compile Include="BL\Table.cs" />
     <Compile Include="DAL\ArticleDAO.cs" />
+    <Compile Include="DAL\CommandeDAO.cs" />
     <Compile Include="DAL\Connexion.cs" />
     <Compile Include="DAL\DAO.cs" />
     <Compile Include="DAL\TableDAO.cs" />
     <Compile Include="Layouts\AffecterPlat.xaml.cs">
       <DependentUpon>AffecterPlat.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Layouts\App.xaml.cs">
-      <DependentUpon>App.xaml</DependentUpon>
-      <SubType>Code</SubType>
+    <Compile Include="Layouts\EnregCommeCredit.xaml.cs">
+      <DependentUpon>EnregCommeCredit.xaml</DependentUpon>
     </Compile>
-    <Compile Include="BL\Commande.cs" />
-    <Compile Include="DAL\CommandeDAO.cs" />
+    <Compile Include="Layouts\facturation.xaml.cs">
+      <DependentUpon>facturation.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Layouts\GestionCommande.xaml.cs">
       <DependentUpon>GestionCommande.xaml</DependentUpon>
-      <SubType>Code</SubType>
     </Compile>
-    <Page Include="Layouts\GestionCommandeCaissier.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Layouts\InfoCommande.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Layouts\ModifierCommande.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Layouts\GestionCommandeCaissier.xaml.cs">
       <DependentUpon>GestionCommandeCaissier.xaml</DependentUpon>
     </Compile>
@@ -121,6 +137,11 @@
     <Compile Include="Layouts\ModifierCommande.xaml.cs">
       <DependentUpon>ModifierCommande.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Layouts\PayementCommande.xaml.cs">
+      <DependentUpon>PayementCommande.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -148,17 +169,20 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\setting.png" />
-    <None Include="Resources\User.png" />
-    <None Include="Resources\Admin.png" />
+    <Resource Include="Resources\Admin.png" />
     <Content Include="Resources\BoleroDB.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\BoleroDB_log.ldf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>BoleroDB.mdf</DependentUpon>
     </Content>
-    <None Include="Resources\logout.png" />
-    <None Include="Resources\search.png" />
+    <Resource Include="Resources\logout.png" />
+    <Resource Include="Resources\retour.jpg" />
+    <Resource Include="Resources\retourr.jpg" />
+    <Resource Include="Resources\search.png" />
+    <Resource Include="Resources\setting.png" />
+    <Resource Include="Resources\User.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">

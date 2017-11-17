@@ -265,7 +265,8 @@ namespace Bolero
 
         private void Paiement_Click(object sender, RoutedEventArgs e)
         {
-
+            Layouts.PayementCommande payment = new Layouts.PayementCommande();
+            payment.ShowDialog();
         }
 
         private void Fact_Click(object sender, RoutedEventArgs e)
@@ -275,21 +276,7 @@ namespace Bolero
 
         private void supp_Click(object sender, RoutedEventArgs e)
         {
-        	Commande cm = (Commande)dataGrid.SelectedItem;
-                int id = cm.IdCommande;
-
-                CommandeDAO cdao = new CommandeDAO();
-
-                if (cdao.delete(id) == 0)
-                {
-                    MessageBox.Show("non effectue");
-                }
-                else
-                {
-                    MessageBox.Show("effectue");
-                    dataGrid.DataContext = cdao.getAll();
-                    dataGrid.Items.Refresh();
-                }
+        
         }
 
         private void modif_Click(object sender, RoutedEventArgs e)
