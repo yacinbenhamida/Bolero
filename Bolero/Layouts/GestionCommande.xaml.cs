@@ -22,6 +22,8 @@ namespace Bolero
     /// </summary>
     public partial class GestionCommande : Window
     {
+        CommandeDAO cdao = new CommandeDAO();
+
         ArticleDAO dao = new ArticleDAO();
         private List<Commande> lstCom = new List<Commande>();
         private List<Article> lstentree = new List<Article>();
@@ -265,8 +267,14 @@ namespace Bolero
 
         private void Paiement_Click(object sender, RoutedEventArgs e)
         {
-            Layouts.PayementCommande payment = new Layouts.PayementCommande();
-            payment.ShowDialog();
+            Layouts.PayementCommande pm = new Layouts.PayementCommande();
+            Commande cm = (Commande)dataGrid.SelectedValue;
+          //  float total = cdao.total(cm.IdCommande);
+            pm.lblnumcmd.Content ="Num Commande: "+ cm.IdCommande;
+            pm.lblnumtab.Content = "NumTable: "+cm.NumTable;
+            pm.lblserveur.Content = "Serveur : "+cm.NomServeur;
+            //pm.lblTot.Content = total;
+            pm.ShowDialog();
         }
 
         private void Fact_Click(object sender, RoutedEventArgs e)
@@ -282,7 +290,19 @@ namespace Bolero
 
         private void supp_Click(object sender, RoutedEventArgs e)
         {
-        
+            Commande cm = (Commande)dataGrid.SelectedValue;
+
+            int id = cm.IdCommande;
+
+            if (cdao.delete(id) == 0)
+            {
+                MessageBox.Show("Suppresion non effectue");
+            }
+
+            else
+            {
+                MessageBox.Show("Suppresion effectue");
+            }
         }
 
         private void modif_Click(object sender, RoutedEventArgs e)

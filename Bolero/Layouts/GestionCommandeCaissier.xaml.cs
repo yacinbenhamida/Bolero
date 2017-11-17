@@ -230,31 +230,35 @@ namespace Bolero.Layouts
 
         private void Paiement_Click(object sender, RoutedEventArgs e)
         {
+            Layouts.PayementCommande pm = new Layouts.PayementCommande();
+            Commande cm = (Commande)dataGrid.SelectedValue;
+
+            pm.lblnumcmd.Content = "Num Commande: " + cm.IdCommande;
+            pm.lblnumtab.Content = "NumTable: " + cm.NumTable;
+            pm.lblserveur.Content = "Serveur : " + cm.NomServeur;
+            pm.ShowDialog();
 
         }
 
         private void Fact_Click(object sender, RoutedEventArgs e)
         {
-    
-        }
+        }   
 
         private void supp_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("ssvcx");
-            Commande cm1 = (Commande)dataGrid.SelectedValue;
-            int id = cm1.IdCommande;
-             cdao.delete(id);
-            /*
-            int i = dataGrid.SelectedIndex;
-             dataGrid.Items.RemoveAt(i);
-             dataGrid.DataContext = cdao.getAll();
-            */
-             var selectedItem = dataGrid.SelectedItem;
-             if (selectedItem != null)
-             {
-                 dataGrid.Items.Remove(selectedItem);
-             }
+            Commande cm = (Commande)dataGrid.SelectedValue;
 
+            int id = cm.IdCommande;
+
+            if (cdao.delete(id) == 0)
+            {
+                MessageBox.Show("Suppresion non effectue");
+            }
+
+            else
+            {
+                MessageBox.Show("Suppresion effectue");
+            }
         }
 
        
