@@ -116,7 +116,7 @@ namespace Bolero.Layouts
 
         private void btnAjout_Click(object sender, RoutedEventArgs e)
         {
-            AffecterPlat affPlat = new AffecterPlat();
+            AffecterPlat affPlat = new AffecterPlat(id);
             affPlat.ShowDialog();
         }
 

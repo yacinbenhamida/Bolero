@@ -29,8 +29,11 @@ namespace Bolero.Layouts
         private List<Article> lstboissons = new List<Article>();
         private List<Article> lstplatdj = new List<Article>();
 
-        public AffecterPlat()
+        int id;
+        public AffecterPlat(int id)
         {
+            this.id = id;
+            MessageBox.Show(id.ToString());
             InitializeComponent();
 
             
@@ -178,7 +181,24 @@ namespace Bolero.Layouts
 
         private void btnValider_Click(object sender, RoutedEventArgs e)
         {
+            if (platCmd.Items.Count == 0 || lstArticlesCmd.Count == 0)
+            {
+                MessageBox.Show("vous devez renseigner tous les champs! ", "Erreur", MessageBoxButton.OK, MessageBoxImage.Stop);
+                return;
+            }
+            else
+            {
+                if (dao.addArticleOnCommande(lstArticlesCmd, id) == 1)
+                {
+                    MessageBox.Show("inséré");
+                }
+                else
+                {
+                    MessageBox.Show("la table est occupée !");
+                    return;
+                }
 
+            }
         }
 
         private void btnAnnuler_Click(object sender, RoutedEventArgs e)
