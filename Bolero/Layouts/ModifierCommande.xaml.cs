@@ -144,5 +144,12 @@ namespace Bolero.Layouts
                 dataGrid.Items.Refresh();
             }
         }
+
+        private void btnRefresh_Click(object sender, RoutedEventArgs e)
+        {
+            List<Article> lstFetchedArticles = new List<Article>();
+            lstFetchedArticles = cdao.listArticle(id);
+            dataGrid.DataContext = lstFetchedArticles;
+        }
     }
 }
