@@ -11,6 +11,10 @@ namespace Bolero.DAL
 {
     class CrediteurDAO: DAO<Crediteur>
     {
+        public Crediteur getById(int id)
+        {
+            return null;
+        }
         public int add(Crediteur c)
         {
             int res = 0;
