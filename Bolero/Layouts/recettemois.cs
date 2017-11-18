@@ -19,8 +19,8 @@ namespace Bolero.Layouts
 
         private void recettemois_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'dSreport.Commande1' table. You can move, or remove it, as needed.
-            this.commande1TableAdapter.Fill(this.dSreport.Commande1);
+            // TODO: This line of code loads data into the 'dSreport.Commande2' table. You can move, or remove it, as needed.
+            this.commande2TableAdapter.Fill(this.dSreport.Commande2);
 
             this.reportViewer1.RefreshReport();
         }

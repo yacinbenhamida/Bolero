@@ -5252,7 +5252,7 @@ FROM     Commande INNER JOIN
                   lignecmd ON Commande.IdCommande = lignecmd.numcmd INNER JOIN
                   Article ON lignecmd.numArticle = Article.IdArticle INNER JOIN
                   Utilisateur ON Commande.Id = Utilisateur.Id
-where  CONVERT(DATE,DateCommande) =  CONVERT(DATE,Getdate())
+where  CONVERT(Date,DateCommande) =  CONVERT(DATE,Getdate())
 GROUP BY Commande.IdCommande, Commande.NomServeur,Commande.Id, Commande.DateCommande";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
@@ -5429,7 +5429,8 @@ FROM     Commande INNER JOIN
                   lignecmd ON Commande.IdCommande = lignecmd.numcmd INNER JOIN
                   Article ON lignecmd.numArticle = Article.IdArticle INNER JOIN
                   Utilisateur ON Commande.Id = Utilisateur.Id
-GROUP BY Commande.IdCommande, Commande.NomServeur,Commande.Id, Commande.DateCommande";
+where DATEPART(YEAR,DateCommande) =DATEPART(YEAR,Getdate()) AND DATEPART(MONTH, DateCommande) =DATEPART(MONTH,Getdate())
+GROUP BY Commande.IdCommande, Commande.NomServeur, Commande.Id, Commande.DateCommande";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         

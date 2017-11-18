@@ -20,8 +20,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox3</rd:DefaultName>
-        <Top>0.56133cm</Top>
-        <Left>0.75353cm</Left>
+        <Left>0.76834cm</Left>
         <Height>1.44667cm</Height>
         <Width>6.056cm</Width>
         <Style>
@@ -389,8 +388,8 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>DataSet1</DataSetName>
-        <Top>3.01666cm</Top>
-        <Left>0.75353cm</Left>
+        <Top>2.45533cm</Top>
+        <Left>0.76834cm</Left>
         <Height>1.2cm</Height>
         <Width>12.5cm</Width>
         <ZIndex>1</ZIndex>
@@ -401,8 +400,8 @@
         </Style>
       </Tablix>
       <Line Name="Line1">
-        <Top>5.26033cm</Top>
-        <Left>16.48037cm</Left>
+        <Top>4.699cm</Top>
+        <Left>16.49518cm</Left>
         <Height>0cm</Height>
         <Width>-16.48037cm</Width>
         <ZIndex>2</ZIndex>
@@ -430,8 +429,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox14</rd:DefaultName>
-        <Top>6.76316cm</Top>
-        <Left>3.92853cm</Left>
+        <Top>5.6515cm</Top>
+        <Left>3.78333cm</Left>
         <Height>1.25617cm</Height>
         <Width>3.66417cm</Width>
         <ZIndex>3</ZIndex>
@@ -464,8 +463,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox16</rd:DefaultName>
-        <Top>6.76316cm</Top>
-        <Left>8.79687cm</Left>
+        <Top>5.6515cm</Top>
+        <Left>8.65167cm</Left>
         <Height>1.15204cm</Height>
         <Width>4.61667cm</Width>
         <ZIndex>4</ZIndex>
@@ -481,7 +480,7 @@
         </Style>
       </Textbox>
     </ReportItems>
-    <Height>4.2in</Height>
+    <Height>3.26955in</Height>
     <Style />
   </Body>
   <Width>6.5in</Width>
@@ -502,7 +501,7 @@
         <DataProvider>System.Data.DataSet</DataProvider>
         <ConnectString>/* Local Connection */</ConnectString>
       </ConnectionProperties>
-      <rd:DataSourceID>8ba65823-6e3d-449f-ac19-3fd7cb1e1849</rd:DataSourceID>
+      <rd:DataSourceID>4226675d-bf4d-4dbd-b975-53cd097d75db</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
@@ -536,13 +535,13 @@
       <rd:DataSetInfo>
         <rd:DataSetName>DSreport</rd:DataSetName>
         <rd:SchemaPath>C:\Users\hechmi\Desktop\New folder\Bolero\Bolero\DSreport.xsd</rd:SchemaPath>
-        <rd:TableName>Commande1</rd:TableName>
+        <rd:TableName>Commande2</rd:TableName>
         <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
         <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
-        <rd:TableAdapterName>Commande1TableAdapter</rd:TableAdapterName>
+        <rd:TableAdapterName>Commande2TableAdapter</rd:TableAdapterName>
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
-  <rd:ReportID>75ee97b5-1279-42a4-8642-064a2f68e158</rd:ReportID>
+  <rd:ReportID>6dd5a0a5-2c9b-459d-9497-b3e62e023eb8</rd:ReportID>
 </Report>

@@ -30,13 +30,23 @@
         {
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.dSreport = new Bolero.DSreport();
             this.commande1BindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dSreport = new Bolero.DSreport();
+            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.commande1TableAdapter = new Bolero.DSreportTableAdapters.Commande1TableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.dSreport)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.commande1BindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dSreport)).BeginInit();
             this.SuspendLayout();
+            // 
+            // commande1BindingSource
+            // 
+            this.commande1BindingSource.DataMember = "Commande1";
+            this.commande1BindingSource.DataSource = this.dSreport;
+            // 
+            // dSreport
+            // 
+            this.dSreport.DataSetName = "DSreport";
+            this.dSreport.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // reportViewer1
             // 
@@ -49,16 +59,6 @@
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.Size = new System.Drawing.Size(814, 520);
             this.reportViewer1.TabIndex = 0;
-            // 
-            // dSreport
-            // 
-            this.dSreport.DataSetName = "DSreport";
-            this.dSreport.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // commande1BindingSource
-            // 
-            this.commande1BindingSource.DataMember = "Commande1";
-            this.commande1BindingSource.DataSource = this.dSreport;
             // 
             // commande1TableAdapter
             // 
@@ -73,8 +73,8 @@
             this.Name = "recettejour";
             this.Text = "recettejour";
             this.Load += new System.EventHandler(this.recettejour_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dSreport)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.commande1BindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dSreport)).EndInit();
             this.ResumeLayout(false);
 
         }

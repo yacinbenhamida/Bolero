@@ -252,7 +252,7 @@ FROM     Commande INNER JOIN
                   lignecmd ON Commande.IdCommande = lignecmd.numcmd INNER JOIN
                   Article ON lignecmd.numArticle = Article.IdArticle INNER JOIN
                   Utilisateur ON Commande.Id = Utilisateur.Id
-where  CONVERT(DATE,DateCommande) =  CONVERT(DATE,Getdate())
+where  CONVERT(Date,DateCommande) =  CONVERT(DATE,Getdate())
 GROUP BY Commande.IdCommande, Commande.NomServeur,Commande.Id, Commande.DateCommande</CommandText>
                     <Parameters />
                   </DbCommand>
@@ -270,7 +270,7 @@ GROUP BY Commande.IdCommande, Commande.NomServeur,Commande.Id, Commande.DateComm
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="Commande2TableAdapter" GeneratorDataComponentClassName="Commande2TableAdapter" Name="Commande2" UserDataComponentName="Commande2TableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="chConn (Settings)" DbObjectName="dbo.Commande" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="chConn (Settings)" DbObjectName="dbo.Commande" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT Commande.IdCommande, Commande.DateCommande, Commande.NomServeur, Commande.Id AS caissier, SUM(Article.Prix) AS prix
@@ -278,7 +278,8 @@ FROM     Commande INNER JOIN
                   lignecmd ON Commande.IdCommande = lignecmd.numcmd INNER JOIN
                   Article ON lignecmd.numArticle = Article.IdArticle INNER JOIN
                   Utilisateur ON Commande.Id = Utilisateur.Id
-GROUP BY Commande.IdCommande, Commande.NomServeur,Commande.Id, Commande.DateCommande</CommandText>
+where DATEPART(YEAR,DateCommande) =DATEPART(YEAR,Getdate()) AND DATEPART(MONTH, DateCommande) =DATEPART(MONTH,Getdate())
+GROUP BY Commande.IdCommande, Commande.NomServeur, Commande.Id, Commande.DateCommande</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -301,7 +302,7 @@ GROUP BY Commande.IdCommande, Commande.NomServeur,Commande.Id, Commande.DateComm
   <xs:element name="DSreport" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DSreport" msprop:Generator_UserDSName="DSreport">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Commande" msprop:Generator_TableClassName="CommandeDataTable" msprop:Generator_TableVarName="tableCommande" msprop:Generator_TablePropName="Commande" msprop:Generator_RowDeletingName="CommandeRowDeleting" msprop:Generator_RowChangingName="CommandeRowChanging" msprop:Generator_RowEvHandlerName="CommandeRowChangeEventHandler" msprop:Generator_RowDeletedName="CommandeRowDeleted" msprop:Generator_UserTableName="Commande" msprop:Generator_RowChangedName="CommandeRowChanged" msprop:Generator_RowEvArgName="CommandeRowChangeEvent" msprop:Generator_RowClassName="CommandeRow">
+        <xs:element name="Commande" msprop:Generator_TableClassName="CommandeDataTable" msprop:Generator_TableVarName="tableCommande" msprop:Generator_RowChangedName="CommandeRowChanged" msprop:Generator_TablePropName="Commande" msprop:Generator_RowDeletingName="CommandeRowDeleting" msprop:Generator_RowChangingName="CommandeRowChanging" msprop:Generator_RowEvHandlerName="CommandeRowChangeEventHandler" msprop:Generator_RowDeletedName="CommandeRowDeleted" msprop:Generator_RowClassName="CommandeRow" msprop:Generator_UserTableName="Commande" msprop:Generator_RowEvArgName="CommandeRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="IdCommande" msprop:Generator_ColumnVarNameInTable="columnIdCommande" msprop:Generator_ColumnPropNameInRow="IdCommande" msprop:Generator_ColumnPropNameInTable="IdCommandeColumn" msprop:Generator_UserColumnName="IdCommande" type="xs:int" />
@@ -318,7 +319,7 @@ GROUP BY Commande.IdCommande, Commande.NomServeur,Commande.Id, Commande.DateComm
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="lignecmd" msprop:Generator_TableClassName="lignecmdDataTable" msprop:Generator_TableVarName="tablelignecmd" msprop:Generator_TablePropName="lignecmd" msprop:Generator_RowDeletingName="lignecmdRowDeleting" msprop:Generator_RowChangingName="lignecmdRowChanging" msprop:Generator_RowEvHandlerName="lignecmdRowChangeEventHandler" msprop:Generator_RowDeletedName="lignecmdRowDeleted" msprop:Generator_UserTableName="lignecmd" msprop:Generator_RowChangedName="lignecmdRowChanged" msprop:Generator_RowEvArgName="lignecmdRowChangeEvent" msprop:Generator_RowClassName="lignecmdRow">
+        <xs:element name="lignecmd" msprop:Generator_TableClassName="lignecmdDataTable" msprop:Generator_TableVarName="tablelignecmd" msprop:Generator_RowChangedName="lignecmdRowChanged" msprop:Generator_TablePropName="lignecmd" msprop:Generator_RowDeletingName="lignecmdRowDeleting" msprop:Generator_RowChangingName="lignecmdRowChanging" msprop:Generator_RowEvHandlerName="lignecmdRowChangeEventHandler" msprop:Generator_RowDeletedName="lignecmdRowDeleted" msprop:Generator_RowClassName="lignecmdRow" msprop:Generator_UserTableName="lignecmd" msprop:Generator_RowEvArgName="lignecmdRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="numcmd" msprop:Generator_ColumnVarNameInTable="columnnumcmd" msprop:Generator_ColumnPropNameInRow="numcmd" msprop:Generator_ColumnPropNameInTable="numcmdColumn" msprop:Generator_UserColumnName="numcmd" type="xs:int" minOccurs="0" />
@@ -326,7 +327,7 @@ GROUP BY Commande.IdCommande, Commande.NomServeur,Commande.Id, Commande.DateComm
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Article" msprop:Generator_TableClassName="ArticleDataTable" msprop:Generator_TableVarName="tableArticle" msprop:Generator_TablePropName="Article" msprop:Generator_RowDeletingName="ArticleRowDeleting" msprop:Generator_RowChangingName="ArticleRowChanging" msprop:Generator_RowEvHandlerName="ArticleRowChangeEventHandler" msprop:Generator_RowDeletedName="ArticleRowDeleted" msprop:Generator_UserTableName="Article" msprop:Generator_RowChangedName="ArticleRowChanged" msprop:Generator_RowEvArgName="ArticleRowChangeEvent" msprop:Generator_RowClassName="ArticleRow">
+        <xs:element name="Article" msprop:Generator_TableClassName="ArticleDataTable" msprop:Generator_TableVarName="tableArticle" msprop:Generator_RowChangedName="ArticleRowChanged" msprop:Generator_TablePropName="Article" msprop:Generator_RowDeletingName="ArticleRowDeleting" msprop:Generator_RowChangingName="ArticleRowChanging" msprop:Generator_RowEvHandlerName="ArticleRowChangeEventHandler" msprop:Generator_RowDeletedName="ArticleRowDeleted" msprop:Generator_RowClassName="ArticleRow" msprop:Generator_UserTableName="Article" msprop:Generator_RowEvArgName="ArticleRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="IdArticle" msprop:Generator_ColumnVarNameInTable="columnIdArticle" msprop:Generator_ColumnPropNameInRow="IdArticle" msprop:Generator_ColumnPropNameInTable="IdArticleColumn" msprop:Generator_UserColumnName="IdArticle" type="xs:int" />
@@ -348,7 +349,7 @@ GROUP BY Commande.IdCommande, Commande.NomServeur,Commande.Id, Commande.DateComm
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="DataTable1" msprop:Generator_TableClassName="DataTable1DataTable" msprop:Generator_TableVarName="tableDataTable1" msprop:Generator_TablePropName="DataTable1" msprop:Generator_RowDeletingName="DataTable1RowDeleting" msprop:Generator_RowChangingName="DataTable1RowChanging" msprop:Generator_RowEvHandlerName="DataTable1RowChangeEventHandler" msprop:Generator_RowDeletedName="DataTable1RowDeleted" msprop:Generator_UserTableName="DataTable1" msprop:Generator_RowChangedName="DataTable1RowChanged" msprop:Generator_RowEvArgName="DataTable1RowChangeEvent" msprop:Generator_RowClassName="DataTable1Row">
+        <xs:element name="DataTable1" msprop:Generator_TableClassName="DataTable1DataTable" msprop:Generator_TableVarName="tableDataTable1" msprop:Generator_RowChangedName="DataTable1RowChanged" msprop:Generator_TablePropName="DataTable1" msprop:Generator_RowDeletingName="DataTable1RowDeleting" msprop:Generator_RowChangingName="DataTable1RowChanging" msprop:Generator_RowEvHandlerName="DataTable1RowChangeEventHandler" msprop:Generator_RowDeletedName="DataTable1RowDeleted" msprop:Generator_RowClassName="DataTable1Row" msprop:Generator_UserTableName="DataTable1" msprop:Generator_RowEvArgName="DataTable1RowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Libelle" msprop:Generator_ColumnVarNameInTable="columnLibelle" msprop:Generator_ColumnPropNameInRow="Libelle" msprop:Generator_ColumnPropNameInTable="LibelleColumn" msprop:Generator_UserColumnName="Libelle">
@@ -370,7 +371,7 @@ GROUP BY Commande.IdCommande, Commande.NomServeur,Commande.Id, Commande.DateComm
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Utilisateur" msprop:Generator_TableClassName="UtilisateurDataTable" msprop:Generator_TableVarName="tableUtilisateur" msprop:Generator_TablePropName="Utilisateur" msprop:Generator_RowDeletingName="UtilisateurRowDeleting" msprop:Generator_RowChangingName="UtilisateurRowChanging" msprop:Generator_RowEvHandlerName="UtilisateurRowChangeEventHandler" msprop:Generator_RowDeletedName="UtilisateurRowDeleted" msprop:Generator_UserTableName="Utilisateur" msprop:Generator_RowChangedName="UtilisateurRowChanged" msprop:Generator_RowEvArgName="UtilisateurRowChangeEvent" msprop:Generator_RowClassName="UtilisateurRow">
+        <xs:element name="Utilisateur" msprop:Generator_TableClassName="UtilisateurDataTable" msprop:Generator_TableVarName="tableUtilisateur" msprop:Generator_RowChangedName="UtilisateurRowChanged" msprop:Generator_TablePropName="Utilisateur" msprop:Generator_RowDeletingName="UtilisateurRowDeleting" msprop:Generator_RowChangingName="UtilisateurRowChanging" msprop:Generator_RowEvHandlerName="UtilisateurRowChangeEventHandler" msprop:Generator_RowDeletedName="UtilisateurRowDeleted" msprop:Generator_RowClassName="UtilisateurRow" msprop:Generator_UserTableName="Utilisateur" msprop:Generator_RowEvArgName="UtilisateurRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Id" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" />
@@ -405,7 +406,7 @@ GROUP BY Commande.IdCommande, Commande.NomServeur,Commande.Id, Commande.DateComm
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Commande1" msprop:Generator_TableClassName="Commande1DataTable" msprop:Generator_TableVarName="tableCommande1" msprop:Generator_TablePropName="Commande1" msprop:Generator_RowDeletingName="Commande1RowDeleting" msprop:Generator_RowChangingName="Commande1RowChanging" msprop:Generator_RowEvHandlerName="Commande1RowChangeEventHandler" msprop:Generator_RowDeletedName="Commande1RowDeleted" msprop:Generator_UserTableName="Commande1" msprop:Generator_RowChangedName="Commande1RowChanged" msprop:Generator_RowEvArgName="Commande1RowChangeEvent" msprop:Generator_RowClassName="Commande1Row">
+        <xs:element name="Commande1" msprop:Generator_TableClassName="Commande1DataTable" msprop:Generator_TableVarName="tableCommande1" msprop:Generator_RowChangedName="Commande1RowChanged" msprop:Generator_TablePropName="Commande1" msprop:Generator_RowDeletingName="Commande1RowDeleting" msprop:Generator_RowChangingName="Commande1RowChanging" msprop:Generator_RowEvHandlerName="Commande1RowChangeEventHandler" msprop:Generator_RowDeletedName="Commande1RowDeleted" msprop:Generator_RowClassName="Commande1Row" msprop:Generator_UserTableName="Commande1" msprop:Generator_RowEvArgName="Commande1RowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="IdCommande" msprop:Generator_ColumnVarNameInTable="columnIdCommande" msprop:Generator_ColumnPropNameInRow="IdCommande" msprop:Generator_ColumnPropNameInTable="IdCommandeColumn" msprop:Generator_UserColumnName="IdCommande" type="xs:int" />
@@ -422,7 +423,7 @@ GROUP BY Commande.IdCommande, Commande.NomServeur,Commande.Id, Commande.DateComm
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Commande2" msprop:Generator_TableClassName="Commande2DataTable" msprop:Generator_TableVarName="tableCommande2" msprop:Generator_TablePropName="Commande2" msprop:Generator_RowDeletingName="Commande2RowDeleting" msprop:Generator_RowChangingName="Commande2RowChanging" msprop:Generator_RowEvHandlerName="Commande2RowChangeEventHandler" msprop:Generator_RowDeletedName="Commande2RowDeleted" msprop:Generator_UserTableName="Commande2" msprop:Generator_RowChangedName="Commande2RowChanged" msprop:Generator_RowEvArgName="Commande2RowChangeEvent" msprop:Generator_RowClassName="Commande2Row">
+        <xs:element name="Commande2" msprop:Generator_TableClassName="Commande2DataTable" msprop:Generator_TableVarName="tableCommande2" msprop:Generator_RowChangedName="Commande2RowChanged" msprop:Generator_TablePropName="Commande2" msprop:Generator_RowDeletingName="Commande2RowDeleting" msprop:Generator_RowChangingName="Commande2RowChanging" msprop:Generator_RowEvHandlerName="Commande2RowChangeEventHandler" msprop:Generator_RowDeletedName="Commande2RowDeleted" msprop:Generator_RowClassName="Commande2Row" msprop:Generator_UserTableName="Commande2" msprop:Generator_RowEvArgName="Commande2RowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="IdCommande" msprop:Generator_ColumnVarNameInTable="columnIdCommande" msprop:Generator_ColumnPropNameInRow="IdCommande" msprop:Generator_ColumnPropNameInTable="IdCommandeColumn" msprop:Generator_UserColumnName="IdCommande" type="xs:int" />
@@ -464,12 +465,12 @@ GROUP BY Commande.IdCommande, Commande.NomServeur,Commande.Id, Commande.DateComm
   </xs:element>
   <xs:annotation>
     <xs:appinfo>
-      <msdata:Relationship name="FK__lignecmd__numcmd__4E53A1AA" msdata:parent="Commande" msdata:child="lignecmd" msdata:parentkey="IdCommande" msdata:childkey="numcmd" msprop:Generator_UserChildTable="lignecmd" msprop:Generator_ChildPropName="GetlignecmdRows" msprop:Generator_UserRelationName="FK__lignecmd__numcmd__4E53A1AA" msprop:Generator_ParentPropName="CommandeRow" msprop:Generator_RelationVarName="relationFK__lignecmd__numcmd__4E53A1AA" msprop:Generator_UserParentTable="Commande" />
-      <msdata:Relationship name="FK__lignecmd__numArt__4F47C5E3" msdata:parent="Article" msdata:child="lignecmd" msdata:parentkey="IdArticle" msdata:childkey="numArticle" msprop:Generator_UserChildTable="lignecmd" msprop:Generator_ChildPropName="GetlignecmdRows" msprop:Generator_UserRelationName="FK__lignecmd__numArt__4F47C5E3" msprop:Generator_RelationVarName="relationFK__lignecmd__numArt__4F47C5E3" msprop:Generator_UserParentTable="Article" msprop:Generator_ParentPropName="ArticleRow" />
-      <msdata:Relationship name="Utilisateur_Commande" msdata:parent="Utilisateur" msdata:child="Commande" msdata:parentkey="Id" msdata:childkey="Id" msprop:Generator_UserChildTable="Commande" msprop:Generator_ChildPropName="GetCommandeRows" msprop:Generator_UserRelationName="Utilisateur_Commande" msprop:Generator_RelationVarName="relationUtilisateur_Commande" msprop:Generator_UserParentTable="Utilisateur" msprop:Generator_ParentPropName="UtilisateurRow" />
-      <msdata:Relationship name="lignecmd_DataTable1" msdata:parent="lignecmd" msdata:child="DataTable1" msdata:parentkey="numcmd" msdata:childkey="numcmd" msprop:Generator_UserChildTable="DataTable1" msprop:Generator_ChildPropName="GetDataTable1Rows" msprop:Generator_UserRelationName="lignecmd_DataTable1" msprop:Generator_ParentPropName="lignecmdRow" msprop:Generator_RelationVarName="relationlignecmd_DataTable1" msprop:Generator_UserParentTable="lignecmd" />
-      <msdata:Relationship name="FK__lignecmd__numcmd__4E53A1AA1" msdata:parent="Commande1" msdata:child="lignecmd" msdata:parentkey="IdCommande" msdata:childkey="numcmd" msprop:Generator_UserChildTable="lignecmd" msprop:Generator_ChildPropName="GetlignecmdRows" msprop:Generator_UserRelationName="FK__lignecmd__numcmd__4E53A1AA1" msprop:Generator_RelationVarName="relationFK__lignecmd__numcmd__4E53A1AA1" msprop:Generator_UserParentTable="Commande1" msprop:Generator_ParentPropName="Commande1Row" />
-      <msdata:Relationship name="FK__lignecmd__numcmd__4E53A1AA2" msdata:parent="Commande2" msdata:child="lignecmd" msdata:parentkey="IdCommande" msdata:childkey="numcmd" msprop:Generator_UserChildTable="lignecmd" msprop:Generator_ChildPropName="GetlignecmdRows" msprop:Generator_UserRelationName="FK__lignecmd__numcmd__4E53A1AA2" msprop:Generator_RelationVarName="relationFK__lignecmd__numcmd__4E53A1AA2" msprop:Generator_UserParentTable="Commande2" msprop:Generator_ParentPropName="Commande2Row" />
+      <msdata:Relationship name="FK__lignecmd__numcmd__4E53A1AA" msdata:parent="Commande" msdata:child="lignecmd" msdata:parentkey="IdCommande" msdata:childkey="numcmd" msprop:Generator_UserChildTable="lignecmd" msprop:Generator_ChildPropName="GetlignecmdRows" msprop:Generator_UserRelationName="FK__lignecmd__numcmd__4E53A1AA" msprop:Generator_RelationVarName="relationFK__lignecmd__numcmd__4E53A1AA" msprop:Generator_UserParentTable="Commande" msprop:Generator_ParentPropName="CommandeRow" />
+      <msdata:Relationship name="FK__lignecmd__numArt__4F47C5E3" msdata:parent="Article" msdata:child="lignecmd" msdata:parentkey="IdArticle" msdata:childkey="numArticle" msprop:Generator_UserChildTable="lignecmd" msprop:Generator_ChildPropName="GetlignecmdRows" msprop:Generator_UserRelationName="FK__lignecmd__numArt__4F47C5E3" msprop:Generator_ParentPropName="ArticleRow" msprop:Generator_RelationVarName="relationFK__lignecmd__numArt__4F47C5E3" msprop:Generator_UserParentTable="Article" />
+      <msdata:Relationship name="Utilisateur_Commande" msdata:parent="Utilisateur" msdata:child="Commande" msdata:parentkey="Id" msdata:childkey="Id" msprop:Generator_UserChildTable="Commande" msprop:Generator_ChildPropName="GetCommandeRows" msprop:Generator_UserRelationName="Utilisateur_Commande" msprop:Generator_ParentPropName="UtilisateurRow" msprop:Generator_RelationVarName="relationUtilisateur_Commande" msprop:Generator_UserParentTable="Utilisateur" />
+      <msdata:Relationship name="lignecmd_DataTable1" msdata:parent="lignecmd" msdata:child="DataTable1" msdata:parentkey="numcmd" msdata:childkey="numcmd" msprop:Generator_UserChildTable="DataTable1" msprop:Generator_ChildPropName="GetDataTable1Rows" msprop:Generator_UserRelationName="lignecmd_DataTable1" msprop:Generator_RelationVarName="relationlignecmd_DataTable1" msprop:Generator_UserParentTable="lignecmd" msprop:Generator_ParentPropName="lignecmdRow" />
+      <msdata:Relationship name="FK__lignecmd__numcmd__4E53A1AA1" msdata:parent="Commande1" msdata:child="lignecmd" msdata:parentkey="IdCommande" msdata:childkey="numcmd" msprop:Generator_UserChildTable="lignecmd" msprop:Generator_ChildPropName="GetlignecmdRows" msprop:Generator_UserRelationName="FK__lignecmd__numcmd__4E53A1AA1" msprop:Generator_ParentPropName="Commande1Row" msprop:Generator_RelationVarName="relationFK__lignecmd__numcmd__4E53A1AA1" msprop:Generator_UserParentTable="Commande1" />
+      <msdata:Relationship name="FK__lignecmd__numcmd__4E53A1AA2" msdata:parent="Commande2" msdata:child="lignecmd" msdata:parentkey="IdCommande" msdata:childkey="numcmd" msprop:Generator_UserChildTable="lignecmd" msprop:Generator_ChildPropName="GetlignecmdRows" msprop:Generator_UserRelationName="FK__lignecmd__numcmd__4E53A1AA2" msprop:Generator_ParentPropName="Commande2Row" msprop:Generator_RelationVarName="relationFK__lignecmd__numcmd__4E53A1AA2" msprop:Generator_UserParentTable="Commande2" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>

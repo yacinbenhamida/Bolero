@@ -32,22 +32,22 @@
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.dSreport = new Bolero.DSreport();
-            this.commande1BindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.commande1TableAdapter = new Bolero.DSreportTableAdapters.Commande1TableAdapter();
+            this.commande2BindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.commande2TableAdapter = new Bolero.DSreportTableAdapters.Commande2TableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.dSreport)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.commande1BindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.commande2BindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // reportViewer1
             // 
             this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
             reportDataSource1.Name = "DataSet1";
-            reportDataSource1.Value = this.commande1BindingSource;
+            reportDataSource1.Value = this.commande2BindingSource;
             this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "Bolero.Layouts.recettemois.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(0, 0);
             this.reportViewer1.Name = "reportViewer1";
-            this.reportViewer1.Size = new System.Drawing.Size(609, 372);
+            this.reportViewer1.Size = new System.Drawing.Size(686, 445);
             this.reportViewer1.TabIndex = 0;
             // 
             // dSreport
@@ -55,26 +55,26 @@
             this.dSreport.DataSetName = "DSreport";
             this.dSreport.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // commande1BindingSource
+            // commande2BindingSource
             // 
-            this.commande1BindingSource.DataMember = "Commande1";
-            this.commande1BindingSource.DataSource = this.dSreport;
+            this.commande2BindingSource.DataMember = "Commande2";
+            this.commande2BindingSource.DataSource = this.dSreport;
             // 
-            // commande1TableAdapter
+            // commande2TableAdapter
             // 
-            this.commande1TableAdapter.ClearBeforeFill = true;
+            this.commande2TableAdapter.ClearBeforeFill = true;
             // 
             // recettemois
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(609, 372);
+            this.ClientSize = new System.Drawing.Size(686, 445);
             this.Controls.Add(this.reportViewer1);
             this.Name = "recettemois";
             this.Text = "recettemois";
             this.Load += new System.EventHandler(this.recettemois_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dSreport)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.commande1BindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.commande2BindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -83,7 +83,7 @@
 
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
         private DSreport dSreport;
-        private System.Windows.Forms.BindingSource commande1BindingSource;
-        private DSreportTableAdapters.Commande1TableAdapter commande1TableAdapter;
+        private System.Windows.Forms.BindingSource commande2BindingSource;
+        private DSreportTableAdapters.Commande2TableAdapter commande2TableAdapter;
     }
 }
