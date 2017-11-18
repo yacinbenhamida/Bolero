@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data.SqlClient;
-namespace Bolero
+namespace Bolero.DAL
 {
     class Connexion
     {
@@ -26,9 +26,7 @@ namespace Bolero
 
         public static void closeConnection()
         {
-            if (cnx != null) cnx.Close(); 
-                   
+            if (cnx != null) cnx.Close();         
         }
     }
-    
-}
+    }

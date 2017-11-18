@@ -1,7 +1,6 @@
-﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bolero", "Bolero\Bolero.csproj", "{C7631991-96E7-4822-9403-91C45642AA03}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bolero", "Bolero\Bolero.csproj", "{B5333C95-7D3E-445E-BB73-72B5D124A396}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,10 +8,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{C7631991-96E7-4822-9403-91C45642AA03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C7631991-96E7-4822-9403-91C45642AA03}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C7631991-96E7-4822-9403-91C45642AA03}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C7631991-96E7-4822-9403-91C45642AA03}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5333C95-7D3E-445E-BB73-72B5D124A396}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5333C95-7D3E-445E-BB73-72B5D124A396}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5333C95-7D3E-445E-BB73-72B5D124A396}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5333C95-7D3E-445E-BB73-72B5D124A396}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
