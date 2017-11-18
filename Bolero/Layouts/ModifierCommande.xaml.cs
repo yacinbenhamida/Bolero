@@ -29,7 +29,6 @@ namespace Bolero.Layouts
         public ModifierCommande(int id)
         {
             this.id = id;
-            MessageBox.Show(id.ToString());
             InitializeComponent();
         }
 
@@ -90,15 +89,15 @@ namespace Bolero.Layouts
             int res = 0;
             int nbTable = int.Parse(txtNum.Text);
             ComboBoxItem selecteditem = (ComboBoxItem)(cmbClient.SelectedValue);
-            String nServeur = (string)(selecteditem.Content);
-            int id = 1;
+            string nServeur = (string)(selecteditem.Content);
+            int idd = 1;
 
 
-            Commande c = new Commande(nbTable, DateTime.Now, nServeur, id);
+            Commande c = new Commande(id,nbTable, DateTime.Now, nServeur, id);
             
            try
             {
-                res = cdao.updateCommande(c,id);
+                res = cdao.updateCommande(c,idd);
                 if (res == 0)
                 {
                     MessageBox.Show("Update non effectue");
@@ -116,7 +115,7 @@ namespace Bolero.Layouts
 
         private void btnAjout_Click(object sender, RoutedEventArgs e)
         {
-            AffecterPlat affPlat = new AffecterPlat(id);
+            AffecterPlat affPlat = new AffecterPlat();
             affPlat.ShowDialog();
         }
 

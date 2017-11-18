@@ -31,7 +31,7 @@
                 <ComboBoxItem Content="Serveur 2"></ComboBoxItem>
             </ComboBox>
         </StackPanel>
-        <DataGrid Name="dataGrid" CanUserAddRows="false" IsReadOnly="True" Grid.Row="2" Grid.ColumnSpan="2" ItemsSource="{Binding}" AutoGenerateColumns="False">
+        <DataGrid IsReadOnly="True" CanUserAddRows="False" Name="dataGrid" Grid.Row="2" Grid.ColumnSpan="2" ItemsSource="{Binding}" AutoGenerateColumns="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Width="1*" Header="Type" Binding="{Binding Type}">
                 </DataGridTextColumn>

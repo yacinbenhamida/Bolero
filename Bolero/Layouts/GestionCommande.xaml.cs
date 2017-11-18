@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -15,6 +16,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Bolero.DAL;
 using Bolero.BL;
+using Microsoft.Reporting.WinForms;
 namespace Bolero
 {
     /// <summary>
@@ -22,8 +24,6 @@ namespace Bolero
     /// </summary>
     public partial class GestionCommande : Window
     {
-        CommandeDAO cdao = new CommandeDAO();
-
         ArticleDAO dao = new ArticleDAO();
         private List<Commande> lstCom = new List<Commande>();
         private List<Article> lstentree = new List<Article>();
@@ -47,7 +47,7 @@ namespace Bolero
             timer.Tick += timer_Tick;
             timer.Start();
             btnAnnuler.IsEnabled = false;
-
+            
         /***************************/
 
             lstentree = dao.getArticlesByType("entree");
@@ -208,6 +208,7 @@ namespace Bolero
         }
         CommandeDAO daoc = new CommandeDAO();
         Commande tobeAdded;
+
         private void btnValider_Click(object sender, RoutedEventArgs e)
         {
             if (platCmd.Items.Count == 0 || lstArticlesCmd.Count == 0 || cmbServ.SelectedIndex == -1 || cmbTable.SelectedIndex == -1 || cmbServ.Text == "Serveur" || cmbTable.Text == "Table")
@@ -219,17 +220,21 @@ namespace Bolero
             {
                 int NumTb = int.Parse(cmbTable.Text.Substring(6));
                 string nomserv = cmbServ.Text;              
-                tobeAdded = new Commande(NumTb, DateTime.Now, nomserv, 1);
+                tobeAdded = new Commande(0,NumTb, DateTime.Now, nomserv, 1);
                 if (daoc.addMultipleArticlesInOneC(lstArticlesCmd, tobeAdded) == 1)
                 {
                     MessageBox.Show("inséré");
+                    
+
                 }
                 else {
                     MessageBox.Show("la table est occupée !");
                     return;
                 }
-                dataGrid.DataContext = daoc.getAll();
-                dataGrid.Items.Refresh();
+                List<Commande> lstCom = new List<Commande>();
+                lstCom = daoc.getAll();
+                dataGrid.DataContext = lstCom;
+                //dataGrid.Items.Refresh();
             }
         }
         
@@ -267,14 +272,8 @@ namespace Bolero
 
         private void Paiement_Click(object sender, RoutedEventArgs e)
         {
-            Layouts.PayementCommande pm = new Layouts.PayementCommande();
-            Commande cm = (Commande)dataGrid.SelectedValue;
-          //  float total = cdao.total(cm.IdCommande);
-            pm.lblnumcmd.Content ="Num Commande: "+ cm.IdCommande;
-            pm.lblnumtab.Content = "NumTable: "+cm.NumTable;
-            pm.lblserveur.Content = "Serveur : "+cm.NomServeur;
-            //pm.lblTot.Content = total;
-            pm.ShowDialog();
+            Layouts.PayementCommande payment = new Layouts.PayementCommande();
+            payment.ShowDialog();
         }
 
         private void Fact_Click(object sender, RoutedEventArgs e)
@@ -284,25 +283,16 @@ namespace Bolero
             //MessageBox.Show(""+id);
             Bolero.Layouts.Ticket_et_Facture tk = new Bolero.Layouts.Ticket_et_Facture();
             tk.setid(id);
+            DataSet DSreport = new DSreport();
+            DSreport.Reset();
+            
             tk.Show();
 
         }
 
         private void supp_Click(object sender, RoutedEventArgs e)
         {
-            Commande cm = (Commande)dataGrid.SelectedValue;
-
-            int id = cm.IdCommande;
-
-            if (cdao.delete(id) == 0)
-            {
-                MessageBox.Show("Suppresion non effectue");
-            }
-
-            else
-            {
-                MessageBox.Show("Suppresion effectue");
-            }
+        
         }
 
         private void modif_Click(object sender, RoutedEventArgs e)
@@ -313,14 +303,29 @@ namespace Bolero
             Layouts.ModifierCommande modi = new Layouts.ModifierCommande(id);
             modi.ShowDialog();
         }
+        private void btnrecettejour_Click(object sender, RoutedEventArgs e)
+        {
+            Bolero.Layouts.recettejour r = new Bolero.Layouts.recettejour();
+            
+            DataSet DSreport = new DSreport();
+            DSreport.Reset();
+
+            r.Show();
+        }
+        private void btnrecettemois_Click(object sender, RoutedEventArgs e)
+        {
+            Bolero.Layouts.recettemois r = new Bolero.Layouts.recettemois();
+
+            DataSet DSreport = new DSreport();
+            DSreport.Reset();
+
+            r.Show();
+        }
+
 
         private void Paiement_Click_1(object sender, RoutedEventArgs e)
         {
 
         }
-
-     
-
-       
     }
 }

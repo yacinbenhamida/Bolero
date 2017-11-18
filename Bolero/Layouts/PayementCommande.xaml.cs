@@ -47,13 +47,12 @@ namespace Bolero.Layouts
   
         private void btnrouge_Click(object sender, RoutedEventArgs e)
         {
-            txtCheque.Text = ""; txtEspece.Text = ""; txtRest.Text = "";
+
         }
 
         private void btnvert_Click(object sender, RoutedEventArgs e)
         {
-            Layouts.GestionCommandeCaissier gc = new GestionCommandeCaissier();
-            gc.ShowDialog();
+
         }
 
         private void btnCredit_Click(object sender, RoutedEventArgs e)
