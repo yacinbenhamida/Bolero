@@ -67,9 +67,9 @@ namespace Bolero
                 {
                     if (LoginSecurity.checkPassword(txtPW.Password.ToString(), 3) == true)
                     {
-                        MainDashboard mdb = new MainDashboard(3);
+                        GestionCommande gcmd = new GestionCommande();
                         this.Visibility = Visibility.Hidden;
-                        mdb.Show();
+                        gcmd.Show();
 
                     }
                     else

@@ -8,10 +8,8 @@ namespace Bolero.BL
 {
     class Article
     {
-        
-
         public Article() { }
-        public int qte { get; set; }
+        
         public int IdArticle { get; set; }
         public string Libelle { get; set; }
         public decimal Prix { get; set; }
@@ -25,15 +23,9 @@ namespace Bolero.BL
             this.Prix = prix;
             this.Type = type;
         }
-
-        public Article(int qte)
-        {
-            // TODO: Complete member initialization
-            this.qte = qte;
-        }
         public override string ToString()
         {
-            return IdArticle + " " + Libelle + " " + Prix + " " + Type;
+            return IdArticle +  " "  +Libelle + " " +Prix + " "+ Type ;
         }
     }
 }
