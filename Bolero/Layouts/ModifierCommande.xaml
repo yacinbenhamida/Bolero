@@ -60,10 +60,12 @@
                     <ColumnDefinition />
                     <ColumnDefinition />
                     <ColumnDefinition />
+                    <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <Button x:Name="btnSave" Content="Sauvegarder" VerticalAlignment="Stretch" HorizontalAlignment="Center" Width="100" Height="80" FontSize="16" Foreground="White" Background="#FF079B00" Click="btnSave_Click"/>
                 <Button x:Name="btnAjout" Content="Ajouter" Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Center" Width="100" Height="80" FontSize="16" Foreground="White" Click="btnAjout_Click" Background="#FF4D81DC"/>
                 <Button x:Name="btnRetour" Content="Retour" Grid.Column="2" VerticalAlignment="Stretch" HorizontalAlignment="Center" Width="100" Height="80" FontSize="16" Foreground="White" Click="btnRetour_Click" Background="#FF063381"/>
+                <Button x:Name="btnRefresh" Content="Actualiser" Grid.Column="3" VerticalAlignment="Stretch" HorizontalAlignment="Center" Width="100" Height="80" FontSize="16" Foreground="White" Click="btnRefresh_Click" Background="#FFDA7119"/>
             </Grid>
         </StackPanel>
     

@@ -38,6 +38,39 @@ namespace Bolero.DAL
             return res;
         }
 
+        public int addArticleOnCommande(List<Article> lst, int id)
+        {
+            int res = 0;
+            SqlCommand insertJointure = null;
+            int d = 0;
+
+            try
+            {
+                SqlConnection cnx = Connexion.GetConnection();
+                for (int i = 0; i < lst.Count; i++)
+                {
+                    insertJointure = new SqlCommand("insert into lignecmd(numcmd,numArticle) VALUES (@numcd,@numar)", cnx);
+                    insertJointure.Parameters.AddWithValue("numcd", id);
+                    insertJointure.Parameters.AddWithValue("numar", lst[i].IdArticle);
+                    d = (int)insertJointure.ExecuteNonQuery();
+                }
+                if (d > 0)
+                {
+                    res = 1;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+
+            }
+            finally
+            {
+                Connexion.closeConnection();
+            }
+            return res;
+        }
+
         public int delete(int id)
         {
             int res = 0;

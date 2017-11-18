@@ -115,7 +115,7 @@ namespace Bolero.Layouts
 
         private void btnAjout_Click(object sender, RoutedEventArgs e)
         {
-            AffecterPlat affPlat = new AffecterPlat();
+            AffecterPlat affPlat = new AffecterPlat(id);
             affPlat.ShowDialog();
         }
 
@@ -142,6 +142,13 @@ namespace Bolero.Layouts
                 dataGrid.DataContext = cdao.listArticle(id);
                 dataGrid.Items.Refresh();
             }
+        }
+
+        private void btnRefresh_Click(object sender, RoutedEventArgs e)
+        {
+            List<Article> lstFetchedArticles = new List<Article>();
+            lstFetchedArticles = cdao.listArticle(id);
+            dataGrid.DataContext = lstFetchedArticles;
         }
     }
 }
