@@ -26,6 +26,8 @@ namespace Bolero.Layouts
         ArticleDAO adao = new ArticleDAO();
 
         int id;
+        decimal totalArticle = 0;
+        decimal totalRemise = 0;
         public ModifierCommande(int id)
         {
             this.id = id;
@@ -38,7 +40,14 @@ namespace Bolero.Layouts
             List<Article> lstFetchedArticles = new List<Article>();
             lstFetchedArticles = cdao.listArticle(id);
             dataGrid.DataContext = lstFetchedArticles;
-            
+
+            for (int i = 0; i < lstFetchedArticles.Count; i++)
+            {
+                totalArticle = totalArticle + lstFetchedArticles[i].Prix;
+                totalRemise = totalArticle - (totalArticle * decimal.Parse(txtRemise.Text) / 100);
+            }
+            lblTotal.Content = "Totale : " + totalRemise.ToString();
+
             lblDate.Content = DateTime.Now.ToShortDateString();
             System.Windows.Threading.DispatcherTimer timer = new System.Windows.Threading.DispatcherTimer();
             timer.Interval = new TimeSpan(0, 0, 1);
@@ -65,12 +74,22 @@ namespace Bolero.Layouts
 
         private void cmdUp_Click(object sender, RoutedEventArgs e)
         {
-             NumValue++;
+            NumValue++;
+            cmdDown.IsEnabled = true;
         }
 
         private void cmdDown_Click(object sender, RoutedEventArgs e)
         {
-            NumValue--;
+            if (int.Parse(txtNum.Text) == 0)
+            {
+                cmdDown.IsEnabled = false;
+            }
+            else
+            {
+
+                NumValue--;
+
+            }
         }
 
         private void txtNum_TextChanged(object sender, TextChangedEventArgs e)
@@ -93,11 +112,11 @@ namespace Bolero.Layouts
             int idd = 1;
 
 
-            Commande c = new Commande(id,nbTable, DateTime.Now, nServeur, id);
+            Commande c = new Commande(id,nbTable, DateTime.Now, nServeur, idd);
             
            try
             {
-                res = cdao.updateCommande(c,idd);
+                res = cdao.updateCommande(c,id);
                 if (res == 0)
                 {
                     MessageBox.Show("Update non effectue");
@@ -149,6 +168,55 @@ namespace Bolero.Layouts
             List<Article> lstFetchedArticles = new List<Article>();
             lstFetchedArticles = cdao.listArticle(id);
             dataGrid.DataContext = lstFetchedArticles;
+        }
+
+        int _numRemise = 0;
+        public int NumValueR
+        {
+
+            get { return _numRemise; }
+            set
+            {
+                _numRemise = value;
+                txtRemise.Text = value.ToString();
+            }
+        }
+
+        private void txtRemise_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (txtRemise == null)
+            {
+                return;
+            }
+
+            if (!int.TryParse(txtRemise.Text, out _numRemise))
+                txtRemise.Text = _numRemise.ToString();
+        }
+
+        private void cmdUpRemise_Click(object sender, RoutedEventArgs e)
+        {
+
+            NumValueR++;
+            cmdDownRemise.IsEnabled = true;
+            totalRemise = totalArticle - (totalArticle * decimal.Parse(txtRemise.Text) / 100);
+            lblTotal.Content = "Totale : " + totalRemise.ToString();
+        }
+
+        private void cmdDownRemise_Click(object sender, RoutedEventArgs e)
+        {
+            if (int.Parse(txtRemise.Text) == 0)
+            {
+                cmdDownRemise.IsEnabled = false;
+                totalRemise = totalArticle - (totalArticle * decimal.Parse(txtRemise.Text) / 100);
+                lblTotal.Content = "Totale : " + totalRemise.ToString();
+            }
+            else
+            {
+                cmdDown.IsEnabled = true;
+                NumValueR--;
+                totalRemise = totalArticle - (totalArticle * decimal.Parse(txtRemise.Text) / 100);
+                lblTotal.Content = "Totale : " + totalRemise.ToString();
+            }
         }
     }
 }

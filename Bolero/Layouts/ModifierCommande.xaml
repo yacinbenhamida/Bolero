@@ -55,7 +55,7 @@
             <Label Content="Remise: " VerticalAlignment="Stretch" HorizontalAlignment="Stretch" FontSize="14" FontWeight="Bold"/>
             <TextBox x:Name="txtRemise" Text="0" Width="50" TextChanged="txtRemise_TextChanged"/>
             <Button x:Name="cmdUpRemise" Content="^" Width="20" Click="cmdUpRemise_Click" />
-            <Button x:Name="cmdDownRemise" Content="?" Width="20" Click="cmdDownRemise_Click" />
+            <Button x:Name="cmdDownRemise" Content="˅" Width="20" Click="cmdDownRemise_Click" />
         </StackPanel>
         <StackPanel Grid.Row="4" Grid.ColumnSpan="2">
             <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
