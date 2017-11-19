@@ -18,7 +18,7 @@ namespace Bolero.DAL
         public int add(Crediteur c)
         {
             int res = 0;
-            float sum=0;
+            double sum;
             try
             {
                 SqlConnection cnx = Connexion.GetConnection();

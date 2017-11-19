@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Bolero.BL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,13 +20,20 @@ namespace Bolero.Layouts
     /// </summary>
     public partial class EnregCommeCredit : Window
     {
+        int id; 
         public EnregCommeCredit()
         {
             InitializeComponent();
         }
-
+        public void setcmd(int idcmd)
+        {
+            this.id= idcmd;
+            InitializeComponent();
+        }
+       
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            idcmd.Content = idcmd.Content+"  "+id ;
             lblDate.Content = DateTime.Now.ToShortDateString();
             System.Windows.Threading.DispatcherTimer timer = new System.Windows.Threading.DispatcherTimer();
             timer.Interval = new TimeSpan(0, 0, 1);

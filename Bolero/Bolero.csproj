@@ -240,6 +240,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Resources\rouge.png" />
+    <Resource Include="Resources\vert.png" />
     <Resource Include="Resources\Admin.png" />
     <Content Include="Resources\BoleroDB.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -249,8 +251,6 @@
       <DependentUpon>BoleroDB.mdf</DependentUpon>
     </Content>
     <Resource Include="Resources\logout.png" />
-    <Resource Include="Resources\retour.jpg" />
-    <Resource Include="Resources\retourr.jpg" />
     <Resource Include="Resources\search.png" />
     <Resource Include="Resources\setting.png" />
     <Resource Include="Resources\User.png" />

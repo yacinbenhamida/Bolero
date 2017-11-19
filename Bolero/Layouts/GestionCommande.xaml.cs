@@ -272,7 +272,9 @@ namespace Bolero
 
         private void Paiement_Click(object sender, RoutedEventArgs e)
         {
-            Layouts.PayementCommande payment = new Layouts.PayementCommande();
+            Commande cm1 = (Commande)dataGrid.SelectedValue;
+            int id = cm1.IdCommande;
+            Layouts.PayementCommande payment = new Layouts.PayementCommande(id);
             payment.ShowDialog();
         }
 

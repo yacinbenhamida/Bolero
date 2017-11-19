@@ -104,39 +104,38 @@ namespace Bolero.DAL
             }
             return res;
         }
-       public float SumCommande(int cmd)
+       public double SumCommande(int cmd)
        {    
-           float res=0;
+           double res=0;
            
             SqlConnection cnx = Connexion.GetConnection();
             SqlDataReader reader;
+
             try
             {
-                SqlCommand sqlCmd = new SqlCommand("select numArticle from LIgnecmd", cnx);
+                SqlCommand sqlCmd = new SqlCommand("select * from lignecmd where numcmd=@id", cnx);
+                sqlCmd.Parameters.AddWithValue("@id", cmd);
                 reader = sqlCmd.ExecuteReader();
                 if (reader.HasRows)
                 {
+                    sqlCmd = new SqlCommand("Select Sum(Article.prix) from lignecmd,article,commande where commande.numcmd=lignecmd.numcmd and article.numarticle=lignecmd.numarticle and commande.idcommande=@id", cnx);
+                    sqlCmd.Parameters.AddWithValue("id", cmd);
+
                     
-                        SqlCommand sqlCmdSUM = new SqlCommand("select SUM(ArticlePrix) from Lignecmd l,Article a where((a.Id=l.numArticle) and (l.numcmd = @id))", cnx);
-                        sqlCmdSUM.Parameters.AddWithValue("idCom", cmd);     
-                    SqlDataReader reader2;
-                    reader2 =sqlCmdSUM.ExecuteReader();
-
-                    res = (float)reader2.GetDecimal(0);
-
-           }
+                   // res = (double)sqlCmd.ExecuteScalar();   -------------->mochkla fi ligne hedha 
+                }
+                reader.Close();
             }
-           catch (Exception ex)
-           {
-               throw ex;
-           }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
            finally
            {
                Connexion.closeConnection();
 
            }
            return res;
-       
        }
         public int delete(int id)
         {

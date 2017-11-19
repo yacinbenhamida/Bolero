@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Bolero.BL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,13 +20,27 @@ namespace Bolero.Layouts
     /// </summary>
     public partial class PayementCommande : Window
     {
+        int id;
+        Commande c;
         public PayementCommande()
         {
             InitializeComponent();
         }
-
+        public PayementCommande(int id)
+        {
+            this.id = id;
+            InitializeComponent();
+        }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            DAL.CommandeDAO daoc = new DAL.CommandeDAO();
+            lblnumcmd.Content = id;
+            c = daoc.getById(id);
+            double sum = daoc.SumCommande(id);
+            lbldatee.Content = c.DateCommande;
+            lblserveur.Content = c.NomServeur;
+            lblnumtab.Content = c.NumTable;
+            lbltotal.Content = sum;
             lblDate.Content = DateTime.Now.ToShortDateString();
             lbldatee.Content = DateTime.Now.ToShortDateString();
             System.Windows.Threading.DispatcherTimer timer = new System.Windows.Threading.DispatcherTimer();
@@ -47,17 +62,30 @@ namespace Bolero.Layouts
   
         private void btnrouge_Click(object sender, RoutedEventArgs e)
         {
-
+            this.Close();
         }
 
         private void btnvert_Click(object sender, RoutedEventArgs e)
         {
 
         }
+        private void btnespece_Click(object sender, RoutedEventArgs e)
+        {
 
+        }
+        private void btnticket_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void btncheque_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
         private void btnCredit_Click(object sender, RoutedEventArgs e)
         {
+            Commande cm = new Commande();
             EnregCommeCredit credit = new EnregCommeCredit();
+            credit.setcmd(id);
             credit.ShowDialog();
         }
 
