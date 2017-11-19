@@ -27,7 +27,7 @@
         <Label Content="Time 20:13 Date 08/02/2017" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
         <Label Content="Commande N°" Name="idcmd" Grid.Column="1" Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="14" FontWeight="Bold"/>
         <Label Content="Table N°1" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="14" />
-        <Label Content="Serveur : foulen ben foulen" Grid.Column="1" Grid.Row="2" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="14" FontWeight="Bold"/>
+        <Label Name="serv"  Content="Serveur :" Grid.Column="1" Grid.Row="2" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="14" FontWeight="Bold"/>
         <Button x:Name="Enregistrer" Content="ENREGISTRER" Grid.Column="1" Grid.Row="3" Width="130" Height="40" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="#FF589CFD" Foreground="White" FontSize="16" Click="Enregistrer_Click"/>
         <Button x:Name="Retour" Content="RETOUR" Grid.Column="1" Grid.Row="3" Width="60" Height="40" VerticalAlignment="Stretch" HorizontalAlignment="Left" Background="#FFE84957" Foreground="White" FontSize="16" Click="Retour_Click"/>
 

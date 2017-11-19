@@ -24,16 +24,17 @@ namespace Bolero.DAL
                 SqlConnection cnx = Connexion.GetConnection();
                 CommandeDAO cmddao = new CommandeDAO();
                 sum = cmddao.SumCommande(c.Idcmd);
-                SqlCommand sqlCmd = new SqlCommand("insert into crediteur (IdCrediteur, NomPrenom, CIN , Numtel, Adresse, MontantCredit,Idcmd) values (@idc,@nomprenom,@cin,@adresse,@ntel,@MontC,@idcmd)", cnx);
-                sqlCmd.Parameters.AddWithValue("idc", c.IdCrediteur);
+                SqlCommand sqlCmd = new SqlCommand("insert into crediteur ( nomprenom, cin , adresse, tel, MontantCredit,Idcmd) values (@nomprenom,@cin,@adresse,@tel,@MontC,@idcmd)", cnx);
+              //  sqlCmd.Parameters.AddWithValue("idc", c.IdCrediteur);
                 sqlCmd.Parameters.AddWithValue("nomprenom", c.nomprenom);
                 sqlCmd.Parameters.AddWithValue("cin", c.cin);
-                sqlCmd.Parameters.AddWithValue("ntel",c.tel );
                 sqlCmd.Parameters.AddWithValue("adresse", c.adresse);
+
+                sqlCmd.Parameters.AddWithValue("tel",c.tel );
                 sqlCmd.Parameters.AddWithValue("MontC", sum);
                 sqlCmd.Parameters.AddWithValue("idcmd", c.Idcmd);
-                sqlCmd.ExecuteNonQuery();
-                res = 1;
+               res= sqlCmd.ExecuteNonQuery();
+                
             }
 
             catch (Exception ex)

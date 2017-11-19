@@ -119,9 +119,17 @@ namespace Bolero.Layouts
         private void btnCredit_Click(object sender, RoutedEventArgs e)
         {
             Commande cm = new Commande();
+            DAL.CommandeDAO daoc = new DAL.CommandeDAO();
+
             EnregCommeCredit credit = new EnregCommeCredit();
+            c = daoc.getById(id);
+            decimal sum = daoc.SumCommande(id);
+
+            credit.montant.Text = sum.ToString();
+            credit.serv.Content = c.NomServeur.ToString();
             credit.setcmd(id);
-            credit.ShowDialog();
+          
+               credit.ShowDialog();
         }
 
       

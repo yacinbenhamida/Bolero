@@ -137,36 +137,58 @@ namespace Bolero.DAL
            }
            return res;
        }
-        public int delete(int id)
-        {
-            int res = 0;
-            SqlConnection cnx = Connexion.GetConnection();
-            try
-            {
-                SqlCommand sqlCmd = new SqlCommand("delete from Commande where  IdCommande=@id", cnx);
-                SqlCommand UpdateTable = new SqlCommand("UPDATE Table SET Etat=false where NumTable=@id",cnx);
-                sqlCmd.Parameters.AddWithValue("id", id);
-                UpdateTable.Parameters.AddWithValue("NumTable",id);
-                int res1 =(int) UpdateTable.ExecuteNonQuery();
-                int res2 =(int) sqlCmd.ExecuteNonQuery();
-                if (res1 > 0 && res2>0)
-                {
-                    res = 1;
-                }
+       public int delete(int id)
+       {
+           int res = 0;
+           int numtable = 0;
+           SqlConnection cnx = Connexion.GetConnection();
+           SqlDataReader reader;
+           try
+           {
+               SqlCommand sqlCmd = new SqlCommand("select NumTable from Commande where IdCommande=@id", cnx);
+               sqlCmd.Parameters.AddWithValue("id", id);
+               reader = sqlCmd.ExecuteReader();
+               if (reader.HasRows)
+               {
+                   while (reader.Read())
+                   {
+                       numtable = reader.GetInt32(0);
+                   }
+               }
 
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                Connexion.closeConnection();
+               reader.Close();
+           }
+           catch (Exception ex)
+           {
+               throw ex;
+           }
 
-            }
-            return res;
-        }
+           try
+           {
+               SqlCommand sqlCmd = new SqlCommand("delete from Commande where IdCommande=@id", cnx);
+               SqlCommand UpdateTable = new SqlCommand("UPDATE Tables SET Etat=@etat where NumTable=@NumTable", cnx);
+               sqlCmd.Parameters.AddWithValue("id", id);
+               UpdateTable.Parameters.AddWithValue("NumTable", numtable);
+               UpdateTable.Parameters.AddWithValue("etat", false);
+               int res1 = (int)UpdateTable.ExecuteNonQuery();
+               int res2 = (int)sqlCmd.ExecuteNonQuery();
+               if (res1 > 0 && res2 > 0)
+               {
+                   res = 1;
+               }
 
+           }
+           catch (Exception ex)
+           {
+               throw ex;
+           }
+           finally
+           {
+               Connexion.closeConnection();
+
+           }
+           return res;
+       }
         public bool find(Commande e)
         {
             //TODO

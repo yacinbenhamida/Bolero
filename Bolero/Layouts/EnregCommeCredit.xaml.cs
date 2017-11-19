@@ -12,7 +12,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
+using Bolero.DAL;
+using Bolero.BL;
 namespace Bolero.Layouts
 {
     /// <summary>
@@ -20,7 +21,10 @@ namespace Bolero.Layouts
     /// </summary>
     public partial class EnregCommeCredit : Window
     {
-        int id; 
+        int id;
+        decimal tot;
+        CrediteurDAO credao = new CrediteurDAO();
+        
         public EnregCommeCredit()
         {
             InitializeComponent();
@@ -30,9 +34,16 @@ namespace Bolero.Layouts
             this.id= idcmd;
             InitializeComponent();
         }
+        public void settot(decimal tot)
+        {
+            this.tot = tot;
+            InitializeComponent();
+        }
+
        
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            
             idcmd.Content = idcmd.Content+"  "+id ;
             lblDate.Content = DateTime.Now.ToShortDateString();
             System.Windows.Threading.DispatcherTimer timer = new System.Windows.Threading.DispatcherTimer();
@@ -48,11 +59,26 @@ namespace Bolero.Layouts
 
         private void Retour_Click(object sender, RoutedEventArgs e)
         {
-
-        }
+            Layouts.GestionCommandeCaissier CP = new GestionCommandeCaissier();
+            CP.ShowDialog();
+            }
 
         private void Enregistrer_Click(object sender, RoutedEventArgs e)
         {
+            Crediteur c = new Crediteur();
+
+            c.nomprenom = nomPrenom.Text.ToString();
+            c.MontantCredit = float.Parse(montant.Text);
+            c.tel = numTel.Text.ToString();
+            c.adresse = adres.Text.ToString();
+            c.cin = int.Parse(CIN.Text);
+            c.Idcmd = id;
+
+
+            if (credao.add(c) == 1) {
+                MessageBox.Show("ajout térmminé!");
+            }
+            else MessageBox.Show("ajout nn térmminé!");
 
         }
     }

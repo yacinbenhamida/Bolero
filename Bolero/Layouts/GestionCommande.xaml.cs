@@ -25,6 +25,7 @@ namespace Bolero
     public partial class GestionCommande : Window
     {
         ArticleDAO dao = new ArticleDAO();
+        CommandeDAO cdao = new CommandeDAO();
         private List<Commande> lstCom = new List<Commande>();
         private List<Article> lstentree = new List<Article>();
         private List<Article> lstsuite = new List<Article>();
@@ -294,6 +295,19 @@ namespace Bolero
 
         private void supp_Click(object sender, RoutedEventArgs e)
         {
+            Commande cm = (Commande)dataGrid.SelectedValue;
+
+            int id = cm.IdCommande;
+
+            if (cdao.delete(id) == 0)
+            {
+                MessageBox.Show("Suppresion non effectue");
+            }
+
+            else
+            {
+                MessageBox.Show("Suppresion effectue");
+            }
         
         }
 
