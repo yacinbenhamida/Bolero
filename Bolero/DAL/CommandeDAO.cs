@@ -76,7 +76,7 @@ namespace Bolero.DAL
              SqlConnection cnx = Connexion.GetConnection();
              SqlCommand sqlCmd = new SqlCommand("insert into Commande (IdCommande,NumTable,DateCommande,NomServeur,Id) values (@idCom,@numt,@Dc,@noms,@id)", cnx);
              
-              SqlCommand UpdateTable = new SqlCommand("UPDATE Tables SET Etat='true' where NumTable=@num",cnx);
+              SqlCommand UpdateTable = new SqlCommand("UPDATE Tables SET Etat='True' where NumTable=@num and Etat='False'",cnx);
              sqlCmd.Parameters.AddWithValue("idCom",e.IdCommande );
              sqlCmd.Parameters.AddWithValue("numt", e.NumTable);
              sqlCmd.Parameters.AddWithValue("Dc", e.DateCommande);
@@ -90,6 +90,7 @@ namespace Bolero.DAL
                 {
                     res = 1;
                 }
+
              
             }
               catch (Exception ex)

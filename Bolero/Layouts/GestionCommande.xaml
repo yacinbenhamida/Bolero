@@ -77,7 +77,7 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition />
-            <RowDefinition Height="40"/>
+            <RowDefinition Height="0.05*"/>
         </Grid.RowDefinitions>
 
         <TabControl VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
@@ -110,7 +110,7 @@
                                 </Setter>
                             </Style>
                         </TabControl.Resources>
-                        <TabItem Height="50" x:Name="tbEnt" Foreground="Black" Header="Entrée" Background="Green" FontWeight="Bold" FontSize="14" >
+                        <TabItem Height="50" x:Name="tbEnt" Foreground="Black" Header="Entrée"  FontWeight="Bold" FontSize="14" >
                             <ScrollViewer HorizontalScrollBarVisibility="Auto">
                                 <ListBox x:Name="entree"  >
                                     <ListBox.ItemsPanel>
@@ -122,7 +122,7 @@
                             </ScrollViewer>
                         </TabItem>
 
-                        <TabItem Height="50" x:Name="tbSuite" Foreground="Black" Header="Suite" Background="Crimson" FontWeight="Bold" FontSize="14">
+                        <TabItem Height="50" x:Name="tbSuite" Foreground="Black" Header="Suite"  FontWeight="Bold" FontSize="14">
                             <ScrollViewer HorizontalScrollBarVisibility="Auto">
                                 <ListBox x:Name="Suite" >
                                     <ListBox.ItemsPanel>
@@ -133,7 +133,7 @@
                                 </ListBox>
                             </ScrollViewer>
                         </TabItem>
-                        <TabItem Height="50" x:Name="tbHO" Foreground="Black" Header="Hors d'oeuvres" Background="#FFACA5A5" FontWeight="Bold" FontSize="14">
+                        <TabItem Height="50" x:Name="tbHO" Foreground="Black" Header="Hors d'oeuvres"  FontWeight="Bold" FontSize="14">
                             <ScrollViewer HorizontalScrollBarVisibility="Auto">
                                 <ListBox x:Name="hrov" >
                                     <ListBox.ItemsPanel>
@@ -144,7 +144,7 @@
                                 </ListBox>
                             </ScrollViewer>
                         </TabItem>
-                        <TabItem Height="50" x:Name="tbDes" Foreground="Black" Header="Desserts" Background="Purple" FontWeight="Bold" FontSize="14">
+                        <TabItem Height="50" x:Name="tbDes" Foreground="Black" Header="Desserts"  FontWeight="Bold" FontSize="14">
                             <ScrollViewer HorizontalScrollBarVisibility="Auto">
                                 <ListBox x:Name="dessert" >
                                     <ListBox.ItemsPanel>
@@ -155,7 +155,7 @@
                                 </ListBox>
                             </ScrollViewer>
                         </TabItem>
-                        <TabItem Height="50" x:Name="tbBoiss" Foreground="Black" Header="Boissons" Background="DarkBlue" FontWeight="Bold" FontSize="14">
+                        <TabItem Height="50" x:Name="tbBoiss" Foreground="Black" Header="Boissons"  FontWeight="Bold" FontSize="14">
                             <ScrollViewer HorizontalScrollBarVisibility="Auto">
                                 <ListBox x:Name="boisson" >
                                     <ListBox.ItemsPanel>
@@ -166,7 +166,7 @@
                                 </ListBox>
                             </ScrollViewer>
                         </TabItem>
-                        <TabItem Height="50" x:Name="tbPJ" Foreground="Black" Header="Plat du jour" Background="Gold" FontWeight="Bold" FontSize="14">
+                        <TabItem Height="50" x:Name="tbPJ"  Header="Plat du jour"  FontWeight="Bold" FontSize="14">
                             <ScrollViewer HorizontalScrollBarVisibility="Auto">
                                 <ListBox x:Name="PJ" >
                                     <ListBox.ItemsPanel>
@@ -219,8 +219,8 @@
                             <ComboBoxItem Name="cmbTable7">Table 7</ComboBoxItem>
                             <ComboBoxItem Name="cmbTable8">Table 8</ComboBoxItem>
                         </ComboBox>
-                        <Button x:Name="btnValider" Content="Valider" Grid.Row="4" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="350" Height="50" FontWeight="Bold" FontSize="16" Foreground="White" Background="#FF079B00" Click="btnValider_Click"/>
-                        <Button x:Name="btnAnnuler" Content="Annuler" Grid.Row="5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="350" Height="50" FontSize="16" FontWeight="Bold" Foreground="White" Background="#FFF31111" Click="btnAnnuler_Click"/>
+                        <Button x:Name="btnValider" Content="Valider" Grid.Row="4" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="350" Height="40" FontWeight="Bold" FontSize="16" Foreground="White" Background="#FF079B00" Click="btnValider_Click"/>
+                        <Button x:Name="btnAnnuler" Content="Annuler" Grid.Row="5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="350" Height="40" FontSize="16" FontWeight="Bold" Foreground="White" Background="#FFF31111" Click="btnAnnuler_Click"/>
                     </Grid>
                     <Grid Grid.Column="3">
                         <Grid.RowDefinitions>
