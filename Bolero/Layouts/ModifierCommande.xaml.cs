@@ -24,7 +24,7 @@ namespace Bolero.Layouts
     {
         CommandeDAO cdao = new CommandeDAO();
         ArticleDAO adao = new ArticleDAO();
-
+        Commande cmd = new Commande();
         int id;
         decimal totalArticle = 0;
         decimal totalRemise = 0;
@@ -40,7 +40,16 @@ namespace Bolero.Layouts
             List<Article> lstFetchedArticles = new List<Article>();
             lstFetchedArticles = cdao.listArticle(id);
             dataGrid.DataContext = lstFetchedArticles;
-
+            cmd = cdao.getById(id);
+            txtNum.Text = cmd.NumTable.ToString();
+            if (cmd.NomServeur.ToString() == "Serveur 1")
+            {
+                cmbClient.SelectedIndex = 1;
+            }
+            else
+            {
+                cmbClient.SelectedIndex = 2;
+            }
             for (int i = 0; i < lstFetchedArticles.Count; i++)
             {
                 totalArticle = totalArticle + lstFetchedArticles[i].Prix;
