@@ -18,20 +18,24 @@ namespace Bolero.DAL
         public int add(Crediteur c)
         {
             int res = 0;
-
+            float sum=0;
             try
             {
                 SqlConnection cnx = Connexion.GetConnection();
-                SqlCommand sqlCmd = new SqlCommand("insert into crediteur (IdCrediteur, NomPrenom, CIN , Numtel, Adresse, MontantCredit) values (@idc,@nomprenom,@cin,@adresse,@ntel,@MontC)", cnx);
-                sqlCmd.Parameters.AddWithValue("idc", c.idCrediteur);
+                CommandeDAO cmddao = new CommandeDAO();
+                sum = cmddao.SumCommande(c.Idcmd);
+                SqlCommand sqlCmd = new SqlCommand("insert into crediteur (IdCrediteur, NomPrenom, CIN , Numtel, Adresse, MontantCredit,Idcmd) values (@idc,@nomprenom,@cin,@adresse,@ntel,@MontC,@idcmd)", cnx);
+                sqlCmd.Parameters.AddWithValue("idc", c.IdCrediteur);
                 sqlCmd.Parameters.AddWithValue("nomprenom", c.nomprenom);
                 sqlCmd.Parameters.AddWithValue("cin", c.cin);
                 sqlCmd.Parameters.AddWithValue("ntel",c.tel );
                 sqlCmd.Parameters.AddWithValue("adresse", c.adresse);
-                sqlCmd.Parameters.AddWithValue("MontC", c.MontantCredit);
+                sqlCmd.Parameters.AddWithValue("MontC", sum);
+                sqlCmd.Parameters.AddWithValue("idcmd", c.Idcmd);
                 sqlCmd.ExecuteNonQuery();
                 res = 1;
             }
+
             catch (Exception ex)
             {
                 throw ex;
@@ -81,13 +85,14 @@ namespace Bolero.DAL
             try
             {
                 SqlConnection cnx = Connexion.GetConnection();
-                SqlCommand cmd = new SqlCommand("UPDATE crediteur SET NomPrenom=@nomprenom,CIN=@cin,Numtel=@numt,Adresse=@adresse,MontantCredit=@montC where IdCrediteur=@id", cnx);
-                cmd.Parameters.AddWithValue("id", crd.idCrediteur);
+                SqlCommand cmd = new SqlCommand("UPDATE crediteur SET NomPrenom=@nomprenom,CIN=@cin,Numtel=@numt,Adresse=@adresse,MontantCredit=@montC,Idcmd=@idcmd where IdCrediteur=@id", cnx);
+                cmd.Parameters.AddWithValue("id", crd.IdCrediteur);
                 cmd.Parameters.AddWithValue("nomprenom", crd.nomprenom);
                 cmd.Parameters.AddWithValue("cin", crd.cin);
                 cmd.Parameters.AddWithValue("numt",crd.tel);
                 cmd.Parameters.AddWithValue("adresse", crd.adresse);
                 cmd.Parameters.AddWithValue("MontC", crd.MontantCredit);
+                cmd.Parameters.AddWithValue("idcmd", crd.Idcmd);
                 int done = (int)cmd.ExecuteNonQuery();
                 if (done > 0) res = 1;
             }
@@ -115,7 +120,7 @@ namespace Bolero.DAL
                 {
                     while (reader.Read())
                     {
-                        listc.Add(new Crediteur(reader.GetInt32(0), reader.GetString(1), reader.GetInt32(2), reader.GetString(3),reader.GetString(4),reader.GetFloat(5)));
+                        listc.Add(new Crediteur(reader.GetInt32(0), reader.GetString(1), reader.GetInt32(2), reader.GetString(3),reader.GetString(4),reader.GetFloat(5),reader.GetInt32(6)));
                     }
 
                 }
@@ -141,7 +146,7 @@ namespace Bolero.DAL
             try
             {
                 SqlCommand sqlCmd = new SqlCommand("select * from crediteur where IdCrediteur=@id", cnx);
-                sqlCmd.Parameters.AddWithValue("id",c.idCrediteur);
+                sqlCmd.Parameters.AddWithValue("id",c.IdCrediteur);
                 reader = sqlCmd.ExecuteReader();
                 if (reader.HasRows)
                 {

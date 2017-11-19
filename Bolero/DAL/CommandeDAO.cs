@@ -104,7 +104,40 @@ namespace Bolero.DAL
             }
             return res;
         }
+       public float SumCommande(int cmd)
+       {    
+           float res=0;
+           
+            SqlConnection cnx = Connexion.GetConnection();
+            SqlDataReader reader;
+            try
+            {
+                SqlCommand sqlCmd = new SqlCommand("select numArticle from LIgnecmd", cnx);
+                reader = sqlCmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    
+                        SqlCommand sqlCmdSUM = new SqlCommand("select SUM(ArticlePrix) from Lignecmd l,Article a where((a.Id=l.numArticle) and (l.numcmd = @id))", cnx);
+                        sqlCmdSUM.Parameters.AddWithValue("idCom", cmd);     
+                    SqlDataReader reader2;
+                    reader2 =sqlCmdSUM.ExecuteReader();
 
+                    res = (float)reader2.GetDecimal(0);
+
+           }
+            }
+           catch (Exception ex)
+           {
+               throw ex;
+           }
+           finally
+           {
+               Connexion.closeConnection();
+
+           }
+           return res;
+       
+       }
         public int delete(int id)
         {
             int res = 0;
