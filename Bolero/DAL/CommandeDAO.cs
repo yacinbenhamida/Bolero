@@ -104,27 +104,27 @@ namespace Bolero.DAL
             }
             return res;
         }
-       public double SumCommande(int cmd)
+       public decimal SumCommande(int cmd)
        {    
-           double res=0;
+           decimal res=0;
            
             SqlConnection cnx = Connexion.GetConnection();
             SqlDataReader reader;
 
             try
             {
-                SqlCommand sqlCmd = new SqlCommand("select * from lignecmd where numcmd=@id", cnx);
+
+                SqlCommand sqlCmd = new SqlCommand("Select Prix from Article,lignecmd,Commande where (Article.IdArticle=lignecmd.numArticle)and(Commande.IdCommande=lignecmd.numcmd)and(numcmd=@id)", cnx);
                 sqlCmd.Parameters.AddWithValue("@id", cmd);
                 reader = sqlCmd.ExecuteReader();
-                if (reader.HasRows)
+                while (reader.Read())
                 {
-                    sqlCmd = new SqlCommand("Select Sum(Article.prix) from lignecmd,article,commande where commande.numcmd=lignecmd.numcmd and article.numarticle=lignecmd.numarticle and commande.idcommande=@id", cnx);
-                    sqlCmd.Parameters.AddWithValue("id", cmd);
+                    res += reader.GetDecimal(0);
 
-                    
-                   // res = (double)sqlCmd.ExecuteScalar();   -------------->mochkla fi ligne hedha 
+
+
+                    //  res = reader.GetDouble(0);
                 }
-                reader.Close();
             }
             catch (Exception ex)
             {

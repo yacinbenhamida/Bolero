@@ -81,7 +81,7 @@
             <Label x:Name="lblHeure" VerticalContentAlignment="Center"/>
         </DockPanel>
         <Button Content="Crédit" x:Name="btnCredit_Copy" Click="btnCredit_Click" Grid.Column="0"  Width="100" Height="50" HorizontalAlignment="Center" Foreground="White" VerticalAlignment="Center" FontWeight="Bold"  FontSize="14" Background="#FF5E88E2"    />
-        <Label Content="" Grid.Row="4" x:Name="lbltotal" HorizontalAlignment="Right" VerticalAlignment="Center" Width="202" Height="50"  FontSize="14" />
+        <Label Content="" Grid.Row="4" x:Name="lbltotal" HorizontalAlignment="Center" FontWeight="Bold" VerticalAlignment="Center" Width="202"   FontSize="14" Height="50"   />
         <Label Content="" x:Name="lblnumcmd" Grid.Column="2"  VerticalAlignment="Top" Width="151" Height="30"  FontSize="14" HorizontalAlignment="Left" Margin="215.8,75,0,0" Grid.RowSpan="2"/>
         <Label Content="" x:Name="lblnumtab" Grid.Row="1" Grid.Column="2"  VerticalAlignment="Bottom" Width="151" Height="30"  FontSize="14" HorizontalAlignment="Left" Margin="215.8,0,0,0.4"/>
         <Label Content="" x:Name="lblserveur" Grid.Row="1" Grid.Column="2"  VerticalAlignment="Top" Width="151" Height="30"  FontSize="14" HorizontalAlignment="Left" Margin="215.8,74.8,0,0" Grid.RowSpan="2"/>

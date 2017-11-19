@@ -36,7 +36,7 @@ namespace Bolero.Layouts
             DAL.CommandeDAO daoc = new DAL.CommandeDAO();
             lblnumcmd.Content = id;
             c = daoc.getById(id);
-            double sum = daoc.SumCommande(id);
+            decimal sum = daoc.SumCommande(id);
             lbldatee.Content = c.DateCommande;
             lblserveur.Content = c.NomServeur;
             lblnumtab.Content = c.NumTable;
@@ -71,15 +71,50 @@ namespace Bolero.Layouts
         }
         private void btnespece_Click(object sender, RoutedEventArgs e)
         {
+            decimal t;
+            decimal t2;
+            Decimal.TryParse(txtEspece.Text, out t);
+            Decimal.TryParse(lbltotal.Content.ToString(), out t2);
+            if (t > t2)
+            {
+                MessageBox.Show("montont  invalid");
+            }
+            else
+            {
+                lbltotal.Content = t2 - t;
+            }
 
         }
         private void btnticket_Click(object sender, RoutedEventArgs e)
         {
-
+            decimal t;
+            decimal t2;
+            Decimal.TryParse(txtRest.Text,out t);
+            Decimal.TryParse(lbltotal.Content.ToString(), out t2);
+            if (t > t2)
+            {
+                MessageBox.Show("montont invalid");
+            }
+            else
+            {
+               lbltotal.Content=t2 - t;
+            }
+            
         }
         private void btncheque_Click(object sender, RoutedEventArgs e)
         {
-
+            decimal t;
+            decimal t2;
+            Decimal.TryParse(txtCheque.Text, out t);
+            Decimal.TryParse(lbltotal.Content.ToString(), out t2);
+            if (t > t2 )
+            {
+                MessageBox.Show("montont  invalid");
+            }
+            else
+            {
+                lbltotal.Content = t2 - t;
+            }
         }
         private void btnCredit_Click(object sender, RoutedEventArgs e)
         {
