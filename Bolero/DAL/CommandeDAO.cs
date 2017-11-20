@@ -19,12 +19,14 @@ namespace Bolero.DAL
                 SqlCommand UpdateTable = null;
                 SqlCommand sqlCmd = null;
                 SqlCommand insertJointure = null;
+                SqlCommand findLastInsertedID = null;
                  int b = 0;
                  int j = 0;
                  int d = 0;
-                  sqlCmd = new SqlCommand("insert into Commande (IdCommande,NumTable,DateCommande,NomServeur,Id) values (@idCom,@numt,@Dc,@noms,@id)", cnx);
+                
+                  sqlCmd = new SqlCommand("insert into Commande (NumTable,DateCommande,NomServeur,Id) values (@numt,@Dc,@noms,@id)", cnx);
                     UpdateTable = new SqlCommand("UPDATE Tables SET Etat='True' where NumTable=@num AND Etat='False'", cnx);
-                    sqlCmd.Parameters.AddWithValue("idCom", e.IdCommande);
+                    //sqlCmd.Parameters.AddWithValue("idCom", e.IdCommande);
                     sqlCmd.Parameters.AddWithValue("numt", e.NumTable);
                     sqlCmd.Parameters.AddWithValue("Dc", e.DateCommande);
                     sqlCmd.Parameters.AddWithValue("noms", e.NomServeur);
@@ -32,14 +34,23 @@ namespace Bolero.DAL
                     UpdateTable.Parameters.AddWithValue("num", e.NumTable);
                     b = (int)UpdateTable.ExecuteNonQuery();
                     j = (int)sqlCmd.ExecuteNonQuery();
+                    int idCommande = 0;
                     for (int i = 0; i < lst.Count; i++)
-                    {   
-                        insertJointure= new SqlCommand("insert into lignecmd(numcmd,numArticle) VALUES (@numcd,@numar)",cnx);
-                        insertJointure.Parameters.AddWithValue("numcd", e.IdCommande);
+                    {
+                        findLastInsertedID = new SqlCommand("SELECT IdCommande from Commande", cnx);
+                        SqlDataReader rd = findLastInsertedID.ExecuteReader();
+                        if (rd.HasRows)
+                        {   
+                            while(rd.Read()){
+                         idCommande = rd.GetInt32(0);}
+                        }
+                        rd.Close();
+                        insertJointure = new SqlCommand("insert into lignecmd(numcmd,numArticle) VALUES (@numcd,@numar)", cnx);
+                        insertJointure.Parameters.AddWithValue("numcd", idCommande);
                         insertJointure.Parameters.AddWithValue("numar", lst[i].IdArticle);
-                    d = (int)insertJointure.ExecuteNonQuery();
+                        d = (int)insertJointure.ExecuteNonQuery();
                     }
-                if (b > 0 && j > 0 && d>0)
+                if (b > 0 && j > 0 && d>0 && idCommande >0)
                 {
                     res = 1;
                 }
@@ -65,7 +76,7 @@ namespace Bolero.DAL
              SqlConnection cnx = Connexion.GetConnection();
              SqlCommand sqlCmd = new SqlCommand("insert into Commande (IdCommande,NumTable,DateCommande,NomServeur,Id) values (@idCom,@numt,@Dc,@noms,@id)", cnx);
              
-              SqlCommand UpdateTable = new SqlCommand("UPDATE Tables SET Etat='true' where NumTable=@num",cnx);
+              SqlCommand UpdateTable = new SqlCommand("UPDATE Tables SET Etat='True' where NumTable=@num and Etat='False'",cnx);
              sqlCmd.Parameters.AddWithValue("idCom",e.IdCommande );
              sqlCmd.Parameters.AddWithValue("numt", e.NumTable);
              sqlCmd.Parameters.AddWithValue("Dc", e.DateCommande);
@@ -79,6 +90,7 @@ namespace Bolero.DAL
                 {
                     res = 1;
                 }
+
              
             }
               catch (Exception ex)
@@ -92,37 +104,91 @@ namespace Bolero.DAL
             }
             return res;
         }
-
-        public int delete(int id)
-        {
-            int res = 0;
+       public decimal SumCommande(int cmd)
+       {    
+           decimal res=0;
+           
             SqlConnection cnx = Connexion.GetConnection();
+            SqlDataReader reader;
+
             try
             {
-                SqlCommand sqlCmd = new SqlCommand("delete from Commande where  IdCommande=@id", cnx);
-                SqlCommand UpdateTable = new SqlCommand("UPDATE Table SET Etat=false where NumTable=@id",cnx);
-                sqlCmd.Parameters.AddWithValue("id", id);
-                UpdateTable.Parameters.AddWithValue("NumTable",id);
-                int res1 =(int) UpdateTable.ExecuteNonQuery();
-                int res2 =(int) sqlCmd.ExecuteNonQuery();
-                if (res1 > 0 && res2>0)
-                {
-                    res = 1;
-                }
 
+                SqlCommand sqlCmd = new SqlCommand("Select Prix from Article,lignecmd,Commande where (Article.IdArticle=lignecmd.numArticle)and(Commande.IdCommande=lignecmd.numcmd)and(numcmd=@id)", cnx);
+                sqlCmd.Parameters.AddWithValue("@id", cmd);
+                reader = sqlCmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    res += reader.GetDecimal(0);
+
+
+
+                    //  res = reader.GetDouble(0);
+                }
             }
             catch (Exception ex)
             {
                 throw ex;
             }
-            finally
-            {
-                Connexion.closeConnection();
+           finally
+           {
+               Connexion.closeConnection();
 
-            }
-            return res;
-        }
+           }
+           return res;
+       }
+       public int delete(int id)
+       {
+           int res = 0;
+           int numtable = 0;
+           SqlConnection cnx = Connexion.GetConnection();
+           SqlDataReader reader;
+           try
+           {
+               SqlCommand sqlCmd = new SqlCommand("select NumTable from Commande where IdCommande=@id", cnx);
+               sqlCmd.Parameters.AddWithValue("id", id);
+               reader = sqlCmd.ExecuteReader();
+               if (reader.HasRows)
+               {
+                   while (reader.Read())
+                   {
+                       numtable = reader.GetInt32(0);
+                   }
+               }
 
+               reader.Close();
+           }
+           catch (Exception ex)
+           {
+               throw ex;
+           }
+
+           try
+           {
+               SqlCommand sqlCmd = new SqlCommand("delete from Commande where IdCommande=@id", cnx);
+               SqlCommand UpdateTable = new SqlCommand("UPDATE Tables SET Etat=@etat where NumTable=@NumTable", cnx);
+               sqlCmd.Parameters.AddWithValue("id", id);
+               UpdateTable.Parameters.AddWithValue("NumTable", numtable);
+               UpdateTable.Parameters.AddWithValue("etat", false);
+               int res1 = (int)UpdateTable.ExecuteNonQuery();
+               int res2 = (int)sqlCmd.ExecuteNonQuery();
+               if (res1 > 0 && res2 > 0)
+               {
+                   res = 1;
+               }
+
+           }
+           catch (Exception ex)
+           {
+               throw ex;
+           }
+           finally
+           {
+               Connexion.closeConnection();
+
+           }
+           return res;
+       }
         public bool find(Commande e)
         {
             //TODO
@@ -165,7 +231,7 @@ namespace Bolero.DAL
                 {
                     while (reader.Read())
                     {
-                        list.Add(new Commande(reader.GetInt32(1),reader.GetDateTime(2),reader.GetString(3),reader.GetInt32(4)));
+                        list.Add(new Commande(reader.GetInt32(0),reader.GetInt32(1),reader.GetDateTime(2),reader.GetString(3),reader.GetInt32(4)));
                     }
 
                 }
@@ -196,7 +262,7 @@ namespace Bolero.DAL
                 SqlDataReader reader = sqlCmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    a =new Commande(reader.GetInt32(1), reader.GetDateTime(2), reader.GetString(3), reader.GetInt32(4));
+                    a =new Commande(reader.GetInt32(0),reader.GetInt32(1), reader.GetDateTime(2), reader.GetString(3), reader.GetInt32(4));
                 }
                 reader.Close();
             }
@@ -310,7 +376,7 @@ namespace Bolero.DAL
                     SqlCommand UpdateTable = new SqlCommand("UPDATE Tables SET Etat=@etat2 where NumTable=@idt", cnx);
                     UpdateTable.Parameters.AddWithValue("idt", obj.NumTable);
                     UpdateTable.Parameters.AddWithValue("etat2", true);
-                    cmd.Parameters.AddWithValue("numtb", obj.NumTable);
+                    cmd.Parameters.AddWithValue("numtb", obj.IdCommande);
                     cmd.Parameters.AddWithValue("dtc", obj.DateCommande);
                     //  cmd.Parameters.AddWithValue("idartc", obj.IdArticle);
                     cmd.Parameters.AddWithValue("nomserv", obj.NomServeur);

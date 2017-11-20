@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C7631991-96E7-4822-9403-91C45642AA03}</ProjectGuid>
+    <ProjectGuid>{B5333C95-7D3E-445E-BB73-72B5D124A396}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Bolero</RootNamespace>
@@ -13,8 +13,6 @@
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
-    <TargetFrameworkProfile />
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publier\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -27,8 +25,10 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -39,7 +39,6 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -49,20 +48,18 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>Bolero.App</StartupObject>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Accessibility" />
+    <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
     <Reference Include="Microsoft.ReportViewer.WinForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
-    <Reference Include="PresentationUI, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
-    <Reference Include="ReachFramework" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Printing" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Windows.Presentation" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -72,208 +69,158 @@
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
     <Reference Include="UIAutomationProvider" />
-    <Reference Include="UIAutomationTypes" />
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
-    <ApplicationDefinition Include="Layout\App.xaml">
+    <ApplicationDefinition Include="Layouts\App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="BL\Article.cs" />
-    <Compile Include="BL\Commande.cs" />
+    <Page Include="Layouts\AffecterPlat.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Layouts\EnregCommeCredit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Layouts\GestionCommande.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Layouts\GestionCommandeCaissier.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Layouts\InfoCommande.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Layouts\ModifierCommande.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Layouts\PayementCommande.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="BL\Archive.cs" />
     <Compile Include="BL\Crediteur.cs" />
-    <Compile Include="BL\ligneCommande.cs" />
-    <Compile Include="BL\Table.cs" />
-    <Compile Include="DAL\ArticleDAO.cs" />
-    <Compile Include="DAL\CommandeDAO.cs" />
+    <Compile Include="DAL\ArchiveDAO.cs" />
     <Compile Include="DAL\CrediteurDAO.cs" />
-    <Compile Include="DAL\DAO.cs" />
-    <Compile Include="DAL\TableDAO.cs" />
+    <Compile Include="DSreport.cs">
+      <DependentUpon>DSreport.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="DSreport.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DSreport.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Layout\AccesSession.xaml.cs">
-      <DependentUpon>AccesSession.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Layout\AccesSessionCaissier.xaml.cs">
-      <DependentUpon>AccesSessionCaissier.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Layout\AccesSessionCaissier2.xaml.cs">
-      <DependentUpon>AccesSessionCaissier2.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Layout\AffecterPlat.xaml.cs">
-      <DependentUpon>AffecterPlat.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Layout\AjoutPlat.xaml.cs">
-      <DependentUpon>AjoutPlat.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Layout\App.xaml.cs">
+    <Compile Include="Layouts\App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="BL\Article.cs" />
+    <Compile Include="BL\Commande.cs" />
+    <Compile Include="BL\Table.cs" />
+    <Compile Include="DAL\ArticleDAO.cs" />
+    <Compile Include="DAL\CommandeDAO.cs" />
     <Compile Include="DAL\Connexion.cs" />
-    <Compile Include="DAL\UserDAO.cs" />
-    <Compile Include="Layout\EnregCommeCredit.xaml.cs">
+    <Compile Include="DAL\DAO.cs" />
+    <Compile Include="DAL\TableDAO.cs" />
+    <Compile Include="Layouts\AffecterPlat.xaml.cs">
+      <DependentUpon>AffecterPlat.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Layouts\EnregCommeCredit.xaml.cs">
       <DependentUpon>EnregCommeCredit.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Layout\Facture.cs">
+    <Compile Include="Layouts\Facture.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Layout\Facture.designer.cs">
+    <Compile Include="Layouts\Facture.Designer.cs">
       <DependentUpon>Facture.cs</DependentUpon>
     </Compile>
-    <Compile Include="Layout\GestionCommande.xaml.cs">
+    <Compile Include="Layouts\GestionCommande.xaml.cs">
       <DependentUpon>GestionCommande.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Layout\GestionCommandeCaissier.xaml.cs">
+    <Compile Include="Layouts\GestionCommandeCaissier.xaml.cs">
       <DependentUpon>GestionCommandeCaissier.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Layout\InfoCommande.xaml.cs">
+    <Compile Include="Layouts\InfoCommande.xaml.cs">
       <DependentUpon>InfoCommande.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Layout\MainDashboard.xaml.cs">
-      <DependentUpon>MainDashboard.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Layout\ModifierCommande.xaml.cs">
+    <Compile Include="Layouts\ModifierCommande.xaml.cs">
       <DependentUpon>ModifierCommande.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Layout\ModifierMenu.xaml.cs">
-      <DependentUpon>ModifierMenu.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Layout\ModifierPlat.xaml.cs">
-      <DependentUpon>ModifierPlat.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Layout\PayementCommande.xaml.cs">
+    <Compile Include="Layouts\PayementCommande.xaml.cs">
       <DependentUpon>PayementCommande.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Layout\Ticket et Facture.cs">
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Layouts\recettejour.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Layout\Ticket et Facture.designer.cs">
+    <Compile Include="Layouts\recettejour.Designer.cs">
+      <DependentUpon>recettejour.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Layouts\recettemois.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Layouts\recettemois.Designer.cs">
+      <DependentUpon>recettemois.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Layouts\Ticket et Facture.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Layouts\Ticket et Facture.Designer.cs">
       <DependentUpon>Ticket et Facture.cs</DependentUpon>
     </Compile>
-    <Compile Include="Layout\Ticket.cs">
+    <Compile Include="Layouts\Ticket.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Layout\Ticket.designer.cs">
+    <Compile Include="Layouts\Ticket.Designer.cs">
       <DependentUpon>Ticket.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
     </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Layout\QuestionSecrete.xaml.cs">
-      <DependentUpon>QuestionSecrete.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Layout\NewPassword.xaml.cs">
-      <DependentUpon>NewPassword.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="BL\User.cs" />
-    <Compile Include="SL\LoginSecurity.cs" />
-    <Page Include="Layout\AccesSession.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Layout\AffecterPlat.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Layout\AjoutPlat.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Layout\Authentification.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Layout\AccesSessionCaissier.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Layout\AccesSessionCaissier2.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Layout\EnregCommeCredit.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Layout\GestionCommande.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Layout\GestionCommandeCaissier.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Layout\InfoCommande.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Layout\MainDashboard.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Layout\ModifierCommande.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Layout\ModifierMenu.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Layout\ModifierPlat.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Layout\PayementCommande.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Layout\QuestionSecrete.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Layout\NewPassword.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Layout\Authentification.xaml.cs">
-      <DependentUpon>Authentification.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Properties\AssemblyInfo.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Layout\facture.rdlc" />
-    <EmbeddedResource Include="Layout\Facture.resx">
+    <EmbeddedResource Include="Layouts\Facture.rdlc" />
+    <EmbeddedResource Include="Layouts\Facture.resx">
       <DependentUpon>Facture.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Layout\Ticket et Facture.resx">
+    <EmbeddedResource Include="Layouts\recettejour.rdlc" />
+    <EmbeddedResource Include="Layouts\recettejour.resx">
+      <DependentUpon>recettejour.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Layouts\recettemois.rdlc" />
+    <EmbeddedResource Include="Layouts\recettemois.resx">
+      <DependentUpon>recettemois.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Layouts\Ticket et Facture.resx">
       <DependentUpon>Ticket et Facture.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Layout\ticket.rdlc" />
-    <EmbeddedResource Include="Layout\Ticket.resx">
+    <EmbeddedResource Include="Layouts\ticket.rdlc" />
+    <EmbeddedResource Include="Layouts\Ticket.resx">
       <DependentUpon>Ticket.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <SubType>Designer</SubType>
+      <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="app.config" />
     <None Include="DSreport.xsc">
       <DependentUpon>DSreport.xsd</DependentUpon>
     </None>
@@ -292,26 +239,25 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Layout\App.config" />
+    <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\admin.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\user.png" />
-  </ItemGroup>
-  <ItemGroup>
+    <Resource Include="Resources\rouge.png" />
+    <Resource Include="Resources\vert.png" />
+    <Resource Include="Resources\Admin.png" />
+    <Content Include="Resources\BoleroDB.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\BoleroDB_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>BoleroDB.mdf</DependentUpon>
+    </Content>
     <Resource Include="Resources\logout.png" />
-    <Resource Include="Resources\retour.jpg" />
-    <Resource Include="Resources\retourr.jpg" />
+    <Resource Include="Resources\search.png" />
     <Resource Include="Resources\setting.png" />
+    <Resource Include="Resources\User.png" />
   </ItemGroup>
   <ItemGroup>
-    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
-      <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4.5 %28x86 et x64%29</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
       <Visible>False</Visible>
       <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
@@ -322,17 +268,6 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Service References\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Resources\BoleroDB.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\BoleroDB_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
