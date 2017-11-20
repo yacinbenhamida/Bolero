@@ -1,6 +1,7 @@
 ﻿using Bolero.BL;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,14 +22,17 @@ namespace Bolero.Layouts
     public partial class PayementCommande : Window
     {
         int id;
+        int index;
         Commande c;
         public PayementCommande()
         {
             InitializeComponent();
         }
-        public PayementCommande(int id)
+        public PayementCommande(int id,int index,GestionCommande g)
         {
             this.id = id;
+            this.g = g;
+            this.index = index;
             InitializeComponent();
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -47,19 +51,35 @@ namespace Bolero.Layouts
             timer.Interval = new TimeSpan(0, 0, 1);
             timer.Tick += timer_Tick;
             timer.Start();
+            
         }
 
         void timer_Tick(object sender, EventArgs e)
         {
             lblHeure.Content = DateTime.Now.ToLongTimeString();
         }
-
+        GestionCommande g= new GestionCommande();
         private void btnpayer_Click(object sender, RoutedEventArgs e)
         {
+            Layouts.Ticket_et_Facture t = new Ticket_et_Facture();
+            t.setid(id);
+            t.Show();
+            this.Close();
+            Commande c = new Commande();
 
+            DAL.CommandeDAO daoc = new DAL.CommandeDAO();
+            DAL.ArchiveDAO daoarch = new DAL.ArchiveDAO();
+            c = daoc.getById(id);
+            decimal sum = daoc.SumCommande(id);
+            Archive arch = new Archive(c.IdCommande,c.NumTable,c.DateCommande,c.NomServeur,c.Id,sum);
+            daoarch.add(arch);
+            DataSet DSreport = new DSreport();
+            DSreport.Reset();
+                    List<Commande> lstCom = new List<Commande>();
+                    lstCom = daoc.getAll();
+                    g.dataGrid.DataContext = lstCom;
+                    g.PerformRefresh(index);
         }
-
-  
         private void btnrouge_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
@@ -67,6 +87,23 @@ namespace Bolero.Layouts
 
         private void btnvert_Click(object sender, RoutedEventArgs e)
         {
+            DAL.CommandeDAO daoc = new DAL.CommandeDAO();
+            lblnumcmd.Content = id;
+            c = daoc.getById(id);
+            decimal sum = daoc.SumCommande(id);
+            lbldatee.Content = c.DateCommande;
+            lblserveur.Content = c.NomServeur;
+            lblnumtab.Content = c.NumTable;
+            lbltotal.Content = sum;
+            lblDate.Content = DateTime.Now.ToShortDateString();
+            lbldatee.Content = DateTime.Now.ToShortDateString();
+            System.Windows.Threading.DispatcherTimer timer = new System.Windows.Threading.DispatcherTimer();
+            timer.Interval = new TimeSpan(0, 0, 1);
+            timer.Tick += timer_Tick;
+            timer.Start();
+            txtRest.Clear();
+            txtEspece.Clear();
+            txtCheque.Clear();
 
         }
         private void btnespece_Click(object sender, RoutedEventArgs e)

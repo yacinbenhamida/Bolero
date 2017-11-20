@@ -37,6 +37,8 @@ namespace Bolero.Layouts
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+          
+            lblComName.Content = "Commande N°"+ id;
             List<Article> lstFetchedArticles = new List<Article>();
             lstFetchedArticles = cdao.listArticle(id);
             dataGrid.DataContext = lstFetchedArticles;
@@ -56,7 +58,7 @@ namespace Bolero.Layouts
                 totalRemise = totalArticle - (totalArticle * decimal.Parse(txtRemise.Text) / 100);
             }
             lblTotal.Content = "Totale : " + totalRemise.ToString();
-
+            
             lblDate.Content = DateTime.Now.ToShortDateString();
             System.Windows.Threading.DispatcherTimer timer = new System.Windows.Threading.DispatcherTimer();
             timer.Interval = new TimeSpan(0, 0, 1);

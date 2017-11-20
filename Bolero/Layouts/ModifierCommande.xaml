@@ -15,7 +15,7 @@
             <ColumnDefinition />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
-        <Label x:Name="lblComName" Content="Commande N°1" Grid.ColumnSpan="2" VerticalAlignment="Stretch" HorizontalAlignment="Center" FontWeight="Bold" FontSize="18"/>
+        <Label x:Name="lblComName"  Grid.ColumnSpan="2" VerticalAlignment="Stretch" HorizontalAlignment="Center" FontWeight="Bold" FontSize="18"/>
         <StackPanel Orientation="Horizontal" Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Height="30">
             
             <Label Content="Table N°: " VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>

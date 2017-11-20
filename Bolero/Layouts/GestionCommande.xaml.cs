@@ -275,10 +275,18 @@ namespace Bolero
         {
             Commande cm1 = (Commande)dataGrid.SelectedValue;
             int id = cm1.IdCommande;
-            Layouts.PayementCommande payment = new Layouts.PayementCommande(id);
+            int index=dataGrid.SelectedIndex;
+            Layouts.PayementCommande payment = new Layouts.PayementCommande(id,index,this);
             payment.ShowDialog();
         }
-
+        public void PerformRefresh(int id)
+        {
+            
+            List<Commande> lstCom = new List<Commande>();
+            lstCom = daoc.getAll();
+            dataGrid.DataContext = lstCom;
+            dataGrid.Items.Refresh();
+        }
         private void Fact_Click(object sender, RoutedEventArgs e)
         {
             Commande cm1 = (Commande)dataGrid.SelectedValue;

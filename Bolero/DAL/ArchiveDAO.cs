@@ -8,10 +8,15 @@ using System.Windows.Documents;
 using Bolero.BL;
 
 namespace Bolero.DAL
-{
+{   
     class ArchiveDAO:DAO<Archive>
     {
-
+        public Archive getById(int id)
+    {return null;}
+        public bool find(Archive e)
+        {
+            return true;
+        }
         public int add(Archive a)
         {
             int res = 0;
@@ -111,7 +116,7 @@ namespace Bolero.DAL
                 {
                     while (reader.Read())
                     {
-                        listarc.Add(new Archive(reader.GetInt32(0),reader.GetInt32(1),reader.GetDateTime(2),reader.GetString(3),reader.GetString(4),reader.GetFloat(5)));
+                        listarc.Add(new Archive(reader.GetInt32(0),reader.GetInt32(1),reader.GetDateTime(2),reader.GetString(3),reader.GetInt32(4),reader.GetDecimal(5)));
                     }
 
                 }

@@ -107,7 +107,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="BL\Archive.cs" />
     <Compile Include="BL\Crediteur.cs" />
+    <Compile Include="DAL\ArchiveDAO.cs" />
     <Compile Include="DAL\CrediteurDAO.cs" />
     <Compile Include="DSreport.cs">
       <DependentUpon>DSreport.xsd</DependentUpon>

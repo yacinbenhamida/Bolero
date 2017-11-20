@@ -13,12 +13,12 @@ namespace Bolero.BL
         public int numTable { get; set; }
         public DateTime Datecommande { get; set; }
         public string nomServeur { get; set; }
-        public string caissier { get; set; }
-        public float sumprix { get; set; }
+        public int caissier { get; set; }
+        public decimal sumprix { get; set; }
 
 
-        public Archive() { }
-        public Archive(int idCommande, int numTable, DateTime Datecommande, string nomServeur,string caissier, float sumprix) {
+       
+        public Archive(int idCommande, int numTable, DateTime Datecommande, string nomServeur,int caissier, decimal sumprix) {
 
             this.idCommande = idCommande;
             this.numTable = numTable;

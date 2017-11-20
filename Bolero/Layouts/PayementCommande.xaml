@@ -69,7 +69,7 @@
 
 
         </Button>
-        <Button Style="{DynamicResource NoChromeButton}" Name="btnvert" Click="btncheque_Click" Grid.Row="4" Grid.Column="2" HorizontalAlignment="Right"  VerticalAlignment="Center" Width="100"  Height="50">
+        <Button Style="{DynamicResource NoChromeButton}" Name="btnvert" Click="btnvert_Click" Grid.Row="4" Grid.Column="2" HorizontalAlignment="Right"  VerticalAlignment="Center" Width="100"  Height="50">
             <Image Source="..\Resources\vert.png" Width="100"></Image>
         </Button>
 
