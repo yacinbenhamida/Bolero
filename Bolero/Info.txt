@@ -1,0 +1,7 @@
+﻿BOLERO 
+	>Properties : propriétés
+	>References 
+	>BL : Business Layer
+	>DAL : data access layer	
+	>Layouts : .xaml interface files
+	>Resources : imgs/Database files

@@ -1,0 +1,77 @@
+﻿<Window x:Class="Bolero.Layouts.ModifierCommande"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="ModifierCommande" Height="600" Width="400" Loaded="Window_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="90"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Label x:Name="lblComName" Content="Commande N°1" Grid.ColumnSpan="2" VerticalAlignment="Stretch" HorizontalAlignment="Center" FontWeight="Bold" FontSize="18"/>
+        <StackPanel Orientation="Horizontal" Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Height="30">
+            
+            <Label Content="Table N°: " VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+            <TextBox x:Name="txtNum" x:FieldModifier="private"  Width="50" Text="0" TextChanged="txtNum_TextChanged" />
+            <Button x:Name="cmdUp" x:FieldModifier="private"  Content="˄" Width="20" Click="cmdUp_Click" />
+            <Button x:Name="cmdDown" x:FieldModifier="private" Content="˅" Width="20" Click="cmdDown_Click" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Height="30">
+            <Label Content="Serveur: " VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+            <ComboBox x:Name="cmbClient" HorizontalAlignment="Stretch" VerticalAlignment="Top" SelectedIndex="0"  Height="30">
+                <ComboBoxItem Content="Foulen ben Foulen"></ComboBoxItem>
+                <ComboBoxItem Content="Serveur 1"></ComboBoxItem>
+                <ComboBoxItem Content="Serveur 2"></ComboBoxItem>
+            </ComboBox>
+        </StackPanel>
+        <DataGrid Name="dataGrid" CanUserAddRows="false" IsReadOnly="True" Grid.Row="2" Grid.ColumnSpan="2" ItemsSource="{Binding}" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Width="1*" Header="Type" Binding="{Binding Type}">
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Plat" Width="*" Binding="{Binding Libelle}">
+                </DataGridTextColumn>
+                
+                <DataGridTextColumn Header="PU" Width="*" Binding="{Binding Prix}">
+
+                </DataGridTextColumn>
+                <DataGridTemplateColumn Header="Supprimer">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="SuppArticle" Click="SuppArticle_Click" Content="X" HorizontalAlignment="Center" VerticalAlignment="Center" Width="40" Height="40"  FontWeight="Bold" FontSize="16" Background="Red" Foreground="White"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Label x:Name="lblTotal" Content="   Total :" Grid.ColumnSpan="2" Grid.Row="3" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" FontWeight="Bold" FontSize="16"/>
+        <StackPanel Grid.Row="4" Grid.ColumnSpan="2">
+            <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Button x:Name="btnSave" Content="Sauvegarder" VerticalAlignment="Stretch" HorizontalAlignment="Center" Width="100" Height="80" FontSize="16" Foreground="White" Background="#FF079B00" Click="btnSave_Click"/>
+                <Button x:Name="btnAjout" Content="Ajouter" Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Center" Width="100" Height="80" FontSize="16" Foreground="White" Click="btnAjout_Click" Background="#FF4D81DC"/>
+                <Button x:Name="btnRetour" Content="Retour" Grid.Column="2" VerticalAlignment="Stretch" HorizontalAlignment="Center" Width="100" Height="80" FontSize="16" Foreground="White" Click="btnRetour_Click" Background="#FF063381"/>
+            </Grid>
+        </StackPanel>
+    
+    <DockPanel VerticalAlignment="Bottom" Grid.Row="5" Grid.ColumnSpan="2" HorizontalAlignment="Center">
+            <Label FontFamily="Century Gothic" Content="Date : " VerticalContentAlignment="Center"  FontSize="14"/>
+            <Label x:Name="lblDate" VerticalContentAlignment="Center"/>
+            <Label  FontFamily="Century Gothic"  Content="Heure  :" VerticalContentAlignment="Center" FontSize="14"/>
+            <Label x:Name="lblHeure" VerticalContentAlignment="Center"/>
+        </DockPanel>
+    </Grid>
+</Window>

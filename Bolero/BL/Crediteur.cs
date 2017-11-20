@@ -10,26 +10,24 @@ namespace Bolero.BL
     {
 
         public Crediteur() { }
-      
-        public int IdCrediteur { get; set; }
+        public int idCrediteur { get; set; }
         public string nomprenom { get; set; }
         public int cin { get; set; }
         public string adresse { get; set; }
         public string tel { get; set; }
         public float MontantCredit { get; set; }
-        public int Idcmd { get; set; }
 
 
 
-        public Crediteur( int idcrediteur, string nomprenom, int cin, string adresse, string tel, float MontantCredit,int idcmd)
+
+        public Crediteur(int idCrediteur, string nomprenom, int cin, string adresse, string tel, float MontantCredit)
         {
-            this.IdCrediteur = idcrediteur;
+            this.idCrediteur = idCrediteur;
             this.nomprenom = nomprenom;
             this.cin = cin;
             this.adresse = adresse;
             this.tel = tel;
             this.MontantCredit = MontantCredit;
-            this.Idcmd = idcmd;
         }
     }
 }
