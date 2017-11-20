@@ -376,7 +376,7 @@ namespace Bolero.DAL
                     SqlCommand cmd = new SqlCommand("UPDATE Commande SET NumTable=@numtb,DateCommande=@dtc,NomServeur=@nomserv where IdCommande=@idc", cnx);
                     SqlCommand UpdateTable = new SqlCommand("UPDATE Tables SET Etat=@etat2 where NumTable=@idt", cnx);
                     UpdateTable.Parameters.AddWithValue("idt", obj.NumTable);
-                    UpdateTable.Parameters.AddWithValue("etat2", true);
+                    UpdateTable.Parameters.AddWithValue("etat2", "True");
                     cmd.Parameters.AddWithValue("numtb", obj.IdCommande);
                     cmd.Parameters.AddWithValue("dtc", obj.DateCommande);
                     //  cmd.Parameters.AddWithValue("idartc", obj.IdArticle);
