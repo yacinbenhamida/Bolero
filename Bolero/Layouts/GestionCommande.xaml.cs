@@ -268,7 +268,8 @@ namespace Bolero
 
         private void btnModiMenu_Click(object sender, RoutedEventArgs e)
         {
-          
+            ModifierMenu mm = new ModifierMenu();
+            mm.ShowDialog();
         }
 
         private void Paiement_Click(object sender, RoutedEventArgs e)

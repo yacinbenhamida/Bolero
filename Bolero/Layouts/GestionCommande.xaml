@@ -281,7 +281,6 @@
                         <RowDefinition Height="70"/>
                     </Grid.RowDefinitions>
                     <Button x:Name="btnModiMenu" Content="Modifier Menu" HorizontalAlignment="Center" VerticalAlignment="Center" Width="650" Height="50" Foreground="White" Background="#FF5E88E2" FontSize="18" FontWeight="Bold" Click="btnModiMenu_Click"/>
-                    <Button x:Name="btnGereUltil" Grid.Row="1" Content="Gérer Utilisateur" HorizontalAlignment="Center" VerticalAlignment="Center" Width="650" Height="50" Foreground="White" Background="#FF0C0B0B" FontSize="18" FontWeight="Bold" Click="btnGereUltil_Click"/>
                 </Grid>
             </TabItem>
 
