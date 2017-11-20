@@ -20,8 +20,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox3</rd:DefaultName>
-        <Top>0cm</Top>
-        <Left>0.60683cm</Left>
+        <Top>0.54187cm</Top>
+        <Left>0.56303cm</Left>
         <Height>1.26267cm</Height>
         <Width>3.77cm</Width>
         <Style>
@@ -464,8 +464,8 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>DataSet1</DataSetName>
-        <Top>3.51366cm</Top>
-        <Left>0.60683cm</Left>
+        <Top>4.05553cm</Top>
+        <Left>0.56303cm</Left>
         <Height>1.2cm</Height>
         <Width>15.29633cm</Width>
         <ZIndex>1</ZIndex>
@@ -490,8 +490,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox16</rd:DefaultName>
-        <Top>2.54cm</Top>
-        <Left>0.60683cm</Left>
+        <Top>3.08187cm</Top>
+        <Left>0.56303cm</Left>
         <Height>0.6cm</Height>
         <Width>4.0875cm</Width>
         <ZIndex>2</ZIndex>
@@ -520,8 +520,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox17</rd:DefaultName>
-        <Top>1.43905cm</Top>
-        <Left>0.60683cm</Left>
+        <Top>1.98092cm</Top>
+        <Left>0.56303cm</Left>
         <Height>0.6cm</Height>
         <Width>4.0875cm</Width>
         <ZIndex>3</ZIndex>
@@ -552,8 +552,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox19</rd:DefaultName>
-        <Top>6.5405cm</Top>
-        <Left>9.391cm</Left>
+        <Top>7.08237cm</Top>
+        <Left>9.3472cm</Left>
         <Height>0.6cm</Height>
         <Width>2.5cm</Width>
         <ZIndex>4</ZIndex>
@@ -586,8 +586,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox20</rd:DefaultName>
-        <Top>6.5405cm</Top>
-        <Left>12.312cm</Left>
+        <Top>7.08237cm</Top>
+        <Left>12.2682cm</Left>
         <Height>0.981cm</Height>
         <Width>3.59117cm</Width>
         <ZIndex>5</ZIndex>
@@ -617,8 +617,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox21</rd:DefaultName>
-        <Top>1.43905cm</Top>
-        <Left>8.40317cm</Left>
+        <Top>1.98092cm</Top>
+        <Left>8.35937cm</Left>
         <Height>1.27733cm</Height>
         <Width>2.5cm</Width>
         <ZIndex>6</ZIndex>
@@ -647,8 +647,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox22</rd:DefaultName>
-        <Top>1.43905cm</Top>
-        <Left>11.46533cm</Left>
+        <Top>1.98092cm</Top>
+        <Left>11.42153cm</Left>
         <Height>1.23528cm</Height>
         <Width>4.43783cm</Width>
         <ZIndex>7</ZIndex>
@@ -680,8 +680,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox23</rd:DefaultName>
-        <Top>7.85283cm</Top>
-        <Left>1.87683cm</Left>
+        <Top>8.3947cm</Top>
+        <Left>1.83303cm</Left>
         <Height>1.00217cm</Height>
         <Width>4.08983cm</Width>
         <ZIndex>8</ZIndex>
@@ -710,8 +710,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox24</rd:DefaultName>
-        <Top>9.8425cm</Top>
-        <Left>2.5965cm</Left>
+        <Top>10.38437cm</Top>
+        <Left>2.5527cm</Left>
         <Height>0.6cm</Height>
         <Width>2.5cm</Width>
         <ZIndex>9</ZIndex>
@@ -726,15 +726,18 @@
         </Style>
       </Textbox>
     </ReportItems>
-    <Height>4.29872in</Height>
+    <Height>4.54167in</Height>
     <Style />
   </Body>
-  <Width>6.5in</Width>
+  <Width>6.34167in</Width>
   <Page>
-    <LeftMargin>1in</LeftMargin>
-    <RightMargin>1in</RightMargin>
-    <TopMargin>1in</TopMargin>
-    <BottomMargin>1in</BottomMargin>
+    <PageHeight>29.7cm</PageHeight>
+    <PageWidth>21cm</PageWidth>
+    <LeftMargin>2cm</LeftMargin>
+    <RightMargin>2cm</RightMargin>
+    <TopMargin>2cm</TopMargin>
+    <BottomMargin>2cm</BottomMargin>
+    <ColumnSpacing>0.13cm</ColumnSpacing>
     <Style />
   </Page>
   <AutoRefresh>0</AutoRefresh>
@@ -744,7 +747,7 @@
         <DataProvider>System.Data.DataSet</DataProvider>
         <ConnectString>/* Local Connection */</ConnectString>
       </ConnectionProperties>
-      <rd:DataSourceID>31da6364-432c-4d22-9660-16c753cb35a7</rd:DataSourceID>
+      <rd:DataSourceID>74ea0a60-b619-44da-9d97-022a16b4fef6</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
@@ -773,7 +776,7 @@
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>DSreport</rd:DataSetName>
-        <rd:SchemaPath>C:\Users\USER\Desktop\Bolero\LocalMergedApplicationSol\Bolero\Bolero\DSreport.xsd</rd:SchemaPath>
+        <rd:SchemaPath>C:\Users\hechmi\Documents\GitHub\Bolero\Bolero\DSreport.xsd</rd:SchemaPath>
         <rd:TableName>DataTable1</rd:TableName>
         <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
         <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
@@ -781,6 +784,6 @@
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>
-  <rd:ReportUnitType>Inch</rd:ReportUnitType>
-  <rd:ReportID>d6d2a6d6-a8d5-4e6e-bb37-6981e1cd20d7</rd:ReportID>
+  <rd:ReportUnitType>Cm</rd:ReportUnitType>
+  <rd:ReportID>5200dd61-0a19-48f1-8074-ea004c38ad90</rd:ReportID>
 </Report>

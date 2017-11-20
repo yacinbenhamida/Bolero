@@ -10,27 +10,21 @@ using System.Windows.Forms;
 
 namespace Bolero.Layouts
 {
-    public partial class Ticket : Form
+    public partial class Facture : Form
     {
         int id;
-        public Ticket()
+        public Facture()
         {
             InitializeComponent();
         }
         public void setid(int id)
         {
-            this.id = id;
-        }
+        this.id=id;}
 
-        private void Ticket_Load(object sender, EventArgs e)
+        private void Facture_Load(object sender, EventArgs e)
         {
             this.dataTable1TableAdapter.Fill(this.dSreport.DataTable1, id);
             this.reportViewer1.RefreshReport();
-        }
-
-        private void reportViewer1_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

@@ -314,6 +314,8 @@ namespace Bolero
 
             else
             {
+                dataGrid.DataContext = cdao.getAll();
+
                 MessageBox.Show("Suppresion effectue");
             }
         

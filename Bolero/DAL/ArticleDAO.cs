@@ -5,76 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using Bolero.BL;
 using System.Data.SqlClient;
-using System.Data;
-using Bolero.Properties;
-using Bolero;
-using System.Collections;
-using System.Windows;
-
+using System.Windows.Documents;
 namespace Bolero.DAL
 {
     class ArticleDAO : DAO<Article>
     {
-        public int deleteArticle(int idArt, int id)
-        {
-            int res = 0;
-             SqlConnection cnx = Connexion.GetConnection();
-             try
-             {
-                 SqlCommand sqlCmd = new SqlCommand("DELETE FROM lignecmd WHERE numArticle=@idArt AND numcmd=@id", cnx);
-                 sqlCmd.Parameters.AddWithValue("idArt", idArt);
-                 sqlCmd.Parameters.AddWithValue("id", id);
-                 res = (int)sqlCmd.ExecuteNonQuery();
-                 if (res > 0)
-                 {
-                     res = 1;
-                 }
- 
-             }
-             catch (Exception ex)
-             {
-                 throw ex;
-             }
-             finally
-             {
-                Connexion.closeConnection();
- 
-             }
-             return res;
-         }
 
-          public int addArticleOnCommande(List<Article> lst, int id)
-        {
-           int res = 0;
-           SqlCommand insertJointure = null;
-          int d = 0;
-
-           try
-          {
-                SqlConnection cnx = Connexion.GetConnection();
-                for (int i = 0; i < lst.Count; i++)
-               {
-                   insertJointure = new SqlCommand("insert into lignecmd(numcmd,numArticle) VALUES (@numcd,@numar)", cnx);
-                    insertJointure.Parameters.AddWithValue("numcd", id);
-                   insertJointure.Parameters.AddWithValue("numar", lst[i].IdArticle);
-                    d = (int)insertJointure.ExecuteNonQuery();
-                }
-                if (d > 0)
-                {
-                   res = 1;
-               }
-            }
-            catch (Exception ex)
-           {
-                 throw ex;
- 
-            }
-            finally
-            {
-                Connexion.closeConnection();
-            }
-            return res;
-         }
         public int add(Article a)
         {
             int res = 0;
@@ -82,13 +18,46 @@ namespace Bolero.DAL
             try
             {
                 SqlConnection cnx = Connexion.GetConnection();
-                SqlCommand sqlCmd = new SqlCommand("insert into Article (IdArticle,Libelle, Prix, TypeArt) values (@id,@lib,@prix,@type)", cnx);
+                SqlCommand sqlCmd = new SqlCommand("insert into Article (IdArticle,Libelle, Prix, Type) values (@id,@lib,@prix,@type)", cnx);
                 sqlCmd.Parameters.AddWithValue("id", a.IdArticle);
                 sqlCmd.Parameters.AddWithValue("lib", a.Libelle);
                 sqlCmd.Parameters.AddWithValue("prix", a.Prix);
                 sqlCmd.Parameters.AddWithValue("type", a.Type);
                 sqlCmd.ExecuteNonQuery();
                 res = 1;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+
+            }
+            finally
+            {
+                Connexion.closeConnection();
+            }
+            return res;
+        }
+
+        public int addArticleOnCommande(List<Article> lst, int id)
+        {
+            int res = 0;
+            SqlCommand insertJointure = null;
+            int d = 0;
+
+            try
+            {
+                SqlConnection cnx = Connexion.GetConnection();
+                for (int i = 0; i < lst.Count; i++)
+                {
+                    insertJointure = new SqlCommand("insert into lignecmd(numcmd,numArticle) VALUES (@numcd,@numar)", cnx);
+                    insertJointure.Parameters.AddWithValue("numcd", id);
+                    insertJointure.Parameters.AddWithValue("numar", lst[i].IdArticle);
+                    d = (int)insertJointure.ExecuteNonQuery();
+                }
+                if (d > 0)
+                {
+                    res = 1;
+                }
             }
             catch (Exception ex)
             {
@@ -241,7 +210,7 @@ namespace Bolero.DAL
             try
             {
                 SqlConnection cnx = Connexion.GetConnection();
-                SqlCommand cmd = new SqlCommand("UPDATE Article SET Libelle=@lib,Prix=@prix,TypeArt=@type where IdArticle=@id", cnx);
+                SqlCommand cmd = new SqlCommand("UPDATE Article SET Libelle=@lib,Prix=@prix,Type=@type where IdArticle=@id", cnx);
                 cmd.Parameters.AddWithValue("id", obj.IdArticle);
                 cmd.Parameters.AddWithValue("prix", obj.Prix);
                 cmd.Parameters.AddWithValue("lib", obj.Libelle);
@@ -271,6 +240,34 @@ namespace Bolero.DAL
             finally { Connexion.closeConnection(); }
             return res;
         }
-    }
 
+        public int deleteArticle(int idArt, int id)
+        {
+            int res = 0;
+            SqlConnection cnx = Connexion.GetConnection();
+            
+            try
+            {
+                SqlCommand sqlCmd = new SqlCommand("DELETE FROM [lignecmd] WHERE numArticle = @idArt AND numcmd = @id", cnx);
+                sqlCmd.Parameters.AddWithValue("idArt", idArt);
+                sqlCmd.Parameters.AddWithValue("id", id);
+                res = (int)sqlCmd.ExecuteNonQuery();
+                if (res > 0)
+                {
+                    res = 1;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                Connexion.closeConnection();
+
+            }
+            return res;
+        }
+    }
 }
