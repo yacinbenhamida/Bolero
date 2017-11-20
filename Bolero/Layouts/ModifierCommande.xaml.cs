@@ -119,7 +119,8 @@ namespace Bolero.Layouts
             int res = 0;
             int nbTable = int.Parse(txtNum.Text);
             ComboBoxItem selecteditem = (ComboBoxItem)(cmbClient.SelectedValue);
-            string nServeur = (string)(selecteditem.Content);
+            string nServeur = cmbClient.Text;
+            MessageBox.Show(nServeur);
             int idd = 1;
 
 

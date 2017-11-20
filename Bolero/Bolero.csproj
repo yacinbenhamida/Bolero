@@ -81,8 +81,17 @@
     </ApplicationDefinition>
     <Compile Include="BL\User.cs" />
     <Compile Include="DAL\UserDAO.cs" />
+    <Compile Include="Layouts\AjoutPlat.xaml.cs">
+      <DependentUpon>AjoutPlat.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Layouts\Authentification.xaml.cs">
       <DependentUpon>Authentification.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Layouts\ModifierMenu.xaml.cs">
+      <DependentUpon>ModifierMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Layouts\ModifierPlat.xaml.cs">
+      <DependentUpon>ModifierPlat.xaml</DependentUpon>
     </Compile>
     <Compile Include="Layouts\NewPassword.xaml.cs">
       <DependentUpon>NewPassword.xaml</DependentUpon>
@@ -107,6 +116,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Layouts\AjoutPlat.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Layouts\Authentification.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -128,6 +141,14 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Layouts\ModifierCommande.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Layouts\ModifierMenu.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Layouts\ModifierPlat.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

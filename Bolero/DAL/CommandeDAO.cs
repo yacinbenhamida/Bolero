@@ -15,6 +15,7 @@ namespace Bolero.DAL
 
             try
             {
+
                 SqlConnection cnx = Connexion.GetConnection();
                 SqlCommand UpdateTable = null;
                 SqlCommand sqlCmd = null;
@@ -353,7 +354,7 @@ namespace Bolero.DAL
             {
                 SqlConnection cnx = Connexion.GetConnection();
                 TableDAO daot = new TableDAO();
-                if (daot.checkIfEmpty(id))
+                if (daot.checkIfEmpty(obj.NumTable))
                 {
                     SqlCommand getOldTable = new SqlCommand("SELECT NumTable From Commande where IdCommande=@idc", cnx);
                     getOldTable.Parameters.AddWithValue("idc", id);
@@ -370,8 +371,8 @@ namespace Bolero.DAL
                     reader.Close();
                     SqlCommand updatOldTable = new SqlCommand("UPDATE Tables SET Etat=@etat1 where NumTable=@ntb", cnx);
                     updatOldTable.Parameters.AddWithValue("ntb", numtableold);
-                    updatOldTable.Parameters.AddWithValue("etat1", false);
-                    int executeQ = (int)updatOldTable.ExecuteScalar();
+                    updatOldTable.Parameters.AddWithValue("etat1", "False");
+                    int executeQ = (int)updatOldTable.ExecuteNonQuery();
                     SqlCommand cmd = new SqlCommand("UPDATE Commande SET NumTable=@numtb,DateCommande=@dtc,NomServeur=@nomserv where IdCommande=@idc", cnx);
                     SqlCommand UpdateTable = new SqlCommand("UPDATE Tables SET Etat=@etat2 where NumTable=@idt", cnx);
                     UpdateTable.Parameters.AddWithValue("idt", obj.NumTable);
