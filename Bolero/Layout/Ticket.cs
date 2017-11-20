@@ -27,5 +27,10 @@ namespace Bolero.Layouts
             this.dataTable1TableAdapter.Fill(this.dSreport.DataTable1, id);
             this.reportViewer1.RefreshReport();
         }
+
+        private void reportViewer1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

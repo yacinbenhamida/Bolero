@@ -1,0 +1,168 @@
+﻿<Window x:Class="Bolero.ModifierMenu"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Modifier Menu" Height="688" Width="Auto" Loaded="Window_Loaded"
+>
+    <Window.Resources>
+        <!-- style pour les boutons a afficher -->
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="10"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="true">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+                <Trigger Property="IsFocused" Value="true">
+                    <Setter Property="BorderBrush" Value="Black" />
+                    <Setter Property="BorderThickness" Value="5"/>
+                </Trigger>
+            </Style.Triggers>
+ 
+        </Style>
+        <!-- style pour la liste des boutons-->
+        <Style TargetType="ListBoxItem">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListBoxItem">
+                        <ContentPresenter/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="true">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="ListBoxItem">
+                                <ContentPresenter/>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
+        <StackPanel>
+        <GroupBox  Header="Plats"  FontSize="20" Height="500" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+            <TabControl VerticalAlignment="Stretch" HorizontalAlignment="Stretch" TabStripPlacement="Left">
+                <TabControl.Resources>
+                    <Style TargetType="{x:Type TabItem}">    
+                        <Setter Property="Padding" Value="4" />
+                        <Setter Property="HeaderTemplate">                            
+                            <Setter.Value>                                
+                                <DataTemplate>
+                                    <ContentPresenter Content="{TemplateBinding Content}">
+                                        <ContentPresenter.LayoutTransform>                                           
+                                            <RotateTransform Angle="0" />                                            
+                                        </ContentPresenter.LayoutTransform>                                       
+                                    </ContentPresenter>                                   
+                                </DataTemplate>                               
+                            </Setter.Value>                           
+                        </Setter>                        
+                    </Style>                   
+                </TabControl.Resources>
+                <TabItem x:Name="tbEnt" Foreground="Black" Header="Entrée" Background="Green"  HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Height="60" Margin="-2,-2,-0.2,-1.6">
+                    <ScrollViewer HorizontalScrollBarVisibility="Auto">
+                        <ListBox x:Name="entree"  >
+                            <ListBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <UniformGrid />
+                                </ItemsPanelTemplate>
+                            </ListBox.ItemsPanel>
+                            
+                        </ListBox>
+                    </ScrollViewer>
+                </TabItem>
+                <TabItem x:Name="tbSuite" Header="Suite" Background="Crimson" Foreground="Black" Height="60">
+                    <ScrollViewer HorizontalScrollBarVisibility="Auto">
+                        <ListBox x:Name="Suite" >
+                            <ListBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <UniformGrid/>
+                                </ItemsPanelTemplate>
+                            </ListBox.ItemsPanel>
+                        </ListBox>
+                    </ScrollViewer>
+                </TabItem>
+                <TabItem  x:Name="tbHO" Header="Hors d'oeuvre" Background="#FFACA5A5" Foreground="Black" Height="60">
+                    <ScrollViewer HorizontalScrollBarVisibility="Auto">
+                        <ListBox x:Name="hrov" >
+                            <ListBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <UniformGrid />
+                                </ItemsPanelTemplate>
+                            </ListBox.ItemsPanel>
+                        </ListBox>
+                    </ScrollViewer>
+                </TabItem>
+                <TabItem x:Name="tbDes" Header="Desserts" Background="Purple" Foreground="Black" Margin="0,-5,-2,1" Height="60">
+                    <ScrollViewer HorizontalScrollBarVisibility="Auto">
+                        <ListBox x:Name="dessert" >
+                            <ListBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <UniformGrid />
+                                </ItemsPanelTemplate>
+                            </ListBox.ItemsPanel>
+                        </ListBox>
+                    </ScrollViewer>
+                </TabItem>
+                <TabItem x:Name="tbBoiss" Header="Boissons" Background="DarkBlue" Foreground="Black" Height="60">
+                    <ScrollViewer HorizontalScrollBarVisibility="Auto">
+                        <ListBox x:Name="boisson" >
+                            <ListBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <UniformGrid />
+                                </ItemsPanelTemplate>
+                            </ListBox.ItemsPanel>
+                        </ListBox>
+                    </ScrollViewer>
+                </TabItem>
+                <TabItem x:Name="tbPJ" Header="Plat du jour" Background="Gold" Foreground="Black" Height="60">
+                    <ScrollViewer HorizontalScrollBarVisibility="Auto">
+                        <ListBox x:Name="PJ" >
+                            <ListBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <UniformGrid  />
+                                </ItemsPanelTemplate>
+                            </ListBox.ItemsPanel>
+                        </ListBox>
+                    </ScrollViewer>
+                </TabItem>
+            </TabControl>
+            </GroupBox>
+
+        <Grid VerticalAlignment="Bottom" HorizontalAlignment="Stretch">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="btnSupprimer" Content="Supprimer" Width="130" Height="100" Click="btnSupprimer_Click" FontSize="20" Background="#FFDA0000" Foreground="White"/>
+            <Button x:Name="btnAnnuler" Content="Annuler" Grid.Column="1" Width="130" Click="btnAnnuler_Click" FontSize="20" Foreground="White" Background="#FFE29494"/>
+            <Button x:Name="btnModifier"  Content="Modifier" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="130" Height="100" Click="btnModifier_Click" Background="#FFE4E446" Foreground="#FFFFFEFE" FontSize="20"/>
+            <Button x:Name="btnSauvegarder" Content="Sauvegarder" Grid.Column="3" Width="130" Click="btnSauvegarder_Click" Foreground="White" Background="#FF6CA802" FontSize="20"/>
+            <Button x:Name="btnAjouter" Content="Ajouter" Grid.Column="4" Width="130" Click="btnAjouter_Click" Background="#FF8EAFEA" FontSize="20" Foreground="White"/>
+        
+        <DockPanel VerticalAlignment="Bottom" Grid.Row="2" HorizontalAlignment="Center" Grid.ColumnSpan="5">
+            <Label FontFamily="Century Gothic" Content="Date : " VerticalContentAlignment="Center"  FontSize="14"/>
+            <Label x:Name="lblDate" VerticalContentAlignment="Center"/>
+            <Label  FontFamily="Century Gothic"  Content="Heure  :" VerticalContentAlignment="Center" FontSize="14"/>
+            <Label x:Name="lblHeure" VerticalContentAlignment="Center"/>
+        </DockPanel>
+        </Grid>
+    </StackPanel>
+
+</Window>

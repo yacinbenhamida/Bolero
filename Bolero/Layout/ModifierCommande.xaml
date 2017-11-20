@@ -15,7 +15,7 @@
             <ColumnDefinition />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
-        <Label x:Name="lblComName"  Grid.ColumnSpan="2" VerticalAlignment="Stretch" HorizontalAlignment="Center" FontWeight="Bold" FontSize="18"/>
+        <Label x:Name="lblComName" Content="Commande N°1" Grid.ColumnSpan="2" VerticalAlignment="Stretch" HorizontalAlignment="Center" FontWeight="Bold" FontSize="18"/>
         <StackPanel Orientation="Horizontal" Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Height="30">
             
             <Label Content="Table N°: " VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
@@ -31,7 +31,7 @@
                 <ComboBoxItem Content="Serveur 2"></ComboBoxItem>
             </ComboBox>
         </StackPanel>
-        <DataGrid IsReadOnly="True" CanUserAddRows="False" Name="dataGrid" Grid.Row="2" Grid.ColumnSpan="2" ItemsSource="{Binding}" AutoGenerateColumns="False">
+        <DataGrid Name="dataGrid" CanUserAddRows="false" IsReadOnly="True" Grid.Row="2" Grid.ColumnSpan="2" ItemsSource="{Binding}" AutoGenerateColumns="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Width="1*" Header="Type" Binding="{Binding Type}">
                 </DataGridTextColumn>
@@ -51,12 +51,6 @@
             </DataGrid.Columns>
         </DataGrid>
         <Label x:Name="lblTotal" Content="   Total :" Grid.ColumnSpan="2" Grid.Row="3" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" FontWeight="Bold" FontSize="16"/>
-        <StackPanel Grid.Column="1" Grid.Row="3" Orientation="Horizontal" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Height="30">
-            <Label Content="Remise: " VerticalAlignment="Stretch" HorizontalAlignment="Stretch" FontSize="14" FontWeight="Bold"/>
-            <TextBox x:Name="txtRemise" Text="0" Width="50" TextChanged="txtRemise_TextChanged"/>
-            <Button x:Name="cmdUpRemise" Content="^" Width="20" Click="cmdUpRemise_Click" />
-            <Button x:Name="cmdDownRemise" Content="˅" Width="20" Click="cmdDownRemise_Click" />
-        </StackPanel>
         <StackPanel Grid.Row="4" Grid.ColumnSpan="2">
             <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                 <Grid.RowDefinitions>
@@ -66,13 +60,10 @@
                     <ColumnDefinition />
                     <ColumnDefinition />
                     <ColumnDefinition />
-                    <ColumnDefinition />
                 </Grid.ColumnDefinitions>
-
                 <Button x:Name="btnSave" Content="Sauvegarder" VerticalAlignment="Stretch" HorizontalAlignment="Center" Width="100" Height="80" FontSize="16" Foreground="White" Background="#FF079B00" Click="btnSave_Click"/>
                 <Button x:Name="btnAjout" Content="Ajouter" Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Center" Width="100" Height="80" FontSize="16" Foreground="White" Click="btnAjout_Click" Background="#FF4D81DC"/>
                 <Button x:Name="btnRetour" Content="Retour" Grid.Column="2" VerticalAlignment="Stretch" HorizontalAlignment="Center" Width="100" Height="80" FontSize="16" Foreground="White" Click="btnRetour_Click" Background="#FF063381"/>
-                <Button x:Name="btnRefresh" Content="Actualiser" Grid.Column="3" VerticalAlignment="Stretch" HorizontalAlignment="Center" Width="100" Height="80" FontSize="16" Foreground="White" Click="btnRefresh_Click" Background="#FFDA7119"/>
             </Grid>
         </StackPanel>
     

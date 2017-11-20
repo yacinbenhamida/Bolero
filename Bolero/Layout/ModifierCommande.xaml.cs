@@ -24,40 +24,21 @@ namespace Bolero.Layouts
     {
         CommandeDAO cdao = new CommandeDAO();
         ArticleDAO adao = new ArticleDAO();
-        Commande cmd = new Commande();
+
         int id;
-        decimal totalArticle = 0;
-        decimal totalRemise = 0;
         public ModifierCommande(int id)
         {
             this.id = id;
+            MessageBox.Show(id.ToString());
             InitializeComponent();
         }
 
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-          
-            lblComName.Content = "Commande N°"+ id;
             List<Article> lstFetchedArticles = new List<Article>();
             lstFetchedArticles = cdao.listArticle(id);
             dataGrid.DataContext = lstFetchedArticles;
-            cmd = cdao.getById(id);
-            txtNum.Text = cmd.NumTable.ToString();
-            if (cmd.NomServeur.ToString() == "Serveur 1")
-            {
-                cmbClient.SelectedIndex = 1;
-            }
-            else
-            {
-                cmbClient.SelectedIndex = 2;
-            }
-            for (int i = 0; i < lstFetchedArticles.Count; i++)
-            {
-                totalArticle = totalArticle + lstFetchedArticles[i].Prix;
-                totalRemise = totalArticle - (totalArticle * decimal.Parse(txtRemise.Text) / 100);
-            }
-            lblTotal.Content = "Totale : " + totalRemise.ToString();
             
             lblDate.Content = DateTime.Now.ToShortDateString();
             System.Windows.Threading.DispatcherTimer timer = new System.Windows.Threading.DispatcherTimer();
@@ -85,22 +66,12 @@ namespace Bolero.Layouts
 
         private void cmdUp_Click(object sender, RoutedEventArgs e)
         {
-            NumValue++;
-            cmdDown.IsEnabled = true;
+             NumValue++;
         }
 
         private void cmdDown_Click(object sender, RoutedEventArgs e)
         {
-            if (int.Parse(txtNum.Text) == 0)
-            {
-                cmdDown.IsEnabled = false;
-            }
-            else
-            {
-
-                NumValue--;
-
-            }
+            NumValue--;
         }
 
         private void txtNum_TextChanged(object sender, TextChangedEventArgs e)
@@ -119,11 +90,11 @@ namespace Bolero.Layouts
             int res = 0;
             int nbTable = int.Parse(txtNum.Text);
             ComboBoxItem selecteditem = (ComboBoxItem)(cmbClient.SelectedValue);
-            string nServeur = (string)(selecteditem.Content);
-            int idd = 1;
+            String nServeur = (string)(selecteditem.Content);
+            int id = 1;
 
 
-            Commande c = new Commande(id,nbTable, DateTime.Now, nServeur, idd);
+            Commande c = new Commande(nbTable, DateTime.Now, nServeur, id);
             
            try
             {
@@ -141,6 +112,9 @@ namespace Bolero.Layouts
             {
                 throw ex;
             }
+           List<Article> lstFetchedArticles = new List<Article>();
+           lstFetchedArticles = cdao.listArticle(id);
+           dataGrid.DataContext = lstFetchedArticles;
         }
 
         private void btnAjout_Click(object sender, RoutedEventArgs e)
@@ -171,62 +145,6 @@ namespace Bolero.Layouts
                 MessageBox.Show("suppression effectue");
                 dataGrid.DataContext = cdao.listArticle(id);
                 dataGrid.Items.Refresh();
-            }
-        }
-
-        private void btnRefresh_Click(object sender, RoutedEventArgs e)
-        {
-            List<Article> lstFetchedArticles = new List<Article>();
-            lstFetchedArticles = cdao.listArticle(id);
-            dataGrid.DataContext = lstFetchedArticles;
-        }
-
-        int _numRemise = 0;
-        public int NumValueR
-        {
-
-            get { return _numRemise; }
-            set
-            {
-                _numRemise = value;
-                txtRemise.Text = value.ToString();
-            }
-        }
-
-        private void txtRemise_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            if (txtRemise == null)
-            {
-                return;
-            }
-
-            if (!int.TryParse(txtRemise.Text, out _numRemise))
-                txtRemise.Text = _numRemise.ToString();
-        }
-
-        private void cmdUpRemise_Click(object sender, RoutedEventArgs e)
-        {
-
-            NumValueR++;
-            cmdDownRemise.IsEnabled = true;
-            totalRemise = totalArticle - (totalArticle * decimal.Parse(txtRemise.Text) / 100);
-            lblTotal.Content = "Totale : " + totalRemise.ToString();
-        }
-
-        private void cmdDownRemise_Click(object sender, RoutedEventArgs e)
-        {
-            if (int.Parse(txtRemise.Text) == 0)
-            {
-                cmdDownRemise.IsEnabled = false;
-                totalRemise = totalArticle - (totalArticle * decimal.Parse(txtRemise.Text) / 100);
-                lblTotal.Content = "Totale : " + totalRemise.ToString();
-            }
-            else
-            {
-                cmdDown.IsEnabled = true;
-                NumValueR--;
-                totalRemise = totalArticle - (totalArticle * decimal.Parse(txtRemise.Text) / 100);
-                lblTotal.Content = "Totale : " + totalRemise.ToString();
             }
         }
     }

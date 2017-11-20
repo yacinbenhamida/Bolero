@@ -305,8 +305,8 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>DataSet1</DataSetName>
-        <Top>1.49437cm</Top>
-        <Left>0.33337cm</Left>
+        <Top>1.12184cm</Top>
+        <Left>3.24685cm</Left>
         <Height>2.9145cm</Height>
         <Width>9.64016cm</Width>
         <Style>
@@ -336,8 +336,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox9</rd:DefaultName>
-        <Top>0.37253cm</Top>
-        <Left>2.74342cm</Left>
+        <Top>0cm</Top>
+        <Left>5.6569cm</Left>
         <Height>0.81167cm</Height>
         <Width>2.92863cm</Width>
         <ZIndex>1</ZIndex>
@@ -368,8 +368,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox12</rd:DefaultName>
-        <Top>5.81237cm</Top>
-        <Left>1.61629cm</Left>
+        <Top>5.43984cm</Top>
+        <Left>4.52978cm</Left>
         <Height>0.6cm</Height>
         <Width>1.71507cm</Width>
         <ZIndex>2</ZIndex>
@@ -402,8 +402,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox13</rd:DefaultName>
-        <Top>5.81237cm</Top>
-        <Left>3.50775cm</Left>
+        <Top>5.43984cm</Top>
+        <Left>6.42123cm</Left>
         <Height>0.6cm</Height>
         <Width>4.05575cm</Width>
         <ZIndex>3</ZIndex>
@@ -435,8 +435,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox14</rd:DefaultName>
-        <Top>7.10353cm</Top>
-        <Left>1.2192cm</Left>
+        <Top>6.731cm</Top>
+        <Left>4.13268cm</Left>
         <Height>0.6cm</Height>
         <Width>4.80717cm</Width>
         <ZIndex>4</ZIndex>
@@ -451,7 +451,8 @@
         </Style>
       </Textbox>
       <Line Name="Line1">
-        <Top>8.47937cm</Top>
+        <Top>8.10684cm</Top>
+        <Left>1.14704in</Left>
         <Height>0cm</Height>
         <Width>10.68303cm</Width>
         <ZIndex>5</ZIndex>
@@ -476,8 +477,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox15</rd:DefaultName>
-        <Top>8.65576cm</Top>
-        <Left>0.33337cm</Left>
+        <Top>8.28323cm</Top>
+        <Left>3.24685cm</Left>
         <Height>0.7905cm</Height>
         <Width>9.64017cm</Width>
         <ZIndex>6</ZIndex>
@@ -492,18 +493,15 @@
         </Style>
       </Textbox>
     </ReportItems>
-    <Height>3.79122in</Height>
+    <Height>3.72858in</Height>
     <Style />
   </Body>
-  <Width>4.20592in</Width>
+  <Width>6.5in</Width>
   <Page>
-    <PageHeight>29.7cm</PageHeight>
-    <PageWidth>21cm</PageWidth>
-    <LeftMargin>2cm</LeftMargin>
-    <RightMargin>2cm</RightMargin>
-    <TopMargin>2cm</TopMargin>
-    <BottomMargin>2cm</BottomMargin>
-    <ColumnSpacing>0.13cm</ColumnSpacing>
+    <LeftMargin>1in</LeftMargin>
+    <RightMargin>1in</RightMargin>
+    <TopMargin>1in</TopMargin>
+    <BottomMargin>1in</BottomMargin>
     <Style />
   </Page>
   <AutoRefresh>0</AutoRefresh>
@@ -513,7 +511,7 @@
         <DataProvider>System.Data.DataSet</DataProvider>
         <ConnectString>/* Local Connection */</ConnectString>
       </ConnectionProperties>
-      <rd:DataSourceID>bb66a6d2-c0d7-40e0-a051-59b607f28c41</rd:DataSourceID>
+      <rd:DataSourceID>d867a56b-b4c2-4d77-80c0-ac88affb306e</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
@@ -542,7 +540,7 @@
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>DSreport</rd:DataSetName>
-        <rd:SchemaPath>C:\Users\hechmi\Documents\GitHub\Bolero\Bolero\DSreport.xsd</rd:SchemaPath>
+        <rd:SchemaPath>C:\Users\USER\Desktop\Bolero\LocalMergedApplicationSol\Bolero\Bolero\DSreport.xsd</rd:SchemaPath>
         <rd:TableName>DataTable1</rd:TableName>
         <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
         <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
@@ -550,6 +548,6 @@
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>
-  <rd:ReportUnitType>Cm</rd:ReportUnitType>
-  <rd:ReportID>e3957caa-6e97-471f-ab47-1022e8803f2c</rd:ReportID>
+  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+  <rd:ReportID>fbb8374e-b3e0-4fbe-a3dc-a959dc061450</rd:ReportID>
 </Report>
