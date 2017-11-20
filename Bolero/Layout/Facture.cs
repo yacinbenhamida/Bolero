@@ -10,19 +10,22 @@ using System.Windows.Forms;
 
 namespace Bolero.Layouts
 {
-    public partial class recettejour : Form
+    public partial class Facture : Form
     {
-        public recettejour()
+        int id;
+        public Facture()
         {
             InitializeComponent();
         }
-
-        private void recettejour_Load(object sender, EventArgs e)
+        public void setid(int id)
         {
-            // TODO: This line of code loads data into the 'dSreport.Commande1' table. You can move, or remove it, as needed.
-            this.commande1TableAdapter.Fill(this.dSreport.Commande1);
+        this.id=id;}
 
+        private void Facture_Load(object sender, EventArgs e)
+        {
+            this.dataTable1TableAdapter.Fill(this.dSreport.DataTable1, id);
             this.reportViewer1.RefreshReport();
-        }
+           
+                 }
     }
 }

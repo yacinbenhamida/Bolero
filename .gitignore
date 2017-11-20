@@ -1,3 +1,5 @@
+
+
 #################
 ## Visual Studio
 #################
@@ -24,6 +26,6 @@ build/
 *.psess
 *.vsp
 *.vspx
-Bolero/obj/Debug/Bolero.csproj.FileListAbsolute.txt
-Bolero/Layout/App.xaml.cs
-Bolero/bin/Debug/Bolero.vshost.exe.config
+
+
+

@@ -229,7 +229,7 @@
                         </Grid.RowDefinitions>
                         <DataGrid IsReadOnly="True" CanUserAddRows="False" x:Name="dataGrid" ItemsSource="{Binding}" AutoGenerateColumns="False" >
                             <DataGrid.Columns>
-                                <DataGridTextColumn Width="1*" Header="Commande" Binding="{Binding IdCommande}">        
+                                <DataGridTextColumn Width="1*" Header="Commande" Binding="{Binding IdCommande}">
                                 </DataGridTextColumn>
                                 <DataGridTemplateColumn Header="Supprimer" Width="*">
                                     <DataGridTemplateColumn.CellTemplate>
@@ -258,7 +258,7 @@
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
-                                <DataGridTemplateColumn Header="Facturer" Width="*"> 
+                                <DataGridTemplateColumn Header="Facturer" Width="*">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <StackPanel>

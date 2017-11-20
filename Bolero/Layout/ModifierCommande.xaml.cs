@@ -141,6 +141,9 @@ namespace Bolero.Layouts
             {
                 throw ex;
             }
+           List<Article> lstFetchedArticles = new List<Article>();
+           lstFetchedArticles = cdao.listArticle(id);
+           dataGrid.DataContext = lstFetchedArticles;
         }
 
         private void btnAjout_Click(object sender, RoutedEventArgs e)
