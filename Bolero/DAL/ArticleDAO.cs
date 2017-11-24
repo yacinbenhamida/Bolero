@@ -18,11 +18,12 @@ namespace Bolero.DAL
             try
             {
                 SqlConnection cnx = Connexion.GetConnection();
-                SqlCommand sqlCmd = new SqlCommand("insert into Article (IdArticle,Libelle, Prix, Type) values (@id,@lib,@prix,@type)", cnx);
+                SqlCommand sqlCmd = new SqlCommand("insert into Article (IdArticle, Libelle, Prix, IdCategorie, platJour) values (@id,@lib,@prix,@cat,@plat)", cnx);
                 sqlCmd.Parameters.AddWithValue("id", a.IdArticle);
                 sqlCmd.Parameters.AddWithValue("lib", a.Libelle);
                 sqlCmd.Parameters.AddWithValue("prix", a.Prix);
-                sqlCmd.Parameters.AddWithValue("type", a.Type);
+                sqlCmd.Parameters.AddWithValue("cat", a.IdCategorie);
+                sqlCmd.Parameters.AddWithValue("plat", a.platJour);
                 sqlCmd.ExecuteNonQuery();
                 res = 1;
             }
@@ -140,7 +141,7 @@ namespace Bolero.DAL
                 {
                     while (reader.Read())
                     {
-                        list.Add(new Article(reader.GetInt32(0), reader.GetString(1), reader.GetDecimal(2), reader.GetString(3)));
+                        list.Add(new Article(reader.GetInt32(0), reader.GetString(1), reader.GetDecimal(2), reader.GetInt32(3), reader.GetInt32(4), reader.GetString(5)));
                     }
 
                 }
@@ -169,7 +170,7 @@ namespace Bolero.DAL
                 SqlDataReader reader = sqlCmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    a = new Article(reader.GetInt32(0), reader.GetString(1), reader.GetDecimal(2), reader.GetString(3));
+                    a = new Article(reader.GetInt32(0), reader.GetString(1), reader.GetDecimal(2), reader.GetInt32(3), reader.GetInt32(4), reader.GetString(5));
                 }
                 reader.Close();
             }
@@ -195,7 +196,7 @@ namespace Bolero.DAL
                 {
                     while (rd.Read())
                     {
-                        lstRes.Add(new Article(rd.GetInt32(0), rd.GetString(1), rd.GetDecimal(2), rd.GetString(3)));
+                        lstRes.Add(new Article(rd.GetInt32(0), rd.GetString(1), rd.GetDecimal(2), rd.GetInt32(3), rd.GetInt32(4), rd.GetString(5)));
                     }
                 }
             }
@@ -206,17 +207,39 @@ namespace Bolero.DAL
         public int update(Article obj)
         {
             int res = 0;
-
+            int idCat = 0;
+            String libCat = "";
             try
             {
                 SqlConnection cnx = Connexion.GetConnection();
-                SqlCommand cmd = new SqlCommand("UPDATE Article SET Libelle=@lib,Prix=@prix,Type=@type where IdArticle=@id", cnx);
+                SqlCommand cmd = new SqlCommand("Select * from Article where IdArticle=@id", cnx);
+                cmd.Parameters.AddWithValue("id", obj.IdArticle);
+                SqlDataReader rd = cmd.ExecuteReader();
+                if (rd.HasRows)
+                {
+                    while (rd.Read())
+                    {
+                        idCat = rd.GetInt32(0);
+                        libCat = rd.GetString(1);
+                    }
+                }
+            }
+            catch (SqlException ex) { throw ex; }
+            finally { Connexion.closeConnection(); }
+            try
+            {
+                SqlConnection cnx = Connexion.GetConnection();
+                SqlCommand cmd = new SqlCommand("UPDATE Article SET Libelle=@lib,Prix=@prix,platJour=@plat where IdArticle=@id", cnx);
                 cmd.Parameters.AddWithValue("id", obj.IdArticle);
                 cmd.Parameters.AddWithValue("prix", obj.Prix);
                 cmd.Parameters.AddWithValue("lib", obj.Libelle);
-                cmd.Parameters.AddWithValue("type", obj.Type);
+                cmd.Parameters.AddWithValue("plat", obj.platJour);
+                SqlCommand cmd1 = new SqlCommand("UPDATE Categorie SET libelleCat=@libCat where IdCat=@idCat", cnx);
+                cmd1.Parameters.AddWithValue("libCat", libCat);
+                cmd1.Parameters.AddWithValue("idCat", idCat);
                 int done = (int)cmd.ExecuteNonQuery();
-                if (done > 0) res = 1;
+                int done1 = (int)cmd1.ExecuteNonQuery();
+                if (done > 0 && done1 > 0) res = 1;
             }
             catch (SqlException)
             {
@@ -245,7 +268,7 @@ namespace Bolero.DAL
         {
             int res = 0;
             SqlConnection cnx = Connexion.GetConnection();
-            
+
             try
             {
                 SqlCommand sqlCmd = new SqlCommand("DELETE FROM [lignecmd] WHERE numArticle = @idArt AND numcmd = @id", cnx);

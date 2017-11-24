@@ -11,8 +11,8 @@ namespace Bolero.DAL
 
     {
 
- 
-        public int update(int id,string etat)
+
+        public int update(int id, bool etat)
         {
             int res = 0;
             try
@@ -21,7 +21,7 @@ namespace Bolero.DAL
                 SqlCommand cmd = new SqlCommand("UPDATE Tables SET Etat=@etat where NumTable=@id", cnx);
                 cmd.Parameters.AddWithValue("id", id);
                 cmd.Parameters.AddWithValue("etat", etat);
-             
+
                 int done = (int)cmd.ExecuteNonQuery();
                 if (done > 0) res = 1;
             }
