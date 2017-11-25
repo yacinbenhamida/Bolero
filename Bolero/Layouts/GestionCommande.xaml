@@ -301,7 +301,32 @@
             </TabItem>
 
             <TabItem Foreground="Black" Header="Historique" Background="#FFACA5A5" FontWeight="Bold" FontSize="14">
+                <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
 
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="600"/>
+                        <RowDefinition Height="100"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="590"/>
+                        <ColumnDefinition Width="590"/>
+                    </Grid.ColumnDefinitions>
+                    <DataGrid Grid.ColumnSpan="2" IsReadOnly="True" CanUserAddRows="False" x:Name="dataGridVente" ItemsSource="{Binding}" AutoGenerateColumns="False"  ScrollViewer.CanContentScroll="True">
+
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Width="1*" Header="Article" Binding="{Binding IdArticle}">
+                            </DataGridTextColumn>
+
+                            <DataGridTextColumn Width="1*" Header="Prix(TND)" Binding="{Binding Prix}">
+                            </DataGridTextColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Grid Grid.Row="1">
+                        <Rectangle  Stroke="Black" StrokeThickness="4" RadiusX="50" RadiusY="50"/>
+                        <TextBlock x:Name="artVendu" Text="15 Articles Vendus" FontSize="48" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </Grid>
+                    <Label x:Name="lblPrixVente" Content="-------- TND" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="36"/>
+                </Grid>
             </TabItem>
         </TabControl>
 
