@@ -36,28 +36,26 @@ namespace Bolero
         {   
             txtprix.Text = a.Prix.ToString();
             txtNomPlat.Text = a.Libelle.ToString();
-          
-           if(a.Type.ToString().Equals("entree"))
+            ArticleDAO daoa = new ArticleDAO();
+            
+           if(a.IdCategorie.Equals(1))
             {
                 cmbType.SelectedIndex = 0;
             }
-            else if (a.Type.ToString().Equals("suite"))
+            else if (a.IdCategorie.Equals(2))
             {
                 cmbType.SelectedIndex = 1;
             }
-            else if (a.Type.ToString().Equals("hors d'oeuvre"))
+            else if (a.IdCategorie.Equals(5))
             {
                 cmbType.SelectedIndex = 2;
             }
-            else if (a.Type.ToString().Equals("plat du jour"))
-            {
-                cmbType.SelectedIndex = 3;
-            }
-            else if (a.Type.ToString().Equals("dessert"))
+
+           else if (a.IdCategorie.Equals(3))
             {
                 cmbType.SelectedIndex = 4;
             }
-            else if (a.Type.ToString().Equals("boisson"))
+           else if (a.IdCategorie.Equals(4))
             {
                 cmbType.SelectedIndex = 5;
             }
@@ -74,8 +72,10 @@ namespace Bolero
             try
             {
                 if ((!String.IsNullOrEmpty(txtNomPlat.Text)) && (!String.IsNullOrEmpty(txtprix.Text)) && (cmbType.SelectedIndex != -1) && cmbType.SelectedValue!=null && cmbType.SelectedItem !=null)
-                {
-                    Article ab = new Article(idTransferred, txtNomPlat.Text, decimal.Parse(txtprix.Text), cmbType.Text);
+                {   CategorieDAO daoc=new CategorieDAO();
+                    
+                    int catg = daoc.getIdByLib(cmbType.Text);
+                    Article ab = new Article(idTransferred, txtNomPlat.Text, decimal.Parse(txtprix.Text),catg);
 
                     if (dao.update(ab) == 1)
                     {

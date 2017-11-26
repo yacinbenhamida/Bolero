@@ -79,9 +79,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="BL\Categorie.cs" />
     <Compile Include="BL\Facture.cs" />
     <Compile Include="BL\Serveur.cs" />
     <Compile Include="BL\User.cs" />
+    <Compile Include="DAL\CategorieDAO.cs" />
     <Compile Include="DAL\FactureDao.cs" />
     <Compile Include="DAL\ServeurDAO.cs" />
     <Compile Include="DAL\UserDAO.cs" />
@@ -90,6 +92,9 @@
     </Compile>
     <Compile Include="Layouts\ModifierMenu.xaml.cs">
       <DependentUpon>ModifierMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Layouts\ModifierPlat.xaml.cs">
+      <DependentUpon>ModifierPlat.xaml</DependentUpon>
     </Compile>
     <Compile Include="Layouts\NewPassword.xaml.cs">
       <DependentUpon>NewPassword.xaml</DependentUpon>
@@ -139,6 +144,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Layouts\ModifierMenu.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Layouts\ModifierPlat.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

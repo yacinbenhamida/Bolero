@@ -205,9 +205,9 @@ namespace Bolero
 
         private void btnModifier_Click(object sender, RoutedEventArgs e)
         {
-            //ModifierPlat modif = new ModifierPlat(Id);
-           // modif.Closing += new System.ComponentModel.CancelEventHandler(this.Window2_Closing);
-             //   modif.ShowDialog();
+            ModifierPlat modif = new ModifierPlat(Id);
+           modif.Closing += new System.ComponentModel.CancelEventHandler(this.Window2_Closing);
+                modif.ShowDialog();
                 
         }
 
