@@ -3,11 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Windows.Documents;
 using Bolero.BL;
@@ -38,15 +33,15 @@ namespace Bolero.DAL
             finally { Connexion.closeConnection(); }
             return c;
         }
-        public int add(Facture f,Commande c)
+        public int add(Facture f, Commande c)
         {
             int res = 0;
-            
+
             try
             {
                 SqlConnection cnx = Connexion.GetConnection();
                 CommandeDAO cmddao = new CommandeDAO();
-                
+
                 SqlCommand sqlCmd = new SqlCommand("insert into Facture ( totalTTC,totalHT,totalTVA,idPayement) values (@ttc,@ht,@tva,@idpay)", cnx);
                 //  sqlCmd.Parameters.AddWithValue("idc", c.IdCrediteur);
                 sqlCmd.Parameters.AddWithValue("ttc", c.prixtotal);
@@ -181,7 +176,7 @@ namespace Bolero.DAL
             }
             return res;
         }
-        
+
         public decimal sumht(Commande c)
         {
             decimal prix = c.prixtotal - ((c.prixtotal * 18) / 100);
@@ -191,7 +186,7 @@ namespace Bolero.DAL
         {
             return ((c.prixtotal * 18) / 100);
         }
-        public int addFactToCommande(Facture f,Commande c)
+        public int addFactToCommande(Facture f, Commande c)
         {
             int res = 0;
 
@@ -199,10 +194,10 @@ namespace Bolero.DAL
             {
                 SqlConnection cnx = Connexion.GetConnection();
                 SqlCommand updatecmd = new SqlCommand("UPDATE Commande SET IdFacture=@idfact where  IdCommande=@idcmd", cnx);
-                updatecmd.Parameters.AddWithValue("idfact",f.IdFact);
+                updatecmd.Parameters.AddWithValue("idfact", f.IdFact);
                 updatecmd.Parameters.AddWithValue("date", c.IdCommande);
                 int i = (int)updatecmd.ExecuteNonQuery();
-                if (i > 0 )
+                if (i > 0)
                 {
                     res = 1;
                 }
@@ -218,6 +213,11 @@ namespace Bolero.DAL
             }
             return res;
         }
-        
+
+
+        public int add(Facture e)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

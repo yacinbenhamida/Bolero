@@ -67,9 +67,9 @@ namespace Bolero.Layouts
             Crediteur c = new Crediteur();
 
             c.nomprenom = nomPrenom.Text.ToString();
-            c.MontantCredit = float.Parse(montant.Text);
+            c.MontantCredit = decimal.Parse(montant.Text);
             c.tel = numTel.Text.ToString();
-            c.adresse = adres.Text.ToString();
+           
             c.cin = int.Parse(CIN.Text);
             c.Idcmd = id;
 

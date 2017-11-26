@@ -41,8 +41,8 @@ namespace Bolero.Layouts
             lblnumcmd.Content = id;
             c = daoc.getById(id);
             decimal sum = daoc.SumCommande(id);
-            lbldatee.Content = c.DateCommande;
-            lblserveur.Content = c.NomServeur;
+            lbldatee.Content = c.datecommande;
+            lblserveur.Content = c.idserveur;
             lblnumtab.Content = c.NumTable;
             lbltotal.Content = sum;
             lblDate.Content = DateTime.Now.ToShortDateString();
@@ -70,9 +70,7 @@ namespace Bolero.Layouts
             DAL.CommandeDAO daoc = new DAL.CommandeDAO();
             DAL.ArchiveDAO daoarch = new DAL.ArchiveDAO();
             c = daoc.getById(id);
-            decimal sum = daoc.SumCommande(id);
-            Archive arch = new Archive(c.IdCommande,c.NumTable,c.DateCommande,c.NomServeur,c.Id,sum);
-            daoarch.add(arch);
+
             DataSet DSreport = new DSreport();
             DSreport.Reset();
                     List<Commande> lstCom = new List<Commande>();
@@ -91,8 +89,8 @@ namespace Bolero.Layouts
             lblnumcmd.Content = id;
             c = daoc.getById(id);
             decimal sum = daoc.SumCommande(id);
-            lbldatee.Content = c.DateCommande;
-            lblserveur.Content = c.NomServeur;
+            lbldatee.Content = c.datecommande;
+            lblserveur.Content = c.idserveur;
             lblnumtab.Content = c.NumTable;
             lbltotal.Content = sum;
             lblDate.Content = DateTime.Now.ToShortDateString();
@@ -157,16 +155,18 @@ namespace Bolero.Layouts
         {
             Commande cm = new Commande();
             DAL.CommandeDAO daoc = new DAL.CommandeDAO();
-
+            DAL.ServeurDAO daos = new DAL.ServeurDAO();
+            Serveur s = new Serveur();
+            s = daos.getById(c.idserveur);
             EnregCommeCredit credit = new EnregCommeCredit();
             c = daoc.getById(id);
             decimal sum = daoc.SumCommande(id);
 
-            credit.montant.Text = sum.ToString();
-            credit.serv.Content = c.NomServeur.ToString();
+            credit.montant.Text = c.prixtotal.ToString();
+            credit.serv.Content = s.Nom_Serveur;
             credit.setcmd(id);
-          
-               credit.ShowDialog();
+
+            credit.ShowDialog();
         }
 
       

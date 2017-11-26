@@ -205,9 +205,9 @@ namespace Bolero
 
         private void btnModifier_Click(object sender, RoutedEventArgs e)
         {
-            ModifierPlat modif = new ModifierPlat(Id);
-            modif.Closing += new System.ComponentModel.CancelEventHandler(this.Window2_Closing);
-                modif.ShowDialog();
+            //ModifierPlat modif = new ModifierPlat(Id);
+           // modif.Closing += new System.ComponentModel.CancelEventHandler(this.Window2_Closing);
+             //   modif.ShowDialog();
                 
         }
 
@@ -219,9 +219,9 @@ namespace Bolero
 
         private void btnAjouter_Click(object sender, RoutedEventArgs e)
         {   
-            AjoutPlat ajout = new AjoutPlat();
-            ajout.Closing += new System.ComponentModel.CancelEventHandler(this.Window3_Closing);
-            ajout.ShowDialog();
+            //AjoutPlat ajout = new AjoutPlat();
+            //ajout.Closing += new System.ComponentModel.CancelEventHandler(this.Window3_Closing);
+            //ajout.ShowDialog();
         }
 
         private void refreshTabs() 

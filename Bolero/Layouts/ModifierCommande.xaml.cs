@@ -37,14 +37,17 @@ namespace Bolero.Layouts
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-          
+            ServeurDAO daos = new ServeurDAO();
             lblComName.Content = "Commande N°"+ id;
             List<Article> lstFetchedArticles = new List<Article>();
             lstFetchedArticles = cdao.listArticle(id);
             dataGrid.DataContext = lstFetchedArticles;
+          
             cmd = cdao.getById(id);
             txtNum.Text = cmd.NumTable.ToString();
-            if (cmd.NomServeur.ToString() == "Serveur 1")
+            Serveur s = new Serveur();
+            s = daos.getById(cmd.idserveur);
+            if (s.Nom_Serveur == "Serveur 1")
             {
                 cmbClient.SelectedIndex = 1;
             }
@@ -118,12 +121,17 @@ namespace Bolero.Layouts
         {
             int res = 0;
             int nbTable = int.Parse(txtNum.Text);
+
             ComboBoxItem selecteditem = (ComboBoxItem)(cmbClient.SelectedValue);
             string nServeur = (string)(selecteditem.Content);
+            ServeurDAO daos = new ServeurDAO();
+            Serveur s = new Serveur();
+            s = daos.getByName(nServeur);
+            
             int idd = 1;
 
 
-            Commande c = new Commande(id,nbTable, DateTime.Now, nServeur, idd);
+            Commande c = new Commande(id, nbTable, s.IdServeur, idd, DateTime.Now);
             
            try
             {
