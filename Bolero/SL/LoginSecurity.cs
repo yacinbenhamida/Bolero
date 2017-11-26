@@ -9,6 +9,8 @@ using System.Net;
 using System.Data;
 using System.Net.Mail;
 using Bolero.DAL;
+using System.Security.Cryptography;
+using System.IO;
 //Security Layer
 namespace Bolero.SL
 {
@@ -57,7 +59,7 @@ namespace Bolero.SL
             try
             {
                 cnx = Connexion.GetConnection();
-                SqlCommand cmd = new SqlCommand("SELECT COUNT(*) from Utilisateur where password=@pw AND Id=@id", cnx);
+                SqlCommand cmd = new SqlCommand("SELECT COUNT(*) from USER where password=@pw AND IdUser=@id", cnx);
                 cmd.Parameters.AddWithValue("pw",input);
                 cmd.Parameters.AddWithValue("id",iduser);
                 int verif = (int)cmd.ExecuteScalar();
@@ -70,6 +72,33 @@ namespace Bolero.SL
             finally { Connexion.closeConnection(); }
             return result;
         }
+
+        const string passphrase = "password";
+        public static string DecryptString(string Message)
+        {
+            byte[] Results;
+            System.Text.UTF8Encoding UTF8 = new System.Text.UTF8Encoding();
+            MD5CryptoServiceProvider HashProvider = new MD5CryptoServiceProvider();
+            byte[] TDESKey = HashProvider.ComputeHash(UTF8.GetBytes(passphrase));
+            TripleDESCryptoServiceProvider TDESAlgorithm = new TripleDESCryptoServiceProvider();
+            TDESAlgorithm.Key = TDESKey;
+            TDESAlgorithm.Mode = CipherMode.ECB;
+            TDESAlgorithm.Padding = PaddingMode.PKCS7;
+            byte[] DataToDecrypt = Convert.FromBase64String(Message);
+            try
+            {
+                ICryptoTransform Decryptor = TDESAlgorithm.CreateDecryptor();
+                Results = Decryptor.TransformFinalBlock(DataToDecrypt, 0, DataToDecrypt.Length);
+            }
+            finally
+            {
+                TDESAlgorithm.Clear();
+                HashProvider.Clear();
+            }
+            return UTF8.GetString(Results);
+        }
+
+
         public static int checkSecurityQuestionConformity(int idOfUser,string choosenQuestion,string choosenAnswer) 
         {
             int good = 0;
