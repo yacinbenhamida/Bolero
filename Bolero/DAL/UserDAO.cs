@@ -19,7 +19,7 @@ namespace Bolero.DAL
             try
             {
               cnx = Connexion.GetConnection();
-              SqlCommand cmd = new SqlCommand("select * from Utilisateur where Id =@uname", cnx);
+              SqlCommand cmd = new SqlCommand("select * from USER where IdUser =@uname", cnx);
               cmd.Parameters.AddWithValue("uname", id);
                 SqlDataReader rd = cmd.ExecuteReader();
                 while (rd.Read()) 
@@ -44,7 +44,7 @@ namespace Bolero.DAL
             try
             {
                 cnx = Connexion.GetConnection();
-                SqlCommand cmd = new SqlCommand("SELECT * FROM Utilisateur", cnx);
+                SqlCommand cmd = new SqlCommand("SELECT * FROM USER", cnx);
                 SqlDataReader rd = cmd.ExecuteReader();
                 while (rd.Read())
                 {
@@ -72,7 +72,7 @@ namespace Bolero.DAL
             try
             {
                 cnx = Connexion.GetConnection();
-                SqlCommand cmd = new SqlCommand("UPDATE Utilisateur SET password=@newpw WHERE Id=@id", cnx);
+                SqlCommand cmd = new SqlCommand("UPDATE USER SET password=@newpw WHERE IdUser=@id", cnx);
                 cmd.Parameters.AddWithValue("newpw", newPassword);
                 cmd.Parameters.AddWithValue("id", id);
                 
@@ -109,7 +109,7 @@ namespace Bolero.DAL
             try
             {
                 cnx = Connexion.GetConnection();
-                SqlCommand cmd = new SqlCommand("UPDATE Utilisateur SET password=@newpw WHERE Id=@id", cnx);
+                SqlCommand cmd = new SqlCommand("UPDATE USER SET password=@newpw WHERE IdUser=@id", cnx);
                 cmd.Parameters.AddWithValue("newpw", getRandomPassword());
                 cmd.Parameters.AddWithValue("Id", id);
                 int i = (int)cmd.ExecuteNonQuery();
