@@ -79,7 +79,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="BL\Facture.cs" />
     <Compile Include="BL\User.cs" />
+    <Compile Include="DAL\FactureDao.cs" />
     <Compile Include="DAL\UserDAO.cs" />
     <Compile Include="Layouts\Authentification.xaml.cs">
       <DependentUpon>Authentification.xaml</DependentUpon>
