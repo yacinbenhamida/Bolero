@@ -52,24 +52,47 @@ namespace Bolero.SL
             }
             return done;
         }
-        public static bool checkPassword(string input,int iduser) 
+        public static bool checkPassword(string input, int iduser)
         {
             SqlConnection cnx;
             bool result = false;
+            String pwd = "";
+
             try
             {
                 cnx = Connexion.GetConnection();
-                SqlCommand cmd = new SqlCommand("SELECT COUNT(*) from USER where password=@pw AND IdUser=@id", cnx);
-                cmd.Parameters.AddWithValue("pw",input);
-                cmd.Parameters.AddWithValue("id",iduser);
-                int verif = (int)cmd.ExecuteScalar();
-                if (verif == 1 ) result = true;
+                SqlCommand cmd = new SqlCommand("SELECT CONVERT(VARCHAR(50),DecryptByPassphrase('dti202',password))as DecryptedPassword from [dbo].[USER] where IdUser=@id", cnx);
+                cmd.Parameters.AddWithValue("id", iduser);
+                SqlDataReader rd = cmd.ExecuteReader();
+                while (rd.Read())
+                {
+                    pwd = rd.GetString(0);
+                }
+                rd.Close();
             }
             catch (SqlException e)
             {
                 throw e;
             }
             finally { Connexion.closeConnection(); }
+
+            if (pwd.Equals(input))
+            {
+                try
+                {
+                    cnx = Connexion.GetConnection();
+                    SqlCommand cmd = new SqlCommand("SELECT COUNT(*) from [dbo].[USER] where IdUser=@id", cnx);
+                    cmd.Parameters.AddWithValue("id", iduser);
+                    int verif = (int)cmd.ExecuteScalar();
+                    if (verif == 1) result = true;
+                }
+                catch (SqlException e)
+                {
+                    throw e;
+                }
+                finally { Connexion.closeConnection(); }
+                return result;
+            }
             return result;
         }
 
