@@ -11,6 +11,27 @@ namespace Bolero.DAL
     class ArticleDAO : DAO<Article>
     {
 
+        public List<Article> PlatDJ()
+        { 
+            
+            List<Article>res = new List<Article>();
+            try
+            {
+                SqlConnection cnx = Connexion.GetConnection();
+                SqlCommand cmd = new SqlCommand("SELECT * from Article where platjour > 0", cnx);
+                SqlDataReader rd = cmd.ExecuteReader();
+                if (rd.HasRows)
+                {
+                   
+                        res.Add(new Article(rd.GetInt32(0), rd.GetString(1), rd.GetDecimal(2), rd.GetInt32(3)));
+                    
+                }
+                
+            }
+            catch (SqlException) { throw; }
+            finally { Connexion.closeConnection(); }
+            return res;
+        }
         public int add(Article a)
         {
             int res = 0;
@@ -188,7 +209,7 @@ namespace Bolero.DAL
             try
             {
                 SqlConnection cnx = Connexion.GetConnection();
-                SqlCommand cmd = new SqlCommand("Select * from Article where Type=@type", cnx);
+                SqlCommand cmd = new SqlCommand("Select Article.* from Article,Categorie where Article.IdCategorie=Categorie.IdCat and Categorie.libellecat=@type", cnx);
                 cmd.Parameters.AddWithValue("type", type);
                 SqlDataReader rd = cmd.ExecuteReader();
                 if (rd.HasRows)
@@ -255,7 +276,8 @@ namespace Bolero.DAL
                 SqlConnection cnx = Connexion.GetConnection();
                 SqlCommand cmd = new SqlCommand("SELECT MAX(IdArticle) from Article", cnx);
                 int done = (int)cmd.ExecuteScalar();
-                if (done > 0) res = done;
+                if (done > 0)
+                    res = done;
             }
             catch (SqlException) { throw; }
             finally { Connexion.closeConnection(); }
