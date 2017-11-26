@@ -19,15 +19,24 @@ namespace Bolero.BL
         public DateTime datecommande { get; set; }
 
         public Commande() { }
-        public Commande(int IdC, decimal prixtotal, int numtable, int nomserveur, int idOp, int idfacture, DateTime datecommande)
+        public Commande(int IdC, decimal prix, int numtable, int nomserveur, int idOp, DateTime datecommande)
         {
             this.IdCommande = IdC ;
-            this.prixtotal = prixtotal;
+            this.NumTable = numtable;
+            this.datecommande = datecommande;
+            this.prixtotal = prix;
+            this.idserveur = nomserveur;
+            //this.idfacture = 0;
+            this.Id = idOp;  
+        }
+        public Commande(int IdC, int numtable, int nomserveur, int idOp, DateTime datecommande)
+        {
+            this.IdCommande = IdC;
             this.NumTable = numtable;
             this.datecommande = datecommande;
             this.idserveur = nomserveur;
-            this.idfacture = idfacture;
-            this.Id = idOp;  
+            //this.idfacture = 0;
+            this.Id = idOp;
         }
     }
 }

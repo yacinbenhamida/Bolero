@@ -23,7 +23,6 @@ namespace Bolero.DAL
                 sqlCmd.Parameters.AddWithValue("lib", a.Libelle);
                 sqlCmd.Parameters.AddWithValue("prix", a.Prix);
                 sqlCmd.Parameters.AddWithValue("cat", a.IdCategorie);
-                sqlCmd.Parameters.AddWithValue("plat", a.platJour);
                 sqlCmd.ExecuteNonQuery();
                 res = 1;
             }
@@ -141,7 +140,7 @@ namespace Bolero.DAL
                 {
                     while (reader.Read())
                     {
-                        list.Add(new Article(reader.GetInt32(0), reader.GetString(1), reader.GetDecimal(2), reader.GetInt32(3), reader.GetInt32(4), reader.GetString(5)));
+                        list.Add(new Article(reader.GetInt32(0), reader.GetString(1), reader.GetDecimal(2), reader.GetInt32(3)));
                     }
 
                 }
@@ -170,7 +169,7 @@ namespace Bolero.DAL
                 SqlDataReader reader = sqlCmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    a = new Article(reader.GetInt32(0), reader.GetString(1), reader.GetDecimal(2), reader.GetInt32(3), reader.GetInt32(4), reader.GetString(5));
+                    a = new Article(reader.GetInt32(0), reader.GetString(1), reader.GetDecimal(2), reader.GetInt32(3));
                 }
                 reader.Close();
             }
@@ -196,7 +195,7 @@ namespace Bolero.DAL
                 {
                     while (rd.Read())
                     {
-                        lstRes.Add(new Article(rd.GetInt32(0), rd.GetString(1), rd.GetDecimal(2), rd.GetInt32(3), rd.GetInt32(4), rd.GetString(5)));
+                        lstRes.Add(new Article(rd.GetInt32(0), rd.GetString(1), rd.GetDecimal(2), rd.GetInt32(3)));
                     }
                 }
             }
@@ -229,11 +228,10 @@ namespace Bolero.DAL
             try
             {
                 SqlConnection cnx = Connexion.GetConnection();
-                SqlCommand cmd = new SqlCommand("UPDATE Article SET Libelle=@lib,Prix=@prix,platJour=@plat where IdArticle=@id", cnx);
+                SqlCommand cmd = new SqlCommand("UPDATE Article SET Libelle=@lib,Prix=@prix where IdArticle=@id", cnx);
                 cmd.Parameters.AddWithValue("id", obj.IdArticle);
                 cmd.Parameters.AddWithValue("prix", obj.Prix);
                 cmd.Parameters.AddWithValue("lib", obj.Libelle);
-                cmd.Parameters.AddWithValue("plat", obj.platJour);
                 SqlCommand cmd1 = new SqlCommand("UPDATE Categorie SET libelleCat=@libCat where IdCat=@idCat", cnx);
                 cmd1.Parameters.AddWithValue("libCat", libCat);
                 cmd1.Parameters.AddWithValue("idCat", idCat);

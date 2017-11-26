@@ -11,29 +11,21 @@ namespace Bolero.BL
         
 
         public Article() { }
-        public int qte { get; set; }
         public int IdArticle { get; set; }
         public string Libelle { get; set; }
         public decimal Prix { get; set; }
-        public string Type { get; set; }
+        public int IdCategorie{ get; set; }
+        public int PlatDJ { get; set; }
 
-
-        public Article(int idArticle, string libelle, decimal prix, string type)
+        public Article(int idArticle, string libelle, decimal prix, int idcatg)
         {
             this.IdArticle = idArticle;
             this.Libelle = libelle;
             this.Prix = prix;
-            this.Type = type;
+            this.IdCategorie = idcatg;
+            this.PlatDJ = 0;
         }
 
-        public Article(int qte)
-        {
-            // TODO: Complete member initialization
-            this.qte = qte;
-        }
-        public override string ToString()
-        {
-            return IdArticle + " " + Libelle + " " + Prix + " " + Type;
-        }
+      
     }
 }

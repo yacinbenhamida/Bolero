@@ -80,8 +80,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="BL\Facture.cs" />
+    <Compile Include="BL\Serveur.cs" />
     <Compile Include="BL\User.cs" />
     <Compile Include="DAL\FactureDao.cs" />
+    <Compile Include="DAL\ServeurDAO.cs" />
     <Compile Include="DAL\UserDAO.cs" />
     <Compile Include="Layouts\Authentification.xaml.cs">
       <DependentUpon>Authentification.xaml</DependentUpon>

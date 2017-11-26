@@ -244,7 +244,7 @@ namespace Bolero.DAL
                 {
                     while (reader.Read())
                     {
-                        list.Add(new Commande(reader.GetInt32(0), reader.GetDecimal(1), reader.GetInt32(2), reader.GetInt32(3), reader.GetInt32(4),reader.GetInt32(5),reader.GetDateTime(6)));
+                        list.Add(new Commande(reader.GetInt32(0), reader.GetDecimal(1), reader.GetInt32(2), reader.GetInt32(3),reader.GetInt32(5),reader.GetDateTime(6)));
                     }
 
                 }
@@ -275,7 +275,7 @@ namespace Bolero.DAL
                 SqlDataReader reader = sqlCmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    a = new Commande(reader.GetInt32(0), reader.GetDecimal(1), reader.GetInt32(2), reader.GetInt32(3), reader.GetInt32(4), reader.GetInt32(5), reader.GetDateTime(6));
+                    a = new Commande(reader.GetInt32(0), reader.GetDecimal(1), reader.GetInt32(2), reader.GetInt32(3), reader.GetInt32(4), reader.GetDateTime(6));
                 }
                 reader.Close();
             }
@@ -343,7 +343,7 @@ namespace Bolero.DAL
 
                     while (rd2.Read())
                     {
-                       lstArticle.Add(new Article(rd2.GetInt32(0),rd2.GetString(1),rd2.GetDecimal(2),rd2.GetString(3)));
+                       lstArticle.Add(new Article(rd2.GetInt32(0),rd2.GetString(1),rd2.GetDecimal(2),rd2.GetInt32(3)));
 
                     }
                 }
