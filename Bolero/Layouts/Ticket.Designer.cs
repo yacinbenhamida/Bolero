@@ -30,46 +30,54 @@
         {
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.ticketrepBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dSreport = new Bolero.DSreport();
-            this.dSreportBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dataTable1BindingSource = new System.Windows.Forms.BindingSource(this.components);
-            //this.dataTable1TableAdapter = new Bolero.DSreportTableAdapters.DataTable1TableAdapter();
+            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.ticket_repTableAdapter = new Bolero.DSreportTableAdapters.ticket_repTableAdapter();
+            this.ticket_repBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.ticketrepBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.ticketrepBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dSreport)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dSreportBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataTable1BindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ticket_repBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ticketrepBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
-            // reportViewer1
+            // ticketrepBindingSource
             // 
-            this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            reportDataSource1.Name = "DataSet1";
-            reportDataSource1.Value = this.dataTable1BindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
-            this.reportViewer1.LocalReport.ReportEmbeddedResource = "Bolero.Layouts.ticket.rdlc";
-            this.reportViewer1.Location = new System.Drawing.Point(0, 0);
-            this.reportViewer1.Name = "reportViewer1";
-            this.reportViewer1.Size = new System.Drawing.Size(664, 432);
-            this.reportViewer1.TabIndex = 0;
+            this.ticketrepBindingSource.DataMember = "ticket_rep";
+            this.ticketrepBindingSource.DataSource = this.dSreport;
             // 
             // dSreport
             // 
             this.dSreport.DataSetName = "DSreport";
             this.dSreport.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // dSreportBindingSource
+            // reportViewer1
             // 
-            this.dSreportBindingSource.DataSource = this.dSreport;
-            this.dSreportBindingSource.Position = 0;
+            this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            reportDataSource1.Name = "DataSet1";
+            reportDataSource1.Value = this.ticketrepBindingSource1;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "Bolero.Layouts.ticket.rdlc";
+            this.reportViewer1.Location = new System.Drawing.Point(0, 0);
+            this.reportViewer1.Name = "reportViewer1";
+            this.reportViewer1.Size = new System.Drawing.Size(664, 432);
+            this.reportViewer1.TabIndex = 0;
+            this.reportViewer1.Load += new System.EventHandler(this.reportViewer1_Load);
             // 
-            // dataTable1BindingSource
+            // ticket_repTableAdapter
             // 
-            this.dataTable1BindingSource.DataMember = "DataTable1";
-            this.dataTable1BindingSource.DataSource = this.dSreportBindingSource;
+            this.ticket_repTableAdapter.ClearBeforeFill = true;
             // 
-            // dataTable1TableAdapter
+            // ticket_repBindingSource
             // 
-           // this.dataTable1TableAdapter.ClearBeforeFill = true;
+            this.ticket_repBindingSource.DataMember = "ticket_rep";
+            this.ticket_repBindingSource.DataSource = this.dSreport;
+            // 
+            // ticketrepBindingSource1
+            // 
+            this.ticketrepBindingSource1.DataMember = "ticket_rep";
+            this.ticketrepBindingSource1.DataSource = this.dSreport;
             // 
             // Ticket
             // 
@@ -80,9 +88,10 @@
             this.Name = "Ticket";
             this.Text = "Ticket";
             this.Load += new System.EventHandler(this.Ticket_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.ticketrepBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dSreport)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dSreportBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataTable1BindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ticket_repBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ticketrepBindingSource1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -90,9 +99,12 @@
         #endregion
 
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
-        private System.Windows.Forms.BindingSource dataTable1BindingSource;
-        private System.Windows.Forms.BindingSource dSreportBindingSource;
+        private System.Windows.Forms.BindingSource ticketrepBindingSource;
         private DSreport dSreport;
+        private DSreportTableAdapters.ticket_repTableAdapter ticket_repTableAdapter;
+        private System.Windows.Forms.BindingSource ticket_repBindingSource;
+        private System.Windows.Forms.BindingSource ticketrepBindingSource1;
+
         //private DSreportTableAdapters.DataTable1TableAdapter dataTable1TableAdapter;
     }
 }

@@ -295,8 +295,8 @@ namespace Bolero
         {
             Commande cm1 = (Commande)dataGrid.SelectedValue;
             int id = cm1.IdCommande;
-            //MessageBox.Show(""+id);
-            Bolero.Layouts.Ticket_et_Facture tk = new Bolero.Layouts.Ticket_et_Facture();
+            
+            Bolero.Layouts.Ticket tk = new Bolero.Layouts.Ticket();
             tk.setid(id);
             DataSet DSreport = new DSreport();
             DSreport.Reset();

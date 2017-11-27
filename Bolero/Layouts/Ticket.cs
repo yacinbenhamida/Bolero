@@ -24,8 +24,16 @@ namespace Bolero.Layouts
 
         private void Ticket_Load(object sender, EventArgs e)
         {
-            //this.dataTable1TableAdapter.Fill(this.dSreport.DataTable1, id);
+            // TODO: This line of code loads data into the 'dSreport.ticket_rep' table. You can move, or remove it, as needed.
+            this.ticket_repTableAdapter.Fill(this.dSreport.ticket_rep,id);
+            
             this.reportViewer1.RefreshReport();
+            this.reportViewer1.RefreshReport();
+        }
+
+        private void reportViewer1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
