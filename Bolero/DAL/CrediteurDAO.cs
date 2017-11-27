@@ -42,7 +42,8 @@ namespace Bolero.DAL
             {
                 SqlConnection cnx = Connexion.GetConnection();
                 CommandeDAO cmddao = new CommandeDAO();
-                sum = cmddao.SumCommande(c.Idcmd);
+                Commande cmd = cmddao.getById(c.Idcmd);
+                sum = cmd.prixtotal;
                 SqlCommand sqlCmd = new SqlCommand("insert into Client_Crediteurs ( nomprenom, cin,totalCmdTTC , tel,idCommande) values (@nomprenom,@cin,@prix,@tel,@idcmd)", cnx);
               //  sqlCmd.Parameters.AddWithValue("idc", c.IdCrediteur);
                 sqlCmd.Parameters.AddWithValue("nomprenom", c.nomprenom);

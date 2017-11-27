@@ -11,20 +11,23 @@ namespace Bolero.DAL
     class ArticleDAO : DAO<Article>
     {
 
-        public List<Article> PlatDJ()
+        public Article PlatDJ()
         { 
             
-            List<Article>res = new List<Article>();
+            Article res = new Article();
             try
             {
                 SqlConnection cnx = Connexion.GetConnection();
-                SqlCommand cmd = new SqlCommand("SELECT * from Article where platjour > 0", cnx);
+                SqlCommand cmd = new SqlCommand("SELECT * from Article where platJour =@pj ", cnx);
+                cmd.Parameters.AddWithValue("pj", true);
                 SqlDataReader rd = cmd.ExecuteReader();
                 if (rd.HasRows)
                 {
-                   
-                        res.Add(new Article(rd.GetInt32(0), rd.GetString(1), rd.GetDecimal(2), rd.GetInt32(3)));
-                    
+                    while (rd.Read())
+                    {
+
+                        res = new Article(rd.GetInt32(0), rd.GetString(1), rd.GetDecimal(2), rd.GetInt32(3));
+                    }
                 }
                 
             }

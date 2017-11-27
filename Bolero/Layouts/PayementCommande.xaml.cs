@@ -40,7 +40,7 @@ namespace Bolero.Layouts
             DAL.CommandeDAO daoc = new DAL.CommandeDAO();
             lblnumcmd.Content = id;
             c = daoc.getById(id);
-            decimal sum = daoc.SumCommande(id);
+            decimal sum = c.prixtotal;
             lbldatee.Content = c.datecommande;
             lblserveur.Content = c.idserveur;
             lblnumtab.Content = c.NumTable;
@@ -88,11 +88,11 @@ namespace Bolero.Layouts
             DAL.CommandeDAO daoc = new DAL.CommandeDAO();
             lblnumcmd.Content = id;
             c = daoc.getById(id);
-            decimal sum = daoc.SumCommande(id);
+            
             lbldatee.Content = c.datecommande;
             lblserveur.Content = c.idserveur;
             lblnumtab.Content = c.NumTable;
-            lbltotal.Content = sum;
+            lbltotal.Content = c.prixtotal;
             lblDate.Content = DateTime.Now.ToShortDateString();
             lbldatee.Content = DateTime.Now.ToShortDateString();
             System.Windows.Threading.DispatcherTimer timer = new System.Windows.Threading.DispatcherTimer();
@@ -160,7 +160,7 @@ namespace Bolero.Layouts
             s = daos.getById(c.idserveur);
             EnregCommeCredit credit = new EnregCommeCredit();
             c = daoc.getById(id);
-            decimal sum = daoc.SumCommande(id);
+            decimal sum = c.prixtotal;
 
             credit.montant.Text = c.prixtotal.ToString();
             credit.serv.Content = s.Nom_Serveur;

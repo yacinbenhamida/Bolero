@@ -18,7 +18,7 @@ namespace Bolero.BL
         public int idfacture { get; set; }
         public DateTime datecommande { get; set; }
 
-        public Commande() { }
+        public Commande() { this.prixtotal = 0; }
         public Commande(int IdC, decimal prix, int numtable, int nomserveur, int idOp, DateTime datecommande)
         {
             this.IdCommande = IdC ;

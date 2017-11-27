@@ -179,7 +179,7 @@ namespace Bolero.DAL
             {
                 SqlConnection cnx = Connexion.GetConnection();
                 SqlCommand sqlCmd = new SqlCommand("select * from Serveur where nom_serveur=@nom", cnx);
-                sqlCmd.Parameters.AddWithValue("nom", nom);
+                sqlCmd.Parameters.AddWithValue("nom",nom);
                 SqlDataReader reader = sqlCmd.ExecuteReader();
                 while (reader.Read())
                 {

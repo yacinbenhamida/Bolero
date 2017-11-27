@@ -56,8 +56,7 @@ namespace Bolero
             lstdessert = dao.getArticlesByType("dessert");
             lstboissons = dao.getArticlesByType("boisson");
             lsthors = dao.getArticlesByType("hors d'oeuvre");
-            lstplatdj = dao.PlatDJ();
-
+            lstplatdj.Add(dao.PlatDJ());
             entree.DataContext = lstentree;
             Suite.DataContext = lstsuite;
             boisson.DataContext = lstboissons;
@@ -221,8 +220,11 @@ namespace Bolero
             else 
             {
                 int NumTb = int.Parse(cmbTable.Text.Substring(6));
-                Serveur s = daoserv.getByName(cmbServ.Text);
-                int idserv = s.IdServeur;            
+                
+                ServeurDAO daos = new ServeurDAO();
+                Serveur s = new Serveur();
+                s = daos.getByName(cmbServ.Text);
+                int idserv = s.IdServeur;         
                 tobeAdded = new Commande(0,NumTb, idserv, 1,DateTime.Now);
                 if (daoc.addMultipleArticlesInOneC(lstArticlesCmd, tobeAdded) == 1)
                 {
