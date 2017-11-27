@@ -33,7 +33,7 @@
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.dSreport = new Bolero.DSreport();
             this.commande2BindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.commande2TableAdapter = new Bolero.DSreportTableAdapters.Commande2TableAdapter();
+           // this.commande2TableAdapter = new Bolero.DSreportTableAdapters.Commande2TableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.dSreport)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.commande2BindingSource)).BeginInit();
             this.SuspendLayout();
@@ -62,7 +62,7 @@
             // 
             // commande2TableAdapter
             // 
-            this.commande2TableAdapter.ClearBeforeFill = true;
+            //this.commande2TableAdapter.ClearBeforeFill = true;
             // 
             // recettemois
             // 
@@ -84,6 +84,6 @@
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
         private DSreport dSreport;
         private System.Windows.Forms.BindingSource commande2BindingSource;
-        private DSreportTableAdapters.Commande2TableAdapter commande2TableAdapter;
+        //private DSreportTableAdapters.Commande2TableAdapter commande2TableAdapter;
     }
 }

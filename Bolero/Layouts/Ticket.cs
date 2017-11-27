@@ -24,7 +24,7 @@ namespace Bolero.Layouts
 
         private void Ticket_Load(object sender, EventArgs e)
         {
-            this.dataTable1TableAdapter.Fill(this.dSreport.DataTable1, id);
+            //this.dataTable1TableAdapter.Fill(this.dSreport.DataTable1, id);
             this.reportViewer1.RefreshReport();
         }
     }

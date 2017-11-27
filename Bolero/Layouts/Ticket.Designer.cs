@@ -34,7 +34,7 @@
             this.dSreport = new Bolero.DSreport();
             this.dSreportBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataTable1BindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dataTable1TableAdapter = new Bolero.DSreportTableAdapters.DataTable1TableAdapter();
+            //this.dataTable1TableAdapter = new Bolero.DSreportTableAdapters.DataTable1TableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.dSreport)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dSreportBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataTable1BindingSource)).BeginInit();
@@ -69,7 +69,7 @@
             // 
             // dataTable1TableAdapter
             // 
-            this.dataTable1TableAdapter.ClearBeforeFill = true;
+           // this.dataTable1TableAdapter.ClearBeforeFill = true;
             // 
             // Ticket
             // 
@@ -93,6 +93,6 @@
         private System.Windows.Forms.BindingSource dataTable1BindingSource;
         private System.Windows.Forms.BindingSource dSreportBindingSource;
         private DSreport dSreport;
-        private DSreportTableAdapters.DataTable1TableAdapter dataTable1TableAdapter;
+        //private DSreportTableAdapters.DataTable1TableAdapter dataTable1TableAdapter;
     }
 }

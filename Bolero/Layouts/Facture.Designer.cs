@@ -33,7 +33,7 @@
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.dSreport = new Bolero.DSreport();
             this.dataTable1BindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dataTable1TableAdapter = new Bolero.DSreportTableAdapters.DataTable1TableAdapter();
+           // this.dataTable1TableAdapter = new Bolero.DSreportTableAdapters.DataTable1TableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.dSreport)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataTable1BindingSource)).BeginInit();
             this.SuspendLayout();
@@ -62,7 +62,7 @@
             // 
             // dataTable1TableAdapter
             // 
-            this.dataTable1TableAdapter.ClearBeforeFill = true;
+           // this.dataTable1TableAdapter.ClearBeforeFill = true;
             // 
             // Facture
             // 
@@ -84,6 +84,6 @@
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
         private System.Windows.Forms.BindingSource dataTable1BindingSource;
         private DSreport dSreport;
-        private DSreportTableAdapters.DataTable1TableAdapter dataTable1TableAdapter;
+        //private DSreportTableAdapters.DataTable1TableAdapter dataTable1TableAdapter;
     }
 }

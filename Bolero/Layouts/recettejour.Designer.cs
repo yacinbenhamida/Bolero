@@ -33,7 +33,7 @@
             this.commande1BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dSreport = new Bolero.DSreport();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.commande1TableAdapter = new Bolero.DSreportTableAdapters.Commande1TableAdapter();
+            //this.commande1TableAdapter = new Bolero.DSreportTableAdapters.Commande1TableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.commande1BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dSreport)).BeginInit();
             this.SuspendLayout();
@@ -62,7 +62,7 @@
             // 
             // commande1TableAdapter
             // 
-            this.commande1TableAdapter.ClearBeforeFill = true;
+           // this.commande1TableAdapter.ClearBeforeFill = true;
             // 
             // recettejour
             // 
@@ -84,6 +84,6 @@
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
         private DSreport dSreport;
         private System.Windows.Forms.BindingSource commande1BindingSource;
-        private DSreportTableAdapters.Commande1TableAdapter commande1TableAdapter;
+        //private DSreportTableAdapters.Commande1TableAdapter commande1TableAdapter;
     }
 }
