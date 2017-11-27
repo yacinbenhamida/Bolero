@@ -25,7 +25,7 @@
                  <Run Text="Cliquer ici !"/>
                 </Hyperlink>
         </TextBlock>
-        <Button  Height="50" x:Name="btnLogin" Content="Login" VerticalAlignment="Center" Grid.Row="4" Width="175" Click="btnLogin_Click" Background="#FF54B8F1" Foreground="White" FontWeight="Bold" FontSize="14"/>
+        <Button IsDefault="True" Height="50" x:Name="btnLogin" Content="Login" VerticalAlignment="Center" Grid.Row="4" Width="175" Click="btnLogin_Click" Background="#FF54B8F1" Foreground="White" FontWeight="Bold" FontSize="14"/>
         <TextBlock x:Name="txtNotice"  Grid.Row="5" HorizontalAlignment="Center"/>
 
 

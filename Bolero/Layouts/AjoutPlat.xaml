@@ -30,8 +30,8 @@
             <TextBlock Text="Prix" FontSize="20" VerticalAlignment="Center"></TextBlock>
             <TextBox x:Name="txtprix" VerticalAlignment="Center" Grid.Column="3"  Height="47" />
         </StackPanel>
-            
-        <Button x:Name="btnRetour" Content="Retour" Width="150" Height="50" VerticalAlignment="Center" Grid.Row="1" FontSize="16" Foreground="White" Background="#FFDC0000" Click="btnRetour_Click" HorizontalAlignment="Center"/>
-        <Button x:Name="btnValider" Content="Valider" Width="150" Height="50" VerticalAlignment="Center" Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="3"  FontSize="14" Foreground="White" Background="#FF00AA0F" Click="btnValider_Click" HorizontalAlignment="Center"/>
+
+        <Button IsDefault="False" x:Name="btnRetour" Content="Retour" Width="150" Height="50" VerticalAlignment="Center" Grid.Row="1" FontSize="16" Foreground="White" Background="#FFDC0000" Click="btnRetour_Click" HorizontalAlignment="Center"/>
+        <Button IsDefault="True" x:Name="btnValider" Content="Valider" Width="150" Height="50" VerticalAlignment="Center" Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="3"  FontSize="14" Foreground="White" Background="#FF00AA0F" Click="btnValider_Click" HorizontalAlignment="Center"/>
     </Grid>
 </Window>
