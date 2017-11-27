@@ -297,7 +297,85 @@
             </TabItem>
 
             <TabItem Foreground="Black" Header="Etat.Resto" Background="#FFACA5A5" FontWeight="Bold" FontSize="14">
+                <Border BorderBrush="Black" BorderThickness="2" Margin="10,16,3,-3">
+                    <Grid Name="Grid1" Background="AliceBlue" Margin="8,38,0,8" HorizontalAlignment="Left" Width="1148">
+                        <Button  Name="Button1" Content="Table1" Width="150" Height="50" Margin="30,44,968,561"></Button>
+                        <Button Name="Button2" Content="Table2" Width="150" Height="50" Margin="180,99,818,506" RenderTransformOrigin="0.5,0.5">
+                            <Button.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform Angle="-90.172"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Button.RenderTransform>
+                        </Button>
+                        <Button Name="Button3" Content="Table3" Width="150" Height="50" Margin="327,103,671,502"></Button>
+                        <Button Name="Button4" Content="Table4" Width="150" Height="50" Margin="330,253,668,352" RenderTransformOrigin="0.5,0.5">
+                            <Button.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform Angle="269.987"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Button.RenderTransform>
+                        </Button>
+                        <Button  Name="Button5" Content="Table5" Width="150" Height="50" Margin="30,215,968,390"></Button>
+                        <Button  Name="Button6" Content="Table6" Width="150" Height="50" Margin="177,340,821,265"></Button>
+                        <Button  Name="Button7" Content="Table7" Width="150" Height="50" Margin="304,463,694,142" RenderTransformOrigin="0.5,0.5">
+                            <Button.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform Angle="-89.829"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Button.RenderTransform>
+                        </Button>
+                        <Button Name="Button8" Content="Table8" Width="150" Height="50" Margin="618,44,380,561"></Button>
+                        <Button Name="Button9" Content="Table9" Width="150" Height="50" Margin="773,144,225,461" RenderTransformOrigin="0.5,0.5">
+                            <Button.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform Angle="-90.26"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Button.RenderTransform>
+                        </Button>
+                        <Button Name="Button10" Content="Table10" Width="150" Height="50" Margin="934,77,64,528"></Button>
+                        <Button Name="Button11" Content="Table11" Width="150" Height="50" Margin="741,405,257,200" RenderTransformOrigin="0.5,0.5">
+                            <Button.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform Angle="-90.485"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Button.RenderTransform>
+                        </Button>
+                        <Button Name="Button12" Content="Table12" Width="150" Height="50" Margin="618,232,380,373"></Button>
+                        <Button Name="Button13" Content="Table13" Width="150" Height="50" Margin="964,215,34,390"></Button>
+                        <Button Name="Button14" Content="Table14" Width="150" Height="50" Margin="919,380,79,225" RenderTransformOrigin="0.5,0.5">
+                            <Button.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform Angle="-89.91"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Button.RenderTransform>
+                        </Button>
+                        <Label Content="Etat des Tables"  FontWeight="Bold" FontSize="18" HorizontalAlignment="Left" Margin="0,-35,0,0" VerticalAlignment="Top" RenderTransformOrigin="-10.239,-5.512"/>
+                        <Border BorderBrush="Black" BorderThickness="2" Margin="0,29,590,10"/>
+                        <Border BorderBrush="Black" BorderThickness="2" Margin="591,29,0,10"></Border>
+                        <Label Content="Salle 1" Margin="0,4,0,-4"></Label>
+                        <Label Content="Salle 2" HorizontalAlignment="Left" Margin="591,4,0,0" VerticalAlignment="Top" RenderTransformOrigin="-2.445,0.218"/>
 
+
+                    </Grid>
+                </Border>
             </TabItem>
 
             <TabItem Foreground="Black" Header="Historique" Background="#FFACA5A5" FontWeight="Bold" FontSize="14">
