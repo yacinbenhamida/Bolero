@@ -37,6 +37,7 @@ namespace Bolero
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            Keyboard.Focus(txtPW);
             lstU = UserDAO.getAllUsers();
             if (j == 5)
             {

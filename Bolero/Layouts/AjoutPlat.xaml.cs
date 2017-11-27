@@ -31,7 +31,7 @@ namespace Bolero
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            
+            Keyboard.Focus(txtNomPlat);
         }
 
         private void btnRetour_Click(object sender, RoutedEventArgs e)

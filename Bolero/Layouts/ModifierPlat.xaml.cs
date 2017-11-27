@@ -33,7 +33,8 @@ namespace Bolero
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
-        {   
+        {
+            Keyboard.Focus(txtNomPlat);
             txtprix.Text = a.Prix.ToString();
             txtNomPlat.Text = a.Libelle.ToString();
             ArticleDAO daoa = new ArticleDAO();

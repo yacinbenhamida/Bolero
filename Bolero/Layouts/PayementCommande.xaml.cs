@@ -37,6 +37,7 @@ namespace Bolero.Layouts
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            Keyboard.Focus(txtEspece);
             DAL.CommandeDAO daoc = new DAL.CommandeDAO();
             lblnumcmd.Content = id;
             c = daoc.getById(id);

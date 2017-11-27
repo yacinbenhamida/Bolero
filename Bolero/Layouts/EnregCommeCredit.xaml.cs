@@ -42,7 +42,7 @@ namespace Bolero.Layouts
        
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            
+            Keyboard.Focus(nomPrenom);
             idcmd.Content = idcmd.Content+"  "+id ;
             lblDate.Content = DateTime.Now.ToShortDateString();
             System.Windows.Threading.DispatcherTimer timer = new System.Windows.Threading.DispatcherTimer();
