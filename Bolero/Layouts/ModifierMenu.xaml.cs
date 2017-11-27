@@ -219,9 +219,9 @@ namespace Bolero
 
         private void btnAjouter_Click(object sender, RoutedEventArgs e)
         {   
-            //AjoutPlat ajout = new AjoutPlat();
-            //ajout.Closing += new System.ComponentModel.CancelEventHandler(this.Window3_Closing);
-            //ajout.ShowDialog();
+            AjoutPlat ajout = new AjoutPlat();
+            ajout.Closing += new System.ComponentModel.CancelEventHandler(this.Window3_Closing);
+            ajout.ShowDialog();
         }
 
         private void refreshTabs() 

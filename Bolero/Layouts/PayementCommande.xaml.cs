@@ -68,7 +68,7 @@ namespace Bolero.Layouts
             Commande c = new Commande();
 
             DAL.CommandeDAO daoc = new DAL.CommandeDAO();
-            DAL.ArchiveDAO daoarch = new DAL.ArchiveDAO();
+            
             c = daoc.getById(id);
 
             DataSet DSreport = new DSreport();

@@ -274,7 +274,7 @@ namespace Bolero.DAL
             try
             {
                 SqlConnection cnx = Connexion.GetConnection();
-                SqlCommand cmd = new SqlCommand("SELECT MAX(IdArticle) from Article", cnx);
+                SqlCommand cmd = new SqlCommand("select MAX(IdArticle) from Article", cnx);
                 int done = (int)cmd.ExecuteScalar();
                 if (done > 0)
                     res = done;
