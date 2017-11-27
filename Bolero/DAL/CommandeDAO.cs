@@ -117,14 +117,12 @@ namespace Bolero.DAL
            
            SqlCommand insertJointure = null;
             SqlConnection cnx = Connexion.GetConnection();
-            SqlDataReader reader;
 
             try
             {
 
                 SqlCommand sqlCmd = new SqlCommand("Select SUM(Prix) from Article,lignecmd,Commande where (Article.IdArticle=lignecmd.numArticle)and(Commande.IdCommande=lignecmd.numcmd)and(numcmd=@id)", cnx);
                 sqlCmd.Parameters.AddWithValue("@id", cmd);
-                reader = sqlCmd.ExecuteReader();
                 Decimal res = (decimal)sqlCmd.ExecuteScalar();
                 insertJointure = new SqlCommand("update  Commande set prixTotal=@prix where IdCommande=@cmd", cnx);
                 insertJointure.Parameters.AddWithValue("prix", res);
