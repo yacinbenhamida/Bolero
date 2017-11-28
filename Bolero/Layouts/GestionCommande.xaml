@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:rv="clr-namespace:Microsoft.Reporting.WinForms;assembly=Microsoft.ReportViewer.WinForms" 
         Title="Gestion Commande" Height="824.975" Width="1195" Loaded="Window_Loaded"
-        WindowState="Maximized">
+        WindowState="Maximized" Closed="Window_Closed">
     <Window.Resources>
 
         <Style x:Key="NoChromeButton" TargetType="{x:Type Button}">

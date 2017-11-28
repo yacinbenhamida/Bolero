@@ -34,7 +34,7 @@ namespace Bolero
             InitializeComponent();
             btnModifier.IsEnabled = false;
             btnSupprimer.IsEnabled = false;
-            
+            btnAddPlatJour.IsEnabled = false;
         }
 
         public void initUI() 
@@ -44,7 +44,7 @@ namespace Bolero
             lstdessert = dao.getArticlesByType("dessert");
             lstboissons = dao.getArticlesByType("boisson");
             lsthors = dao.getArticlesByType("hors d'oeuvre");
-            lstplatdj = dao.getArticlesByType("plat du jour");
+            lstplatdj = dao.getArticlesByEtat(true);
 
             entree.DataContext = lstentree;
             Suite.DataContext = lstsuite;
@@ -262,6 +262,58 @@ namespace Bolero
         {
             refreshTabs();
             initUI();
+        }
+
+        private List<Article> lstentreePJ = new List<Article>();
+        Article a = new Article();
+        private void btnAddPlatJour_Click(object sender, RoutedEventArgs e)
+        {
+            a = dao.getById(Id);
+            lstentreePJ.Add(a);
+            dao.updateEtat(a);
+            if (PJ.Items.Count == 0)
+            {
+                for (int j = 0; j < lstentreePJ.Count; j++)
+                {
+                    Button btn = new Button();
+                    btn.Name = "btn" + lstentreePJ[j].IdArticle;
+                    btn.Content = lstentreePJ[j].Libelle;
+                    btn.Click += new RoutedEventHandler(this.btn_Click);
+                    btn.Background = Brushes.Yellow;
+                    btn.Foreground = Brushes.Black;
+                    PJ.Items.Add(btn);
+                }
+            }
+        }
+
+        private void tbEnt_GotFocus(object sender, RoutedEventArgs e)
+        {
+            btnAddPlatJour.IsEnabled = true;
+        }
+
+        private void tbSuite_GotFocus(object sender, RoutedEventArgs e)
+        {
+            btnAddPlatJour.IsEnabled = true;
+        }
+
+        private void tbHO_GotFocus(object sender, RoutedEventArgs e)
+        {
+            btnAddPlatJour.IsEnabled = false;
+        }
+
+        private void tbDes_GotFocus(object sender, RoutedEventArgs e)
+        {
+            btnAddPlatJour.IsEnabled = false;
+        }
+
+        private void tbBoiss_GotFocus(object sender, RoutedEventArgs e)
+        {
+            btnAddPlatJour.IsEnabled = false;
+        }
+
+        private void tbPJ_GotFocus(object sender, RoutedEventArgs e)
+        {
+            btnAddPlatJour.IsEnabled = false;
         }
         
        

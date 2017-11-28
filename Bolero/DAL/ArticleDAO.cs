@@ -315,5 +315,50 @@ namespace Bolero.DAL
             }
             return res;
         }
+
+        public List<Article> getArticlesByEtat(bool etat)
+        {
+            List<Article> lstRes = new List<Article>();
+            try
+            {
+                SqlConnection cnx = Connexion.GetConnection();
+                SqlCommand cmd = new SqlCommand("Select Article.* from Article where platJour=@etat", cnx);
+                cmd.Parameters.AddWithValue("etat", etat);
+                SqlDataReader rd = cmd.ExecuteReader();
+                if (rd.HasRows)
+                {
+                    while (rd.Read())
+                    {
+                        lstRes.Add(new Article(rd.GetInt32(0), rd.GetString(1), rd.GetDecimal(2), rd.GetInt32(3)));
+                    }
+                }
+            }
+            catch (SqlException ex) { throw ex; }
+            finally { Connexion.closeConnection(); }
+            return lstRes;
+        }
+
+        public int updateEtat(Article obj)
+        {
+            int res = 0;
+
+            try
+            {
+                SqlConnection cnx = Connexion.GetConnection();
+                SqlCommand cmd = new SqlCommand("UPDATE Article SET platJour=@etat where IdArticle=@id", cnx);
+                cmd.Parameters.AddWithValue("id", obj.IdArticle);
+                cmd.Parameters.AddWithValue("etat", true);
+
+                int done = (int)cmd.ExecuteNonQuery();
+                if (done > 0) res = 1;
+            }
+            catch (SqlException)
+            {
+
+                throw;
+            }
+            finally { Connexion.closeConnection(); }
+            return res;
+        }
     }
 }

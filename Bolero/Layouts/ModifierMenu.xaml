@@ -68,7 +68,7 @@
                         </Setter>                        
                     </Style>                   
                 </TabControl.Resources>
-                <TabItem x:Name="tbEnt" Foreground="Black" Header="Entrée" Background="Green"  HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Height="60" Margin="-2,-2,-0.2,-1.6">
+                <TabItem x:Name="tbEnt" Foreground="Black" Header="Entrée" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Height="60" GotFocus="tbEnt_GotFocus">
                     <ScrollViewer HorizontalScrollBarVisibility="Auto">
                         <ListBox x:Name="entree"  >
                             <ListBox.ItemsPanel>
@@ -80,7 +80,7 @@
                         </ListBox>
                     </ScrollViewer>
                 </TabItem>
-                <TabItem x:Name="tbSuite" Header="Suite" Background="Crimson" Foreground="Black" Height="60">
+                <TabItem x:Name="tbSuite" Header="Suite" Foreground="Black" Height="60" GotFocus="tbSuite_GotFocus">
                     <ScrollViewer HorizontalScrollBarVisibility="Auto">
                         <ListBox x:Name="Suite" >
                             <ListBox.ItemsPanel>
@@ -91,7 +91,7 @@
                         </ListBox>
                     </ScrollViewer>
                 </TabItem>
-                <TabItem  x:Name="tbHO" Header="Hors d'oeuvre" Background="#FFACA5A5" Foreground="Black" Height="60">
+                <TabItem  x:Name="tbHO" Header="Hors d'oeuvre" Foreground="Black" Height="60" GotFocus="tbHO_GotFocus">
                     <ScrollViewer HorizontalScrollBarVisibility="Auto">
                         <ListBox x:Name="hrov" >
                             <ListBox.ItemsPanel>
@@ -102,7 +102,7 @@
                         </ListBox>
                     </ScrollViewer>
                 </TabItem>
-                <TabItem x:Name="tbDes" Header="Desserts" Background="Purple" Foreground="Black" Margin="0,-5,-2,1" Height="60">
+                <TabItem x:Name="tbDes" Header="Desserts" Foreground="Black" Height="60" GotFocus="tbDes_GotFocus">
                     <ScrollViewer HorizontalScrollBarVisibility="Auto">
                         <ListBox x:Name="dessert" >
                             <ListBox.ItemsPanel>
@@ -113,7 +113,7 @@
                         </ListBox>
                     </ScrollViewer>
                 </TabItem>
-                <TabItem x:Name="tbBoiss" Header="Boissons" Background="DarkBlue" Foreground="Black" Height="60">
+                <TabItem x:Name="tbBoiss" Header="Boissons" Foreground="Black" Height="60" GotFocus="tbBoiss_GotFocus">
                     <ScrollViewer HorizontalScrollBarVisibility="Auto">
                         <ListBox x:Name="boisson" >
                             <ListBox.ItemsPanel>
@@ -124,7 +124,7 @@
                         </ListBox>
                     </ScrollViewer>
                 </TabItem>
-                <TabItem x:Name="tbPJ" Header="Plat du jour" Background="Gold" Foreground="Black" Height="60">
+                <TabItem x:Name="tbPJ" Header="Plat du jour" Foreground="Black" Height="60" GotFocus="tbPJ_GotFocus">
                     <ScrollViewer HorizontalScrollBarVisibility="Auto">
                         <ListBox x:Name="PJ" >
                             <ListBox.ItemsPanel>
@@ -149,12 +149,14 @@
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
-            <Button x:Name="btnSupprimer" Content="Supprimer" Width="130" Height="100" Click="btnSupprimer_Click" FontSize="20" Background="#FFDA0000" Foreground="White"/>
-            <Button x:Name="btnAnnuler" Content="Annuler" Grid.Column="1" Width="130" Click="btnAnnuler_Click" FontSize="20" Foreground="White" Background="#FFE29494"/>
-            <Button x:Name="btnModifier"  Content="Modifier" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="130" Height="100" Click="btnModifier_Click" Background="#FFE4E446" Foreground="#FFFFFEFE" FontSize="20"/>
-            <Button x:Name="btnSauvegarder" Content="Sauvegarder" Grid.Column="3" Width="130" Click="btnSauvegarder_Click" Foreground="White" Background="#FF6CA802" FontSize="20"/>
-            <Button x:Name="btnAjouter" Content="Ajouter" Grid.Column="4" Width="130" Click="btnAjouter_Click" Background="#FF8EAFEA" FontSize="20" Foreground="White"/>
+            <Button x:Name="btnAddPlatJour" Content="Plat du jour" Width="130" HorizontalAlignment="Center" VerticalAlignment="Center" Height="100" Click="btnAddPlatJour_Click" FontSize="20" Background="#FFAAA994" Foreground="White"/>
+            <Button x:Name="btnSupprimer" Content="Supprimer" Grid.Column="1" Width="130" HorizontalAlignment="Center" VerticalAlignment="Center" Height="100" Click="btnSupprimer_Click" FontSize="20" Background="#FFDA0000" Foreground="White"/>
+            <Button x:Name="btnAnnuler" Content="Annuler" Grid.Column="2" HorizontalAlignment="Center" Width="130" Click="btnAnnuler_Click" FontSize="20" Foreground="White" Background="#FFE29494"/>
+            <Button x:Name="btnModifier"  Content="Modifier" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" Width="130" Height="100" Click="btnModifier_Click" Background="#FFE4E446" Foreground="#FFFFFEFE" FontSize="20"/>
+            <Button x:Name="btnSauvegarder" Content="Sauvegarder" Grid.Column="4" Width="130" HorizontalAlignment="Center" Click="btnSauvegarder_Click" Foreground="White" Background="#FF6CA802" FontSize="20"/>
+            <Button x:Name="btnAjouter" Content="Ajouter" Grid.Column="5" Width="130" HorizontalAlignment="Center" Click="btnAjouter_Click" Background="#FF8EAFEA" FontSize="20" Foreground="White"/>
         
         <DockPanel VerticalAlignment="Bottom" Grid.Row="2" HorizontalAlignment="Center" Grid.ColumnSpan="5">
             <Label FontFamily="Century Gothic" Content="Date : " VerticalContentAlignment="Center"  FontSize="14"/>
