@@ -93,6 +93,9 @@
     <Compile Include="Layouts\Authentification.xaml.cs">
       <DependentUpon>Authentification.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Layouts\FormulaireCheque.xaml.cs">
+      <DependentUpon>FormulaireCheque.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Layouts\ModifierMenu.xaml.cs">
       <DependentUpon>ModifierMenu.xaml</DependentUpon>
     </Compile>
@@ -131,6 +134,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Layouts\EnregCommeCredit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Layouts\FormulaireCheque.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -312,6 +319,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Resources\cheque.jpg" />
     <Resource Include="Resources\rouge.png" />
     <Resource Include="Resources\vert.png" />
     <Resource Include="Resources\Admin.png" />

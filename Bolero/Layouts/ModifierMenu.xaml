@@ -1,7 +1,7 @@
 ﻿<Window x:Class="Bolero.ModifierMenu"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Modifier Menu" Height="688" Width="Auto" Loaded="Window_Loaded"
+        Title="Modifier Menu" Height="688" Width="1290" Loaded="Window_Loaded"
 >
     <Window.Resources>
         <!-- style pour les boutons a afficher -->
@@ -150,13 +150,15 @@
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
-            <Button x:Name="btnAddPlatJour" Content="Plat du jour" Width="130" HorizontalAlignment="Center" VerticalAlignment="Center" Height="100" Click="btnAddPlatJour_Click" FontSize="20" Background="#FFAAA994" Foreground="White"/>
-            <Button x:Name="btnSupprimer" Content="Supprimer" Grid.Column="1" Width="130" HorizontalAlignment="Center" VerticalAlignment="Center" Height="100" Click="btnSupprimer_Click" FontSize="20" Background="#FFDA0000" Foreground="White"/>
-            <Button x:Name="btnAnnuler" Content="Annuler" Grid.Column="2" HorizontalAlignment="Center" Width="130" Click="btnAnnuler_Click" FontSize="20" Foreground="White" Background="#FFE29494"/>
-            <Button x:Name="btnModifier"  Content="Modifier" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" Width="130" Height="100" Click="btnModifier_Click" Background="#FFE4E446" Foreground="#FFFFFEFE" FontSize="20"/>
-            <Button x:Name="btnSauvegarder" Content="Sauvegarder" Grid.Column="4" Width="130" HorizontalAlignment="Center" Click="btnSauvegarder_Click" Foreground="White" Background="#FF6CA802" FontSize="20"/>
-            <Button x:Name="btnAjouter" Content="Ajouter" Grid.Column="5" Width="130" HorizontalAlignment="Center" Click="btnAjouter_Click" Background="#FF8EAFEA" FontSize="20" Foreground="White"/>
+            <Button x:Name="btnRemovePlatJour" Content="Suppr. Plat du jour" Width="190" HorizontalAlignment="Center" VerticalAlignment="Center" Height="100" Click="btnRemovePlatJour_Click" FontSize="20" Background="#FF489DB6" Foreground="White"/>
+            <Button x:Name="btnAddPlatJour" Content="Ajout Plat du jour" Grid.Column="1" Width="180" HorizontalAlignment="Center" VerticalAlignment="Center" Height="100" Click="btnAddPlatJour_Click" FontSize="20" Background="#FFAAA994" Foreground="White"/>
+            <Button x:Name="btnSupprimer" Content="Supprimer" Grid.Column="2" Width="130" HorizontalAlignment="Center" VerticalAlignment="Center" Height="100" Click="btnSupprimer_Click" FontSize="20" Background="#FFDA0000" Foreground="White"/>
+            <Button x:Name="btnAnnuler" Content="Annuler" Grid.Column="3" HorizontalAlignment="Center" Width="130" Click="btnAnnuler_Click" FontSize="20" Foreground="White" Background="#FFE29494"/>
+            <Button x:Name="btnModifier"  Content="Modifier" Grid.Column="4" HorizontalAlignment="Center" VerticalAlignment="Center" Width="130" Height="100" Click="btnModifier_Click" Background="#FFE4E446" Foreground="#FFFFFEFE" FontSize="20"/>
+            <Button x:Name="btnSauvegarder" Content="Sauvegarder" Grid.Column="5" Width="130" HorizontalAlignment="Center" Click="btnSauvegarder_Click" Foreground="White" Background="#FF6CA802" FontSize="20"/>
+            <Button x:Name="btnAjouter" Content="Ajouter" Grid.Column="6" Width="130" HorizontalAlignment="Center" Click="btnAjouter_Click" Background="#FF8EAFEA" FontSize="20" Foreground="White"/>
         
         <DockPanel VerticalAlignment="Bottom" Grid.Row="2" HorizontalAlignment="Center" Grid.ColumnSpan="5">
             <Label FontFamily="Century Gothic" Content="Date : " VerticalContentAlignment="Center"  FontSize="14"/>

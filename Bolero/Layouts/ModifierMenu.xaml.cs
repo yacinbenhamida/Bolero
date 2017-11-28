@@ -35,6 +35,7 @@ namespace Bolero
             btnModifier.IsEnabled = false;
             btnSupprimer.IsEnabled = false;
             btnAddPlatJour.IsEnabled = false;
+            btnRemovePlatJour.IsEnabled = false;
         }
 
         public void initUI() 
@@ -270,7 +271,7 @@ namespace Bolero
         {
             a = dao.getById(Id);
             lstentreePJ.Add(a);
-            dao.updateEtat(a);
+            dao.PlatJourEtatTrue(a);
             if (PJ.Items.Count == 0)
             {
                 for (int j = 0; j < lstentreePJ.Count; j++)
@@ -289,31 +290,53 @@ namespace Bolero
         private void tbEnt_GotFocus(object sender, RoutedEventArgs e)
         {
             btnAddPlatJour.IsEnabled = true;
+            btnRemovePlatJour.IsEnabled = false;
         }
 
         private void tbSuite_GotFocus(object sender, RoutedEventArgs e)
         {
             btnAddPlatJour.IsEnabled = true;
+            btnRemovePlatJour.IsEnabled = false;
         }
 
         private void tbHO_GotFocus(object sender, RoutedEventArgs e)
         {
             btnAddPlatJour.IsEnabled = false;
+            btnRemovePlatJour.IsEnabled = false;
         }
 
         private void tbDes_GotFocus(object sender, RoutedEventArgs e)
         {
             btnAddPlatJour.IsEnabled = false;
+            btnRemovePlatJour.IsEnabled = false;
         }
 
         private void tbBoiss_GotFocus(object sender, RoutedEventArgs e)
         {
             btnAddPlatJour.IsEnabled = false;
+            btnRemovePlatJour.IsEnabled = false;
         }
 
         private void tbPJ_GotFocus(object sender, RoutedEventArgs e)
         {
             btnAddPlatJour.IsEnabled = false;
+            btnRemovePlatJour.IsEnabled = true;
+        }
+
+        private void btnRemovePlatJour_Click(object sender, RoutedEventArgs e)
+        {
+            Button b = (Button)sender;
+            String nombtn = b.Name.Substring(3);
+            if (nombtn != null)
+            {
+                a = dao.getById(Id);
+                dao.PlatJourEtatFalse(a);
+                MessageBox.Show("Plat du jour annuler");
+                lstentreePJ = dao.getArticlesByEtat(true);
+                refreshTabs();
+                initUI();
+            }
+            else MessageBox.Show("vous devez selectionner un article !");
         }
         
        

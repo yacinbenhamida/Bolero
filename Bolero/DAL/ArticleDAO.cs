@@ -338,7 +338,7 @@ namespace Bolero.DAL
             return lstRes;
         }
 
-        public int updateEtat(Article obj)
+        public int PlatJourEtatTrue(Article obj)
         {
             int res = 0;
 
@@ -348,6 +348,29 @@ namespace Bolero.DAL
                 SqlCommand cmd = new SqlCommand("UPDATE Article SET platJour=@etat where IdArticle=@id", cnx);
                 cmd.Parameters.AddWithValue("id", obj.IdArticle);
                 cmd.Parameters.AddWithValue("etat", true);
+
+                int done = (int)cmd.ExecuteNonQuery();
+                if (done > 0) res = 1;
+            }
+            catch (SqlException)
+            {
+
+                throw;
+            }
+            finally { Connexion.closeConnection(); }
+            return res;
+        }
+
+        public int PlatJourEtatFalse(Article obj)
+        {
+            int res = 0;
+
+            try
+            {
+                SqlConnection cnx = Connexion.GetConnection();
+                SqlCommand cmd = new SqlCommand("UPDATE Article SET platJour=@etat where IdArticle=@id", cnx);
+                cmd.Parameters.AddWithValue("id", obj.IdArticle);
+                cmd.Parameters.AddWithValue("etat", false);
 
                 int done = (int)cmd.ExecuteNonQuery();
                 if (done > 0) res = 1;
