@@ -22,7 +22,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox4</rd:DefaultName>
-        <Left>2.0447cm</Left>
+        <Left>2.19053cm</Left>
         <Height>0.74111cm</Height>
         <Width>2.5cm</Width>
         <Style>
@@ -38,7 +38,7 @@
       <Line Name="Line1">
         <Top>0.74111cm</Top>
         <Height>0cm</Height>
-        <Width>7.0212cm</Width>
+        <Width>7.16703cm</Width>
         <ZIndex>1</ZIndex>
         <Style>
           <Border>
@@ -61,8 +61,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox5</rd:DefaultName>
-        <Top>0.84694cm</Top>
-        <Left>0.7112cm</Left>
+        <Top>2.13105cm</Top>
+        <Left>0.85703cm</Left>
         <Height>0.6cm</Height>
         <Width>1.82267cm</Width>
         <ZIndex>2</ZIndex>
@@ -91,8 +91,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox6</rd:DefaultName>
-        <Top>0.84694cm</Top>
-        <Left>3.92853cm</Left>
+        <Top>2.13105cm</Top>
+        <Left>4.07436cm</Left>
         <Height>0.6cm</Height>
         <Width>2.5cm</Width>
         <ZIndex>3</ZIndex>
@@ -121,8 +121,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox7</rd:DefaultName>
-        <Top>1.7272cm</Top>
-        <Left>0.7112cm</Left>
+        <Top>3.01131cm</Top>
+        <Left>0.85703cm</Left>
         <Height>1.0445cm</Height>
         <Width>2.5cm</Width>
         <ZIndex>4</ZIndex>
@@ -151,8 +151,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox8</rd:DefaultName>
-        <Top>1.7272cm</Top>
-        <Left>3.92853cm</Left>
+        <Top>3.01131cm</Top>
+        <Left>4.07436cm</Left>
         <Height>1.0445cm</Height>
         <Width>2.5cm</Width>
         <ZIndex>5</ZIndex>
@@ -167,9 +167,9 @@
         </Style>
       </Textbox>
       <Line Name="Line2">
-        <Top>3.16653cm</Top>
+        <Top>5.77328cm</Top>
         <Height>0cm</Height>
-        <Width>7.0212cm</Width>
+        <Width>7.16703cm</Width>
         <ZIndex>6</ZIndex>
         <Style>
           <Border>
@@ -178,9 +178,9 @@
         </Style>
       </Line>
       <Line Name="Line3">
-        <Top>4.0132cm</Top>
+        <Top>6.61995cm</Top>
         <Height>0cm</Height>
-        <Width>7.0212cm</Width>
+        <Width>7.16703cm</Width>
         <ZIndex>7</ZIndex>
         <Style>
           <Border>
@@ -203,7 +203,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox9</rd:DefaultName>
-        <Top>3.30737cm</Top>
+        <Top>5.91412cm</Top>
         <Left>0.28787cm</Left>
         <Height>0.6cm</Height>
         <Width>1.8015cm</Width>
@@ -233,7 +233,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox10</rd:DefaultName>
-        <Top>3.30737cm</Top>
+        <Top>5.91412cm</Top>
         <Left>3.35703cm</Left>
         <Height>0.6cm</Height>
         <Width>1.18767cm</Width>
@@ -263,7 +263,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox10</rd:DefaultName>
-        <Top>3.30764cm</Top>
+        <Top>5.91439cm</Top>
         <Left>5.54143cm</Left>
         <Height>0.6cm</Height>
         <Width>1.18767cm</Width>
@@ -383,7 +383,6 @@
                         <rd:FormatSymbolCulture>fr-TN</rd:FormatSymbolCulture>
                       </Style>
                     </Textbox>
-                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
               </TablixCells>
@@ -409,7 +408,7 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>DataSet1</DataSetName>
-        <Top>4.18959cm</Top>
+        <Top>6.79634cm</Top>
         <Left>0.28787cm</Left>
         <Height>1.63364cm</Height>
         <Width>6.73333cm</Width>
@@ -421,9 +420,9 @@
         </Style>
       </Tablix>
       <Line Name="Line4">
-        <Top>6.25687cm</Top>
+        <Top>8.86362cm</Top>
         <Height>0cm</Height>
-        <Width>7.0212cm</Width>
+        <Width>7.16703cm</Width>
         <ZIndex>12</ZIndex>
         <Style>
           <Border>
@@ -446,7 +445,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox18</rd:DefaultName>
-        <Top>6.5532cm</Top>
+        <Top>9.15995cm</Top>
         <Left>2.0447cm</Left>
         <Height>0.6cm</Height>
         <Width>1.84383cm</Width>
@@ -478,7 +477,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox19</rd:DefaultName>
-        <Top>6.5532cm</Top>
+        <Top>9.15995cm</Top>
         <Left>4.24603cm</Left>
         <Height>0.6cm</Height>
         <Width>2.77517cm</Width>
@@ -493,15 +492,165 @@
           <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
+      <Textbox Name="Textbox20">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Fields!nom_serveur.Value, "DataSet1")</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox20</rd:DefaultName>
+        <Top>4.2322cm</Top>
+        <Left>0.85703cm</Left>
+        <Height>0.6cm</Height>
+        <Width>2.5cm</Width>
+        <ZIndex>15</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox21">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Fields!userName.Value, "DataSet1")</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox20</rd:DefaultName>
+        <Top>5.03217cm</Top>
+        <Left>0.85703cm</Left>
+        <Height>0.6cm</Height>
+        <Width>2.5cm</Width>
+        <ZIndex>16</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox22">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Num Commande :</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox22</rd:DefaultName>
+        <Top>1.11337cm</Top>
+        <Left>0.85703cm</Left>
+        <Height>0.6cm</Height>
+        <Width>3.0315cm</Width>
+        <ZIndex>17</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox23">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Fields!numcmd.Value, "DataSet1")</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox23</rd:DefaultName>
+        <Top>1.11337cm</Top>
+        <Left>4.5212cm</Left>
+        <Height>0.6cm</Height>
+        <Width>2.05316cm</Width>
+        <ZIndex>18</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox24">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Merci a Bientot</Value>
+                <Style>
+                  <FontFamily>Gigi</FontFamily>
+                  <FontSize>14pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox24</rd:DefaultName>
+        <Top>10.13037cm</Top>
+        <Left>1.70603cm</Left>
+        <Height>0.9175cm</Height>
+        <Width>3.81233cm</Width>
+        <ZIndex>19</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
     </ReportItems>
-    <Height>2.98289in</Height>
-    <Style>
-      <Border>
-        <Style>None</Style>
-      </Border>
-    </Style>
+    <Height>4.34955in</Height>
+    <Style />
   </Body>
-  <Width>2.78925in</Width>
+  <Width>2.82167in</Width>
   <Page>
     <PageHeight>29.7cm</PageHeight>
     <PageWidth>21cm</PageWidth>
@@ -519,7 +668,7 @@
         <DataProvider>System.Data.DataSet</DataProvider>
         <ConnectString>/* Local Connection */</ConnectString>
       </ConnectionProperties>
-      <rd:DataSourceID>c27824f6-161f-49a2-abe8-fa549939d61d</rd:DataSourceID>
+      <rd:DataSourceID>0a092f5e-8789-4a88-ad6a-43caf8c6d4d9</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
@@ -553,6 +702,14 @@
           <DataField>prixTotal</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
+        <Field Name="numcmd">
+          <DataField>numcmd</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="userName">
+          <DataField>userName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>DSreport</rd:DataSetName>
@@ -565,5 +722,5 @@
     </DataSet>
   </DataSets>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
-  <rd:ReportID>2f6ff622-01bf-4e13-bf97-24f5b0839393</rd:ReportID>
+  <rd:ReportID>f41d8f54-78fe-4cbf-821d-8a4193c15e28</rd:ReportID>
 </Report>

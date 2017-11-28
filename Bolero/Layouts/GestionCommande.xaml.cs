@@ -298,10 +298,12 @@ namespace Bolero
             
             Bolero.Layouts.Ticket tk = new Bolero.Layouts.Ticket();
             tk.setid(id);
+            tk.Width = 355;
+            tk.Height = 800;
             DataSet DSreport = new DSreport();
             DSreport.Reset();
+            tk.ShowDialog();
             
-            tk.Show();
 
         }
 

@@ -1713,6 +1713,10 @@ namespace Bolero {
             
             private global::System.Data.DataColumn columnprixTotal;
             
+            private global::System.Data.DataColumn columnnumcmd;
+            
+            private global::System.Data.DataColumn columnuserName;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public ticket_repDataTable() {
@@ -1796,6 +1800,22 @@ namespace Bolero {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn numcmdColumn {
+                get {
+                    return this.columnnumcmd;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn userNameColumn {
+                get {
+                    return this.columnuserName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1831,7 +1851,7 @@ namespace Bolero {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ticket_repRow Addticket_repRow(string Libelle, decimal Prix, System.DateTime datecommande, int NumTable, string nom_serveur, decimal prixTotal) {
+            public ticket_repRow Addticket_repRow(string Libelle, decimal Prix, System.DateTime datecommande, int NumTable, string nom_serveur, decimal prixTotal, int numcmd, string userName) {
                 ticket_repRow rowticket_repRow = ((ticket_repRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Libelle,
@@ -1839,7 +1859,9 @@ namespace Bolero {
                         datecommande,
                         NumTable,
                         nom_serveur,
-                        prixTotal};
+                        prixTotal,
+                        numcmd,
+                        userName};
                 rowticket_repRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowticket_repRow);
                 return rowticket_repRow;
@@ -1868,6 +1890,8 @@ namespace Bolero {
                 this.columnNumTable = base.Columns["NumTable"];
                 this.columnnom_serveur = base.Columns["nom_serveur"];
                 this.columnprixTotal = base.Columns["prixTotal"];
+                this.columnnumcmd = base.Columns["numcmd"];
+                this.columnuserName = base.Columns["userName"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1885,6 +1909,10 @@ namespace Bolero {
                 base.Columns.Add(this.columnnom_serveur);
                 this.columnprixTotal = new global::System.Data.DataColumn("prixTotal", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnprixTotal);
+                this.columnnumcmd = new global::System.Data.DataColumn("numcmd", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnnumcmd);
+                this.columnuserName = new global::System.Data.DataColumn("userName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnuserName);
                 this.columnLibelle.AllowDBNull = false;
                 this.columnLibelle.MaxLength = 50;
                 this.columnPrix.AllowDBNull = false;
@@ -1892,6 +1920,7 @@ namespace Bolero {
                 this.columnNumTable.AllowDBNull = false;
                 this.columnnom_serveur.AllowDBNull = false;
                 this.columnnom_serveur.MaxLength = 50;
+                this.columnuserName.MaxLength = 50;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2576,6 +2605,38 @@ namespace Bolero {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int numcmd {
+                get {
+                    try {
+                        return ((int)(this[this.tableticket_rep.numcmdColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'numcmd\' in table \'ticket_rep\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableticket_rep.numcmdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string userName {
+                get {
+                    try {
+                        return ((string)(this[this.tableticket_rep.userNameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'userName\' in table \'ticket_rep\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableticket_rep.userNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsprixTotalNull() {
                 return this.IsNull(this.tableticket_rep.prixTotalColumn);
             }
@@ -2584,6 +2645,30 @@ namespace Bolero {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetprixTotalNull() {
                 this[this.tableticket_rep.prixTotalColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsnumcmdNull() {
+                return this.IsNull(this.tableticket_rep.numcmdColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetnumcmdNull() {
+                this[this.tableticket_rep.numcmdColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsuserNameNull() {
+                return this.IsNull(this.tableticket_rep.userNameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetuserNameNull() {
+                this[this.tableticket_rep.userNameColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -4291,6 +4376,8 @@ SELECT IdFact, totalTTC, totalHT, totalTVA, idPayement FROM Facture WHERE (IdFac
             tableMapping.ColumnMappings.Add("NumTable", "NumTable");
             tableMapping.ColumnMappings.Add("nom_serveur", "nom_serveur");
             tableMapping.ColumnMappings.Add("prixTotal", "prixTotal");
+            tableMapping.ColumnMappings.Add("numcmd", "numcmd");
+            tableMapping.ColumnMappings.Add("userName", "userName");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -4307,11 +4394,12 @@ SELECT IdFact, totalTTC, totalHT, totalTVA, idPayement FROM Facture WHERE (IdFac
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT Article.Libelle, Article.Prix, Commande.datecommande, Commande.NumTable, Serveur.nom_serveur, Commande.prixTotal
+            this._commandCollection[0].CommandText = @"SELECT Article.Libelle, Article.Prix, Commande.datecommande, Commande.NumTable, Serveur.nom_serveur, Commande.prixTotal, lignecmd.numcmd, [USER].userName
 FROM     Article INNER JOIN
                   lignecmd ON Article.IdArticle = lignecmd.numArticle INNER JOIN
                   Commande ON lignecmd.numcmd = Commande.IdCommande INNER JOIN
-                  Serveur ON Commande.idServeur = Serveur.IdServeur
+                  Serveur ON Commande.idServeur = Serveur.IdServeur INNER JOIN
+                  [USER] ON Commande.idUser = [USER].IdUser
 WHERE  (lignecmd.numcmd = @cmd)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@cmd", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "numcmd", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
