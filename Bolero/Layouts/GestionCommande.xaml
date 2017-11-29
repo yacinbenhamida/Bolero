@@ -304,7 +304,8 @@
 
                                 </Grid.RowDefinitions>
                                 <Label Grid.Row="0" Content="Mois" VerticalAlignment="Center" ></Label>
-                                <Label Grid.Row="0" Grid.Column="2" Content=":fffff" VerticalAlignment="Center" x:Name="moislib"></Label>
+                                <Label Grid.Row="0" Grid.Column="2" Content="" VerticalAlignment="Center" x:Name="moislib"></Label>
+                                <Button Grid.Row="2" Grid.Column="3" Content="Imprimer" Width="100" Height="50"></Button>
                                 <Label Content="Total:" x:Name="totalibm" FontFamily="Century Gothic" Grid.Row="2" VerticalAlignment="Center" Grid.Column="1"></Label>
                                 <DataGrid Grid.Row="1" Name="dgmois" IsReadOnly="True" CanUserAddRows="False" ItemsSource="{Binding}" Grid.ColumnSpan="3">
                                     <DataGrid.Columns >
@@ -335,8 +336,9 @@
 
                                 </Grid.RowDefinitions>
                                 <Label Grid.Row="0" Content="Jour" VerticalAlignment="Center" ></Label>
-                                <Label x:Name="jourlib" Grid.Row="0" Grid.Column="2" Content=":fffff" VerticalAlignment="Center" ></Label>
+                                <Label x:Name="jourlib" Grid.Row="0" Grid.Column="2" Content="" VerticalAlignment="Center" ></Label>
                                 <Label Content="Total:" x:Name="totalibj" FontFamily="Century Gothic" Grid.Row="2" VerticalAlignment="Center" Grid.Column="1"></Label>
+                                <Button Grid.Row="2" Grid.Column="3" Content="Imprimer" Width="100" Height="50"></Button>
 
                                 <DataGrid Grid.Row="1" Name="dgjour" IsReadOnly="True" CanUserAddRows="False" ItemsSource="{Binding}" Grid.ColumnSpan="3">
                                     <DataGrid.Columns >

@@ -51,13 +51,13 @@ namespace Bolero
 
             dataGrid.DataContext = daoc.getAll();
             dgmois.DataContext = cdao.getAllMois();
-            //      dgjour.DataContext = cdao.getAlljour();
+                 dgjour.DataContext = cdao.getAllJour();
             totalmois = cdao.getAllMoistot();
-            //  totaljour = cdao.getAllJourtot();
-            totalibm.Content = totalmois;
-            totalibj.Content = totaljour;
+            totaljour = cdao.getAlljourtot();
+            totalibm.Content = "Total"+totalmois;
+            totalibj.Content = "Total"+totaljour;
             jourlib.Content = DateTime.Now.ToShortDateString();
-            moislib.Content = month;
+            moislib.Content = month.ToString() ;
             dataGrid.DataContext = daoc.getAll();  
             lblDate.Content = DateTime.Now.ToShortDateString();
             System.Windows.Threading.DispatcherTimer timer = new System.Windows.Threading.DispatcherTimer();
