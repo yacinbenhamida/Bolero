@@ -24,6 +24,7 @@ namespace Bolero
     /// </summary>
     public partial class GestionCommande : Window
     {
+
         ArticleDAO dao = new ArticleDAO();
         CommandeDAO cdao = new CommandeDAO();
         private List<Commande> lstCom = new List<Commande>();
@@ -33,6 +34,7 @@ namespace Bolero
         private List<Article> lstdessert = new List<Article>();
         private List<Article> lstboissons = new List<Article>();
         private List<Article> lstplatdj = new List<Article>();
+
         public GestionCommande()
         {
             InitializeComponent();
@@ -41,6 +43,21 @@ namespace Bolero
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            Decimal totalmois = 0;
+            Decimal totaljour = 0;
+
+            DateTime now = DateTime.Now;
+            String month = now.Month.ToString();
+
+            dataGrid.DataContext = daoc.getAll();
+            dgmois.DataContext = cdao.getAllMois();
+            //      dgjour.DataContext = cdao.getAlljour();
+            totalmois = cdao.getAllMoistot();
+            //  totaljour = cdao.getAllJourtot();
+            totalibm.Content = totalmois;
+            totalibj.Content = totaljour;
+            jourlib.Content = DateTime.Now.ToShortDateString();
+            moislib.Content = month;
             dataGrid.DataContext = daoc.getAll();  
             lblDate.Content = DateTime.Now.ToShortDateString();
             System.Windows.Threading.DispatcherTimer timer = new System.Windows.Threading.DispatcherTimer();

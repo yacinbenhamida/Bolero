@@ -285,13 +285,74 @@
             </TabItem>
 
             <TabItem Foreground="Black" Header="Recette" Background="#FFACA5A5" FontWeight="Bold" FontSize="14">
-                <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="70"/>
-                        <RowDefinition Height="70"/>
-                    </Grid.RowDefinitions>
-                    <Button x:Name="btnrecettejour" Content="Recette de jour" HorizontalAlignment="Center" VerticalAlignment="Center" Width="650" Height="50" Foreground="White" Background="#FF5E88E2" FontSize="18" FontWeight="Bold" Click="btnrecettejour_Click"/>
-                    <Button x:Name="btnrecettemois" Grid.Row="1" Content="Recette de mois" HorizontalAlignment="Center" VerticalAlignment="Center" Width="650" Height="50" Foreground="White" Background="#FF0C0B0B" FontSize="18" FontWeight="Bold" Click="btnrecettemois_Click"/>
+                   <Grid>
+                    <TabControl>
+                        <TabItem Header="Mois">
+
+                            <Grid >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*" />
+                                    <ColumnDefinition Width="1*" />
+                                    <ColumnDefinition Width="1*" />
+                                </Grid.ColumnDefinitions>
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="1*" />
+                                    <RowDefinition Height="3*" />
+                                    <RowDefinition Height="1*" />
+                                    <RowDefinition Height="1*" />
+
+                                </Grid.RowDefinitions>
+                                <Label Grid.Row="0" Content="Mois" VerticalAlignment="Center" ></Label>
+                                <Label Grid.Row="0" Grid.Column="2" Content=":fffff" VerticalAlignment="Center" x:Name="moislib"></Label>
+                                <Label Content="Total:" x:Name="totalibm" FontFamily="Century Gothic" Grid.Row="2" VerticalAlignment="Center" Grid.Column="1"></Label>
+                                <DataGrid Grid.Row="1" Name="dgmois" IsReadOnly="True" CanUserAddRows="False" ItemsSource="{Binding}" Grid.ColumnSpan="3">
+                                    <DataGrid.Columns >
+                                        <DataGridTextColumn DataGridColumn.MinWidth="220" Header="N° Commande" Binding="{Binding IdCommande}" />
+                                        <DataGridTextColumn DataGridColumn.MinWidth="220"  Header="N° Table" Binding="{Binding NumTable}" />
+                                        <DataGridTextColumn DataGridColumn.MinWidth="220" Header="Date:" Binding="{Binding datecommande}" />
+                                        <DataGridTextColumn DataGridColumn.MinWidth="220" Header="Total TND" Binding="{Binding prixTotal}" />
+                                    </DataGrid.Columns>
+
+
+                                </DataGrid>
+
+                            </Grid>
+                        </TabItem>
+                        <TabItem Header="Jour">
+                            <Grid >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*" />
+                                    <ColumnDefinition Width="1*" />
+                                    <ColumnDefinition Width="1*" />
+                                </Grid.ColumnDefinitions>
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="1*" />
+                                    <RowDefinition Height="3*" />
+                                    <RowDefinition Height="1*" />
+                                    <RowDefinition Height="1*" />
+
+                                </Grid.RowDefinitions>
+                                <Label Grid.Row="0" Content="Jour" VerticalAlignment="Center" ></Label>
+                                <Label x:Name="jourlib" Grid.Row="0" Grid.Column="2" Content=":fffff" VerticalAlignment="Center" ></Label>
+                                <Label Content="Total:" x:Name="totalibj" FontFamily="Century Gothic" Grid.Row="2" VerticalAlignment="Center" Grid.Column="1"></Label>
+
+                                <DataGrid Grid.Row="1" Name="dgjour" IsReadOnly="True" CanUserAddRows="False" ItemsSource="{Binding}" Grid.ColumnSpan="3">
+                                    <DataGrid.Columns >
+                                        <DataGridTextColumn DataGridColumn.MinWidth="220" Header="N° Commande" Binding="{Binding IdCommande}" />
+                                        <DataGridTextColumn DataGridColumn.MinWidth="220"  Header="N° Table" Binding="{Binding NumTable}" />
+                                        <DataGridTextColumn DataGridColumn.MinWidth="220" Header="Date:" Binding="{Binding datecommande}" />
+                                        <DataGridTextColumn DataGridColumn.MinWidth="220" Header="Total TND" Binding="{Binding prixTotal}" />
+                                    </DataGrid.Columns>
+
+
+                                </DataGrid>
+
+                            </Grid>
+                        </TabItem>
+                    </TabControl>
+
                 </Grid>
 
             </TabItem>

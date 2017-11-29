@@ -461,8 +461,75 @@ namespace Bolero.DAL
             return res;
 
         }
+        public List<Commande> getAllMois()
+        {
+            //TODO
+            List<Commande> list = new List<Commande>();
+            SqlConnection cnx = Connexion.GetConnection();
+            SqlDataReader reader;
+            DateTime now = DateTime.Now;
+            Decimal tot = 0;
+            int month = now.Month;
+            try
+            {
+                SqlCommand sqlCmd = new SqlCommand("select * from Commande where MONTH(datecommande)=" + month + " and etatCmd = 'True'", cnx);
+                reader = sqlCmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        list.Add(new Commande(reader.GetInt32(0), reader.GetDecimal(1), reader.GetInt32(2), reader.GetInt32(3), reader.GetInt32(4), reader.GetDateTime(6)));
+                    }
+
+                }
+
+                reader.Close();
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally { Connexion.closeConnection(); }
+            try
+            {
+                SqlConnection cnx1 = Connexion.GetConnection();
+
+                SqlCommand sqlCmd1 = new SqlCommand("select sum(prixTotal) from Commande where MONTH(datecommande)=" + month + "", cnx1);
+
+                tot = (Decimal)sqlCmd1.ExecuteScalar();
+            }
+            catch (SqlException ex1) { throw ex1; }
+
+            return list;
+
+        }
+
+                public Decimal getAllMoistot()
+        {
+            //TODO
+            List<Commande> list = new List<Commande>();
+            SqlConnection cnx = Connexion.GetConnection();
+            DateTime now = DateTime.Now;
+            Decimal tot = 0;
+            int month = now.Month;
+
+
+                               try
+            {
+                SqlCommand sqlCmd1 = new SqlCommand("select sum(prixTotal) from Commande where MONTH(datecommande)=" + month + "", cnx);
+
+                 tot = (Decimal)sqlCmd1.ExecuteScalar();
+            }
+            catch (SqlException ex1) { throw ex1; }
+
+                               return (Decimal)tot;
+
+
+        }
+        }
+
+
+
 
 
     }
-}
-
