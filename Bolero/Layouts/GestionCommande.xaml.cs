@@ -279,11 +279,11 @@ namespace Bolero
         {
             Commande cm1 = (Commande)dataGrid.SelectedValue;
             int id = cm1.IdCommande;
-            int index=dataGrid.SelectedIndex;
-            Layouts.PayementCommande payment = new Layouts.PayementCommande(id,index,this);
+            int index = dataGrid.SelectedIndex;
+            Layouts.PayementCommande payment = new Layouts.PayementCommande(id, index, this);
             payment.ShowDialog();
         }
-        public void PerformRefresh(int id)
+        public void PerformRefresh()
         {
             
             List<Commande> lstCom = new List<Commande>();

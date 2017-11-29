@@ -26,6 +26,8 @@ namespace Bolero.Layouts
             Ticket ticket= new Ticket();
             ticket.setid(id);
             ticket.MdiParent = this;
+            ticket.Width = 355;
+            ticket.Height = 800;
             ticket.Show();
         }
 

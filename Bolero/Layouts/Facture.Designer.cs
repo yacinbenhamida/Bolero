@@ -32,17 +32,17 @@
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.dSreport = new Bolero.DSreport();
-            this.dataTable1BindingSource = new System.Windows.Forms.BindingSource(this.components);
-           // this.dataTable1TableAdapter = new Bolero.DSreportTableAdapters.DataTable1TableAdapter();
+            this.ticketrepBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.ticket_repTableAdapter = new Bolero.DSreportTableAdapters.ticket_repTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.dSreport)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataTable1BindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ticketrepBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // reportViewer1
             // 
             this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
             reportDataSource1.Name = "DataSet1";
-            reportDataSource1.Value = this.dataTable1BindingSource;
+            reportDataSource1.Value = this.ticketrepBindingSource;
             this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "Bolero.Layouts.Facture.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(0, 0);
@@ -55,14 +55,14 @@
             this.dSreport.DataSetName = "DSreport";
             this.dSreport.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // dataTable1BindingSource
+            // ticketrepBindingSource
             // 
-            this.dataTable1BindingSource.DataMember = "DataTable1";
-            this.dataTable1BindingSource.DataSource = this.dSreport;
+            this.ticketrepBindingSource.DataMember = "ticket_rep";
+            this.ticketrepBindingSource.DataSource = this.dSreport;
             // 
-            // dataTable1TableAdapter
+            // ticket_repTableAdapter
             // 
-           // this.dataTable1TableAdapter.ClearBeforeFill = true;
+            this.ticket_repTableAdapter.ClearBeforeFill = true;
             // 
             // Facture
             // 
@@ -74,7 +74,7 @@
             this.Text = "Facture";
             this.Load += new System.EventHandler(this.Facture_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dSreport)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataTable1BindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ticketrepBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -82,8 +82,9 @@
         #endregion
 
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
-        private System.Windows.Forms.BindingSource dataTable1BindingSource;
+        private System.Windows.Forms.BindingSource ticketrepBindingSource;
         private DSreport dSreport;
+        private DSreportTableAdapters.ticket_repTableAdapter ticket_repTableAdapter;
         //private DSreportTableAdapters.DataTable1TableAdapter dataTable1TableAdapter;
     }
 }

@@ -9,21 +9,29 @@ namespace Bolero.BL
     class Cheque
     { public Cheque() { }
         public int IdCheque { get; set; }
-        public float somme { get; set; }
+        public decimal somme { get; set; }
         public DateTime dateCheque { get; set; }
         public string nom_prenomCli { get; set; }
         public string CINcli { get; set; }
-          public string RIBcompte { get; set; }
           public string numCheque { get; set; }
 
-          public Cheque(int IdCheque, float somme, DateTime dateCheque, string nom_prenomCli, string CINcli, string RIBcompte, string numCheque)
+          public Cheque( decimal somme, DateTime dateCheque, string nom_prenomCli, string CINcli, string numCheque)
+          {
+          
+              this.somme = somme;
+              this.dateCheque = dateCheque;
+              this.nom_prenomCli = nom_prenomCli;
+              this.CINcli = CINcli;
+              this.numCheque = numCheque;
+          }
+          public Cheque(int IdCheque, decimal somme, DateTime dateCheque, string nom_prenomCli, string CINcli, string numCheque)
           {
               this.IdCheque = IdCheque;
               this.somme = somme;
               this.dateCheque = dateCheque;
               this.nom_prenomCli = nom_prenomCli;
               this.CINcli = CINcli;
-              this.RIBcompte = RIBcompte;
+              
               this.numCheque = numCheque;
           }
 

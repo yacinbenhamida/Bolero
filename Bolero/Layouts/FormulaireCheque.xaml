@@ -18,7 +18,7 @@
         </Grid.ColumnDefinitions>
 
         <Label Content="CHEQUE N°  " HorizontalAlignment="Left" VerticalAlignment="Center"/>
-        <TextBlock x:Name="idCheque" Text="000051" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" Margin="78,42,10,43" Width="109"/>
+        <TextBlock x:Name="idCheque"  VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" Margin="78,42,10,43" Width="109"/>
         <Label Content="Formulaire Cheque" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="20" FontFamily="Tempus Sans ITC"/>
         <Label Content="Montant" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold"/>
         <TextBox x:Name="somme" Height="30" Grid.Column="2" Text="Montant !" HorizontalAlignment="Right" VerticalAlignment="Center" Width="130" GotFocus="somme_GotFocus"/>
@@ -35,7 +35,7 @@
             </Grid>
         </GroupBox>
         <GroupBox Header="Date Cheque" HorizontalAlignment="Left" Grid.Row="1" Grid.Column="2" VerticalAlignment="Top" Height="150" Width="190">
-            <Label x:Name="dateCheque" Content="12/2/2017" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
+            <TextBox x:Name="dateCheque" Width="120" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
         </GroupBox>
         <Button x:Name="Valider" Content="Valider" Grid.Row="3" Grid.Column="1" Background="#FFD1B557" FontWeight="Bold" FontSize="18" Foreground="White" Click="Valider_Click"/>
     </Grid>

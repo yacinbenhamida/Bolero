@@ -23,7 +23,9 @@ namespace Bolero.Layouts
 
         private void Facture_Load(object sender, EventArgs e)
         {
-           // this.dataTable1TableAdapter.Fill(this.dSreport.DataTable1, id);
+            this.ticket_repTableAdapter.Fill(this.dSreport.ticket_rep, id);
+           //this.dataTable1TableAdapter.Fill(this.dSreport.DataTable1, id);
+            this.reportViewer1.RefreshReport();
             this.reportViewer1.RefreshReport();
         }
     }

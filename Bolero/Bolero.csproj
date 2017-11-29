@@ -80,11 +80,15 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="BL\Categorie.cs" />
+    <Compile Include="BL\Cheque.cs" />
     <Compile Include="BL\Facture.cs" />
+    <Compile Include="BL\Payement.cs" />
     <Compile Include="BL\Serveur.cs" />
     <Compile Include="BL\User.cs" />
     <Compile Include="DAL\CategorieDAO.cs" />
+    <Compile Include="DAL\ChequeDAO.cs" />
     <Compile Include="DAL\FactureDao.cs" />
+    <Compile Include="DAL\PayementDAO.cs" />
     <Compile Include="DAL\ServeurDAO.cs" />
     <Compile Include="DAL\UserDAO.cs" />
     <Compile Include="Layouts\AjoutPlat.xaml.cs">

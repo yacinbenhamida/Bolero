@@ -1,4 +1,5 @@
 ﻿using Bolero.BL;
+using Bolero.DAL;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -28,7 +29,7 @@ namespace Bolero.Layouts
         {
             InitializeComponent();
         }
-        public PayementCommande(int id,int index,GestionCommande g)
+        public PayementCommande(int id, int index, GestionCommande g)
         {
             this.id = id;
             this.g = g;
@@ -52,14 +53,15 @@ namespace Bolero.Layouts
             timer.Interval = new TimeSpan(0, 0, 1);
             timer.Tick += timer_Tick;
             timer.Start();
-            
+            txtEspece.Text = "" + c.prixtotal;
+
         }
 
         void timer_Tick(object sender, EventArgs e)
         {
             lblHeure.Content = DateTime.Now.ToLongTimeString();
         }
-        GestionCommande g= new GestionCommande();
+        GestionCommande g = new GestionCommande();
         private void btnpayer_Click(object sender, RoutedEventArgs e)
         {
             Layouts.Ticket_et_Facture t = new Ticket_et_Facture();
@@ -69,15 +71,15 @@ namespace Bolero.Layouts
             Commande c = new Commande();
 
             DAL.CommandeDAO daoc = new DAL.CommandeDAO();
-            
+
             c = daoc.getById(id);
 
             DataSet DSreport = new DSreport();
             DSreport.Reset();
-                    List<Commande> lstCom = new List<Commande>();
-                    lstCom = daoc.getAll();
-                    g.dataGrid.DataContext = lstCom;
-                    g.PerformRefresh(index);
+            List<Commande> lstCom = new List<Commande>();
+            lstCom = daoc.getAll();
+            g.dataGrid.DataContext = lstCom;
+            g.PerformRefresh();
         }
         private void btnrouge_Click(object sender, RoutedEventArgs e)
         {
@@ -89,7 +91,7 @@ namespace Bolero.Layouts
             DAL.CommandeDAO daoc = new DAL.CommandeDAO();
             lblnumcmd.Content = id;
             c = daoc.getById(id);
-            
+
             lbldatee.Content = c.datecommande;
             lblserveur.Content = c.idserveur;
             lblnumtab.Content = c.NumTable;
@@ -100,9 +102,9 @@ namespace Bolero.Layouts
             timer.Interval = new TimeSpan(0, 0, 1);
             timer.Tick += timer_Tick;
             timer.Start();
-            txtRest.Clear();
+
             txtEspece.Clear();
-            txtCheque.Clear();
+
 
         }
         private void btnespece_Click(object sender, RoutedEventArgs e)
@@ -113,44 +115,73 @@ namespace Bolero.Layouts
             Decimal.TryParse(lbltotal.Content.ToString(), out t2);
             if (t > t2)
             {
-                MessageBox.Show("montont  invalid");
+                decimal rest = t2 - t;
+                MessageBox.Show("reste de Commande = "+rest+"DT");
+                Ticket tk = new Ticket();
+                tk.setid(id);
+                tk.Width = 355;
+                tk.Height = 800;
+                tk.ShowDialog();
+                CommandeDAO daoc = new CommandeDAO();
+                daoc.updateEtat(id);
+                ChequeDAO daoch = new ChequeDAO();
+                int lastch = daoch.getLastCheque() + 1;
+                Payement pa = new Payement(1, id);
+                PayementDAO daop = new PayementDAO();
+                daop.addesp(pa);
+                g.PerformRefresh();
+                TableDAO table = new TableDAO();
+                Commande c = daoc.getById(id);
+                table.update(c.NumTable, false);
+                this.Close();
             }
-            else
+            else if(t<t2)
             {
                 lbltotal.Content = t2 - t;
+            }
+            else {
+                Ticket tk = new Ticket();
+                tk.setid(id);
+                tk.Width = 355;
+                tk.Height = 800;
+                tk.ShowDialog();
+                CommandeDAO daoc = new CommandeDAO();
+                daoc.updateEtat(id);
+                
+                ChequeDAO daoch = new ChequeDAO();
+                
+                
+
+                int lastch = daoch.getLastCheque() + 1;
+
+                
+                
+
+
+                Payement pa = new Payement(1, id);
+                PayementDAO daop = new PayementDAO();
+                daop.addesp(pa);
+                g.PerformRefresh();
+                TableDAO table = new TableDAO();
+                Commande c = daoc.getById(id);
+                table.update(c.NumTable, false);
+                this.Close();
+                
             }
 
         }
         private void btnticket_Click(object sender, RoutedEventArgs e)
         {
-            decimal t;
-            decimal t2;
-            Decimal.TryParse(txtRest.Text,out t);
-            Decimal.TryParse(lbltotal.Content.ToString(), out t2);
-            if (t > t2)
-            {
-                MessageBox.Show("montont invalid");
-            }
-            else
-            {
-               lbltotal.Content=t2 - t;
-            }
-            
+
+
         }
         private void btncheque_Click(object sender, RoutedEventArgs e)
         {
-            decimal t;
-            decimal t2;
-            Decimal.TryParse(txtCheque.Text, out t);
-            Decimal.TryParse(lbltotal.Content.ToString(), out t2);
-            if (t > t2 )
-            {
-                MessageBox.Show("montont  invalid");
-            }
-            else
-            {
-                lbltotal.Content = t2 - t;
-            }
+            decimal pr;
+
+            Decimal.TryParse(txtEspece.Text, out pr);
+            FormulaireCheque ch = new FormulaireCheque(pr, this, id, g);
+            ch.ShowDialog();
         }
         private void btnCredit_Click(object sender, RoutedEventArgs e)
         {
@@ -170,6 +201,6 @@ namespace Bolero.Layouts
             credit.ShowDialog();
         }
 
-      
+
     }
 }
