@@ -22,16 +22,38 @@ namespace Bolero
     {
         ArticleDAO dao;
         Article a;
-        public AjoutPlat()
+        string tbSel;
+        public AjoutPlat(string tbSel)
         {
             InitializeComponent();
             dao = new ArticleDAO();
             a = new Article();
+            this.tbSel = tbSel;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             Keyboard.Focus(txtNomPlat);
+            if (tbSel == "entree")
+            {
+                cmbType.SelectedIndex = 0;
+            }
+            else if (tbSel == "suite")
+            {
+                cmbType.SelectedIndex = 1;
+            }
+            else if (tbSel == "hors d'oeuvre")
+            {
+                cmbType.SelectedIndex = 2;
+            }
+            else if (tbSel == "dessert")
+            {
+                cmbType.SelectedIndex = 3;
+            }
+            else if (tbSel == "boisson")
+            {
+                cmbType.SelectedIndex = 4;
+            }
         }
 
         private void btnRetour_Click(object sender, RoutedEventArgs e)

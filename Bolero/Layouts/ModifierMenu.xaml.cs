@@ -22,7 +22,7 @@ namespace Bolero
     {
         private int Id { get; set; }
         ArticleDAO dao = new ArticleDAO();
-       
+        string tbSelected = "";
         private List<Article> lstentree = new List<Article>();
         private List<Article> lstsuite = new List<Article>();
         private List<Article> lsthors = new List<Article>();
@@ -219,25 +219,30 @@ namespace Bolero
         }
 
         private void btnAjouter_Click(object sender, RoutedEventArgs e)
-        {   
-            AjoutPlat ajout = new AjoutPlat();
+        {
+            refreshTabs();
+            initUI();
+            AjoutPlat ajout = new AjoutPlat(tbSelected);
             ajout.Closing += new System.ComponentModel.CancelEventHandler(this.Window3_Closing);
             ajout.ShowDialog();
         }
 
-        private void refreshTabs() 
+        private void refreshTabs()
         {
             if (tbEnt.IsSelected)
             {
                 clearUI("entree");
+                tbSelected = "entree";
             }
             else if (tbDes.IsSelected)
             {
                 clearUI("dessert");
+                tbSelected = "dessert";
             }
             else if (tbHO.IsSelected)
             {
                 clearUI("hors d'oeuvre");
+                tbSelected = "hors d'oeuvre";
             }
             else if (tbPJ.IsSelected)
             {
@@ -246,10 +251,12 @@ namespace Bolero
             else if (tbSuite.IsSelected)
             {
                 clearUI("suite");
+                tbSelected = "suite";
             }
             else if (tbBoiss.IsSelected)
             {
                 clearUI("boisson");
+                tbSelected = "boisson";
             }
         }
 

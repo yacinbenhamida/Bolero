@@ -21,12 +21,58 @@ namespace Bolero.Layouts
     {
         public FormulaireCheque()
         {
+            Keyboard.Focus(somme);
             InitializeComponent();
         }
 
         private void Valider_Click(object sender, RoutedEventArgs e)
         {
+            double som;
+            string s = somme.Text.ToString();
+            string cinC = cinClient.Text.ToString();
+            string numC = numCheque.Text.ToString();
 
+            if (somme.Text.ToString() == "" || numCheque.Text.ToString() == "" || nomClient.Text.ToString() == "" || cinClient.Text.ToString() == "")
+            {
+                MessageBox.Show("Les champs sant obligatoire !");
+            }
+            else if (!double.TryParse(s, out som))
+            {
+                MessageBox.Show("Montant doit etre un reel !");
+            }
+
+            else if (!double.TryParse(cinC, out som))
+            {
+                MessageBox.Show("CIN doit etre un entier !");
+            }
+            else if (!double.TryParse(numC, out som))
+            {
+                MessageBox.Show("Numéro du compte doit etre un entier !");
+            }
+            else if (nomClient.Text.ToString() != "")
+            {
+                MessageBox.Show("Nom et prénom incorect !");
+            }
+        }
+
+        private void somme_GotFocus(object sender, RoutedEventArgs e)
+        {
+            somme.Text = "";
+        }
+
+        private void numCheque_GotFocus(object sender, RoutedEventArgs e)
+        {
+            numCheque.Text = "";
+        }
+
+        private void nomClient_GotFocus(object sender, RoutedEventArgs e)
+        {
+            nomClient.Text = "";
+        }
+
+        private void cinClient_GotFocus(object sender, RoutedEventArgs e)
+        {
+            cinClient.Text = "";
         }
     }
 }

@@ -15,12 +15,11 @@
 
        
         <ComboBox FontSize="20" VerticalAlignment="Center" x:Name="cmbType" HorizontalAlignment="Center" Grid.Column="0" Width="150" Height="46">
-            <ComboBoxItem >entree</ComboBoxItem>
-            <ComboBoxItem >suite</ComboBoxItem>
-            <ComboBoxItem >hors d'oeuvre</ComboBoxItem>
-            <ComboBoxItem >plat du jour</ComboBoxItem>
-            <ComboBoxItem >dessert</ComboBoxItem>
-            <ComboBoxItem >boisson</ComboBoxItem>
+            <ComboBoxItem Name="entree">entree</ComboBoxItem>
+            <ComboBoxItem Name="suite">suite</ComboBoxItem>
+            <ComboBoxItem Name="horsOeuvre">hors d'oeuvre</ComboBoxItem>
+            <ComboBoxItem Name="dessert">dessert</ComboBoxItem>
+            <ComboBoxItem Name="boisson">boisson</ComboBoxItem>
         </ComboBox>
         <StackPanel Grid.Column="1" VerticalAlignment="Center" >
             <TextBlock Text="Nom plat" FontSize="20"></TextBlock>
