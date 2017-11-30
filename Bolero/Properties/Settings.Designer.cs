@@ -26,23 +26,29 @@ namespace Bolero.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+<<<<<<< HEAD
         [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\v11.0;AttachDbFilename=\"C:\\Users\\hechmi\\Desktop\\New folder\\" +
             "Bolero\\Bolero\\Resources\\BoleroDB.mdf\";Integrated Security=True;MultipleActiveRes" +
             "ultSets=true")]
         public string chConn {
+=======
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\v11.0;AttachDbFilename=|DataDirectory|\\Resources\\BoleroDB.m" +
+            "df;Integrated Security=True")]
+        public string BoleroDBConnectionString {
+>>>>>>> origin/Correctifs
             get {
-                return ((string)(this["chConn"]));
+                return ((string)(this["BoleroDBConnectionString"]));
             }
         }
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\v11.0;AttachDbFilename=|DataDirectory|\\Resources\\BoleroDB.m" +
-            "df;Integrated Security=True")]
-        public string BoleroDBConnectionString {
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\v11.0;AttachDbFilename=C:\\Users\\ADMIN\\Documents\\GitHub\\Bole" +
+            "ro\\Resources\\BoleroDB.mdf;Integrated Security=True")]
+        public string chConn {
             get {
-                return ((string)(this["BoleroDBConnectionString"]));
+                return ((string)(this["chConn"]));
             }
         }
     }
