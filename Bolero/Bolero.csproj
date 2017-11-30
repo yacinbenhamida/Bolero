@@ -112,6 +112,11 @@
     <Compile Include="Layouts\QuestionSecrete.xaml.cs">
       <DependentUpon>QuestionSecrete.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Compile Include="SL\LoginSecurity.cs" />
     <Page Include="Layouts\AccesSession.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -274,11 +279,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-    </Compile>
     <EmbeddedResource Include="Layouts\Facture.rdlc" />
     <EmbeddedResource Include="Layouts\Facture.resx">
       <DependentUpon>Facture.cs</DependentUpon>
@@ -313,11 +313,11 @@
     <None Include="DSreport.xss">
       <DependentUpon>DSreport.xsd</DependentUpon>
     </None>
+    <AppDesigner Include="Properties\" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
