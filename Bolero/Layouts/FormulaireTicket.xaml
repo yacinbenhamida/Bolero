@@ -1,0 +1,25 @@
+﻿<Window x:Class="Bolero.Layouts.FormulaireTicket"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="FormulaireTicket" Height="300" Width="500" Loaded="Window_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1.5*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.RowSpan="3">
+            <Grid.Background>
+                <ImageBrush ImageSource="..\Resources\ticketRes.jpeg" Stretch="Fill"/>
+            </Grid.Background>
+        </Grid>
+        <TextBox x:Name="txtSomme" Grid.Column="1" Text="Montant !" VerticalAlignment="Center" HorizontalAlignment="Stretch" TextAlignment="Center" GotFocus="txtSomme_GotFocus" FontSize="16" FontWeight="Bold" FontFamily="Tempus Sans ITC" />
+        <TextBox x:Name="txtDate" Grid.Column="1" Grid.Row="1" Text="Date !" VerticalAlignment="Center" HorizontalAlignment="Stretch" TextAlignment="Center" GotFocus="txtDate_GotFocus" FontSize="16" FontWeight="Bold" FontFamily="Tempus Sans ITC"/>
+        <TextBox x:Name="txtNomSo" Grid.Column="1" Grid.Row="2" Text="Nom Societé !" VerticalAlignment="Center" HorizontalAlignment="Stretch" TextAlignment="Center" GotFocus="txtNomSo_GotFocus" FontSize="16" FontWeight="Bold" FontFamily="Tempus Sans ITC"/>
+        <Button x:Name="btnValider" Content="Valider" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" Height="45" Width="100" Background="#FFDE1010" Foreground="White" FontSize="18" FontWeight="Bold" Click="btnValider_Click"/>
+    </Grid>
+</Window>
