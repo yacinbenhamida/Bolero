@@ -61,6 +61,38 @@ namespace Bolero.DAL
             finally { Connexion.closeConnection(); }
             return p;
         }
+        public decimal getPayementByCmdId(int id)
+        {
+            Decimal tot =0;
+            
+            try
+            {
+                SqlConnection cnx = Connexion.GetConnection();
+                SqlCommand sqlCmd = new SqlCommand("select * from Payement where idCmd=@id", cnx);
+                sqlCmd.Parameters.AddWithValue("id", id);
+                SqlDataReader reader = sqlCmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                         sqlCmd = new SqlCommand("select SUM(prix) from Payement where idCmd=@id", cnx);
+                        sqlCmd.Parameters.AddWithValue("id", id);
+                        tot = (decimal)sqlCmd.ExecuteScalar();
+                    }
+                }
+                else
+                { tot = 0; }
+                reader.Close();
+                
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally { Connexion.closeConnection(); }
+            return tot;
+           
+        }
         public int addesp(Payement p)
         {
             int res = 0;
@@ -68,9 +100,10 @@ namespace Bolero.DAL
             try
             {
                 SqlConnection cnx = Connexion.GetConnection();
-                SqlCommand sqlCmd = new SqlCommand("insert into Payement (idCmd) values (@cmd)", cnx);
+                SqlCommand sqlCmd = new SqlCommand("insert into Payement (idCmd,prix) values (@cmd,@prix)", cnx);
               
                 sqlCmd.Parameters.AddWithValue("cmd", p.idcmd);
+                sqlCmd.Parameters.AddWithValue("prix", p.prix);
                 sqlCmd.ExecuteNonQuery();
                 res = 1;
             }
@@ -92,10 +125,11 @@ namespace Bolero.DAL
             try
             {
                 SqlConnection cnx = Connexion.GetConnection();
-                SqlCommand sqlCmd = new SqlCommand("insert into Payement (idTicketResto,idCheque,idCmd) values (@tk,@chq,@cmd)", cnx);
+                SqlCommand sqlCmd = new SqlCommand("insert into Payement (idTicketResto,idCheque,idCmd,prix) values (@tk,@chq,@cmd,@prix)", cnx);
                 sqlCmd.Parameters.AddWithValue("tk", p.idticket);
                 sqlCmd.Parameters.AddWithValue("chq", p.idcheque);
                 sqlCmd.Parameters.AddWithValue("cmd", p.idcmd);
+                sqlCmd.Parameters.AddWithValue("prix", p.prix);
                 sqlCmd.ExecuteNonQuery();
                 res = 1;
             }
@@ -119,7 +153,6 @@ namespace Bolero.DAL
                 SqlConnection cnx = Connexion.GetConnection();
                 SqlCommand sqlCmd = new SqlCommand("insert into Payement (idTicketResto,idCmd) values (@tk,@cmd)", cnx);
                 sqlCmd.Parameters.AddWithValue("tk", p.idticket);
-
                 sqlCmd.Parameters.AddWithValue("cmd", p.idcmd);
                 sqlCmd.ExecuteNonQuery();
                 res = 1;
@@ -142,9 +175,10 @@ namespace Bolero.DAL
             try
             {
                 SqlConnection cnx = Connexion.GetConnection();
-                SqlCommand sqlCmd = new SqlCommand("insert into Payement (idCheque,idCmd) values (@tk,@cmd)", cnx);
-                sqlCmd.Parameters.AddWithValue("tk", p.idcheque);
+                SqlCommand sqlCmd = new SqlCommand("insert into Payement(idCheque,idCmd,prix) values (@ch,@cmd,@prix)", cnx);
+                sqlCmd.Parameters.AddWithValue("ch", p.idcheque);
                 sqlCmd.Parameters.AddWithValue("cmd", p.idcmd);
+                sqlCmd.Parameters.AddWithValue("prix", p.prix);
                 sqlCmd.ExecuteNonQuery();
                 res = 1;
             }

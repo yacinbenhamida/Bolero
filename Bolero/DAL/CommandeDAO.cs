@@ -85,7 +85,7 @@ namespace Bolero.DAL
                 int j = 0;
                 int d = 0;
 
-                sqlCmd = new SqlCommand("insert into Commande (NumTable,idServeur,idUser,datecommande,etatCmd) values (@numt,@idserveur,@iduser,@date,False)", cnx);
+                sqlCmd = new SqlCommand("insert into Commande (NumTable,idServeur,idUser,datecommande,etatCmd) values (@numt,@idserveur,@iduser,@date,'False')", cnx);
                 UpdateTable = new SqlCommand("UPDATE Tables SET Etat='True' where NumTable=@numt AND Etat='False'", cnx);
                 //sqlCmd.Parameters.AddWithValue("idCom", e.IdCommande);
                 //sqlCmd.Parameters.AddWithValue("prix",e.prixtotal);

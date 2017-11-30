@@ -40,9 +40,10 @@ namespace Bolero.Layouts
         {
             Keyboard.Focus(txtEspece);
             DAL.CommandeDAO daoc = new DAL.CommandeDAO();
+            DAL.PayementDAO daop = new DAL.PayementDAO();
             lblnumcmd.Content = id;
             c = daoc.getById(id);
-            decimal sum = c.prixtotal;
+            decimal sum = c.prixtotal - daop.getPayementByCmdId(id) ;
             lbldatee.Content = c.datecommande;
             lblserveur.Content = c.idserveur;
             lblnumtab.Content = c.NumTable;
@@ -53,7 +54,7 @@ namespace Bolero.Layouts
             timer.Interval = new TimeSpan(0, 0, 1);
             timer.Tick += timer_Tick;
             timer.Start();
-            txtEspece.Text = "" + c.prixtotal;
+            txtEspece.Text = "" + sum;
 
         }
 
@@ -115,7 +116,8 @@ namespace Bolero.Layouts
             Decimal.TryParse(lbltotal.Content.ToString(), out t2);
             if (t > t2)
             {
-                decimal rest = t2 - t;
+                decimal rest = t-t2;
+                
                 MessageBox.Show("reste de Commande = "+rest+"DT");
                 Ticket tk = new Ticket();
                 tk.setid(id);
@@ -126,7 +128,7 @@ namespace Bolero.Layouts
                 daoc.updateEtat(id);
                 ChequeDAO daoch = new ChequeDAO();
                 int lastch = daoch.getLastCheque() + 1;
-                Payement pa = new Payement(1, id);
+                Payement pa = new Payement(1,id,t);
                 PayementDAO daop = new PayementDAO();
                 daop.addesp(pa);
                 g.PerformRefresh();
@@ -136,8 +138,13 @@ namespace Bolero.Layouts
                 this.Close();
             }
             else if(t<t2)
-            {
+            {   
                 lbltotal.Content = t2 - t;
+                Payement pa = new Payement(1, id, t);
+                PayementDAO daop = new PayementDAO();
+                daop.addesp(pa);
+                g.PerformRefresh();
+
             }
             else {
                 Ticket tk = new Ticket();
@@ -149,16 +156,8 @@ namespace Bolero.Layouts
                 daoc.updateEtat(id);
                 
                 ChequeDAO daoch = new ChequeDAO();
-                
-                
-
-                int lastch = daoch.getLastCheque() + 1;
-
-                
-                
-
-
-                Payement pa = new Payement(1, id);
+            int lastch = daoch.getLastCheque() + 1;
+                Payement pa = new Payement(1, id,t);
                 PayementDAO daop = new PayementDAO();
                 daop.addesp(pa);
                 g.PerformRefresh();

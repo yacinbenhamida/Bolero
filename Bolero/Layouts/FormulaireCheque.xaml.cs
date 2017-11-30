@@ -79,10 +79,9 @@ namespace Bolero.Layouts
             if (prix == sum)
             {
 
-                Ticket tk = new Ticket();
+                Ticket_et_Facture tk = new Ticket_et_Facture();
                 tk.setid(com);
-                tk.Width = 355;
-                tk.Height = 800;
+                
                 tk.ShowDialog();
                 CommandeDAO daoc = new CommandeDAO();
                 daoc.updateEtat(com);
@@ -91,14 +90,10 @@ namespace Bolero.Layouts
                 ChequeDAO daoch = new ChequeDAO();
                 DateTime.TryParse(dateCheque.Text, out d);
                 Decimal.TryParse(somme.Text, out some);
-
                 int lastch = daoch.getLastCheque() + 1;
-
                 Cheque cheque = new Cheque(some, d, nomClient.Text, cinClient.Text, numCheque.Text);
                 daoch.add(cheque);
-
-
-                Payement pa = new Payement(1, lastch, com);
+                Payement pa = new Payement(1, lastch, com,sum);
                 PayementDAO daop = new PayementDAO();
                 daop.addPaycheque(pa);
                 g.PerformRefresh();
@@ -118,16 +113,16 @@ namespace Bolero.Layouts
                 ChequeDAO daoch = new ChequeDAO();
                 DateTime.TryParse(dateCheque.Text, out d);
                 Decimal.TryParse(somme.Text, out some);
-
                 int lastch = daoch.getLastCheque() + 1;
                 Cheque cheque = new Cheque(some, d, nomClient.Text, cinClient.Text, numCheque.Text);
                 daoch.add(cheque);
-                Payement p = new Payement(lastch, com);
+                Payement pa = new Payement(1, lastch, com, sum);
                 PayementDAO daop = new PayementDAO();
-                daop.add(p);
+                daop.addPaycheque(pa);
+                g.PerformRefresh();
 
                 this.Close();
-                //g.PerformRefresh();
+                
 
             }
         }
