@@ -339,6 +339,34 @@ namespace Bolero.DAL
             finally { Connexion.closeConnection(); }
             return a;
         }
+        public int updatefct(Commande obj,int fct)
+        {
+            int res = 0;
+            try
+            {
+                SqlConnection cnx = Connexion.GetConnection();
+                TableDAO daot = new TableDAO();
+                if (daot.checkIfEmpty(obj.NumTable))
+                {
+                    SqlCommand cmd = new SqlCommand("UPDATE Commande SET idFacture=@fct where IdCommande=@idc", cnx);
+                  cmd.Parameters.AddWithValue("fct", fct);
+                    cmd.Parameters.AddWithValue("idc", obj.IdCommande);
+                   
+                    
+                    int done = (int)cmd.ExecuteNonQuery();
+                    if (done > 0)
+                        res = 1;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally { Connexion.closeConnection(); }
+            return res;
+
+        }
 
         public int update(Commande obj)
         {

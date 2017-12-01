@@ -50,10 +50,10 @@
         <TextBox Grid.Row="1" Name="txtEspece" HorizontalAlignment="Center" Width="150" Height="20" ></TextBox>
         <Button Content="Valider" Name="btnespeces" Click="btnespece_Click" Grid.Column="0" Grid.Row="1"  Width="100" Height="30" HorizontalAlignment="Right" Foreground="White" VerticalAlignment="Center" FontWeight="Bold"  FontSize="14" Background="#FF9EDB4D"  />
         <Label  Grid.Row="2" Content="Chéque" HorizontalAlignment="Left" VerticalAlignment="Center"  FontSize="14"/>
-        <Button Content="Ajouter Cheque " Name="btncheque" Click="btncheque_Click" Grid.Column="0" Grid.Row="2"  Width="221" Height="30" HorizontalAlignment="Right" Foreground="White" VerticalAlignment="Center" FontWeight="Bold"  FontSize="14" Background="#FF9EDB4D" Margin="0,22.6,0.2,22.6"  />
+        <Button Content="Ajouter Cheque " Name="btncheque" Click="btncheque_Click" Grid.Column="0" Grid.Row="2"  Width="221" Height="30" HorizontalAlignment="Right" Foreground="White" VerticalAlignment="Center" FontWeight="Bold"  FontSize="14" Background="#FF9EDB4D" />
 
         <Label  Grid.Row="3" Content="Ticket Restaurant" HorizontalAlignment="Left" VerticalAlignment="Center"  FontSize="14"/>
-        <Button Content="Ajouter Ticket Resto" Name="btnticket" Click="btnticket_Click" Grid.Column="0" Grid.Row="3"  Width="221" Height="30" HorizontalAlignment="Right" Foreground="White" VerticalAlignment="Center" FontWeight="Bold"  FontSize="14" Background="#FF9EDB4D" Margin="0,22.4,0.2,22.8"  />
+        <Button Content="Ajouter Ticket Resto" Name="btnticket" Click="btnticket_Click" Grid.Column="0" Grid.Row="3"  Width="221" Height="30" HorizontalAlignment="Right" Foreground="White" VerticalAlignment="Center" FontWeight="Bold"  FontSize="14" Background="#FF9EDB4D"   />
         
         <Label Content="Total" Grid.Row="4"  HorizontalAlignment="Left" VerticalAlignment="Center" Width="79" Height="50"  FontSize="14" Margin="0,12.2,0,13"/>
         <Label Content="El Bolero" Grid.Column="2" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="225" Height="71" FontWeight="Bold" FontFamily="Comic Sans MS" FontSize="40" Margin="58.8,13,83.4,66.4" Grid.RowSpan="2" />
@@ -61,7 +61,6 @@
         <Label Content="Table N° " Name="cmdtable" Grid.Row="1" Grid.Column="1"  VerticalAlignment="Bottom" Width="55" Height="30"  FontSize="14" HorizontalAlignment="Left" Grid.ColumnSpan="2" Margin="59.8,0,0,0.4"/>
         <Label Content="Serveur "  Grid.Row="1" Grid.Column="1"  VerticalAlignment="Top" Width="55" Height="30"  FontSize="14" HorizontalAlignment="Left" Grid.ColumnSpan="2" Margin="59.8,74.8,0,0" Grid.RowSpan="2"/>
         <Label  Content="Date :" Name="cmddate" Grid.Row="2" Grid.Column="1"  VerticalAlignment="Bottom" Width="55" Height="30"  FontSize="14" HorizontalAlignment="Left" Grid.ColumnSpan="2" Margin="59.8,0,0,74.8" Grid.RowSpan="2"/>
-        <Button Content="Payer et Passer à la facture" Name="btnpayer" Click="btnpayer_Click" Grid.Row="3" Grid.Column="2" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="250" Height="50" FontWeight="Bold"  Foreground="White" FontSize="18" Background="#FF5E88E2"/>
         <Button Style="{DynamicResource NoChromeButton}" Grid.Row="4" Grid.Column="2" Name="btnrouge" Click="btnrouge_Click" HorizontalAlignment="Left"  VerticalAlignment="Center" Width="100" Height="50">
             <Image Source="..\Resources\rouge.png" Width="100" VerticalAlignment="Stretch"></Image>
 

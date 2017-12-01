@@ -303,7 +303,9 @@
     <EmbeddedResource Include="Layouts\Ticket et Facture.resx">
       <DependentUpon>Ticket et Facture.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Layouts\ticket.rdlc" />
+    <EmbeddedResource Include="Layouts\ticket.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="Layouts\Ticket.resx">
       <DependentUpon>Ticket.cs</DependentUpon>
     </EmbeddedResource>

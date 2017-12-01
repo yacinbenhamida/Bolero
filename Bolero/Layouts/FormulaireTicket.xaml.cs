@@ -104,6 +104,7 @@ namespace Bolero.Layouts
                 this.p.lbltotal.Content = "" + res;
                 this.Close();
                 p.Close();
+                g.PerformRefresh();
             }
             else
             {
@@ -129,7 +130,7 @@ namespace Bolero.Layouts
                 this.p.txtEspece.Text = "" + res;
                 this.p.lbltotal.Content = "" + res;
                 this.Close();
-                
+                g.PerformRefresh();
             }
             
            

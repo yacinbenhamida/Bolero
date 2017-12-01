@@ -119,7 +119,7 @@ namespace Bolero.Layouts
                 decimal rest = t-t2;
                 
                 MessageBox.Show("reste de Commande = "+rest+"DT");
-                Ticket tk = new Ticket();
+                Ticket_et_Facture tk = new Ticket_et_Facture();
                 tk.setid(id);
                 tk.Width = 355;
                 tk.Height = 800;
@@ -135,6 +135,7 @@ namespace Bolero.Layouts
                 TableDAO table = new TableDAO();
                 Commande c = daoc.getById(id);
                 table.update(c.NumTable, false);
+                g.dgmois.Items.Refresh();
                 this.Close();
             }
             else if(t<t2)
@@ -147,7 +148,7 @@ namespace Bolero.Layouts
 
             }
             else {
-                Ticket tk = new Ticket();
+                Ticket_et_Facture tk = new Ticket_et_Facture();
                 tk.setid(id);
                 tk.Width = 355;
                 tk.Height = 800;

@@ -8,7 +8,7 @@ namespace Bolero.BL
 {
     class Facture
     {
-         public Facture() { }
+        public Facture() { }
          public Facture(int idfact, decimal totalttc, decimal totalht, decimal totaltva, int idpayement)
          {
              this.IdFact = idfact;
@@ -18,7 +18,15 @@ namespace Bolero.BL
              this.Idpayement = idpayement;
          
          }
+         public Facture(decimal totalttc, decimal totalht, decimal totaltva)
+         {
+             
+             this.totalTTC = totalTTC;
+             this.totalHT = totalHT;
+             this.totalTVA = totalTVA;
+             
 
+         }
         public int IdFact { get; set; }
         public decimal totalTTC { get; set; }
         public decimal totalHT { get; set; }

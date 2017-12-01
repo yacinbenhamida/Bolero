@@ -255,7 +255,7 @@ namespace Bolero
                     MessageBox.Show("la table est occupée !");
                     return;
                 }
-               
+                this.PerformRefresh();
             }
         }
         
@@ -305,8 +305,16 @@ namespace Bolero
             
             List<Commande> lstCom = new List<Commande>();
             lstCom = daoc.getAll();
+            
             dataGrid.DataContext = lstCom;
             dataGrid.Items.Refresh();
+            dgmois.DataContext = cdao.getAllMois();
+            dgjour.DataContext = cdao.getAllJour();
+            dgmois.Items.Refresh();
+            dgjour.Items.Refresh();
+            platCmd.Items.Clear();
+            cmbServ.SelectedIndex = 0;
+            cmbTable.SelectedIndex = 0;
         }
         private void Fact_Click(object sender, RoutedEventArgs e)
         {

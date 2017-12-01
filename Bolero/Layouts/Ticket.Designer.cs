@@ -30,38 +30,50 @@
         {
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            this.ticketrepBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.ticketrepBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.dSreport = new Bolero.DSreport();
+            this.ticketrepBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.ticket_repTableAdapter = new Bolero.DSreportTableAdapters.ticket_repTableAdapter();
             this.ticket_repBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.ticketrepBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.ticketrepBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dSreport)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ticket_repBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ticketrepBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dSreport)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ticketrepBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ticket_repBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
-            // ticketrepBindingSource
+            // ticketrepBindingSource1
             // 
-            this.ticketrepBindingSource.DataMember = "ticket_rep";
-            this.ticketrepBindingSource.DataSource = this.dSreport;
+            this.ticketrepBindingSource1.DataMember = "ticket_rep";
+            this.ticketrepBindingSource1.DataSource = this.dSreport;
             // 
             // dSreport
             // 
             this.dSreport.DataSetName = "DSreport";
             this.dSreport.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
+            // ticketrepBindingSource
+            // 
+            this.ticketrepBindingSource.DataMember = "ticket_rep";
+            this.ticketrepBindingSource.DataSource = this.dSreport;
+            // 
             // reportViewer1
             // 
+            this.reportViewer1.AutoScroll = true;
+            this.reportViewer1.AutoSize = true;
             this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.reportViewer1.IsDocumentMapWidthFixed = true;
             reportDataSource1.Name = "DataSet1";
             reportDataSource1.Value = this.ticketrepBindingSource1;
             this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "Bolero.Layouts.ticket.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(0, 0);
             this.reportViewer1.Name = "reportViewer1";
-            this.reportViewer1.Size = new System.Drawing.Size(664, 432);
+            this.reportViewer1.ShowBackButton = false;
+            this.reportViewer1.ShowPageNavigationControls = false;
+            this.reportViewer1.ShowStopButton = false;
+            this.reportViewer1.ShowZoomControl = false;
+            this.reportViewer1.Size = new System.Drawing.Size(352, 432);
             this.reportViewer1.TabIndex = 0;
             this.reportViewer1.Load += new System.EventHandler(this.reportViewer1_Load);
             // 
@@ -74,25 +86,21 @@
             this.ticket_repBindingSource.DataMember = "ticket_rep";
             this.ticket_repBindingSource.DataSource = this.dSreport;
             // 
-            // ticketrepBindingSource1
-            // 
-            this.ticketrepBindingSource1.DataMember = "ticket_rep";
-            this.ticketrepBindingSource1.DataSource = this.dSreport;
-            // 
             // Ticket
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(664, 432);
+            this.ClientSize = new System.Drawing.Size(352, 432);
             this.Controls.Add(this.reportViewer1);
             this.Name = "Ticket";
             this.Text = "Ticket";
             this.Load += new System.EventHandler(this.Ticket_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.ticketrepBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dSreport)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ticket_repBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ticketrepBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dSreport)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ticketrepBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ticket_repBindingSource)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 

@@ -10,9 +10,30 @@ namespace Bolero.DAL
 {
     class FactureDao : DAO<Facture>
     {
+        public int getlastfct()
+        {
+            int c= 0;
+
+            try
+            {
+                SqlConnection cnx = Connexion.GetConnection();
+                SqlCommand sqlCmd = new SqlCommand("select MAX(IdFact) from Facture", cnx);
+
+
+                c = (int)sqlCmd.ExecuteScalar();
+                
+               
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally { Connexion.closeConnection(); }
+            return c;
+        }
         public Facture getById(int id)
         {
-            Facture c = null;
+            Facture c = null; 
 
             try
             {
@@ -33,7 +54,7 @@ namespace Bolero.DAL
             finally { Connexion.closeConnection(); }
             return c;
         }
-        public int add(Facture f, Commande c)
+        public int add(Facture f)
         {
             int res = 0;
 
@@ -42,12 +63,12 @@ namespace Bolero.DAL
                 SqlConnection cnx = Connexion.GetConnection();
                 CommandeDAO cmddao = new CommandeDAO();
 
-                SqlCommand sqlCmd = new SqlCommand("insert into Facture ( totalTTC,totalHT,totalTVA,idPayement) values (@ttc,@ht,@tva,@idpay)", cnx);
-                //  sqlCmd.Parameters.AddWithValue("idc", c.IdCrediteur);
-                sqlCmd.Parameters.AddWithValue("ttc", c.prixtotal);
-                sqlCmd.Parameters.AddWithValue("ht", sumht(c));
-                sqlCmd.Parameters.AddWithValue("tva", tva(c));
-                sqlCmd.Parameters.AddWithValue("idpay", f.Idpayement);
+                SqlCommand sqlCmd = new SqlCommand("insert into Facture ( totalTTC,totalHT,totalTVA) values (@ttc,@ht,@tva)", cnx);
+                
+                sqlCmd.Parameters.AddWithValue("ttc", f.totalTTC);
+                sqlCmd.Parameters.AddWithValue("ht", f.totalHT);
+                sqlCmd.Parameters.AddWithValue("tva", f.totalTVA);
+
                 res = sqlCmd.ExecuteNonQuery();
 
             }
@@ -177,47 +198,10 @@ namespace Bolero.DAL
             return res;
         }
 
-        public decimal sumht(Commande c)
-        {
-            decimal prix = c.prixtotal - ((c.prixtotal * 18) / 100);
-            return prix;
-        }
-        public decimal tva(Commande c)
-        {
-            return ((c.prixtotal * 18) / 100);
-        }
-        public int addFactToCommande(Facture f, Commande c)
-        {
-            int res = 0;
-
-            try
-            {
-                SqlConnection cnx = Connexion.GetConnection();
-                SqlCommand updatecmd = new SqlCommand("UPDATE Commande SET IdFacture=@idfact where  IdCommande=@idcmd", cnx);
-                updatecmd.Parameters.AddWithValue("idfact", f.IdFact);
-                updatecmd.Parameters.AddWithValue("date", c.IdCommande);
-                int i = (int)updatecmd.ExecuteNonQuery();
-                if (i > 0)
-                {
-                    res = 1;
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-
-            }
-            finally
-            {
-                Connexion.closeConnection();
-            }
-            return res;
-        }
+        
+        
 
 
-        public int add(Facture e)
-        {
-            throw new System.NotImplementedException();
-        }
+      
     }
 }
