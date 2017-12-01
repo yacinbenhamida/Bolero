@@ -13,9 +13,20 @@ namespace Bolero.Layouts
     public partial class Ticket : Form
     {
         int id;
+        private decimal some;
+        private DateTime d;
+        private string p;
         public Ticket()
         {
             InitializeComponent();
+        }
+
+        public Ticket(decimal some, DateTime d, string p)
+        {
+            // TODO: Complete member initialization
+            this.some = some;
+            this.d = d;
+            this.p = p;
         }
         public void setid(int id)
         {

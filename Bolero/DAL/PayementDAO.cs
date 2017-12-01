@@ -68,16 +68,13 @@ namespace Bolero.DAL
             try
             {
                 SqlConnection cnx = Connexion.GetConnection();
-                SqlCommand sqlCmd = new SqlCommand("select * from Payement where idCmd=@id", cnx);
+                SqlCommand sqlCmd = new SqlCommand("select prix from Payement where idCmd=@id", cnx);
                 sqlCmd.Parameters.AddWithValue("id", id);
                 SqlDataReader reader = sqlCmd.ExecuteReader();
                 if (reader.HasRows)
                 {
-                    while (reader.Read())
-                    {
-                         sqlCmd = new SqlCommand("select SUM(prix) from Payement where idCmd=@id", cnx);
-                        sqlCmd.Parameters.AddWithValue("id", id);
-                        tot = (decimal)sqlCmd.ExecuteScalar();
+                    while(reader.Read()){
+                        tot += reader.GetDecimal(0) ;
                     }
                 }
                 else
@@ -151,8 +148,9 @@ namespace Bolero.DAL
             try
             {
                 SqlConnection cnx = Connexion.GetConnection();
-                SqlCommand sqlCmd = new SqlCommand("insert into Payement (idTicketResto,idCmd) values (@tk,@cmd)", cnx);
+                SqlCommand sqlCmd = new SqlCommand("insert into Payement (idTicketResto,idCmd,prix) values (@tk,@cmd,@prix)", cnx);
                 sqlCmd.Parameters.AddWithValue("tk", p.idticket);
+                sqlCmd.Parameters.AddWithValue("prix", p.prix);
                 sqlCmd.Parameters.AddWithValue("cmd", p.idcmd);
                 sqlCmd.ExecuteNonQuery();
                 res = 1;

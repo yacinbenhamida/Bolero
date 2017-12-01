@@ -171,7 +171,10 @@ namespace Bolero.Layouts
         }
         private void btnticket_Click(object sender, RoutedEventArgs e)
         {
-            FormulaireTicket frmTicket = new FormulaireTicket();
+            decimal pr;
+
+            Decimal.TryParse(txtEspece.Text, out pr);
+            FormulaireTicket frmTicket = new FormulaireTicket(pr,this,id,g);
             frmTicket.ShowDialog();
         }
         private void btncheque_Click(object sender, RoutedEventArgs e)

@@ -11,7 +11,71 @@ namespace Bolero.DAL
 {
     class TicketDAO:DAO<Ticket>
     {
+        public Ticket getById(int id)
+        {
+            Ticket t = null;
 
+            try
+            {
+                SqlConnection cnx = Connexion.GetConnection();
+                SqlCommand sqlCmd = new SqlCommand("select * from Ticket where IdTicketResto=@id", cnx);
+                sqlCmd.Parameters.AddWithValue("id", id);
+                SqlDataReader reader = sqlCmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    t = new Ticket(reader.GetDecimal(0),reader.GetDateTime(1), reader.GetString(2));
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally { Connexion.closeConnection(); }
+            return t;
+        }
+        public bool find(Ticket t)
+        {
+            SqlConnection cnx = Connexion.GetConnection();
+            SqlDataReader reader;
+            bool res = false;
+
+            try
+            {
+                SqlCommand sqlCmd = new SqlCommand("select * from Ticket where IdTicketResto=@id", cnx);
+                sqlCmd.Parameters.AddWithValue("id", t.idticket);
+                reader = sqlCmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+
+                    res = true;
+                }
+
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+
+            }
+            return res;
+        }
+        public int getLasttk()
+        {
+            int res = 0;
+            try
+            {
+                SqlConnection cnx = Connexion.GetConnection();
+                SqlCommand cmd = new SqlCommand("select MAX(IdTicketResto) from Ticket", cnx);
+                int done = (int)cmd.ExecuteScalar();
+                if (done > 0)
+                    res = done;
+
+            }
+            catch (SqlException) { throw; }
+            finally { Connexion.closeConnection(); }
+            return res;
+        }
         public int add(Ticket t)
         {
             int res = 0;
@@ -19,8 +83,8 @@ namespace Bolero.DAL
             try
             {
                 SqlConnection cnx = Connexion.GetConnection();
-                SqlCommand sqlCmd = new SqlCommand("insert into Ticket (IdTicketResto,somme,date,nomSociete) values (@idt,@som,@dat,@ns)", cnx);
-                sqlCmd.Parameters.AddWithValue("idt",t.IdTicketResto );
+                SqlCommand sqlCmd = new SqlCommand("insert into Ticket (somme,date,nomSociete) values (@som,@dat,@ns)", cnx);
+                
                 sqlCmd.Parameters.AddWithValue("som",t.somme );
                 sqlCmd.Parameters.AddWithValue("dat", t.date);
                 sqlCmd.Parameters.AddWithValue("ns",t.nomSociete );
@@ -77,7 +141,7 @@ namespace Bolero.DAL
             {
                 SqlConnection cnx = Connexion.GetConnection();
                 SqlCommand cmd = new SqlCommand("UPDATE Ticket SET somme=@som,date=@dat,nomSociete=@ns where IdTicketResto=@idt", cnx);
-                cmd.Parameters.AddWithValue("idt",t.IdTicketResto );
+              
                 cmd.Parameters.AddWithValue("som",t.somme );
                 cmd.Parameters.AddWithValue("dat", t.date);
                 cmd.Parameters.AddWithValue("ns", t.nomSociete);
@@ -108,7 +172,7 @@ namespace Bolero.DAL
                 {
                     while (reader.Read())
                     {
-                        listeT.Add(new Ticket(reader.GetInt32(0), reader.GetFloat(1), reader.GetDateTime(2),reader.GetString(3));
+                        listeT.Add(new Ticket(reader.GetDecimal(0), reader.GetDateTime(1),reader.GetString(2)));
                     }
 
                 }

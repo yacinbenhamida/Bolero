@@ -468,7 +468,7 @@ namespace Bolero.DAL
             SqlConnection cnx = Connexion.GetConnection();
             SqlDataReader reader;
             DateTime now = DateTime.Now;
-            Decimal tot = 0;
+            decimal tot = 0;
             int month = now.Month;
             try
             {
@@ -494,9 +494,12 @@ namespace Bolero.DAL
             {
                 SqlConnection cnx1 = Connexion.GetConnection();
 
-                SqlCommand sqlCmd1 = new SqlCommand("select sum(prixTotal) from Commande where MONTH(datecommande)=" + month + "", cnx1);
+                SqlCommand sqlCmd1 = new SqlCommand("select  prixTotal from Commande where MONTH(datecommande)=" + month + "", cnx1);
 
-                tot = (Decimal)sqlCmd1.ExecuteScalar();
+                SqlDataReader red = sqlCmd1.ExecuteReader();
+                while(red.Read())
+                {tot+= red.GetDecimal(0);
+                }
             }
             catch (SqlException ex1) { throw ex1; }
 
@@ -513,7 +516,7 @@ namespace Bolero.DAL
             SqlConnection cnx = Connexion.GetConnection();
             SqlDataReader reader;
             DateTime now = DateTime.Now;
-            Decimal tot = 0;
+            decimal tot = 0;
             int month = now.Month;
             int day = now.Day;
 
@@ -541,9 +544,11 @@ namespace Bolero.DAL
             {
                 SqlConnection cnx1 = Connexion.GetConnection();
 
-                SqlCommand sqlCmd1 = new SqlCommand("select sum(prixTotal) from Commande where MONTH(datecommande)=" + month + "", cnx1);
-
-                tot = (Decimal)sqlCmd1.ExecuteScalar();
+                SqlCommand sqlCmd1 = new SqlCommand("select prixTotal from Commande where MONTH(datecommande)=" + month + "", cnx1);
+                SqlDataReader red = sqlCmd1.ExecuteReader();
+                    while(red.Read())
+                    {
+                tot += red.GetDecimal(0);}
             }
             catch (SqlException ex1) { throw ex1; }
 
@@ -575,15 +580,18 @@ namespace Bolero.DAL
             List<Commande> list = new List<Commande>();
             SqlConnection cnx = Connexion.GetConnection();
             DateTime now = DateTime.Now;
-            Decimal tot = 0;
+            decimal tot = 0;
             int month = now.Month;
 
 
                                try
             {
-                SqlCommand sqlCmd1 = new SqlCommand("select sum(prixTotal) from Commande where MONTH(datecommande)=" + month + "", cnx);
-
-                 tot = (Decimal)sqlCmd1.ExecuteScalar();
+                SqlCommand sqlCmd1 = new SqlCommand("select prixTotal from Commande where MONTH(datecommande)=" + month + "", cnx);
+                SqlDataReader red = sqlCmd1.ExecuteReader();
+                while (red.Read())
+                {
+                    tot += red.GetDecimal(0) ;
+                }
             }
             catch (SqlException ex1) { throw ex1; }
 
@@ -606,9 +614,12 @@ namespace Bolero.DAL
 
                     try
                     {
-                        SqlCommand sqlCmd1 = new SqlCommand("select sum(prixTotal) from Commande where DAY(datecommande)=" + day + " AND MONTH(datecommande)=" + month + "", cnx);
-
-                        totjour = (Decimal)sqlCmd1.ExecuteScalar();
+                        SqlCommand sqlCmd1 = new SqlCommand("select prixTotal from Commande where DAY(datecommande)=" + day + " AND MONTH(datecommande)=" + month + "", cnx);
+                        SqlDataReader red = sqlCmd1.ExecuteReader();
+                        while (red.Read())
+                        {
+                            totjour += red.GetDecimal(0) ;
+                        }
                     }
                     catch (SqlException ex1) { throw ex1; }
 
