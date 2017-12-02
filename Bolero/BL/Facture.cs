@@ -6,31 +6,38 @@ using System.Threading.Tasks;
 
 namespace Bolero.BL
 {
-    class Facture
-    {
-        public Facture() { }
-         public Facture(int idfact, decimal totalttc, decimal totalht, decimal totaltva, int idpayement)
-         {
-             this.IdFact = idfact;
-             this.totalTTC = totalTTC;
-             this.totalHT = totalHT;
-             this.totalTVA = totalTVA;
-             this.Idpayement = idpayement;
-         
-         }
-         public Facture(decimal totalttc, decimal totalht, decimal totaltva)
-         {
-             
-             this.totalTTC = totalTTC;
-             this.totalHT = totalHT;
-             this.totalTVA = totalTVA;
-             
+    
 
-         }
-        public int IdFact { get; set; }
-        public decimal totalTTC { get; set; }
-        public decimal totalHT { get; set; }
-        public decimal totalTVA{ get; set; }
-        public int Idpayement { get; set; }
+
+
+        class Facture
+        {
+            public int IdFact { get; set; }
+            public Decimal totalTTC { get; set; }
+            public Decimal totalHT { get; set; }
+            public Decimal totalTVA { get; set; }
+            public int Idpayement { get; set; }
+            public Facture()
+            {
+            }
+            public Facture(int idfact, Decimal totalttc, Decimal totalht, Decimal totaltva, int idpayement)
+            {
+                this.IdFact = idfact;
+                this.totalTTC = totalTTC;
+                this.totalHT = totalHT;
+                this.totalTVA = totalTVA;
+                this.Idpayement = idpayement;
+
+            }
+            public Facture(Decimal totalttc, Decimal totalht, Decimal totaltva)
+            {
+
+                this.totalTTC = totalTTC;
+                this.totalHT = totalHT;
+                this.totalTVA = totalTVA;
+            }
+
+        }
     }
-}
+
+

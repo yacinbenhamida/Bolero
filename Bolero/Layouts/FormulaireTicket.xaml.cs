@@ -78,8 +78,8 @@ namespace Bolero.Layouts
             sum = sum - ((sum * 10) / 100);
             if (sum >= prix)
             {
-                Ticket_et_Facture tk = new Ticket_et_Facture();
-                tk.setid(com);
+                TK_et_FK tk = new TK_et_FK(com);
+                
 
                 tk.ShowDialog();
                 CommandeDAO daoc = new CommandeDAO();

@@ -81,7 +81,6 @@
     </ApplicationDefinition>
     <Compile Include="BL\Categorie.cs" />
     <Compile Include="BL\Cheque.cs" />
-    <Compile Include="BL\Facture.cs" />
     <Compile Include="BL\Payement.cs" />
     <Compile Include="BL\Serveur.cs" />
     <Compile Include="BL\Ticket.cs" />
@@ -99,6 +98,7 @@
     <Compile Include="Layouts\Authentification.xaml.cs">
       <DependentUpon>Authentification.xaml</DependentUpon>
     </Compile>
+    <Compile Include="BL\Facture.cs" />
     <Compile Include="Layouts\FormulaireCheque.xaml.cs">
       <DependentUpon>FormulaireCheque.xaml</DependentUpon>
     </Compile>
@@ -116,6 +116,9 @@
     </Compile>
     <Compile Include="Layouts\QuestionSecrete.xaml.cs">
       <DependentUpon>QuestionSecrete.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Layouts\TK et FK.xaml.cs">
+      <DependentUpon>TK et FK.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -229,12 +232,6 @@
     <Compile Include="Layouts\EnregCommeCredit.xaml.cs">
       <DependentUpon>EnregCommeCredit.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Layouts\Facture.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Layouts\Facture.Designer.cs">
-      <DependentUpon>Facture.cs</DependentUpon>
-    </Compile>
     <Compile Include="Layouts\GestionCommande.xaml.cs">
       <DependentUpon>GestionCommande.xaml</DependentUpon>
     </Compile>
@@ -254,6 +251,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Layouts\TK et FK.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Layouts\recettejour.cs">
@@ -268,18 +269,6 @@
     <Compile Include="Layouts\recettemois.Designer.cs">
       <DependentUpon>recettemois.cs</DependentUpon>
     </Compile>
-    <Compile Include="Layouts\Ticket et Facture.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Layouts\Ticket et Facture.Designer.cs">
-      <DependentUpon>Ticket et Facture.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Layouts\Ticket.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Layouts\Ticket.Designer.cs">
-      <DependentUpon>Ticket.cs</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -288,10 +277,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Layouts\Facture.rdlc" />
-    <EmbeddedResource Include="Layouts\Facture.resx">
-      <DependentUpon>Facture.cs</DependentUpon>
-    </EmbeddedResource>
+    <EmbeddedResource Include="Layouts\repFacture.rdlc" />
     <EmbeddedResource Include="Layouts\recettejour.rdlc" />
     <EmbeddedResource Include="Layouts\recettejour.resx">
       <DependentUpon>recettejour.cs</DependentUpon>
@@ -300,14 +286,8 @@
     <EmbeddedResource Include="Layouts\recettemois.resx">
       <DependentUpon>recettemois.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Layouts\Ticket et Facture.resx">
-      <DependentUpon>Ticket et Facture.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Layouts\ticket.rdlc">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Layouts\Ticket.resx">
-      <DependentUpon>Ticket.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

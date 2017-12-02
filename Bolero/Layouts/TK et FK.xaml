@@ -1,0 +1,42 @@
+﻿<Window x:Class="Bolero.Layouts.TK_et_FK"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+         xmlns:rv="clr-namespace:Microsoft.Reporting.WinForms;assembly=Microsoft.ReportViewer.WinForms"
+        Title="TK_et_FK" Height="700" Width="1000">
+    <Grid>
+        <TabControl VerticalAlignment="Stretch" HorizontalAlignment="Stretch" TabStripPlacement="Left" >
+            <TabControl.Resources>
+                <Style TargetType="{x:Type TabItem}">
+                    <Setter Property="Padding" Value="4" />
+                    <Setter Property="HeaderTemplate">
+                        <Setter.Value>
+                            <DataTemplate>
+                                <ContentPresenter Content="{TemplateBinding Content}">
+                                    <ContentPresenter.LayoutTransform>
+                                        <RotateTransform Angle="0" />
+                                    </ContentPresenter.LayoutTransform>
+                                </ContentPresenter>
+                            </DataTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </TabControl.Resources>
+            <TabItem Height="50" x:Name="ticket" Foreground="Black" Header="Ticket"  FontWeight="Bold" FontSize="14" >
+                <ScrollViewer HorizontalScrollBarVisibility="Auto">
+                    <WindowsFormsHost>
+                        <rv:ReportViewer x:Name="reportTicket" ShowStopButton="False" ShowPageNavigationControls="False" ShowBackButton="False" ShowZoomControl="False"/>
+                    </WindowsFormsHost>
+                </ScrollViewer>
+            </TabItem>
+
+            <TabItem Height="50" x:Name="Facture" Foreground="Black" Header="Facture"  FontWeight="Bold" FontSize="14" >
+                <ScrollViewer HorizontalScrollBarVisibility="Auto">
+                    <WindowsFormsHost>
+                        <rv:ReportViewer x:Name="reportFacture" ShowZoomControl="False" ShowStopButton="False" ShowPageNavigationControls="False" ShowBackButton="False" IsDocumentMapWidthFixed="True" PromptAreaCollapsed="False"/>
+                    </WindowsFormsHost>
+                </ScrollViewer>
+            </TabItem>
+        </TabControl>
+
+    </Grid>
+</Window>

@@ -65,8 +65,8 @@ namespace Bolero.Layouts
         GestionCommande g = new GestionCommande();
         private void btnpayer_Click(object sender, RoutedEventArgs e)
         {
-            Layouts.Ticket_et_Facture t = new Ticket_et_Facture();
-            t.setid(id);
+            Layouts.TK_et_FK t = new TK_et_FK(id);
+            
             t.Show();
             this.Close();
             Commande c = new Commande();
@@ -119,10 +119,9 @@ namespace Bolero.Layouts
                 decimal rest = t-t2;
                 
                 MessageBox.Show("reste de Commande = "+rest+"DT");
-                Ticket_et_Facture tk = new Ticket_et_Facture();
-                tk.setid(id);
-                tk.Width = 355;
-                tk.Height = 800;
+                TK_et_FK tk = new TK_et_FK(id);
+                
+                
                 tk.ShowDialog();
                 CommandeDAO daoc = new CommandeDAO();
                 daoc.updateEtat(id);
@@ -148,10 +147,8 @@ namespace Bolero.Layouts
 
             }
             else {
-                Ticket_et_Facture tk = new Ticket_et_Facture();
-                tk.setid(id);
-                tk.Width = 355;
-                tk.Height = 800;
+                TK_et_FK tk = new TK_et_FK(id);
+                
                 tk.ShowDialog();
                 CommandeDAO daoc = new CommandeDAO();
                 daoc.updateEtat(id);

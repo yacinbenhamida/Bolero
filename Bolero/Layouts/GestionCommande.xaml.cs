@@ -17,6 +17,7 @@ using System.Windows.Shapes;
 using Bolero.DAL;
 using Bolero.BL;
 using Microsoft.Reporting.WinForms;
+using Bolero.Layouts;
 namespace Bolero
 {
     /// <summary>
@@ -322,14 +323,12 @@ namespace Bolero
             Commande cm1 = (Commande)dataGrid.SelectedValue;
             int id = cm1.IdCommande;
             
-            Bolero.Layouts.Ticket tk = new Bolero.Layouts.Ticket();
-            tk.setid(id);
-            tk.Width = 355;
-            tk.Height = 800;
+          
             DataSet DSreport = new DSreport();
             DSreport.Reset();
-            tk.ShowDialog();
-            
+          
+            TK_et_FK ne = new TK_et_FK(id);
+            ne.ShowDialog();
 
         }
 
