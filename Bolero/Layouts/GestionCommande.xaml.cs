@@ -360,15 +360,7 @@ namespace Bolero
             Layouts.ModifierCommande modi = new Layouts.ModifierCommande(id);
             modi.ShowDialog();
         }
-        private void btnrecettejour_Click(object sender, RoutedEventArgs e)
-        {
-            Bolero.Layouts.recettejour r = new Bolero.Layouts.recettejour();
-            
-            DataSet DSreport = new DSreport();
-            DSreport.Reset();
 
-            r.Show();
-        }
         private void btnrecettemois_Click(object sender, RoutedEventArgs e)
         {
             Bolero.Layouts.recettemois r = new Bolero.Layouts.recettemois();
@@ -398,6 +390,18 @@ namespace Bolero
             artVendu.Text = Properties.Settings.Default.nombreArticle.ToString() + " Article Vendus";
             txtPrixVente.Text = Properties.Settings.Default.totalPrix.ToString() + " TND";
             Properties.Settings.Default.Save();
+        }
+
+        private void btnmois_Click(object sender, RoutedEventArgs e)
+        {
+            recettemois mois = new recettemois();
+            mois.ShowDialog();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            recettejour jour = new recettejour();
+            jour.ShowDialog();
         }
     }
 }

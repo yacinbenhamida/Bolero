@@ -281,7 +281,7 @@
                         <RowDefinition Height="70"/>
                         <RowDefinition Height="70"/>
                     </Grid.RowDefinitions>
-                    <Button x:Name="btnrecettejour" Content="Recette de jour" HorizontalAlignment="Center" VerticalAlignment="Center" Width="650" Height="50" Foreground="White" Background="#FF5E88E2" FontSize="18" FontWeight="Bold" Click="btnrecettejour_Click"/>
+                    <Button x:Name="btnrecettejour" Content="Recette de jour" HorizontalAlignment="Center" VerticalAlignment="Center" Width="650" Height="50" Foreground="White" Background="#FF5E88E2" FontSize="18" FontWeight="Bold"/>
                     <Button x:Name="btnrecettemois" Grid.Row="1" Content="Recette de mois" HorizontalAlignment="Center" VerticalAlignment="Center" Width="650" Height="50" Foreground="White" Background="#FF0C0B0B" FontSize="18" FontWeight="Bold" Click="btnrecettemois_Click"/>
                 </Grid>
 

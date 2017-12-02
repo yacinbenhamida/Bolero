@@ -117,6 +117,12 @@
     <Compile Include="Layouts\QuestionSecrete.xaml.cs">
       <DependentUpon>QuestionSecrete.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Layouts\recettejour.xaml.cs">
+      <DependentUpon>recettejour.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Layouts\recettemois.xaml.cs">
+      <DependentUpon>recettemois.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Layouts\TK et FK.xaml.cs">
       <DependentUpon>TK et FK.xaml</DependentUpon>
     </Compile>
@@ -251,24 +257,20 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Layouts\recettejour.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Layouts\recettemois.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Layouts\TK et FK.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Layouts\recettejour.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Layouts\recettejour.Designer.cs">
-      <DependentUpon>recettejour.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Layouts\recettemois.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Layouts\recettemois.Designer.cs">
-      <DependentUpon>recettemois.cs</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -277,15 +279,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Layouts\repFacture.rdlc" />
     <EmbeddedResource Include="Layouts\recettejour.rdlc" />
-    <EmbeddedResource Include="Layouts\recettejour.resx">
-      <DependentUpon>recettejour.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Layouts\recettemois.rdlc" />
-    <EmbeddedResource Include="Layouts\recettemois.resx">
-      <DependentUpon>recettemois.cs</DependentUpon>
-    </EmbeddedResource>
+    <EmbeddedResource Include="Layouts\repFacture.rdlc" />
     <EmbeddedResource Include="Layouts\ticket.rdlc">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>

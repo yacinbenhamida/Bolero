@@ -303,15 +303,7 @@ namespace Bolero.Layouts
             Layouts.ModifierCommande modi = new Layouts.ModifierCommande(id);
             modi.ShowDialog();
         }
-        private void btnrecettejour_Click(object sender, RoutedEventArgs e)
-        {
-            Bolero.Layouts.recettejour r = new Bolero.Layouts.recettejour();
-            
-            DataSet DSreport = new DSreport();
-            DSreport.Reset();
-
-            r.Show();
-        }
+     
         private void btnrecettemois_Click(object sender, RoutedEventArgs e)
         {
             Bolero.Layouts.recettemois r = new Bolero.Layouts.recettemois();

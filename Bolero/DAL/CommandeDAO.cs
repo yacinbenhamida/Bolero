@@ -506,7 +506,14 @@ namespace Bolero.DAL
                 {
                     while (reader.Read())
                     {
-                        list.Add(new Commande(reader.GetInt32(0), reader.GetDecimal(1), reader.GetInt32(2), reader.GetInt32(3), reader.GetInt32(4), reader.GetDateTime(6)));
+                        if (reader.IsDBNull(5))
+                        {
+                            list.Add(new Commande(reader.GetInt32(0), reader.GetDecimal(1), reader.GetInt32(2), reader.GetInt32(3), reader.GetInt32(4), reader.GetDateTime(6)));
+                        }
+                        else
+                        {
+                            list.Add(new Commande(reader.GetInt32(0), reader.GetDecimal(1), reader.GetInt32(2), reader.GetInt32(3), reader.GetInt32(4), reader.GetInt32(5), reader.GetDateTime(6)));
+                        }
                     }
 
                 }
@@ -556,7 +563,14 @@ namespace Bolero.DAL
                 {
                     while (reader.Read())
                     {
-                        list.Add(new Commande(reader.GetInt32(0), reader.GetDecimal(1), reader.GetInt32(2), reader.GetInt32(3), reader.GetInt32(4), reader.GetDateTime(6)));
+                        if (reader.IsDBNull(5))
+                        {
+                            list.Add(new Commande(reader.GetInt32(0), reader.GetDecimal(1), reader.GetInt32(2), reader.GetInt32(3), reader.GetInt32(4), reader.GetDateTime(6)));
+                        }
+                        else
+                        {
+                            list.Add(new Commande(reader.GetInt32(0), reader.GetDecimal(1), reader.GetInt32(2), reader.GetInt32(3), reader.GetInt32(4), reader.GetInt32(5), reader.GetDateTime(6)));
+                        }
                     }
 
                 }
