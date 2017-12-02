@@ -11,30 +11,7 @@ namespace Bolero.DAL
     class ArticleDAO : DAO<Article>
     {
 
-        public Article PlatDJ()
-        { 
-            
-            Article res = new Article();
-            try
-            {
-                SqlConnection cnx = Connexion.GetConnection();
-                SqlCommand cmd = new SqlCommand("SELECT * from Article where platJour =@pj ", cnx);
-                cmd.Parameters.AddWithValue("pj", true);
-                SqlDataReader rd = cmd.ExecuteReader();
-                if (rd.HasRows)
-                {
-                    while (rd.Read())
-                    {
-
-                        res = new Article(rd.GetInt32(0), rd.GetString(1), rd.GetDecimal(2), rd.GetInt32(3));
-                    }
-                }
-                
-            }
-            catch (SqlException) { throw; }
-            finally { Connexion.closeConnection(); }
-            return res;
-        }
+        
         public int add(Article a)
         {
             int res = 0;

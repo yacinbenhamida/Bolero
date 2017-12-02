@@ -74,7 +74,7 @@ namespace Bolero
             lstdessert = dao.getArticlesByType("dessert");
             lstboissons = dao.getArticlesByType("boisson");
             lsthors = dao.getArticlesByType("hors d'oeuvre");
-            lstplatdj.Add(dao.PlatDJ());
+            lstplatdj = dao.getArticlesByEtat(true);
             entree.DataContext = lstentree;
             Suite.DataContext = lstsuite;
             boisson.DataContext = lstboissons;
