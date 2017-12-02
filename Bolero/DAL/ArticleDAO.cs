@@ -19,13 +19,16 @@ namespace Bolero.DAL
             try
             {
                 SqlConnection cnx = Connexion.GetConnection();
-                SqlCommand sqlCmd = new SqlCommand("insert into Article (IdArticle, Libelle, Prix, IdCategorie, platJour) values (@id,@lib,@prix,@cat,@plat)", cnx);
-                sqlCmd.Parameters.AddWithValue("id", a.IdArticle);
+                SqlCommand sqlCmd = new SqlCommand("insert into Article (Libelle, Prix, IdCategorie, platJour) values (@lib,@prix,@cat,@plat)", cnx);
                 sqlCmd.Parameters.AddWithValue("lib", a.Libelle);
                 sqlCmd.Parameters.AddWithValue("prix", a.Prix);
                 sqlCmd.Parameters.AddWithValue("cat", a.IdCategorie);
-                sqlCmd.ExecuteNonQuery();
-                res = 1;
+                sqlCmd.Parameters.AddWithValue("plat", false);
+                res = (int)sqlCmd.ExecuteNonQuery();
+                if (res > 0)
+                {
+                    return res;
+                }
             }
             catch (Exception ex)
             {

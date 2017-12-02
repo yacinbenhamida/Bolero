@@ -179,12 +179,16 @@ namespace Bolero.DAL
             try
             {
                 SqlConnection cnx = Connexion.GetConnection();
-                SqlCommand sqlCmd = new SqlCommand("select * from Categorie where libelleCat=@lib", cnx);
+                SqlCommand sqlCmd = new SqlCommand("select IdCat from Categorie where libelleCat=@lib", cnx);
                 sqlCmd.Parameters.AddWithValue("lib", lib);
                 SqlDataReader reader = sqlCmd.ExecuteReader();
-               
-                  res= reader.GetInt32(0);
-                
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        res = reader.GetInt32(0);
+                    }
+                }
                 reader.Close();
             }
             catch (Exception ex)

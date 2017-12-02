@@ -21,6 +21,7 @@ namespace Bolero
     public partial class AjoutPlat : Window
     {
         ArticleDAO dao;
+        CategorieDAO catDAO = new CategorieDAO();
         Article a;
         string tbSel;
         public AjoutPlat(string tbSel)
@@ -65,14 +66,14 @@ namespace Bolero
         {
             if ((!String.IsNullOrEmpty(txtNomPlat.Text)) && (!String.IsNullOrEmpty(txtprix.Text)) && (cmbType.SelectedIndex != -1) && cmbType.SelectedValue != null && cmbType.SelectedItem != null)
             {
-                int lastFetchedId = dao.getNumberOfElements();
+                //int lastFetchedId = dao.getNumberOfElements();
                 a.Libelle = txtNomPlat.Text;
                 a.Prix = Decimal.Parse(txtprix.Text);
-                
-                List<Article> l = new List<Article>();
-                l=dao.getArticlesByType(cmbType.Text);
-                a.IdCategorie = l[0].IdCategorie;
-                a.IdArticle = lastFetchedId + 1;
+
+                //List<Article> l = new List<Article>();
+                int l = catDAO.getIdByLib(cmbType.Text);
+                a.IdCategorie = l;
+                //a.IdArticle = lastFetchedId + 1;
                 try
                 {
                     if (!dao.find(a))
