@@ -20,6 +20,7 @@ using Bolero;
 using Bolero.BL;
 using Bolero.DAL;
 using Bolero.SL;
+using Bolero.Layouts;
 
 
 namespace Bolero
@@ -67,7 +68,7 @@ namespace Bolero
                 {
                     if (LoginSecurity.checkPassword(txtPW.Password.ToString(), 2) == true)
                     {
-                        GestionCommande gcmd = new GestionCommande();
+                        GestionCommandeCaissier gcmd = new GestionCommandeCaissier();
                         this.Visibility = Visibility.Hidden;
                         gcmd.Show();
                         
