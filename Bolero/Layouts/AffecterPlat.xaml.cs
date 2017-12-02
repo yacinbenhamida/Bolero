@@ -50,7 +50,7 @@ namespace Bolero.Layouts
             lstdessert = dao.getArticlesByType("dessert");
             lstboissons = dao.getArticlesByType("boisson");
             lsthors = dao.getArticlesByType("hors d'oeuvre");
-            lstplatdj = dao.getArticlesByType("plat du jour");
+            lstplatdj = dao.getArticlesByEtat(true);
 
             entree.DataContext = lstentree;
             Suite.DataContext = lstsuite;

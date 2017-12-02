@@ -48,7 +48,7 @@ namespace Bolero
 
             DateTime now = DateTime.Now;
             String month = now.Month.ToString();
-
+            dataGridVente.DataContext = dao.historiqueArticle();
             dataGrid.DataContext = daoc.getAll();
             dgmois.DataContext = cdao.getAllMois();
                  dgjour.DataContext = cdao.getAllJour();
@@ -255,6 +255,7 @@ namespace Bolero
                     MessageBox.Show("la table est occupée !");
                     return;
                 }
+                dataGridVente.DataContext = dao.historiqueArticle();
                 this.PerformRefresh();
             }
         }
@@ -387,7 +388,17 @@ namespace Bolero
 
         private void Window_Closed(object sender, EventArgs e)
         {
+            Properties.Settings.Default.nombreArticle = 0;
+            Properties.Settings.Default.totalPrix = 0;
+            Properties.Settings.Default.Save();
             Application.Current.Shutdown();
+        }
+
+        private void TabItem_GotFocus(object sender, RoutedEventArgs e)
+        {
+            artVendu.Text = Properties.Settings.Default.nombreArticle.ToString() + " Article Vendus";
+            txtPrixVente.Text = Properties.Settings.Default.totalPrix.ToString() + " TND";
+            Properties.Settings.Default.Save();
         }
     }
 }

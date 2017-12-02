@@ -383,5 +383,95 @@ namespace Bolero.DAL
             finally { Connexion.closeConnection(); }
             return res;
         }
+
+        public Dictionary<String, decimal> historiqueArticle()
+        {
+            Dictionary<String, decimal> dictHist = new Dictionary<String, decimal>();
+
+            List<int> nbArticle = new List<int>();
+            List<String> lblArticle = new List<String>();
+            List<decimal> PrixArticle = new List<decimal>();
+
+            try
+            {
+                SqlConnection cnx = Connexion.GetConnection();
+                SqlCommand cmd1 = new SqlCommand("SELECT IdArticle FROM Article ", cnx);
+                SqlDataReader reader = cmd1.ExecuteReader();
+                while (reader.Read())
+                {
+                    nbArticle.Add(reader.GetInt32(0));
+                }
+                reader.Close();
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+            finally { Connexion.closeConnection(); }
+
+            try
+            {
+                SqlConnection cnx = Connexion.GetConnection();
+                SqlCommand cmd2 = new SqlCommand("SELECT Libelle FROM Article", cnx);
+                SqlDataReader reader = cmd2.ExecuteReader();
+                while (reader.Read())
+                {
+                    lblArticle.Add(reader.GetString(0));
+                }
+                reader.Close();
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+            finally { Connexion.closeConnection(); }
+
+            try
+            {
+                SqlConnection cnx = Connexion.GetConnection();
+                SqlCommand cmd3 = new SqlCommand("SELECT Prix FROM Article", cnx);
+                SqlDataReader reader = cmd3.ExecuteReader();
+                while (reader.Read())
+                {
+                    PrixArticle.Add(reader.GetDecimal(0));
+                }
+                reader.Close();
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+            finally { Connexion.closeConnection(); }
+
+            try
+            {
+                SqlConnection cnx = Connexion.GetConnection();
+                for (int i = 0; i < nbArticle.Count; i++)
+                {
+                    SqlCommand cmd = new SqlCommand("SELECT COUNT(numArticle) AS nb_Articles FROM lignecmd WHERE numArticle=@art GROUP BY numArticle HAVING COUNT(numArticle)>=1", cnx);
+                    cmd.Parameters.AddWithValue("art", nbArticle[i]);
+                    SqlDataReader reader1 = cmd.ExecuteReader();
+                    while (reader1.Read())
+                    {
+                        decimal totPrix = reader1.GetInt32(0) * PrixArticle[i];
+                        Properties.Settings.Default.nombreArticle += reader1.GetInt32(0);
+                        Properties.Settings.Default.totalPrix += totPrix;
+                        Properties.Settings.Default.Save();
+                        String article = reader1.GetInt32(0) + " x " + lblArticle[i];
+
+                        dictHist.Add(article, totPrix);
+                    }
+                    reader1.Close();
+                }
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+            finally { Connexion.closeConnection(); }
+
+
+            return dictHist;
+        }
     }
 }
