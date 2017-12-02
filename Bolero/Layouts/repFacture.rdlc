@@ -20,8 +20,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox3</rd:DefaultName>
-        <Top>0.28787cm</Top>
-        <Left>1.04987cm</Left>
+        <Top>0.29633cm</Top>
+        <Left>0.25401cm</Left>
         <Height>0.87517cm</Height>
         <Width>4.00283cm</Width>
         <Style>
@@ -49,8 +49,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox4</rd:DefaultName>
-        <Top>1.6637cm</Top>
-        <Left>2.15053cm</Left>
+        <Top>1.7145cm</Top>
+        <Left>0.254cm</Left>
         <Height>0.6cm</Height>
         <Width>3.74883cm</Width>
         <ZIndex>1</ZIndex>
@@ -79,8 +79,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox5</rd:DefaultName>
-        <Top>1.6637cm</Top>
-        <Left>7.10353cm</Left>
+        <Top>1.7145cm</Top>
+        <Left>5.207cm</Left>
         <Height>0.6cm</Height>
         <Width>3.98167cm</Width>
         <ZIndex>2</ZIndex>
@@ -109,8 +109,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox4</rd:DefaultName>
-        <Top>2.94908cm</Top>
-        <Left>2.15054cm</Left>
+        <Top>2.99988cm</Top>
+        <Left>0.25401cm</Left>
         <Height>0.6cm</Height>
         <Width>3.74883cm</Width>
         <ZIndex>3</ZIndex>
@@ -139,8 +139,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox5</rd:DefaultName>
-        <Top>2.94908cm</Top>
-        <Left>7.10353cm</Left>
+        <Top>2.99988cm</Top>
+        <Left>5.207cm</Left>
         <Height>0.6cm</Height>
         <Width>3.98167cm</Width>
         <ZIndex>4</ZIndex>
@@ -465,7 +465,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Sum(Fields!Prix.Value)-((Sum(Fields!Prix.Value)*18)/100)</Value>
-                              <Style />
+                              <Style>
+                                <Format>0.000'DT';(0.000'DT')</Format>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -481,6 +483,7 @@
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
+                        <rd:FormatSymbolCulture>fr-TN</rd:FormatSymbolCulture>
                       </Style>
                     </Textbox>
                   </CellContents>
@@ -495,7 +498,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Sum(Fields!Prix.Value)-(Sum(Fields!Prix.Value)-((Sum(Fields!Prix.Value)*18)/100))</Value>
-                              <Style />
+                              <Style>
+                                <Format>0.000'DT';(0.000'DT')</Format>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -511,6 +516,7 @@
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
+                        <rd:FormatSymbolCulture>fr-TN</rd:FormatSymbolCulture>
                       </Style>
                     </Textbox>
                   </CellContents>
@@ -525,7 +531,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Sum(Fields!Prix.Value)</Value>
-                              <Style />
+                              <Style>
+                                <Format>0.000'DT';(0.000'DT')</Format>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -541,6 +549,7 @@
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
+                        <rd:FormatSymbolCulture>fr-TN</rd:FormatSymbolCulture>
                       </Style>
                     </Textbox>
                   </CellContents>
@@ -574,8 +583,8 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>DataSet1</DataSetName>
-        <Top>4.50003cm</Top>
-        <Left>2.15054cm</Left>
+        <Top>5.39749cm</Top>
+        <Left>0.66084cm</Left>
         <Height>1.2cm</Height>
         <Width>15.78317cm</Width>
         <ZIndex>5</ZIndex>
@@ -600,8 +609,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox24</rd:DefaultName>
-        <Top>6.65903cm</Top>
-        <Left>7.59037cm</Left>
+        <Top>7.55649cm</Top>
+        <Left>6.10067cm</Left>
         <Height>0.6cm</Height>
         <Width>2.5cm</Width>
         <ZIndex>6</ZIndex>
@@ -623,16 +632,20 @@
             <TextRuns>
               <TextRun>
                 <Value>=Sum(Fields!Prix.Value, "DataSet1")</Value>
-                <Style />
+                <Style>
+                  <FontSize>14pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                  <Format>0.000'DT';(0.000'DT')</Format>
+                </Style>
               </TextRun>
             </TextRuns>
             <Style />
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox24</rd:DefaultName>
-        <Top>6.65903cm</Top>
-        <Left>11.28067cm</Left>
-        <Height>0.6cm</Height>
+        <Top>7.55649cm</Top>
+        <Left>9.79097cm</Left>
+        <Height>0.87517cm</Height>
         <Width>4.15304cm</Width>
         <ZIndex>7</ZIndex>
         <Style>
@@ -643,6 +656,7 @@
           <PaddingRight>2pt</PaddingRight>
           <PaddingTop>2pt</PaddingTop>
           <PaddingBottom>2pt</PaddingBottom>
+          <rd:FormatSymbolCulture>fr-TN</rd:FormatSymbolCulture>
         </Style>
       </Textbox>
       <Textbox Name="Textbox26">
@@ -663,8 +677,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox26</rd:DefaultName>
-        <Top>8.5217cm</Top>
-        <Left>3.39937cm</Left>
+        <Top>8.65716cm</Top>
+        <Left>2.3495cm</Left>
         <Height>0.95983cm</Height>
         <Width>4.532cm</Width>
         <ZIndex>8</ZIndex>
@@ -693,8 +707,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox26</rd:DefaultName>
-        <Top>9.93408cm</Top>
-        <Left>4.01554cm</Left>
+        <Top>10.06954cm</Top>
+        <Left>2.96567cm</Left>
         <Height>0.6cm</Height>
         <Width>3.135cm</Width>
         <ZIndex>9</ZIndex>
@@ -708,11 +722,71 @@
           <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
+      <Textbox Name="Textbox2">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Num Facture :</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox2</rd:DefaultName>
+        <Top>4.02167cm</Top>
+        <Left>0.25401cm</Left>
+        <Height>0.6cm</Height>
+        <Width>3.74882cm</Width>
+        <ZIndex>10</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox9">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Fields!idFacture.Value, "DataSet1")</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox2</rd:DefaultName>
+        <Top>4.02167cm</Top>
+        <Left>5.207cm</Left>
+        <Height>0.6cm</Height>
+        <Width>2.5cm</Width>
+        <ZIndex>11</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
     </ReportItems>
-    <Height>4.475in</Height>
+    <Height>4.50061in</Height>
     <Style />
   </Body>
-  <Width>7.06052in</Width>
+  <Width>6.64718in</Width>
   <Page>
     <PageHeight>29.7cm</PageHeight>
     <PageWidth>21cm</PageWidth>
@@ -730,7 +804,7 @@
         <DataProvider>System.Data.DataSet</DataProvider>
         <ConnectString>/* Local Connection */</ConnectString>
       </ConnectionProperties>
-      <rd:DataSourceID>4de8dcbf-6531-44bf-a83a-cf475b8305ba</rd:DataSourceID>
+      <rd:DataSourceID>7b89076f-acf0-499b-83c2-096630b17373</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
@@ -772,6 +846,10 @@
           <DataField>userName</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="idFacture">
+          <DataField>idFacture</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>DSreport</rd:DataSetName>
@@ -784,5 +862,5 @@
     </DataSet>
   </DataSets>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
-  <rd:ReportID>25381a16-1ab3-4e31-a517-d400d6023c22</rd:ReportID>
+  <rd:ReportID>6cce51be-a3eb-4ae8-90c4-281ce7fecd94</rd:ReportID>
 </Report>

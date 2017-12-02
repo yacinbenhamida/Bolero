@@ -1434,6 +1434,8 @@ namespace Bolero {
             
             private global::System.Data.DataColumn columnuserName;
             
+            private global::System.Data.DataColumn columnidFacture;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public ticket_repDataTable() {
@@ -1533,6 +1535,14 @@ namespace Bolero {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn idFactureColumn {
+                get {
+                    return this.columnidFacture;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1568,7 +1578,7 @@ namespace Bolero {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ticket_repRow Addticket_repRow(string Libelle, decimal Prix, System.DateTime datecommande, int NumTable, string nom_serveur, decimal prixTotal, int numcmd, string userName) {
+            public ticket_repRow Addticket_repRow(string Libelle, decimal Prix, System.DateTime datecommande, int NumTable, string nom_serveur, decimal prixTotal, int numcmd, string userName, int idFacture) {
                 ticket_repRow rowticket_repRow = ((ticket_repRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Libelle,
@@ -1578,7 +1588,8 @@ namespace Bolero {
                         nom_serveur,
                         prixTotal,
                         numcmd,
-                        userName};
+                        userName,
+                        idFacture};
                 rowticket_repRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowticket_repRow);
                 return rowticket_repRow;
@@ -1609,6 +1620,7 @@ namespace Bolero {
                 this.columnprixTotal = base.Columns["prixTotal"];
                 this.columnnumcmd = base.Columns["numcmd"];
                 this.columnuserName = base.Columns["userName"];
+                this.columnidFacture = base.Columns["idFacture"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1630,6 +1642,8 @@ namespace Bolero {
                 base.Columns.Add(this.columnnumcmd);
                 this.columnuserName = new global::System.Data.DataColumn("userName", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnuserName);
+                this.columnidFacture = new global::System.Data.DataColumn("idFacture", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnidFacture);
                 this.columnLibelle.AllowDBNull = false;
                 this.columnLibelle.MaxLength = 50;
                 this.columnPrix.AllowDBNull = false;
@@ -3275,6 +3289,22 @@ namespace Bolero {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int idFacture {
+                get {
+                    try {
+                        return ((int)(this[this.tableticket_rep.idFactureColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'idFacture\' in table \'ticket_rep\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableticket_rep.idFactureColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsprixTotalNull() {
                 return this.IsNull(this.tableticket_rep.prixTotalColumn);
             }
@@ -3307,6 +3337,18 @@ namespace Bolero {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetuserNameNull() {
                 this[this.tableticket_rep.userNameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsidFactureNull() {
+                return this.IsNull(this.tableticket_rep.idFactureColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetidFactureNull() {
+                this[this.tableticket_rep.idFactureColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -5152,6 +5194,7 @@ SELECT IdFact, totalTTC, totalHT, totalTVA, idPayement FROM Facture WHERE (IdFac
             tableMapping.ColumnMappings.Add("prixTotal", "prixTotal");
             tableMapping.ColumnMappings.Add("numcmd", "numcmd");
             tableMapping.ColumnMappings.Add("userName", "userName");
+            tableMapping.ColumnMappings.Add("idFacture", "idFacture");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -5168,7 +5211,7 @@ SELECT IdFact, totalTTC, totalHT, totalTVA, idPayement FROM Facture WHERE (IdFac
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT Article.Libelle, Article.Prix, Commande.datecommande, Commande.NumTable, Serveur.nom_serveur, Commande.prixTotal, lignecmd.numcmd, [USER].userName
+            this._commandCollection[0].CommandText = @"SELECT Article.Libelle, Article.Prix, Commande.datecommande, Commande.NumTable, Serveur.nom_serveur, Commande.prixTotal, lignecmd.numcmd, [USER].userName, Commande.idFacture
 FROM     Article INNER JOIN
                   lignecmd ON Article.IdArticle = lignecmd.numArticle INNER JOIN
                   Commande ON lignecmd.numcmd = Commande.IdCommande INNER JOIN

@@ -171,7 +171,7 @@ SELECT IdFact, totalTTC, totalHT, totalTVA, idPayement FROM Facture WHERE (IdFac
               <DbSource ConnectionRef="chConn (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT Article.Libelle, Article.Prix, Commande.datecommande, Commande.NumTable, Serveur.nom_serveur, Commande.prixTotal, lignecmd.numcmd, [USER].userName
+                    <CommandText>SELECT Article.Libelle, Article.Prix, Commande.datecommande, Commande.NumTable, Serveur.nom_serveur, Commande.prixTotal, lignecmd.numcmd, [USER].userName, Commande.idFacture
 FROM     Article INNER JOIN
                   lignecmd ON Article.IdArticle = lignecmd.numArticle INNER JOIN
                   Commande ON lignecmd.numcmd = Commande.IdCommande INNER JOIN
@@ -194,6 +194,7 @@ WHERE  (lignecmd.numcmd = @cmd)</CommandText>
               <Mapping SourceColumn="prixTotal" DataSetColumn="prixTotal" />
               <Mapping SourceColumn="numcmd" DataSetColumn="numcmd" />
               <Mapping SourceColumn="userName" DataSetColumn="userName" />
+              <Mapping SourceColumn="idFacture" DataSetColumn="idFacture" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -340,7 +341,7 @@ WHERE  (CONVERT(Date, Commande.datecommande) = CONVERT(DATE, GETDATE())) AND (Co
   <xs:element name="DSreport" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DSreport" msprop:Generator_UserDSName="DSreport">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Article" msprop:Generator_TableClassName="ArticleDataTable" msprop:Generator_TableVarName="tableArticle" msprop:Generator_TablePropName="Article" msprop:Generator_RowDeletingName="ArticleRowDeleting" msprop:Generator_RowChangingName="ArticleRowChanging" msprop:Generator_RowEvHandlerName="ArticleRowChangeEventHandler" msprop:Generator_RowDeletedName="ArticleRowDeleted" msprop:Generator_UserTableName="Article" msprop:Generator_RowChangedName="ArticleRowChanged" msprop:Generator_RowEvArgName="ArticleRowChangeEvent" msprop:Generator_RowClassName="ArticleRow">
+        <xs:element name="Article" msprop:Generator_TableClassName="ArticleDataTable" msprop:Generator_TableVarName="tableArticle" msprop:Generator_RowChangedName="ArticleRowChanged" msprop:Generator_TablePropName="Article" msprop:Generator_RowDeletingName="ArticleRowDeleting" msprop:Generator_RowChangingName="ArticleRowChanging" msprop:Generator_RowEvHandlerName="ArticleRowChangeEventHandler" msprop:Generator_RowDeletedName="ArticleRowDeleted" msprop:Generator_RowClassName="ArticleRow" msprop:Generator_UserTableName="Article" msprop:Generator_RowEvArgName="ArticleRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="IdArticle" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnIdArticle" msprop:Generator_ColumnPropNameInRow="IdArticle" msprop:Generator_ColumnPropNameInTable="IdArticleColumn" msprop:Generator_UserColumnName="IdArticle" type="xs:int" />
@@ -357,7 +358,7 @@ WHERE  (CONVERT(Date, Commande.datecommande) = CONVERT(DATE, GETDATE())) AND (Co
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="lignecmd" msprop:Generator_TableClassName="lignecmdDataTable" msprop:Generator_TableVarName="tablelignecmd" msprop:Generator_TablePropName="lignecmd" msprop:Generator_RowDeletingName="lignecmdRowDeleting" msprop:Generator_RowChangingName="lignecmdRowChanging" msprop:Generator_RowEvHandlerName="lignecmdRowChangeEventHandler" msprop:Generator_RowDeletedName="lignecmdRowDeleted" msprop:Generator_UserTableName="lignecmd" msprop:Generator_RowChangedName="lignecmdRowChanged" msprop:Generator_RowEvArgName="lignecmdRowChangeEvent" msprop:Generator_RowClassName="lignecmdRow">
+        <xs:element name="lignecmd" msprop:Generator_TableClassName="lignecmdDataTable" msprop:Generator_TableVarName="tablelignecmd" msprop:Generator_RowChangedName="lignecmdRowChanged" msprop:Generator_TablePropName="lignecmd" msprop:Generator_RowDeletingName="lignecmdRowDeleting" msprop:Generator_RowChangingName="lignecmdRowChanging" msprop:Generator_RowEvHandlerName="lignecmdRowChangeEventHandler" msprop:Generator_RowDeletedName="lignecmdRowDeleted" msprop:Generator_RowClassName="lignecmdRow" msprop:Generator_UserTableName="lignecmd" msprop:Generator_RowEvArgName="lignecmdRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="numcmd" msprop:Generator_ColumnVarNameInTable="columnnumcmd" msprop:Generator_ColumnPropNameInRow="numcmd" msprop:Generator_ColumnPropNameInTable="numcmdColumn" msprop:Generator_UserColumnName="numcmd" type="xs:int" minOccurs="0" />
@@ -365,7 +366,7 @@ WHERE  (CONVERT(Date, Commande.datecommande) = CONVERT(DATE, GETDATE())) AND (Co
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Facture" msprop:Generator_TableClassName="FactureDataTable" msprop:Generator_TableVarName="tableFacture" msprop:Generator_TablePropName="Facture" msprop:Generator_RowDeletingName="FactureRowDeleting" msprop:Generator_RowChangingName="FactureRowChanging" msprop:Generator_RowEvHandlerName="FactureRowChangeEventHandler" msprop:Generator_RowDeletedName="FactureRowDeleted" msprop:Generator_UserTableName="Facture" msprop:Generator_RowChangedName="FactureRowChanged" msprop:Generator_RowEvArgName="FactureRowChangeEvent" msprop:Generator_RowClassName="FactureRow">
+        <xs:element name="Facture" msprop:Generator_TableClassName="FactureDataTable" msprop:Generator_TableVarName="tableFacture" msprop:Generator_RowChangedName="FactureRowChanged" msprop:Generator_TablePropName="Facture" msprop:Generator_RowDeletingName="FactureRowDeleting" msprop:Generator_RowChangingName="FactureRowChanging" msprop:Generator_RowEvHandlerName="FactureRowChangeEventHandler" msprop:Generator_RowDeletedName="FactureRowDeleted" msprop:Generator_RowClassName="FactureRow" msprop:Generator_UserTableName="Facture" msprop:Generator_RowEvArgName="FactureRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="IdFact" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnIdFact" msprop:Generator_ColumnPropNameInRow="IdFact" msprop:Generator_ColumnPropNameInTable="IdFactColumn" msprop:Generator_UserColumnName="IdFact" type="xs:int" />
@@ -376,7 +377,7 @@ WHERE  (CONVERT(Date, Commande.datecommande) = CONVERT(DATE, GETDATE())) AND (Co
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="ticket_rep" msprop:Generator_TableClassName="ticket_repDataTable" msprop:Generator_TableVarName="tableticket_rep" msprop:Generator_RowChangedName="ticket_repRowChanged" msprop:Generator_TablePropName="ticket_rep" msprop:Generator_RowDeletingName="ticket_repRowDeleting" msprop:Generator_RowChangingName="ticket_repRowChanging" msprop:Generator_RowEvHandlerName="ticket_repRowChangeEventHandler" msprop:Generator_RowDeletedName="ticket_repRowDeleted" msprop:Generator_RowClassName="ticket_repRow" msprop:Generator_UserTableName="ticket_rep" msprop:Generator_RowEvArgName="ticket_repRowChangeEvent">
+        <xs:element name="ticket_rep" msprop:Generator_TableClassName="ticket_repDataTable" msprop:Generator_TableVarName="tableticket_rep" msprop:Generator_TablePropName="ticket_rep" msprop:Generator_RowDeletingName="ticket_repRowDeleting" msprop:Generator_RowChangingName="ticket_repRowChanging" msprop:Generator_RowEvHandlerName="ticket_repRowChangeEventHandler" msprop:Generator_RowDeletedName="ticket_repRowDeleted" msprop:Generator_UserTableName="ticket_rep" msprop:Generator_RowChangedName="ticket_repRowChanged" msprop:Generator_RowEvArgName="ticket_repRowChangeEvent" msprop:Generator_RowClassName="ticket_repRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Libelle" msprop:Generator_ColumnVarNameInTable="columnLibelle" msprop:Generator_ColumnPropNameInRow="Libelle" msprop:Generator_ColumnPropNameInTable="LibelleColumn" msprop:Generator_UserColumnName="Libelle">
@@ -405,10 +406,11 @@ WHERE  (CONVERT(Date, Commande.datecommande) = CONVERT(DATE, GETDATE())) AND (Co
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+              <xs:element name="idFacture" msprop:Generator_ColumnVarNameInTable="columnidFacture" msprop:Generator_ColumnPropNameInRow="idFacture" msprop:Generator_ColumnPropNameInTable="idFactureColumn" msprop:Generator_UserColumnName="idFacture" type="xs:int" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="DataTable1" msprop:Generator_TableClassName="DataTable1DataTable" msprop:Generator_TableVarName="tableDataTable1" msprop:Generator_RowChangedName="DataTable1RowChanged" msprop:Generator_TablePropName="DataTable1" msprop:Generator_RowDeletingName="DataTable1RowDeleting" msprop:Generator_RowChangingName="DataTable1RowChanging" msprop:Generator_RowEvHandlerName="DataTable1RowChangeEventHandler" msprop:Generator_RowDeletedName="DataTable1RowDeleted" msprop:Generator_RowClassName="DataTable1Row" msprop:Generator_UserTableName="DataTable1" msprop:Generator_RowEvArgName="DataTable1RowChangeEvent">
+        <xs:element name="DataTable1" msprop:Generator_TableClassName="DataTable1DataTable" msprop:Generator_TableVarName="tableDataTable1" msprop:Generator_TablePropName="DataTable1" msprop:Generator_RowDeletingName="DataTable1RowDeleting" msprop:Generator_RowChangingName="DataTable1RowChanging" msprop:Generator_RowEvHandlerName="DataTable1RowChangeEventHandler" msprop:Generator_RowDeletedName="DataTable1RowDeleted" msprop:Generator_UserTableName="DataTable1" msprop:Generator_RowChangedName="DataTable1RowChanged" msprop:Generator_RowEvArgName="DataTable1RowChangeEvent" msprop:Generator_RowClassName="DataTable1Row">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="IdCommande" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnIdCommande" msprop:Generator_ColumnPropNameInRow="IdCommande" msprop:Generator_ColumnPropNameInTable="IdCommandeColumn" msprop:Generator_UserColumnName="IdCommande" type="xs:int" />
@@ -433,7 +435,7 @@ WHERE  (CONVERT(Date, Commande.datecommande) = CONVERT(DATE, GETDATE())) AND (Co
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Commande" msprop:Generator_TableClassName="CommandeDataTable" msprop:Generator_TableVarName="tableCommande" msprop:Generator_TablePropName="Commande" msprop:Generator_RowDeletingName="CommandeRowDeleting" msprop:Generator_RowChangingName="CommandeRowChanging" msprop:Generator_RowEvHandlerName="CommandeRowChangeEventHandler" msprop:Generator_RowDeletedName="CommandeRowDeleted" msprop:Generator_UserTableName="Commande" msprop:Generator_RowChangedName="CommandeRowChanged" msprop:Generator_RowEvArgName="CommandeRowChangeEvent" msprop:Generator_RowClassName="CommandeRow">
+        <xs:element name="Commande" msprop:Generator_TableClassName="CommandeDataTable" msprop:Generator_TableVarName="tableCommande" msprop:Generator_RowChangedName="CommandeRowChanged" msprop:Generator_TablePropName="Commande" msprop:Generator_RowDeletingName="CommandeRowDeleting" msprop:Generator_RowChangingName="CommandeRowChanging" msprop:Generator_RowEvHandlerName="CommandeRowChangeEventHandler" msprop:Generator_RowDeletedName="CommandeRowDeleted" msprop:Generator_RowClassName="CommandeRow" msprop:Generator_UserTableName="Commande" msprop:Generator_RowEvArgName="CommandeRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="IdCommande" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnIdCommande" msprop:Generator_ColumnPropNameInRow="IdCommande" msprop:Generator_ColumnPropNameInTable="IdCommandeColumn" msprop:Generator_UserColumnName="IdCommande" type="xs:int" />
@@ -447,7 +449,7 @@ WHERE  (CONVERT(Date, Commande.datecommande) = CONVERT(DATE, GETDATE())) AND (Co
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="DataTable2" msprop:Generator_TableClassName="DataTable2DataTable" msprop:Generator_TableVarName="tableDataTable2" msprop:Generator_TablePropName="DataTable2" msprop:Generator_RowDeletingName="DataTable2RowDeleting" msprop:Generator_RowChangingName="DataTable2RowChanging" msprop:Generator_RowEvHandlerName="DataTable2RowChangeEventHandler" msprop:Generator_RowDeletedName="DataTable2RowDeleted" msprop:Generator_UserTableName="DataTable2" msprop:Generator_RowChangedName="DataTable2RowChanged" msprop:Generator_RowEvArgName="DataTable2RowChangeEvent" msprop:Generator_RowClassName="DataTable2Row">
+        <xs:element name="DataTable2" msprop:Generator_TableClassName="DataTable2DataTable" msprop:Generator_TableVarName="tableDataTable2" msprop:Generator_RowChangedName="DataTable2RowChanged" msprop:Generator_TablePropName="DataTable2" msprop:Generator_RowDeletingName="DataTable2RowDeleting" msprop:Generator_RowChangingName="DataTable2RowChanging" msprop:Generator_RowEvHandlerName="DataTable2RowChangeEventHandler" msprop:Generator_RowDeletedName="DataTable2RowDeleted" msprop:Generator_RowClassName="DataTable2Row" msprop:Generator_UserTableName="DataTable2" msprop:Generator_RowEvArgName="DataTable2RowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="IdCommande" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnIdCommande" msprop:Generator_ColumnPropNameInRow="IdCommande" msprop:Generator_ColumnPropNameInTable="IdCommandeColumn" msprop:Generator_UserColumnName="IdCommande" type="xs:int" />
@@ -497,9 +499,9 @@ WHERE  (CONVERT(Date, Commande.datecommande) = CONVERT(DATE, GETDATE())) AND (Co
   </xs:element>
   <xs:annotation>
     <xs:appinfo>
-      <msdata:Relationship name="FK__lignecmd__numArt__57A801BA" msdata:parent="Article" msdata:child="lignecmd" msdata:parentkey="IdArticle" msdata:childkey="numArticle" msprop:Generator_UserChildTable="lignecmd" msprop:Generator_ChildPropName="GetlignecmdRows" msprop:Generator_UserRelationName="FK__lignecmd__numArt__57A801BA" msprop:Generator_ParentPropName="ArticleRow" msprop:Generator_RelationVarName="relationFK__lignecmd__numArt__57A801BA" msprop:Generator_UserParentTable="Article" />
-      <msdata:Relationship name="FK_lignecmd_Commande1" msdata:parent="Commande" msdata:child="lignecmd" msdata:parentkey="IdCommande" msdata:childkey="numcmd" msprop:Generator_UserChildTable="lignecmd" msprop:Generator_ChildPropName="GetlignecmdRows" msprop:Generator_UserRelationName="FK_lignecmd_Commande1" msprop:Generator_RelationVarName="relationFK_lignecmd_Commande1" msprop:Generator_UserParentTable="Commande" msprop:Generator_ParentPropName="CommandeRow" />
-      <msdata:Relationship name="FK__Commande__idFact__6CA31EA01" msdata:parent="Facture" msdata:child="Commande" msdata:parentkey="IdFact" msdata:childkey="idFacture" msprop:Generator_UserChildTable="Commande" msprop:Generator_ChildPropName="GetCommandeRows" msprop:Generator_UserRelationName="FK__Commande__idFact__6CA31EA01" msprop:Generator_ParentPropName="FactureRow" msprop:Generator_RelationVarName="relationFK__Commande__idFact__6CA31EA01" msprop:Generator_UserParentTable="Facture" />
+      <msdata:Relationship name="FK__lignecmd__numArt__57A801BA" msdata:parent="Article" msdata:child="lignecmd" msdata:parentkey="IdArticle" msdata:childkey="numArticle" msprop:Generator_UserChildTable="lignecmd" msprop:Generator_ChildPropName="GetlignecmdRows" msprop:Generator_UserRelationName="FK__lignecmd__numArt__57A801BA" msprop:Generator_RelationVarName="relationFK__lignecmd__numArt__57A801BA" msprop:Generator_UserParentTable="Article" msprop:Generator_ParentPropName="ArticleRow" />
+      <msdata:Relationship name="FK_lignecmd_Commande1" msdata:parent="Commande" msdata:child="lignecmd" msdata:parentkey="IdCommande" msdata:childkey="numcmd" msprop:Generator_UserChildTable="lignecmd" msprop:Generator_ChildPropName="GetlignecmdRows" msprop:Generator_UserRelationName="FK_lignecmd_Commande1" msprop:Generator_ParentPropName="CommandeRow" msprop:Generator_RelationVarName="relationFK_lignecmd_Commande1" msprop:Generator_UserParentTable="Commande" />
+      <msdata:Relationship name="FK__Commande__idFact__6CA31EA01" msdata:parent="Facture" msdata:child="Commande" msdata:parentkey="IdFact" msdata:childkey="idFacture" msprop:Generator_UserChildTable="Commande" msprop:Generator_ChildPropName="GetCommandeRows" msprop:Generator_UserRelationName="FK__Commande__idFact__6CA31EA01" msprop:Generator_RelationVarName="relationFK__Commande__idFact__6CA31EA01" msprop:Generator_UserParentTable="Facture" msprop:Generator_ParentPropName="FactureRow" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>
