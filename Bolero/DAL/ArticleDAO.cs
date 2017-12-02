@@ -348,8 +348,8 @@ namespace Bolero.DAL
             try
             {
                 SqlConnection cnx = Connexion.GetConnection();
-                SqlCommand cmd = new SqlCommand("UPDATE Article SET platJour=@etat where IdArticle=@id", cnx);
-                cmd.Parameters.AddWithValue("id", obj.IdArticle);
+                SqlCommand cmd = new SqlCommand("UPDATE Article SET platJour=@etat where platJour='True'", cnx);
+                
                 cmd.Parameters.AddWithValue("etat", false);
 
                 int done = (int)cmd.ExecuteNonQuery();

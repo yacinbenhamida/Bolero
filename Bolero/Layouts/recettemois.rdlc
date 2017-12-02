@@ -568,7 +568,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox20</rd:DefaultName>
-        <Top>6.1722cm</Top>
+        <Top>5.31876cm</Top>
         <Left>11.77119cm</Left>
         <Height>1.0445cm</Height>
         <Width>3.64134cm</Width>
@@ -602,7 +602,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox20</rd:DefaultName>
-        <Top>6.1722cm</Top>
+        <Top>5.31876cm</Top>
         <Left>15.48309cm</Left>
         <Height>1.0445cm</Height>
         <Width>4.67083cm</Width>
@@ -652,13 +652,13 @@
         </Style>
       </Textbox>
     </ReportItems>
-    <Height>3.15833in</Height>
+    <Height>2.64166in</Height>
     <Style />
   </Body>
   <Width>8.03367in</Width>
   <Page>
-    <PageHeight>29.7cm</PageHeight>
-    <PageWidth>21cm</PageWidth>
+    <PageHeight>21cm</PageHeight>
+    <PageWidth>29.7cm</PageWidth>
     <LeftMargin>2cm</LeftMargin>
     <RightMargin>2cm</RightMargin>
     <TopMargin>2cm</TopMargin>

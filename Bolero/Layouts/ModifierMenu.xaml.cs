@@ -172,7 +172,11 @@ namespace Bolero
         private void btn_Click(object sender, RoutedEventArgs e)
         {
             btnModifier.IsEnabled = true;
-            btnSupprimer.IsEnabled = true;
+            if (tbPJ.IsSelected == true)
+            {
+                btnSupprimer.IsEnabled = false;
+            }
+            else btnSupprimer.IsEnabled = true;
             Button b = (Button)sender;
             String nombtn=b.Name.Substring(3);
            Id = Int32.Parse(nombtn);
@@ -276,27 +280,42 @@ namespace Bolero
         Article a = new Article();
         private void btnAddPlatJour_Click(object sender, RoutedEventArgs e)
         {
-            a = dao.getById(Id);
-            lstentreePJ.Add(a);
-            dao.PlatJourEtatTrue(a);
-            if (PJ.Items.Count == 0)
+           
+            try
             {
-                for (int j = 0; j < lstentreePJ.Count; j++)
+                a = dao.getById(Id);
+                lstentreePJ.Add(a);
+               int re= dao.PlatJourEtatFalse(a);
+                dao.PlatJourEtatTrue(a);
+                if (re == 0)
                 {
-                    Button btn = new Button();
-                    btn.Name = "btn" + lstentreePJ[j].IdArticle;
-                    btn.Content = lstentreePJ[j].Libelle;
-                    btn.Click += new RoutedEventHandler(this.btn_Click);
-                    btn.Background = Brushes.Yellow;
-                    btn.Foreground = Brushes.Black;
-                    PJ.Items.Add(btn);
+                    for (int j = 0; j < lstentreePJ.Count; j++)
+                    {
+                        Button btn = new Button();
+                        btn.Name = "btn" + lstentreePJ[j].IdArticle;
+                        btn.Content = lstentreePJ[j].Libelle;
+                        btn.Click += new RoutedEventHandler(this.btn_Click);
+                        btn.Background = Brushes.Yellow;
+                        btn.Foreground = Brushes.Black;
+                        PJ.Items.Add(btn);
+                        
+                    }
                 }
+                else MessageBox.Show("il ya un plat de jour exist");
+
             }
+            catch (Exception)
+            {
+                MessageBox.Show("il ya un plat de jour exist");
+                
+            }
+            PJ.Items.Refresh();
         }
 
         private void tbEnt_GotFocus(object sender, RoutedEventArgs e)
         {
-            btnAddPlatJour.IsEnabled = true;
+            btnSupprimer.IsEnabled = true;
+            btnAddPlatJour.IsEnabled = false;
             btnRemovePlatJour.IsEnabled = false;
         }
 
@@ -304,30 +323,36 @@ namespace Bolero
         {
             btnAddPlatJour.IsEnabled = true;
             btnRemovePlatJour.IsEnabled = false;
+            btnSupprimer.IsEnabled = true;
         }
 
         private void tbHO_GotFocus(object sender, RoutedEventArgs e)
         {
             btnAddPlatJour.IsEnabled = false;
             btnRemovePlatJour.IsEnabled = false;
+            btnSupprimer.IsEnabled = true;
         }
 
         private void tbDes_GotFocus(object sender, RoutedEventArgs e)
         {
             btnAddPlatJour.IsEnabled = false;
             btnRemovePlatJour.IsEnabled = false;
+            btnSupprimer.IsEnabled = true;
         }
 
         private void tbBoiss_GotFocus(object sender, RoutedEventArgs e)
         {
             btnAddPlatJour.IsEnabled = false;
             btnRemovePlatJour.IsEnabled = false;
+            btnSupprimer.IsEnabled = true;
         }
 
         private void tbPJ_GotFocus(object sender, RoutedEventArgs e)
         {
             btnAddPlatJour.IsEnabled = false;
             btnRemovePlatJour.IsEnabled = true;
+            btnSupprimer.IsEnabled = false;
+            
         }
 
         private void btnRemovePlatJour_Click(object sender, RoutedEventArgs e)
