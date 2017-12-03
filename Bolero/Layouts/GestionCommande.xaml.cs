@@ -25,9 +25,10 @@ namespace Bolero
     /// </summary>
     public partial class GestionCommande : Window
     {
-
+        TableDAO daot = new TableDAO();
         ArticleDAO dao = new ArticleDAO();
         CommandeDAO cdao = new CommandeDAO();
+        private List<BL.Table> listT = new List<BL.Table>();
         private List<Commande> lstCom = new List<Commande>();
         private List<Article> lstentree = new List<Article>();
         private List<Article> lstsuite = new List<Article>();
@@ -403,5 +404,78 @@ namespace Bolero
             recettejour jour = new recettejour();
             jour.ShowDialog();
         }
+
+
+
+        private void etat(Button button)
+        {
+
+            int i;
+
+            string a = button.Name;
+            string b = a.Substring(1, 1);
+
+            listT = daot.getAll();
+
+
+            for (i = 0; i < 10; i++)
+                if (listT[i].Etat == true && listT[i].NumTable == int.Parse(b))
+                {
+                    button.IsEnabled = false;
+
+                }
+                else
+                    button.IsEnabled = true;
+
+        }
+
+        private void t1_Click(object sender, RoutedEventArgs e)
+        {
+            etat(t1);
+        }
+
+        private void t2_Click(object sender, RoutedEventArgs e)
+        {
+            etat(t2);
+        }
+
+        private void t3_Click(object sender, RoutedEventArgs e)
+        {
+            etat(t3);
+        }
+
+        private void t4_Click(object sender, RoutedEventArgs e)
+        {
+            etat(t4);
+        }
+
+        private void t5_Click(object sender, RoutedEventArgs e)
+        {
+            etat(t5);
+        }
+
+        private void t6_Click(object sender, RoutedEventArgs e)
+        {
+            etat(t6);
+        }
+
+        private void t7_Click(object sender, RoutedEventArgs e)
+        {
+            etat(t7);
+        }
+
+        private void t8_Click(object sender, RoutedEventArgs e)
+        {
+            etat(t8);
+        }
+
+        private void t9_Click(object sender, RoutedEventArgs e)
+        {
+            etat(t9);
+        }
+
+
+
+
     }
 }
