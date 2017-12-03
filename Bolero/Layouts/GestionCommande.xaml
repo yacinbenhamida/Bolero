@@ -362,15 +362,15 @@
             <TabItem Foreground="Black" Header="Etat.Resto" Background="#FFACA5A5" FontWeight="Bold" FontSize="14">
                 <Border BorderBrush="Black" BorderThickness="2" Margin="10,16,3,-3">
                     <Grid Name="Grid1" Background="AliceBlue" Margin="8,38,0,8" HorizontalAlignment="Left" Width="1148">
-                        <Button   FontSize="40" Content="1" Name="t1"  Width="220" Height="140"  Margin="0,4,928,511" IsEnabledChanged="table1_IsEnabledChanged" Click="t1_Click"/>
-                        <Button FontSize="40"  Content="2" Name="t2"  Width="220" Height="140"  Margin="220,4,708,511" IsEnabledChanged="table1_IsEnabledChanged" RenderTransformOrigin="0.829,5.55"/>
-                        <Button FontSize="40" Content="3" Name="t3"  Width="220" Height="140"  Margin="440,4,488,511" IsEnabledChanged="table1_IsEnabledChanged"/>
-                        <Button FontSize="40" Content="4" Name="t4"  Width="220" Height="140"  Margin="660,4,268,511" IsEnabledChanged="table1_IsEnabledChanged" RenderTransformOrigin="1.438,-0.675"/>
-                        <Button FontSize="40" Content="5" Name="t5"  Width="220" Height="140"  Margin="880,4,48,511" IsEnabledChanged="table1_IsEnabledChanged"/>
-                        <Button FontSize="40" Content="6" Name="t6"  Width="220" Height="140"  Margin="0,144,928,371" IsEnabledChanged="table1_IsEnabledChanged"/>
-                        <Button FontSize="40" Content="7" Name="t7"  Width="220" Height="140"  Margin="220,144,708,371" IsEnabledChanged="table1_IsEnabledChanged"/>
-                        <Button FontSize="40" Content="8" Name="t8"  Width="220" Height="140"  Margin="440,144,488,371" IsEnabledChanged="table1_IsEnabledChanged"/>
-                        <Button FontSize="40" Content="9" Name="t9"  Width="220" Height="140"  Margin="660,144,268,371" IsEnabledChanged="table1_IsEnabledChanged"/>
+                        <Button   FontSize="40" Content="1" Name="t1"  Width="220" Height="140"  Margin="0,4,928,511"/>
+                        <Button FontSize="40"  Content="2" Name="t2"  Width="220" Height="140"  Margin="220,4,708,511" RenderTransformOrigin="0.829,5.55"/>
+                        <Button FontSize="40" Content="3" Name="t3"  Width="220" Height="140"  Margin="440,4,488,511" />
+                        <Button FontSize="40" Content="4" Name="t4"  Width="220" Height="140"  Margin="660,4,268,511" RenderTransformOrigin="1.438,-0.675"/>
+                        <Button FontSize="40" Content="5" Name="t5"  Width="220" Height="140"  Margin="880,4,48,511"/>
+                        <Button FontSize="40" Content="6" Name="t6"  Width="220" Height="140"  Margin="0,144,928,371"/>
+                        <Button FontSize="40" Content="7" Name="t7"  Width="220" Height="140"  Margin="220,144,708,371"/>
+                        <Button FontSize="40" Content="8" Name="t8"  Width="220" Height="140"  Margin="440,144,488,371"/>
+                        <Button FontSize="40" Content="9" Name="t9"  Width="220" Height="140"  Margin="660,144,268,371"/>
                         <Label Content="Etat des Tables"  FontWeight="Bold" FontSize="18" HorizontalAlignment="Left" Margin="0,-35,0,0" VerticalAlignment="Top" RenderTransformOrigin="-10.239,-5.512"/>
                         <Label Content="Etat des Tables"  FontWeight="Bold" FontSize="18" HorizontalAlignment="Left" Margin="0,-35,0,0" VerticalAlignment="Top" RenderTransformOrigin="-10.239,-5.512"/>
                         
