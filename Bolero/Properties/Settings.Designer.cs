@@ -26,11 +26,46 @@ namespace Bolero.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\v11.0;AttachDbFilename=C:\\Users\\USER\\Desktop\\Bolero\\MergeTo" +
-            "master\\Bolero\\Bolero\\Resources\\BoleroDB.mdf;Integrated Security=True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\v11.0;AttachDbFilename=\"C:\\Users\\USER\\Desktop\\Bolero\\new ma" +
+            "ster\\Bolero\\Bolero\\Resources\\BoleroDB.mdf\";Integrated Security=True")]
         public string chConn {
             get {
                 return ((string)(this["chConn"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\v11.0;AttachDbFilename=|DataDirectory|\\Resources\\BoleroDB.m" +
+            "df;Integrated Security=True")]
+        public string BoleroDBConnectionString {
+            get {
+                return ((string)(this["BoleroDBConnectionString"]));
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int nombreArticle {
+            get {
+                return ((int)(this["nombreArticle"]));
+            }
+            set {
+                this["nombreArticle"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public decimal totalPrix {
+            get {
+                return ((decimal)(this["totalPrix"]));
+            }
+            set {
+                this["totalPrix"] = value;
             }
         }
     }

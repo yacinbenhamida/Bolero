@@ -17,7 +17,6 @@
             <ComboBoxItem >entree</ComboBoxItem>
             <ComboBoxItem >suite</ComboBoxItem>
             <ComboBoxItem >hors d'oeuvre</ComboBoxItem>
-            <ComboBoxItem >plat du jour</ComboBoxItem>
             <ComboBoxItem >dessert</ComboBoxItem>
             <ComboBoxItem >boisson</ComboBoxItem>
         </ComboBox>

@@ -9,21 +9,48 @@ namespace Bolero.BL
     class Commande
     {
 
+
        // public static int _IdC;
         public int IdCommande { get; set; }
-        public int NumTable { get; set; }
-        public DateTime DateCommande { get; set; }
-        public string NomServeur { get; set; }
+        public decimal prixtotal { get; set; }
+        public int NumTable { get; set; }  
+        public int idserveur { get; set; }
         public int Id { get; set; } // iduser
+        public int idfacture { get; set; }
+        public DateTime datecommande { get; set; }
 
-        public Commande() { }
-        public Commande(int IdC,int numtable, DateTime datecommande, string nomserveur, int idOp)
+        public Commande() { this.prixtotal = 0; }
+        public Commande(int IdC, decimal prix, int numtable, int nomserveur, int idOp, DateTime datecommande)
         {
             this.IdCommande = IdC ;
             this.NumTable = numtable;
-            this.DateCommande = datecommande;
-            this.NomServeur = nomserveur;
+            this.datecommande = datecommande;
+            this.prixtotal = prix;
+            this.idserveur = nomserveur;
+            //this.idfacture = 0;
             this.Id = idOp;  
         }
+        public Commande(int IdC,decimal prix, int numtable, int nomserveur, int idOp,int idfacture, DateTime datecommande)
+        {
+            this.IdCommande = IdC;
+            this.prixtotal = prix;
+            this.NumTable = numtable;
+            this.datecommande = datecommande;
+            this.idserveur = nomserveur;
+            this.idfacture = idfacture;
+            this.Id = idOp;
+        }
+
+        public Commande(int IdC, int numtable, int nomserveur, int idOp, DateTime datecommande)
+        {
+            this.IdCommande = IdC;
+            this.NumTable = numtable;
+            this.datecommande = datecommande;
+            this.idserveur = nomserveur;
+            //this.idfacture = 0;
+            this.Id = idOp;
+        }
+
+       
     }
 }

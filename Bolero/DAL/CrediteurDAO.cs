@@ -13,7 +13,26 @@ namespace Bolero.DAL
     {
         public Crediteur getById(int id)
         {
-            return null;
+            Crediteur c= null;
+
+            try
+            {
+                SqlConnection cnx = Connexion.GetConnection();
+                SqlCommand sqlCmd = new SqlCommand("select * from Client_Crediteurs where IdCommande=@id", cnx);
+                sqlCmd.Parameters.AddWithValue("id", id);
+                SqlDataReader reader = sqlCmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    c = new Crediteur(reader.GetInt32(0), reader.GetString(1), reader.GetInt32(2), reader.GetDecimal(3), reader.GetString(4), reader.GetInt32(5));
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally { Connexion.closeConnection(); }
+            return c;
         }
         public int add(Crediteur c)
         {
@@ -23,15 +42,14 @@ namespace Bolero.DAL
             {
                 SqlConnection cnx = Connexion.GetConnection();
                 CommandeDAO cmddao = new CommandeDAO();
-                sum = cmddao.SumCommande(c.Idcmd);
-                SqlCommand sqlCmd = new SqlCommand("insert into crediteur ( nomprenom, cin , adresse, tel, MontantCredit,Idcmd) values (@nomprenom,@cin,@adresse,@tel,@MontC,@idcmd)", cnx);
+                Commande cmd = cmddao.getById(c.Idcmd);
+                sum = cmd.prixtotal;
+                SqlCommand sqlCmd = new SqlCommand("insert into Client_Crediteurs ( nomprenom, cin,totalCmdTTC , tel,idCommande) values (@nomprenom,@cin,@prix,@tel,@idcmd)", cnx);
               //  sqlCmd.Parameters.AddWithValue("idc", c.IdCrediteur);
                 sqlCmd.Parameters.AddWithValue("nomprenom", c.nomprenom);
                 sqlCmd.Parameters.AddWithValue("cin", c.cin);
-                sqlCmd.Parameters.AddWithValue("adresse", c.adresse);
-
+                sqlCmd.Parameters.AddWithValue("prix", c.MontantCredit);
                 sqlCmd.Parameters.AddWithValue("tel",c.tel );
-                sqlCmd.Parameters.AddWithValue("MontC", sum);
                 sqlCmd.Parameters.AddWithValue("idcmd", c.Idcmd);
                res= sqlCmd.ExecuteNonQuery();
                 
@@ -56,7 +74,7 @@ namespace Bolero.DAL
             SqlConnection cnx = Connexion.GetConnection();
             try
             {
-                SqlCommand sqlCmd = new SqlCommand("delete from crediteur where  IdCrediteur=@id", cnx);
+                SqlCommand sqlCmd = new SqlCommand("delete from Client_Crediteurs where  IdCrediteur=@id", cnx);
                 sqlCmd.Parameters.AddWithValue("id", id);
                 res = sqlCmd.ExecuteNonQuery();
                 if (res > 0)
@@ -86,12 +104,10 @@ namespace Bolero.DAL
             try
             {
                 SqlConnection cnx = Connexion.GetConnection();
-                SqlCommand cmd = new SqlCommand("UPDATE crediteur SET NomPrenom=@nomprenom,CIN=@cin,Numtel=@numt,Adresse=@adresse,MontantCredit=@montC,Idcmd=@idcmd where IdCrediteur=@id", cnx);
-                cmd.Parameters.AddWithValue("id", crd.IdCrediteur);
+                SqlCommand cmd = new SqlCommand("UPDATE Client_Crediteurs SET nom_prenomCred=@nomprenom,cin=@cin,totalCmdTTC=@montC,tel=@numt,idCommande=@idcmd where IdCrediteur=@id", cnx);
                 cmd.Parameters.AddWithValue("nomprenom", crd.nomprenom);
                 cmd.Parameters.AddWithValue("cin", crd.cin);
                 cmd.Parameters.AddWithValue("numt",crd.tel);
-                cmd.Parameters.AddWithValue("adresse", crd.adresse);
                 cmd.Parameters.AddWithValue("MontC", crd.MontantCredit);
                 cmd.Parameters.AddWithValue("idcmd", crd.Idcmd);
                 int done = (int)cmd.ExecuteNonQuery();
@@ -115,13 +131,13 @@ namespace Bolero.DAL
             SqlDataReader reader;
             try
             {
-                SqlCommand sqlCmd = new SqlCommand("select * from crediteur", cnx);
+                SqlCommand sqlCmd = new SqlCommand("select * from Client_Crediteurs", cnx);
                 reader = sqlCmd.ExecuteReader();
                 if (reader.HasRows)
                 {
                     while (reader.Read())
                     {
-                        listc.Add(new Crediteur(reader.GetInt32(0), reader.GetString(1), reader.GetInt32(2), reader.GetString(3),reader.GetString(4),reader.GetFloat(5),reader.GetInt32(6)));
+                        listc.Add(new Crediteur(reader.GetInt32(0), reader.GetString(1), reader.GetInt32(2),reader.GetDecimal(3),reader.GetString(4),reader.GetInt32(5)));
                     }
 
                 }
@@ -146,7 +162,7 @@ namespace Bolero.DAL
 
             try
             {
-                SqlCommand sqlCmd = new SqlCommand("select * from crediteur where IdCrediteur=@id", cnx);
+                SqlCommand sqlCmd = new SqlCommand("select * from Client_Crediteurs where IdCrediteur=@id", cnx);
                 sqlCmd.Parameters.AddWithValue("id",c.IdCrediteur);
                 reader = sqlCmd.ExecuteReader();
                 if (reader.HasRows)

@@ -1,5 +1,5 @@
 ![Screenshot](logo.png)
-<h1> Gestion Commande BRANCH</h1>
+<h1> BRANCHE TEMPORAIRE POUR LES NOUVEAUX CORRECTIFS ATTRIBUEES POUR LA PROCHAINE RELEASE</h1>
 https://drive.google.com/drive/folders/0B58kzZBg74OyN2JRd3hVU0hSUTA?usp=sharing
 
 <h1> En cas de conflit lors d'un commit</h1>

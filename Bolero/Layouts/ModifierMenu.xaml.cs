@@ -22,7 +22,7 @@ namespace Bolero
     {
         private int Id { get; set; }
         ArticleDAO dao = new ArticleDAO();
-       
+        string tbSelected = "";
         private List<Article> lstentree = new List<Article>();
         private List<Article> lstsuite = new List<Article>();
         private List<Article> lsthors = new List<Article>();
@@ -34,7 +34,8 @@ namespace Bolero
             InitializeComponent();
             btnModifier.IsEnabled = false;
             btnSupprimer.IsEnabled = false;
-            
+            btnAddPlatJour.IsEnabled = false;
+            btnRemovePlatJour.IsEnabled = false;
         }
 
         public void initUI() 
@@ -44,7 +45,7 @@ namespace Bolero
             lstdessert = dao.getArticlesByType("dessert");
             lstboissons = dao.getArticlesByType("boisson");
             lsthors = dao.getArticlesByType("hors d'oeuvre");
-            lstplatdj = dao.getArticlesByType("plat du jour");
+            lstplatdj = dao.getArticlesByEtat(true);
 
             entree.DataContext = lstentree;
             Suite.DataContext = lstsuite;
@@ -171,7 +172,11 @@ namespace Bolero
         private void btn_Click(object sender, RoutedEventArgs e)
         {
             btnModifier.IsEnabled = true;
-            btnSupprimer.IsEnabled = true;
+            if (tbPJ.IsSelected == true)
+            {
+                btnSupprimer.IsEnabled = false;
+            }
+            else btnSupprimer.IsEnabled = true;
             Button b = (Button)sender;
             String nombtn=b.Name.Substring(3);
            Id = Int32.Parse(nombtn);
@@ -206,7 +211,7 @@ namespace Bolero
         private void btnModifier_Click(object sender, RoutedEventArgs e)
         {
             ModifierPlat modif = new ModifierPlat(Id);
-            modif.Closing += new System.ComponentModel.CancelEventHandler(this.Window2_Closing);
+           modif.Closing += new System.ComponentModel.CancelEventHandler(this.Window2_Closing);
                 modif.ShowDialog();
                 
         }
@@ -218,25 +223,30 @@ namespace Bolero
         }
 
         private void btnAjouter_Click(object sender, RoutedEventArgs e)
-        {   
-            AjoutPlat ajout = new AjoutPlat();
+        {
+            refreshTabs();
+            initUI();
+            AjoutPlat ajout = new AjoutPlat(tbSelected);
             ajout.Closing += new System.ComponentModel.CancelEventHandler(this.Window3_Closing);
             ajout.ShowDialog();
         }
 
-        private void refreshTabs() 
+        private void refreshTabs()
         {
             if (tbEnt.IsSelected)
             {
                 clearUI("entree");
+                tbSelected = "entree";
             }
             else if (tbDes.IsSelected)
             {
                 clearUI("dessert");
+                tbSelected = "dessert";
             }
             else if (tbHO.IsSelected)
             {
                 clearUI("hors d'oeuvre");
+                tbSelected = "hors d'oeuvre";
             }
             else if (tbPJ.IsSelected)
             {
@@ -245,10 +255,12 @@ namespace Bolero
             else if (tbSuite.IsSelected)
             {
                 clearUI("suite");
+                tbSelected = "suite";
             }
             else if (tbBoiss.IsSelected)
             {
                 clearUI("boisson");
+                tbSelected = "boisson";
             }
         }
 
@@ -262,6 +274,101 @@ namespace Bolero
         {
             refreshTabs();
             initUI();
+        }
+
+        private List<Article> lstentreePJ = new List<Article>();
+        Article a = new Article();
+        private void btnAddPlatJour_Click(object sender, RoutedEventArgs e)
+        {
+           
+            try
+            {
+                a = dao.getById(Id);
+                lstentreePJ.Add(a);
+               int re= dao.PlatJourEtatFalse(a);
+                dao.PlatJourEtatTrue(a);
+                if (re == 0)
+                {
+                    for (int j = 0; j < lstentreePJ.Count; j++)
+                    {
+                        Button btn = new Button();
+                        btn.Name = "btn" + lstentreePJ[j].IdArticle;
+                        btn.Content = lstentreePJ[j].Libelle;
+                        btn.Click += new RoutedEventHandler(this.btn_Click);
+                        btn.Background = Brushes.Yellow;
+                        btn.Foreground = Brushes.Black;
+                        PJ.Items.Add(btn);
+                        
+                    }
+                }
+                else MessageBox.Show("il ya un plat de jour exist");
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("il ya un plat de jour exist");
+                
+            }
+            PJ.Items.Refresh();
+        }
+
+        private void tbEnt_GotFocus(object sender, RoutedEventArgs e)
+        {
+            btnSupprimer.IsEnabled = true;
+            btnAddPlatJour.IsEnabled = false;
+            btnRemovePlatJour.IsEnabled = false;
+        }
+
+        private void tbSuite_GotFocus(object sender, RoutedEventArgs e)
+        {
+            btnAddPlatJour.IsEnabled = true;
+            btnRemovePlatJour.IsEnabled = false;
+            btnSupprimer.IsEnabled = true;
+        }
+
+        private void tbHO_GotFocus(object sender, RoutedEventArgs e)
+        {
+            btnAddPlatJour.IsEnabled = false;
+            btnRemovePlatJour.IsEnabled = false;
+            btnSupprimer.IsEnabled = true;
+        }
+
+        private void tbDes_GotFocus(object sender, RoutedEventArgs e)
+        {
+            btnAddPlatJour.IsEnabled = false;
+            btnRemovePlatJour.IsEnabled = false;
+            btnSupprimer.IsEnabled = true;
+        }
+
+        private void tbBoiss_GotFocus(object sender, RoutedEventArgs e)
+        {
+            btnAddPlatJour.IsEnabled = false;
+            btnRemovePlatJour.IsEnabled = false;
+            btnSupprimer.IsEnabled = true;
+        }
+
+        private void tbPJ_GotFocus(object sender, RoutedEventArgs e)
+        {
+            btnAddPlatJour.IsEnabled = false;
+            btnRemovePlatJour.IsEnabled = true;
+            btnSupprimer.IsEnabled = false;
+            
+        }
+
+        private void btnRemovePlatJour_Click(object sender, RoutedEventArgs e)
+        {
+            Button b = (Button)sender;
+            String nombtn = b.Name.Substring(3);
+            if (nombtn != null)
+            {
+                a = dao.getById(Id);
+                dao.PlatJourEtatFalse(a);
+                MessageBox.Show("Plat du jour annuler");
+                lstentreePJ = dao.getArticlesByEtat(true);
+                refreshTabs();
+                initUI();
+            }
+            else MessageBox.Show("vous devez selectionner un article !");
         }
         
        

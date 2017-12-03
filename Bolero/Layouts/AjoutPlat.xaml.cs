@@ -21,17 +21,40 @@ namespace Bolero
     public partial class AjoutPlat : Window
     {
         ArticleDAO dao;
+        CategorieDAO catDAO = new CategorieDAO();
         Article a;
-        public AjoutPlat()
+        string tbSel;
+        public AjoutPlat(string tbSel)
         {
             InitializeComponent();
             dao = new ArticleDAO();
             a = new Article();
+            this.tbSel = tbSel;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            
+            Keyboard.Focus(txtNomPlat);
+            if (tbSel == "entree")
+            {
+                cmbType.SelectedIndex = 0;
+            }
+            else if (tbSel == "suite")
+            {
+                cmbType.SelectedIndex = 1;
+            }
+            else if (tbSel == "hors d'oeuvre")
+            {
+                cmbType.SelectedIndex = 2;
+            }
+            else if (tbSel == "dessert")
+            {
+                cmbType.SelectedIndex = 3;
+            }
+            else if (tbSel == "boisson")
+            {
+                cmbType.SelectedIndex = 4;
+            }
         }
 
         private void btnRetour_Click(object sender, RoutedEventArgs e)
@@ -43,11 +66,14 @@ namespace Bolero
         {
             if ((!String.IsNullOrEmpty(txtNomPlat.Text)) && (!String.IsNullOrEmpty(txtprix.Text)) && (cmbType.SelectedIndex != -1) && cmbType.SelectedValue != null && cmbType.SelectedItem != null)
             {
-                int lastFetchedId = dao.getNumberOfElements();
+                //int lastFetchedId = dao.getNumberOfElements();
                 a.Libelle = txtNomPlat.Text;
                 a.Prix = Decimal.Parse(txtprix.Text);
-                a.Type = cmbType.Text;   
-                a.IdArticle = lastFetchedId + 1;
+
+                //List<Article> l = new List<Article>();
+                int l = catDAO.getIdByLib(cmbType.Text);
+                a.IdCategorie = l;
+                //a.IdArticle = lastFetchedId + 1;
                 try
                 {
                     if (!dao.find(a))

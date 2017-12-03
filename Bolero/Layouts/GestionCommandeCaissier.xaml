@@ -2,7 +2,7 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="GestionCommandeCaissier" Height="805.641" Width="1180" Loaded="Window_Loaded"
-        WindowState="Maximized">
+        WindowState="Maximized" Closed="Window_Closed">
     <Window.Resources>
 
         <Style x:Key="NoChromeButton" TargetType="{x:Type Button}">
@@ -281,7 +281,7 @@
                         <RowDefinition Height="70"/>
                         <RowDefinition Height="70"/>
                     </Grid.RowDefinitions>
-                    <Button x:Name="btnrecettejour" Content="Recette de jour" HorizontalAlignment="Center" VerticalAlignment="Center" Width="650" Height="50" Foreground="White" Background="#FF5E88E2" FontSize="18" FontWeight="Bold" Click="btnrecettejour_Click"/>
+                    <Button x:Name="btnrecettejour" Content="Recette de jour" HorizontalAlignment="Center" VerticalAlignment="Center" Width="650" Height="50" Foreground="White" Background="#FF5E88E2" FontSize="18" FontWeight="Bold"/>
                     <Button x:Name="btnrecettemois" Grid.Row="1" Content="Recette de mois" HorizontalAlignment="Center" VerticalAlignment="Center" Width="650" Height="50" Foreground="White" Background="#FF0C0B0B" FontSize="18" FontWeight="Bold" Click="btnrecettemois_Click"/>
                 </Grid>
 

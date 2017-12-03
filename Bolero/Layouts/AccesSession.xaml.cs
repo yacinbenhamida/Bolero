@@ -35,6 +35,7 @@ namespace Bolero
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            Keyboard.Focus(txtPW);
             lstU = UserDAO.getAllUsers();
             if (j == 5) {
                 txtPW.IsEnabled = false;
@@ -106,7 +107,7 @@ namespace Bolero
                     }                  
                             //updating pw
                             int i = UserDAO.editUserPWAutomatically(1);
-                            if (LoginSecurity.notifyAdminByEmail(1, "yacinbenhamida@hotmail.fr", "Yassine Ben Hamida") == 1)
+                            if (LoginSecurity.notifyAdminByEmail(1, "foulen@hotmail.fr", "Foulen") == 1)
                             {
                                 MessageBox.Show("Le mot de passe a été changé automatiquement veuillez consulter votre mail");
                                 

@@ -42,7 +42,7 @@ namespace Bolero.Layouts
        
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            
+            Keyboard.Focus(nomPrenom);
             idcmd.Content = idcmd.Content+"  "+id ;
             lblDate.Content = DateTime.Now.ToShortDateString();
             System.Windows.Threading.DispatcherTimer timer = new System.Windows.Threading.DispatcherTimer();
@@ -67,9 +67,9 @@ namespace Bolero.Layouts
             Crediteur c = new Crediteur();
 
             c.nomprenom = nomPrenom.Text.ToString();
-            c.MontantCredit = float.Parse(montant.Text);
+            c.MontantCredit = decimal.Parse(montant.Text);
             c.tel = numTel.Text.ToString();
-            c.adresse = adres.Text.ToString();
+           
             c.cin = int.Parse(CIN.Text);
             c.Idcmd = id;
 

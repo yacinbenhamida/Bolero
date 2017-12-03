@@ -1,4 +1,5 @@
 ﻿using Bolero.BL;
+using Bolero.DAL;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -28,7 +29,7 @@ namespace Bolero.Layouts
         {
             InitializeComponent();
         }
-        public PayementCommande(int id,int index,GestionCommande g)
+        public PayementCommande(int id, int index, GestionCommande g)
         {
             this.id = id;
             this.g = g;
@@ -37,12 +38,14 @@ namespace Bolero.Layouts
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            Keyboard.Focus(txtEspece);
             DAL.CommandeDAO daoc = new DAL.CommandeDAO();
+            DAL.PayementDAO daop = new DAL.PayementDAO();
             lblnumcmd.Content = id;
             c = daoc.getById(id);
-            decimal sum = daoc.SumCommande(id);
-            lbldatee.Content = c.DateCommande;
-            lblserveur.Content = c.NomServeur;
+            decimal sum = c.prixtotal - daop.getPayementByCmdId(id) ;
+            lbldatee.Content = c.datecommande;
+            lblserveur.Content = c.idserveur;
             lblnumtab.Content = c.NumTable;
             lbltotal.Content = sum;
             lblDate.Content = DateTime.Now.ToShortDateString();
@@ -51,34 +54,33 @@ namespace Bolero.Layouts
             timer.Interval = new TimeSpan(0, 0, 1);
             timer.Tick += timer_Tick;
             timer.Start();
-            
+            txtEspece.Text = "" + sum;
+
         }
 
         void timer_Tick(object sender, EventArgs e)
         {
             lblHeure.Content = DateTime.Now.ToLongTimeString();
         }
-        GestionCommande g= new GestionCommande();
+        GestionCommande g = new GestionCommande();
         private void btnpayer_Click(object sender, RoutedEventArgs e)
         {
-            Layouts.Ticket_et_Facture t = new Ticket_et_Facture();
-            t.setid(id);
+            Layouts.TK_et_FK t = new TK_et_FK(id);
+            
             t.Show();
             this.Close();
             Commande c = new Commande();
 
             DAL.CommandeDAO daoc = new DAL.CommandeDAO();
-            DAL.ArchiveDAO daoarch = new DAL.ArchiveDAO();
+
             c = daoc.getById(id);
-            decimal sum = daoc.SumCommande(id);
-            Archive arch = new Archive(c.IdCommande,c.NumTable,c.DateCommande,c.NomServeur,c.Id,sum);
-            daoarch.add(arch);
+
             DataSet DSreport = new DSreport();
             DSreport.Reset();
-                    List<Commande> lstCom = new List<Commande>();
-                    lstCom = daoc.getAll();
-                    g.dataGrid.DataContext = lstCom;
-                    g.PerformRefresh(index);
+            List<Commande> lstCom = new List<Commande>();
+            lstCom = daoc.getAll();
+            g.dataGrid.DataContext = lstCom;
+            g.PerformRefresh();
         }
         private void btnrouge_Click(object sender, RoutedEventArgs e)
         {
@@ -90,20 +92,20 @@ namespace Bolero.Layouts
             DAL.CommandeDAO daoc = new DAL.CommandeDAO();
             lblnumcmd.Content = id;
             c = daoc.getById(id);
-            decimal sum = daoc.SumCommande(id);
-            lbldatee.Content = c.DateCommande;
-            lblserveur.Content = c.NomServeur;
+
+            lbldatee.Content = c.datecommande;
+            lblserveur.Content = c.idserveur;
             lblnumtab.Content = c.NumTable;
-            lbltotal.Content = sum;
+            lbltotal.Content = c.prixtotal;
             lblDate.Content = DateTime.Now.ToShortDateString();
             lbldatee.Content = DateTime.Now.ToShortDateString();
             System.Windows.Threading.DispatcherTimer timer = new System.Windows.Threading.DispatcherTimer();
             timer.Interval = new TimeSpan(0, 0, 1);
             timer.Tick += timer_Tick;
             timer.Start();
-            txtRest.Clear();
+
             txtEspece.Clear();
-            txtCheque.Clear();
+
 
         }
         private void btnespece_Click(object sender, RoutedEventArgs e)
@@ -114,61 +116,91 @@ namespace Bolero.Layouts
             Decimal.TryParse(lbltotal.Content.ToString(), out t2);
             if (t > t2)
             {
-                MessageBox.Show("montont  invalid");
+                decimal rest = t-t2;
+                
+                MessageBox.Show("reste de Commande = "+rest+"DT");
+                TK_et_FK tk = new TK_et_FK(id);
+                
+                
+                tk.ShowDialog();
+                CommandeDAO daoc = new CommandeDAO();
+                daoc.updateEtat(id);
+                ChequeDAO daoch = new ChequeDAO();
+                int lastch = daoch.getLastCheque() + 1;
+                Payement pa = new Payement(1,id,t);
+                PayementDAO daop = new PayementDAO();
+                daop.addesp(pa);
+                g.PerformRefresh();
+                TableDAO table = new TableDAO();
+                Commande c = daoc.getById(id);
+                table.update(c.NumTable, false);
+                g.dgmois.Items.Refresh();
+                this.Close();
             }
-            else
-            {
+            else if(t<t2)
+            {   
                 lbltotal.Content = t2 - t;
+                Payement pa = new Payement(1, id, t);
+                PayementDAO daop = new PayementDAO();
+                daop.addesp(pa);
+                g.PerformRefresh();
+
+            }
+            else {
+                TK_et_FK tk = new TK_et_FK(id);
+                
+                tk.ShowDialog();
+                CommandeDAO daoc = new CommandeDAO();
+                daoc.updateEtat(id);
+                
+                ChequeDAO daoch = new ChequeDAO();
+            int lastch = daoch.getLastCheque() + 1;
+                Payement pa = new Payement(1, id,t);
+                PayementDAO daop = new PayementDAO();
+                daop.addesp(pa);
+                g.PerformRefresh();
+                TableDAO table = new TableDAO();
+                Commande c = daoc.getById(id);
+                table.update(c.NumTable, false);
+                this.Close();
+                
             }
 
         }
         private void btnticket_Click(object sender, RoutedEventArgs e)
         {
-            decimal t;
-            decimal t2;
-            Decimal.TryParse(txtRest.Text,out t);
-            Decimal.TryParse(lbltotal.Content.ToString(), out t2);
-            if (t > t2)
-            {
-                MessageBox.Show("montont invalid");
-            }
-            else
-            {
-               lbltotal.Content=t2 - t;
-            }
-            
+            decimal pr;
+
+            Decimal.TryParse(txtEspece.Text, out pr);
+            FormulaireTicket frmTicket = new FormulaireTicket(pr,this,id,g);
+            frmTicket.ShowDialog();
         }
         private void btncheque_Click(object sender, RoutedEventArgs e)
         {
-            decimal t;
-            decimal t2;
-            Decimal.TryParse(txtCheque.Text, out t);
-            Decimal.TryParse(lbltotal.Content.ToString(), out t2);
-            if (t > t2 )
-            {
-                MessageBox.Show("montont  invalid");
-            }
-            else
-            {
-                lbltotal.Content = t2 - t;
-            }
+            decimal pr;
+
+            Decimal.TryParse(txtEspece.Text, out pr);
+            FormulaireCheque ch = new FormulaireCheque(pr, this, id, g);
+            ch.ShowDialog();
         }
         private void btnCredit_Click(object sender, RoutedEventArgs e)
         {
             Commande cm = new Commande();
             DAL.CommandeDAO daoc = new DAL.CommandeDAO();
-
+            DAL.ServeurDAO daos = new DAL.ServeurDAO();
+            Serveur s = new Serveur();
+            s = daos.getById(c.idserveur);
             EnregCommeCredit credit = new EnregCommeCredit();
             c = daoc.getById(id);
-            decimal sum = daoc.SumCommande(id);
+            decimal sum = c.prixtotal;
 
-            credit.montant.Text = sum.ToString();
-            credit.serv.Content = c.NomServeur.ToString();
+            credit.montant.Text = c.prixtotal.ToString();
+            credit.serv.Content = s.Nom_Serveur;
             credit.setcmd(id);
-          
-               credit.ShowDialog();
+
+            credit.ShowDialog();
         }
 
-      
+
     }
 }

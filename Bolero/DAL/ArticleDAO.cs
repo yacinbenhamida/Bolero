@@ -11,6 +11,7 @@ namespace Bolero.DAL
     class ArticleDAO : DAO<Article>
     {
 
+        
         public int add(Article a)
         {
             int res = 0;
@@ -18,13 +19,16 @@ namespace Bolero.DAL
             try
             {
                 SqlConnection cnx = Connexion.GetConnection();
-                SqlCommand sqlCmd = new SqlCommand("insert into Article (IdArticle,Libelle, Prix, Type) values (@id,@lib,@prix,@type)", cnx);
-                sqlCmd.Parameters.AddWithValue("id", a.IdArticle);
+                SqlCommand sqlCmd = new SqlCommand("insert into Article (Libelle, Prix, IdCategorie, platJour) values (@lib,@prix,@cat,@plat)", cnx);
                 sqlCmd.Parameters.AddWithValue("lib", a.Libelle);
                 sqlCmd.Parameters.AddWithValue("prix", a.Prix);
-                sqlCmd.Parameters.AddWithValue("type", a.Type);
-                sqlCmd.ExecuteNonQuery();
-                res = 1;
+                sqlCmd.Parameters.AddWithValue("cat", a.IdCategorie);
+                sqlCmd.Parameters.AddWithValue("plat", false);
+                res = (int)sqlCmd.ExecuteNonQuery();
+                if (res > 0)
+                {
+                    return res;
+                }
             }
             catch (Exception ex)
             {
@@ -140,7 +144,7 @@ namespace Bolero.DAL
                 {
                     while (reader.Read())
                     {
-                        list.Add(new Article(reader.GetInt32(0), reader.GetString(1), reader.GetDecimal(2), reader.GetString(3)));
+                        list.Add(new Article(reader.GetInt32(0), reader.GetString(1), reader.GetDecimal(2), reader.GetInt32(3)));
                     }
 
                 }
@@ -169,7 +173,7 @@ namespace Bolero.DAL
                 SqlDataReader reader = sqlCmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    a = new Article(reader.GetInt32(0), reader.GetString(1), reader.GetDecimal(2), reader.GetString(3));
+                    a = new Article(reader.GetInt32(0), reader.GetString(1), reader.GetDecimal(2), reader.GetInt32(3));
                 }
                 reader.Close();
             }
@@ -188,14 +192,14 @@ namespace Bolero.DAL
             try
             {
                 SqlConnection cnx = Connexion.GetConnection();
-                SqlCommand cmd = new SqlCommand("Select * from Article where Type=@type", cnx);
+                SqlCommand cmd = new SqlCommand("Select Article.* from Article,Categorie where Article.IdCategorie=Categorie.IdCat and Categorie.libellecat=@type", cnx);
                 cmd.Parameters.AddWithValue("type", type);
                 SqlDataReader rd = cmd.ExecuteReader();
                 if (rd.HasRows)
                 {
                     while (rd.Read())
                     {
-                        lstRes.Add(new Article(rd.GetInt32(0), rd.GetString(1), rd.GetDecimal(2), rd.GetString(3)));
+                        lstRes.Add(new Article(rd.GetInt32(0), rd.GetString(1), rd.GetDecimal(2), rd.GetInt32(3)));
                     }
                 }
             }
@@ -206,17 +210,38 @@ namespace Bolero.DAL
         public int update(Article obj)
         {
             int res = 0;
-
+            int idCat = 0;
+            String libCat = "";
             try
             {
                 SqlConnection cnx = Connexion.GetConnection();
-                SqlCommand cmd = new SqlCommand("UPDATE Article SET Libelle=@lib,Prix=@prix,Type=@type where IdArticle=@id", cnx);
+                SqlCommand cmd = new SqlCommand("Select * from Article where IdArticle=@id", cnx);
+                cmd.Parameters.AddWithValue("id", obj.IdArticle);
+                SqlDataReader rd = cmd.ExecuteReader();
+                if (rd.HasRows)
+                {
+                    while (rd.Read())
+                    {
+                        idCat = rd.GetInt32(0);
+                        libCat = rd.GetString(1);
+                    }
+                }
+            }
+            catch (SqlException ex) { throw ex; }
+            finally { Connexion.closeConnection(); }
+            try
+            {
+                SqlConnection cnx = Connexion.GetConnection();
+                SqlCommand cmd = new SqlCommand("UPDATE Article SET Libelle=@lib,Prix=@prix where IdArticle=@id", cnx);
                 cmd.Parameters.AddWithValue("id", obj.IdArticle);
                 cmd.Parameters.AddWithValue("prix", obj.Prix);
                 cmd.Parameters.AddWithValue("lib", obj.Libelle);
-                cmd.Parameters.AddWithValue("type", obj.Type);
+                SqlCommand cmd1 = new SqlCommand("UPDATE Categorie SET libelleCat=@libCat where IdCat=@idCat", cnx);
+                cmd1.Parameters.AddWithValue("libCat", libCat);
+                cmd1.Parameters.AddWithValue("idCat", idCat);
                 int done = (int)cmd.ExecuteNonQuery();
-                if (done > 0) res = 1;
+                int done1 = (int)cmd1.ExecuteNonQuery();
+                if (done > 0 && done1 > 0) res = 1;
             }
             catch (SqlException)
             {
@@ -232,9 +257,10 @@ namespace Bolero.DAL
             try
             {
                 SqlConnection cnx = Connexion.GetConnection();
-                SqlCommand cmd = new SqlCommand("SELECT MAX(IdArticle) from Article", cnx);
+                SqlCommand cmd = new SqlCommand("select MAX(IdArticle) from Article", cnx);
                 int done = (int)cmd.ExecuteScalar();
-                if (done > 0) res = done;
+                if (done > 0)
+                    res = done;
             }
             catch (SqlException) { throw; }
             finally { Connexion.closeConnection(); }
@@ -245,7 +271,7 @@ namespace Bolero.DAL
         {
             int res = 0;
             SqlConnection cnx = Connexion.GetConnection();
-            
+
             try
             {
                 SqlCommand sqlCmd = new SqlCommand("DELETE FROM [lignecmd] WHERE numArticle = @idArt AND numcmd = @id", cnx);
@@ -268,6 +294,164 @@ namespace Bolero.DAL
 
             }
             return res;
+        }
+
+        public List<Article> getArticlesByEtat(bool etat)
+        {
+            List<Article> lstRes = new List<Article>();
+            try
+            {
+                SqlConnection cnx = Connexion.GetConnection();
+                SqlCommand cmd = new SqlCommand("Select Article.* from Article where platJour=@etat", cnx);
+                cmd.Parameters.AddWithValue("etat", etat);
+                SqlDataReader rd = cmd.ExecuteReader();
+                if (rd.HasRows)
+                {
+                    while (rd.Read())
+                    {
+                        lstRes.Add(new Article(rd.GetInt32(0), rd.GetString(1), rd.GetDecimal(2), rd.GetInt32(3)));
+                    }
+                }
+            }
+            catch (SqlException ex) { throw ex; }
+            finally { Connexion.closeConnection(); }
+            return lstRes;
+        }
+
+        public int PlatJourEtatTrue(Article obj)
+        {
+            int res = 0;
+
+            try
+            {
+                SqlConnection cnx = Connexion.GetConnection();
+                SqlCommand cmd = new SqlCommand("UPDATE Article SET platJour=@etat where IdArticle=@id", cnx);
+                cmd.Parameters.AddWithValue("id", obj.IdArticle);
+                cmd.Parameters.AddWithValue("etat", true);
+
+                int done = (int)cmd.ExecuteNonQuery();
+                if (done > 0) res = 1;
+            }
+            catch (SqlException)
+            {
+
+                throw;
+            }
+            finally { Connexion.closeConnection(); }
+            return res;
+        }
+
+        public int PlatJourEtatFalse(Article obj)
+        {
+            int res = 0;
+
+            try
+            {
+                SqlConnection cnx = Connexion.GetConnection();
+                SqlCommand cmd = new SqlCommand("UPDATE Article SET platJour=@etat where platJour='True'", cnx);
+                
+                cmd.Parameters.AddWithValue("etat", false);
+
+                int done = (int)cmd.ExecuteNonQuery();
+                if (done > 0) res = 1;
+            }
+            catch (SqlException)
+            {
+
+                throw;
+            }
+            finally { Connexion.closeConnection(); }
+            return res;
+        }
+
+        public Dictionary<String, decimal> historiqueArticle()
+        {
+            Dictionary<String, decimal> dictHist = new Dictionary<String, decimal>();
+
+            List<int> nbArticle = new List<int>();
+            List<String> lblArticle = new List<String>();
+            List<decimal> PrixArticle = new List<decimal>();
+
+            try
+            {
+                SqlConnection cnx = Connexion.GetConnection();
+                SqlCommand cmd1 = new SqlCommand("SELECT IdArticle FROM Article ", cnx);
+                SqlDataReader reader = cmd1.ExecuteReader();
+                while (reader.Read())
+                {
+                    nbArticle.Add(reader.GetInt32(0));
+                }
+                reader.Close();
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+            finally { Connexion.closeConnection(); }
+
+            try
+            {
+                SqlConnection cnx = Connexion.GetConnection();
+                SqlCommand cmd2 = new SqlCommand("SELECT Libelle FROM Article", cnx);
+                SqlDataReader reader = cmd2.ExecuteReader();
+                while (reader.Read())
+                {
+                    lblArticle.Add(reader.GetString(0));
+                }
+                reader.Close();
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+            finally { Connexion.closeConnection(); }
+
+            try
+            {
+                SqlConnection cnx = Connexion.GetConnection();
+                SqlCommand cmd3 = new SqlCommand("SELECT Prix FROM Article", cnx);
+                SqlDataReader reader = cmd3.ExecuteReader();
+                while (reader.Read())
+                {
+                    PrixArticle.Add(reader.GetDecimal(0));
+                }
+                reader.Close();
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+            finally { Connexion.closeConnection(); }
+
+            try
+            {
+                SqlConnection cnx = Connexion.GetConnection();
+                for (int i = 0; i < nbArticle.Count; i++)
+                {
+                    SqlCommand cmd = new SqlCommand("SELECT COUNT(numArticle) AS nb_Articles FROM lignecmd WHERE numArticle=@art GROUP BY numArticle HAVING COUNT(numArticle)>=1", cnx);
+                    cmd.Parameters.AddWithValue("art", nbArticle[i]);
+                    SqlDataReader reader1 = cmd.ExecuteReader();
+                    while (reader1.Read())
+                    {
+                        decimal totPrix = reader1.GetInt32(0) * PrixArticle[i];
+                        Properties.Settings.Default.nombreArticle += reader1.GetInt32(0);
+                        Properties.Settings.Default.totalPrix += totPrix;
+                        Properties.Settings.Default.Save();
+                        String article = reader1.GetInt32(0) + " x " + lblArticle[i];
+
+                        dictHist.Add(article, totPrix);
+                    }
+                    reader1.Close();
+                }
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+            finally { Connexion.closeConnection(); }
+
+
+            return dictHist;
         }
     }
 }

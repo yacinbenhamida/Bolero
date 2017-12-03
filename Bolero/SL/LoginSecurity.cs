@@ -9,6 +9,8 @@ using System.Net;
 using System.Data;
 using System.Net.Mail;
 using Bolero.DAL;
+using System.Security.Cryptography;
+using System.IO;
 //Security Layer
 namespace Bolero.SL
 {
@@ -20,9 +22,9 @@ namespace Bolero.SL
             int done = 0;
            // string botmail = "boleroautomatedmail@gmail.com";
            // string botmailpw = "Bolerosecurityaccount123456BOT";
-            string botmail = "yacin550@gmail.com";
-             string botmailpw = "15111994";
-            var fromAddress = new MailAddress(botmail, "Yassine Ben Hamida");
+            string botmail = "";
+             string botmailpw = "";
+            var fromAddress = new MailAddress(botmail, "");
             var toAddress = new MailAddress(adminMail, adminName);
             string fromPassword = botmailpw;
             string sujet = "Changement du mot de passe du compte d'un compte  ";
@@ -50,26 +52,76 @@ namespace Bolero.SL
             }
             return done;
         }
-        public static bool checkPassword(string input,int iduser) 
+        public static bool checkPassword(string input, int iduser)
         {
             SqlConnection cnx;
             bool result = false;
+            String pwd = "";
+
             try
             {
                 cnx = Connexion.GetConnection();
-                SqlCommand cmd = new SqlCommand("SELECT COUNT(*) from Utilisateur where password=@pw AND Id=@id", cnx);
-                cmd.Parameters.AddWithValue("pw",input);
-                cmd.Parameters.AddWithValue("id",iduser);
-                int verif = (int)cmd.ExecuteScalar();
-                if (verif == 1 ) result = true;
+                SqlCommand cmd = new SqlCommand("SELECT CONVERT(VARCHAR(50),DecryptByPassphrase('dti202',password))as DecryptedPassword from [dbo].[USER] where IdUser=@id", cnx);
+                cmd.Parameters.AddWithValue("id", iduser);
+                SqlDataReader rd = cmd.ExecuteReader();
+                while (rd.Read())
+                {
+                    pwd = rd.GetString(0);
+                }
+                rd.Close();
             }
             catch (SqlException e)
             {
                 throw e;
             }
             finally { Connexion.closeConnection(); }
+
+            if (pwd.Equals(input))
+            {
+                try
+                {
+                    cnx = Connexion.GetConnection();
+                    SqlCommand cmd = new SqlCommand("SELECT COUNT(*) from [dbo].[USER] where IdUser=@id", cnx);
+                    cmd.Parameters.AddWithValue("id", iduser);
+                    int verif = (int)cmd.ExecuteScalar();
+                    if (verif == 1) result = true;
+                }
+                catch (SqlException e)
+                {
+                    throw e;
+                }
+                finally { Connexion.closeConnection(); }
+                return result;
+            }
             return result;
         }
+
+        const string passphrase = "password";
+        public static string DecryptString(string Message)
+        {
+            byte[] Results;
+            System.Text.UTF8Encoding UTF8 = new System.Text.UTF8Encoding();
+            MD5CryptoServiceProvider HashProvider = new MD5CryptoServiceProvider();
+            byte[] TDESKey = HashProvider.ComputeHash(UTF8.GetBytes(passphrase));
+            TripleDESCryptoServiceProvider TDESAlgorithm = new TripleDESCryptoServiceProvider();
+            TDESAlgorithm.Key = TDESKey;
+            TDESAlgorithm.Mode = CipherMode.ECB;
+            TDESAlgorithm.Padding = PaddingMode.PKCS7;
+            byte[] DataToDecrypt = Convert.FromBase64String(Message);
+            try
+            {
+                ICryptoTransform Decryptor = TDESAlgorithm.CreateDecryptor();
+                Results = Decryptor.TransformFinalBlock(DataToDecrypt, 0, DataToDecrypt.Length);
+            }
+            finally
+            {
+                TDESAlgorithm.Clear();
+                HashProvider.Clear();
+            }
+            return UTF8.GetString(Results);
+        }
+
+
         public static int checkSecurityQuestionConformity(int idOfUser,string choosenQuestion,string choosenAnswer) 
         {
             int good = 0;

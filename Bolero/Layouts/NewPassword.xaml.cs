@@ -30,6 +30,7 @@ namespace Bolero
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            Keyboard.Focus(txtNPW);
             lblDate.Content = DateTime.Now.ToShortDateString();
             System.Windows.Threading.DispatcherTimer timer = new System.Windows.Threading.DispatcherTimer();
             timer.Interval = new TimeSpan(0, 0, 1);
