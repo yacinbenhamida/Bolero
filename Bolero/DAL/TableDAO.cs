@@ -119,5 +119,40 @@ namespace Bolero.DAL
             }
             return clean;
         }
+
+
+
+        public List<Table> getAll()
+        {
+
+            List<Table> listT = new List<Table>();
+            SqlConnection cnx = Connexion.GetConnection();
+            SqlDataReader reader;
+            try
+            {
+                SqlCommand sqlCmd = new SqlCommand("select * from Table", cnx);
+                reader = sqlCmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        listT.Add(new Table(reader.GetInt32(0), reader.GetBoolean(1)));
+                    }
+
+                }
+
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally { Connexion.closeConnection(); }
+
+
+            return listT;
+        }
+
+
     }
 }

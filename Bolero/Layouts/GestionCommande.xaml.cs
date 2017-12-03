@@ -25,9 +25,10 @@ namespace Bolero
     /// </summary>
     public partial class GestionCommande : Window
     {
-
+        TableDAO daot = new TableDAO();
         ArticleDAO dao = new ArticleDAO();
         CommandeDAO cdao = new CommandeDAO();
+        private List<BL.Table> listEt= new List<BL.Table>();
         private List<Commande> lstCom = new List<Commande>();
         private List<Article> lstentree = new List<Article>();
         private List<Article> lstsuite = new List<Article>();
@@ -39,6 +40,18 @@ namespace Bolero
         public GestionCommande()
         {
             InitializeComponent();
+            etat(t1);
+            etat(t2);
+            etat(t3);
+            etat(t4);
+            etat(t5);
+            etat(t6);
+            etat(t7);
+            etat(t8);
+            etat(t9);
+            
+            
+
 
         }
 
@@ -403,5 +416,36 @@ namespace Bolero
             recettejour jour = new recettejour();
             jour.ShowDialog();
         }
+
+
+        private void etat(Button button)
+        {
+            
+            int i;
+
+            string a = button.Name;
+            string b = a.Substring(1, 1);
+
+            listEt = daot.getAll();
+
+
+            for (i = 0; i < 10; i++)
+                if (listEt[i].Etat == true && listEt[i].NumTable == int.Parse(b))
+                {
+                    button.IsEnabled = false;
+
+                }
+                else
+                    button.IsEnabled = true;
+
+        }
+   }
+
+
+
+
+
+
+
     }
 }
