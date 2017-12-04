@@ -40,15 +40,6 @@ namespace Bolero
         public GestionCommande()
         {
             InitializeComponent();
-            etat(t1);
-            etat(t2);
-            etat(t3);
-            etat(t4);
-            etat(t5);
-            etat(t6);
-            etat(t7);
-            etat(t8);
-            etat(t9);
             
             
 
@@ -81,6 +72,112 @@ namespace Bolero
             btnAnnuler.IsEnabled = false;
             
         /***************************/
+
+
+            if (daot.checkAllEtat(1))
+            {
+                table1.Background = Brushes.Red;
+                table1.Foreground = Brushes.White;
+            }
+            else
+            {
+                table1.Background = Brushes.Green;
+                table1.Foreground = Brushes.White;
+            }
+
+            if (daot.checkAllEtat(2))
+            {
+                table2.Background = Brushes.Red;
+                table2.Foreground = Brushes.White;
+            }
+            else
+            {
+                table2.Background = Brushes.Green;
+                table2.Foreground = Brushes.White;
+            }
+
+            if (daot.checkAllEtat(3))
+            {
+                table3.Background = Brushes.Red;
+                table3.Foreground = Brushes.White;
+            }
+            else
+            {
+                table3.Background = Brushes.Green;
+                table3.Foreground = Brushes.White;
+            }
+
+            if (daot.checkAllEtat(4))
+            {
+                table4.Background = Brushes.Red;
+                table4.Foreground = Brushes.White;
+            }
+            else
+            {
+                table4.Background = Brushes.Green;
+                table4.Foreground = Brushes.White;
+            }
+
+            if (daot.checkAllEtat(5))
+            {
+                table5.Background = Brushes.Red;
+                table5.Foreground = Brushes.White;
+            }
+            else
+            {
+                table5.Background = Brushes.Green;
+                table5.Foreground = Brushes.White;
+            }
+
+            if (daot.checkAllEtat(6))
+            {
+                table6.Background = Brushes.Red;
+                table6.Foreground = Brushes.White;
+            }
+            else
+            {
+                table6.Background = Brushes.Green;
+                table6.Foreground = Brushes.White;
+            }
+
+            if (daot.checkAllEtat(7))
+            {
+                table7.Background = Brushes.Red;
+                table7.Foreground = Brushes.White;
+            }
+            else
+            {
+                table7.Background = Brushes.Green;
+                table7.Foreground = Brushes.White;
+            }
+
+            if (daot.checkAllEtat(8))
+            {
+                table8.Background = Brushes.Red;
+                table8.Foreground = Brushes.White;
+            }
+            else
+            {
+                table8.Background = Brushes.Green;
+                table8.Foreground = Brushes.White;
+            }
+
+            if (daot.checkAllEtat(9))
+            {
+                table9.Background = Brushes.Red;
+                table9.Foreground = Brushes.White;
+            }
+            else
+            {
+                table9.Background = Brushes.Green;
+                table9.Foreground = Brushes.White;
+            }
+
+
+
+
+
+            /****************************/
 
             lstentree = dao.getArticlesByType("entree");
             lstsuite = dao.getArticlesByType("suite");
@@ -418,26 +515,6 @@ namespace Bolero
         }
 
 
-        private void etat(Button button)
-        {
-            
-            int i;
-
-            string a = button.Name;
-            string b = a.Substring(1, 1);
-
-            listEt = daot.getAll();
-
-
-            for (i = 0; i < 10; i++)
-                if (listEt[i].Etat == true && listEt[i].NumTable == int.Parse(b))
-                {
-                    button.IsEnabled = false;
-
-                }
-                else
-                    button.IsEnabled = true;
-
-        }
+     
    }
 }

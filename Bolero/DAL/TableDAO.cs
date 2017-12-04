@@ -153,6 +153,37 @@ namespace Bolero.DAL
             return listT;
         }
 
+        public bool checkAllEtat(int idTable)
+        {
+            Boolean etat = false;
+
+            SqlConnection cnx = Connexion.GetConnection();
+            SqlDataReader reader;
+            try
+            {
+                SqlCommand sqlCmd = new SqlCommand("SELECT Etat FROM Tables WHERE NumTable=@id", cnx);
+                sqlCmd.Parameters.AddWithValue("id", idTable);
+                reader = sqlCmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        etat = reader.GetBoolean(0);
+                    }
+
+                }
+
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally { Connexion.closeConnection(); }
+
+
+            return etat;
+        }
 
     }
 }
