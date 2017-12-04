@@ -390,7 +390,10 @@ namespace Bolero
 
         private void btnLogout_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            Authentification auth = new Authentification();
+            auth.Owner = this;
+            this.Hide();
+            auth.Show();
         }
 
         private void btnGereUltil_Click(object sender, RoutedEventArgs e)
@@ -512,6 +515,108 @@ namespace Bolero
         {
             recettejour jour = new recettejour();
             jour.ShowDialog();
+        }
+
+        private void TabItem_GotFocus_1(object sender, RoutedEventArgs e)
+        {
+            if (daot.checkAllEtat(1))
+            {
+                table1.Background = Brushes.Red;
+                table1.Foreground = Brushes.White;
+            }
+            else
+            {
+                table1.Background = Brushes.Green;
+                table1.Foreground = Brushes.White;
+            }
+
+            if (daot.checkAllEtat(2))
+            {
+                table2.Background = Brushes.Red;
+                table2.Foreground = Brushes.White;
+            }
+            else
+            {
+                table2.Background = Brushes.Green;
+                table2.Foreground = Brushes.White;
+            }
+
+            if (daot.checkAllEtat(3))
+            {
+                table3.Background = Brushes.Red;
+                table3.Foreground = Brushes.White;
+            }
+            else
+            {
+                table3.Background = Brushes.Green;
+                table3.Foreground = Brushes.White;
+            }
+
+            if (daot.checkAllEtat(4))
+            {
+                table4.Background = Brushes.Red;
+                table4.Foreground = Brushes.White;
+            }
+            else
+            {
+                table4.Background = Brushes.Green;
+                table4.Foreground = Brushes.White;
+            }
+
+            if (daot.checkAllEtat(5))
+            {
+                table5.Background = Brushes.Red;
+                table5.Foreground = Brushes.White;
+            }
+            else
+            {
+                table5.Background = Brushes.Green;
+                table5.Foreground = Brushes.White;
+            }
+
+            if (daot.checkAllEtat(6))
+            {
+                table6.Background = Brushes.Red;
+                table6.Foreground = Brushes.White;
+            }
+            else
+            {
+                table6.Background = Brushes.Green;
+                table6.Foreground = Brushes.White;
+            }
+
+            if (daot.checkAllEtat(7))
+            {
+                table7.Background = Brushes.Red;
+                table7.Foreground = Brushes.White;
+            }
+            else
+            {
+                table7.Background = Brushes.Green;
+                table7.Foreground = Brushes.White;
+            }
+
+            if (daot.checkAllEtat(8))
+            {
+                table8.Background = Brushes.Red;
+                table8.Foreground = Brushes.White;
+            }
+            else
+            {
+                table8.Background = Brushes.Green;
+                table8.Foreground = Brushes.White;
+            }
+
+            if (daot.checkAllEtat(9))
+            {
+                table9.Background = Brushes.Red;
+                table9.Foreground = Brushes.White;
+            }
+            else
+            {
+                table9.Background = Brushes.Green;
+                table9.Foreground = Brushes.White;
+            }
         }
 
 

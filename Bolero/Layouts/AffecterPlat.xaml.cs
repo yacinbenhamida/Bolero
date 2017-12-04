@@ -33,7 +33,6 @@ namespace Bolero.Layouts
         public AffecterPlat(int id)
         {
             this.id = id;
-            MessageBox.Show(id.ToString());
             InitializeComponent();
 
             

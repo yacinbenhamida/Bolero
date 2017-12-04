@@ -287,8 +287,52 @@
 
             </TabItem>
 
-            <TabItem Foreground="Black" Header="Etat.Resto" Background="#FFACA5A5" FontWeight="Bold" FontSize="14">
-
+            <TabItem Foreground="Black" Header="Etat.Resto" Background="#FFACA5A5" FontWeight="Bold" FontSize="14" GotFocus="TabItem_GotFocus" >
+                <Border BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Center">
+                    <Grid Name="Grid1" Background="AliceBlue" HorizontalAlignment="Center">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="600"/>
+                            <ColumnDefinition Width="600"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Button x:Name="table1" Content="TABLE 1"/>
+                            <Button x:Name="table2" Content="TABLE 2" Grid.Column="1"/>
+                            <Button x:Name="table3" Content="TABLE 3" Grid.Row="1"/>
+                            <Button x:Name="table4" Content="TABLE 4" Grid.Row="1" Grid.Column="1"/>
+                            <Button x:Name="table5" Content="TABLE 5" Grid.Row="2"/>
+                            <Button x:Name="table6" Content="TABLE 6" Grid.Row="2" Grid.Column="1"/>
+                        </Grid>
+                        <Grid Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Button x:Name="table7" Content="TABLE 7"/>
+                            <Button x:Name="table8" Content="TABLE 8" Grid.Column="1"/>
+                            <Button x:Name="table9" Content="TABLE 9" Grid.Row="1"/>
+                            <Button x:Name="table10" Content="TABLE 10" Grid.Row="1" Grid.Column="1"/>
+                            <Button x:Name="table11" Content="TABLE 11" Grid.Row="2"/>
+                            <Button x:Name="table12" Content="TABLE 12" Grid.Row="2" Grid.Column="1"/>
+                        </Grid>
+                    </Grid>
+                </Border>
             </TabItem>
 
             

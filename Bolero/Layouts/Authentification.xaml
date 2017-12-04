@@ -1,7 +1,7 @@
 ﻿<Window x:Class="Bolero.Authentification"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Bolero" Height="387.813" Width="540" Loaded="Window_Loaded_1">
+        Title="Bolero" Height="387.813" Width="540" Loaded="Window_Loaded_1" Closed="Window_Closed">
     <Window.Resources>
         
             <Style x:Key="MonStyle" TargetType="Button">

@@ -33,8 +33,6 @@
         </StackPanel>
         <DataGrid IsReadOnly="True" CanUserAddRows="False" Name="dataGrid" Grid.Row="2" Grid.ColumnSpan="2" ItemsSource="{Binding}" AutoGenerateColumns="False">
             <DataGrid.Columns>
-                <DataGridTextColumn Width="1*" Header="Type" Binding="{Binding Type}">
-                </DataGridTextColumn>
                 <DataGridTextColumn Header="Plat" Width="*" Binding="{Binding Libelle}">
                 </DataGridTextColumn>
                 

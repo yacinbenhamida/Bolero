@@ -359,7 +359,7 @@
 
             </TabItem>
 
-            <TabItem Foreground="Black" Header="Etat.Resto" Background="#FFACA5A5" FontWeight="Bold" FontSize="14">
+            <TabItem Foreground="Black" Header="Etat.Resto" Background="#FFACA5A5" FontWeight="Bold" FontSize="14" GotFocus="TabItem_GotFocus_1" >
                 <Border BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Center">
                     <Grid Name="Grid1" Background="AliceBlue" HorizontalAlignment="Center">
                         <Grid.RowDefinitions>
