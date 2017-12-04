@@ -367,7 +367,9 @@ namespace Bolero.DAL
         public Dictionary<String, decimal> historiqueArticle()
         {
             Dictionary<String, decimal> dictHist = new Dictionary<String, decimal>();
-
+            Properties.Settings.Default.nombreArticle = 0;
+            Properties.Settings.Default.totalPrix = 0;
+            Properties.Settings.Default.Save();
             List<int> nbArticle = new List<int>();
             List<String> lblArticle = new List<String>();
             List<decimal> PrixArticle = new List<decimal>();

@@ -40,9 +40,6 @@ namespace Bolero
         public GestionCommande()
         {
             InitializeComponent();
-            
-            
-
 
         }
 
@@ -462,7 +459,7 @@ namespace Bolero
 
                 MessageBox.Show("Suppresion effectue");
             }
-        
+            dataGridVente.DataContext = dao.historiqueArticle();
         }
 
         private void modif_Click(object sender, RoutedEventArgs e)

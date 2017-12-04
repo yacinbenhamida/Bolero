@@ -85,44 +85,53 @@ namespace Bolero.DAL
                 int j = 0;
                 int d = 0;
 
-                sqlCmd = new SqlCommand("insert into Commande (NumTable,idServeur,idUser,datecommande,etatCmd) values (@numt,@idserveur,@iduser,@date,'False')", cnx);
+
                 UpdateTable = new SqlCommand("UPDATE Tables SET Etat='True' where NumTable=@numt AND Etat='False'", cnx);
-                //sqlCmd.Parameters.AddWithValue("idCom", e.IdCommande);
-                //sqlCmd.Parameters.AddWithValue("prix",e.prixtotal);
-                sqlCmd.Parameters.AddWithValue("numt", e.NumTable);
-                sqlCmd.Parameters.AddWithValue("date", e.datecommande);
-                sqlCmd.Parameters.AddWithValue("idserveur", e.idserveur);
-                sqlCmd.Parameters.AddWithValue("iduser", e.Id);
                 UpdateTable.Parameters.AddWithValue("numt", e.NumTable);
                 b = (int)UpdateTable.ExecuteNonQuery();
-                j = (int)sqlCmd.ExecuteNonQuery();
-                int idCommande = 0;
-
-                for (int i = 0; i < lst.Count; i++)
+                if (b == 0)
                 {
-                    findLastInsertedID = new SqlCommand("SELECT IdCommande from Commande", cnx);
-                    SqlDataReader rd = findLastInsertedID.ExecuteReader();
-                    if (rd.HasRows)
+                    res = 0;
+                    return res;
+                }
+                else
+                {
+                    sqlCmd = new SqlCommand("insert into Commande (NumTable,idServeur,idUser,datecommande,etatCmd) values (@numt,@idserveur,@iduser,@date,'False')", cnx);
+                    //sqlCmd.Parameters.AddWithValue("idCom", e.IdCommande);
+                    //sqlCmd.Parameters.AddWithValue("prix",e.prixtotal);
+                    sqlCmd.Parameters.AddWithValue("numt", e.NumTable);
+                    sqlCmd.Parameters.AddWithValue("date", e.datecommande);
+                    sqlCmd.Parameters.AddWithValue("idserveur", e.idserveur);
+                    sqlCmd.Parameters.AddWithValue("iduser", e.Id);
+
+                    j = (int)sqlCmd.ExecuteNonQuery();
+                    int idCommande = 0;
+
+                    for (int i = 0; i < lst.Count; i++)
                     {
-                        while (rd.Read())
+                        findLastInsertedID = new SqlCommand("SELECT IdCommande from Commande", cnx);
+                        SqlDataReader rd = findLastInsertedID.ExecuteReader();
+                        if (rd.HasRows)
                         {
-                            idCommande = rd.GetInt32(0);
+                            while (rd.Read())
+                            {
+                                idCommande = rd.GetInt32(0);
+                            }
                         }
+                        rd.Close();
+                        insertJointure = new SqlCommand("insert into lignecmd(numcmd,numArticle) VALUES (@numcd,@numar)", cnx);
+                        insertJointure.Parameters.AddWithValue("numcd", idCommande);
+                        insertJointure.Parameters.AddWithValue("numar", lst[i].IdArticle);
+
+
+                        d = (int)insertJointure.ExecuteNonQuery();
                     }
-                    rd.Close();
-                    insertJointure = new SqlCommand("insert into lignecmd(numcmd,numArticle) VALUES (@numcd,@numar)", cnx);
-                    insertJointure.Parameters.AddWithValue("numcd", idCommande);
-                    insertJointure.Parameters.AddWithValue("numar", lst[i].IdArticle);
-
-
-                    d = (int)insertJointure.ExecuteNonQuery();
+                    if (b > 0 && j > 0 && d > 0 && idCommande > 0)
+                    {
+                        res = 1;
+                    }
+                    SumCommande(idCommande);
                 }
-                if (b > 0 && j > 0 && d > 0 && idCommande > 0)
-                {
-                    res = 1;
-                }
-                SumCommande(idCommande);
-
             }
             catch (Exception ex)
             {
