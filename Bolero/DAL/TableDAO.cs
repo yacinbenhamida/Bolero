@@ -66,36 +66,13 @@ namespace Bolero.DAL
         {
             Boolean etat = false;
             bool clean = false;
-            int numtable = 0;
             SqlConnection cnx = Connexion.GetConnection();
             SqlDataReader reader;
 
             try
             {
-                SqlCommand sqlCmd = new SqlCommand("select NumTable from Commande where IdCommande=@id", cnx);
-                sqlCmd.Parameters.AddWithValue("id", id);
-                reader = sqlCmd.ExecuteReader();
-                if (reader.HasRows)
-                {
-
-                    while (reader.Read())
-                    {
-                        numtable = reader.GetInt32(0);
-                    }
-                }
-
-                reader.Close();
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-
-            }
-
-            try
-            {
                 SqlCommand sqlCmd = new SqlCommand("select Etat from Tables where NumTable=@numt", cnx);
-                sqlCmd.Parameters.AddWithValue("numt", numtable);
+                sqlCmd.Parameters.AddWithValue("numt", id);
                 reader = sqlCmd.ExecuteReader();
                 if (reader.HasRows)
                 {

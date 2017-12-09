@@ -166,7 +166,7 @@ namespace Bolero
             }
             catch (Exception exc) 
             {
-                MessageBox.Show(exc.Message);
+                MessageBox.Show(exc.Message, "ERREUR");
             }
         }
         private void btn_Click(object sender, RoutedEventArgs e)

@@ -66,7 +66,7 @@ namespace Bolero
                     MessageBox.Show("vérifier la reponse svp !  !!");
                 }
             }
-            catch (Exception p) { MessageBox.Show(p.Message); }
+            catch (Exception p) { MessageBox.Show(p.Message, "ERREUR"); }
         }
     }
 }

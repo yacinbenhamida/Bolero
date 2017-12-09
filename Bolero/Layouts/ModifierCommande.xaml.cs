@@ -117,9 +117,9 @@ namespace Bolero.Layouts
                 txtNum.Text = _numValue.ToString();
         }
 
+        Commande c;
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            int res = 0;
             int nbTable = int.Parse(txtNum.Text);
 
             ComboBoxItem selecteditem = (ComboBoxItem)(cmbClient.SelectedValue);
@@ -130,24 +130,25 @@ namespace Bolero.Layouts
             
             int idd = 1;
 
-
-            Commande c = new Commande(id, nbTable, s.IdServeur, idd, DateTime.Now);
+            c = new Commande(id, nbTable, s.IdServeur, idd, DateTime.Now);
             
            try
             {
-                res = cdao.updateCommande(c,id);
-                if (res == 0)
+                if (cdao.update(c) == 0)
                 {
                     MessageBox.Show("Update non effectue");
+                    c = null;
                 }
                 else
                 {
                     MessageBox.Show("Update effectue");
+                    c = null;
                 }
             }
             catch (Exception ex)
             {
-                throw ex;
+                MessageBox.Show(ex.Message, "ERREUR");
+                c = null;
             }
         }
 

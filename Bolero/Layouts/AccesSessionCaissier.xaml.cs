@@ -82,8 +82,8 @@ namespace Bolero
                 }
                 catch (Exception exc)
                 {
-                    
-                    MessageBox.Show(exc.Message);
+
+                    MessageBox.Show(exc.Message, "ERREUR");
                 }
             }
             if (txtPW.Password.ToString().Equals(""))
@@ -117,7 +117,7 @@ namespace Bolero
                     }             
                 catch (Exception exe)
                 {
-                    MessageBox.Show("ERR "+exe.Message);
+                    MessageBox.Show(exe.Message, "ERREUR");
                 }
                 return;
             }

@@ -115,7 +115,7 @@ namespace Bolero
                     }             
                 catch (Exception exe)
                 {
-                    MessageBox.Show("ERR "+exe.Message);
+                    MessageBox.Show(exe.Message, "ERREUR");
                 }
                 return;
             }

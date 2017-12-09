@@ -88,7 +88,7 @@ namespace Bolero
                         MessageBox.Show("article déja ajouté");
                     }
                 }
-                catch (Exception ex) { MessageBox.Show(ex.Message); }
+                catch (Exception ex) { MessageBox.Show(ex.Message, "ERREUR"); }
                 
             }  
         }

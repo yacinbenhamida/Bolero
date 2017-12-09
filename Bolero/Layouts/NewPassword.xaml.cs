@@ -85,7 +85,7 @@ namespace Bolero
                         }
                         catch (Exception ex)
                         {
-                            MessageBox.Show(ex.Message);
+                            MessageBox.Show(ex.Message, "ERREUR");
                         }
                       finally { Connexion.closeConnection(); }
                   }
@@ -98,7 +98,7 @@ namespace Bolero
             }
             catch (Exception n)
             {
-                MessageBox.Show(n.Message);
+                MessageBox.Show(n.Message, "ERREUR");
             }
         }
     }
