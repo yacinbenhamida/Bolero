@@ -14,6 +14,9 @@ using System.Windows.Shapes;
 using Bolero.DAL;
 using Bolero.BL;
 using System.Data;
+using Bolero.DAL;
+using Bolero.BL;
+using Bolero.Layouts;
 namespace Bolero.Layouts
 {
     /// <summary>
@@ -25,6 +28,7 @@ namespace Bolero.Layouts
         {
             InitializeComponent();
         }
+        CommandeDAO cdao = new CommandeDAO();
 
         ArticleDAO dao = new ArticleDAO();
         TableDAO daot = new TableDAO();
@@ -238,7 +242,25 @@ namespace Bolero.Layouts
                
             }
         }
-        
+        private void supp_Click(object sender, RoutedEventArgs e)
+        {
+            Commande cm = (Commande)dataGrid.SelectedValue;
+
+            int id = cm.IdCommande;
+
+            if (cdao.delete(id) == 0)
+            {
+                MessageBox.Show("Suppresion non effectue");
+            }
+
+            else
+            {
+                dataGrid.DataContext = cdao.getAll();
+
+                MessageBox.Show("Suppresion effectue");
+            }
+        }
+
         private void btnAnnuler_Click(object sender, RoutedEventArgs e)
         {
             platCmd.Items.Clear();
@@ -294,10 +316,6 @@ namespace Bolero.Layouts
 
         }
 
-        private void supp_Click(object sender, RoutedEventArgs e)
-        {
-        
-        }
 
         private void modif_Click(object sender, RoutedEventArgs e)
         {
